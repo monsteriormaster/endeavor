@@ -1,2 +1,3 @@
 # endeavor
-endeavour，yes it is just a endeavour
+我们的目的主要还是做个尝试啦
+
