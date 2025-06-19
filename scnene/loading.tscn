@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://uypryal8x7o6"]
+
+[ext_resource type="Script" uid="uid://r4wqlu7hn3dl" path="res://scnene/loading.gd" id="1_xm6qe"]
+
+[node name="loading" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xm6qe")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 274.0
+offset_right = 527.0
+offset_bottom = 373.0
+theme_override_font_sizes/font_size = 40
+text = "开始游戏"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 435.0
+offset_right = 527.0
+offset_bottom = 534.0
+theme_override_font_sizes/font_size = 40
+text = "商店"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 591.0
+offset_right = 527.0
+offset_bottom = 690.0
+theme_override_font_sizes/font_size = 40
+text = "设置"
+
+[node name="Button4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 747.03
+offset_right = 527.0
+offset_bottom = 846.03
+theme_override_font_sizes/font_size = 40
+text = "退出游戏"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_button_4_pressed"]

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ce7qwm51isvcf"]
+
+[node name="Debug01" type="Node"]
+
+[node name="bug_begin" type="Button" parent="."]
+offset_left = 30.0
+offset_top = 914.0
+offset_right = 300.0
+offset_bottom = 1035.0
+theme_override_font_sizes/font_size = 52
+text = "开始"

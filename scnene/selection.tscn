@@ -1,0 +1,213 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf13lup1rnyd2"]
+
+[ext_resource type="Script" uid="uid://cjnoutgewons2" path="res://scnene/selection.gd" id="1_ab2xe"]
+
+[node name="selection" type="Node2D"]
+script = ExtResource("1_ab2xe")
+
+[node name="main ui" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(17.9676, 26.9154)
+
+[node name="LineEdit" type="LineEdit" parent="."]
+offset_left = 170.0
+offset_top = 59.0
+offset_right = 545.0
+offset_bottom = 149.0
+theme_override_font_sizes/font_size = 45
+placeholder_text = "请输入你的姓名"
+alignment = 1
+
+[node name="attribute" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 46.0
+offset_top = 186.0
+offset_right = 689.0
+offset_bottom = 609.0
+
+[node name="Label" type="Label" parent="attribute"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 19.0
+offset_right = 364.0
+offset_bottom = 84.0
+theme_override_font_sizes/font_size = 40
+text = "可分配属性点：20"
+
+[node name="attribute" type="VBoxContainer" parent="attribute"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.032
+anchor_bottom = 0.138
+offset_left = 65.0
+offset_top = 49.0
+offset_right = 115.712
+offset_bottom = 275.072
+alignment = 1
+
+[node name="int" type="Label" parent="attribute/attribute"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "智力"
+
+[node name="app" type="Label" parent="attribute/attribute"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "魅力"
+
+[node name="str" type="Label" parent="attribute/attribute"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "力量"
+
+[node name="bod" type="Label" parent="attribute/attribute"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "体魄"
+
+[node name="value" type="VBoxContainer" parent="attribute"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.032
+anchor_bottom = 0.138
+offset_left = 400.0
+offset_top = 49.0
+offset_right = 450.712
+offset_bottom = 275.072
+alignment = 1
+
+[node name="int" type="Label" parent="attribute/value"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "0"
+
+[node name="app" type="Label" parent="attribute/value"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "0"
+
+[node name="str" type="Label" parent="attribute/value"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "0"
+
+[node name="bod" type="Label" parent="attribute/value"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "0"
+
+[node name="minusbox" type="VBoxContainer" parent="attribute"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.032
+anchor_bottom = 0.138
+offset_left = 347.0
+offset_top = 52.0
+offset_right = 362.712
+offset_bottom = 277.072
+theme_override_constants/separation = 19
+alignment = 1
+
+[node name="int" type="Button" parent="attribute/minusbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "—"
+
+[node name="app" type="Button" parent="attribute/minusbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "—"
+
+[node name="str" type="Button" parent="attribute/minusbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "—"
+
+[node name="bod" type="Button" parent="attribute/minusbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "—"
+
+[node name="addbox" type="VBoxContainer" parent="attribute"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.032
+anchor_bottom = 0.138
+offset_left = 440.0
+offset_top = 52.0
+offset_right = 455.712
+offset_bottom = 277.072
+theme_override_constants/separation = 19
+alignment = 1
+
+[node name="int" type="Button" parent="attribute/addbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "+"
+
+[node name="app" type="Button" parent="attribute/addbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "+"
+
+[node name="str" type="Button" parent="attribute/addbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "+"
+
+[node name="bod" type="Button" parent="attribute/addbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "+"
+
+[node name="gift_container" type="VBoxContainer" parent="."]
+offset_left = 113.0
+offset_top = 514.0
+offset_right = 640.0
+offset_bottom = 971.0
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="gift_container"]
+layout_mode = 2
+text = "剩余天赋点：0"
+
+[node name="passby" type="HBoxContainer" parent="gift_container"]
+layout_mode = 2
+
+[node name="selection_area" type="VBoxContainer" parent="gift_container/passby"]
+layout_mode = 2
+
+[node name="description_area" type="RichTextLabel" parent="."]
+offset_left = 349.0
+offset_top = 545.0
+offset_right = 549.0
+offset_bottom = 931.0
+theme_override_font_sizes/bold_italics_font_size = 1
+text = "这是描述框
+"
+
+[node name="next" type="Button" parent="."]
+offset_left = 548.0
+offset_top = 955.0
+offset_right = 666.0
+offset_bottom = 1010.0
+theme_override_font_sizes/font_size = 21
+text = "下一步"
+
+[node name="pre" type="Button" parent="."]
+offset_left = 393.0
+offset_top = 955.0
+offset_right = 511.0
+offset_bottom = 1010.0
+theme_override_font_sizes/font_size = 21
+text = "返回"
+
+[connection signal="text_changed" from="LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="pressed" from="next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="pre" to="." method="_on_pre_pressed"]

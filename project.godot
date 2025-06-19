@@ -1,0 +1,31 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="endeavor"
+run/main_scene="uid://uypryal8x7o6"
+config/features=PackedStringArray("4.4", "GL Compatibility")
+
+[autoload]
+
+Player="*res://script/player.gd"
+Confirmdialog="*res://scnene/confirmdialog.gd"
+
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=1080
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
