@@ -18,6 +18,8 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 
 Player="*res://script/player.gd"
 Confirmdialog="*res://scnene/confirmdialog.gd"
+Characters="*res://script/characters.gd"
+Equipment="*res://script/equipment.gd"
 
 [display]
 

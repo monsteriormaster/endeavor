@@ -1,0 +1,9 @@
+extends Node
+
+@export var equip = {
+	"多功能军刀":{
+		'name': '多功能军刀',
+		'effrct': 'str +1',
+		'description': '我不知道啊，我没玩过',
+	} ,
+}

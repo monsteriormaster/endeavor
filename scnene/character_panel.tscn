@@ -1,0 +1,73 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmjcvgo5m2hl6"]
+
+[ext_resource type="Script" uid="uid://dlprtox37xn81" path="res://scnene/character_panel.gd" id="1_2g3gq"]
+
+[node name="CharacterPanel" type="PopupPanel"]
+initial_position = 1
+size = Vector2i(500, 432)
+visible = true
+script = ExtResource("1_2g3gq")
+
+[node name="margin" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 496.0
+offset_bottom = 428.0
+
+[node name="closebutton" type="Button" parent="margin"]
+layout_mode = 2
+offset_left = 466.0
+offset_right = 492.0
+offset_bottom = 31.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "x
+"
+
+[node name="description" type="Label" parent="margin"]
+layout_mode = 2
+offset_left = 21.0
+offset_top = 34.0
+offset_right = 426.0
+offset_bottom = 74.0
+text = "dec"
+
+[node name="att" type="Label" parent="margin"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 78.0
+offset_right = 165.0
+offset_bottom = 374.0
+
+[node name="tags" type="VBoxContainer" parent="margin"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 76.0
+offset_right = 318.0
+offset_bottom = 372.0
+
+[node name="avatar" type="RichTextLabel" parent="margin"]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 72.0
+offset_right = 461.0
+offset_bottom = 368.0
+
+[node name="nickname" type="Label" parent="margin"]
+layout_mode = 0
+offset_left = 325.0
+offset_top = 10.0
+offset_right = 405.0
+offset_bottom = 33.0
+
+[node name="equipment" type="HBoxContainer" parent="margin"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 337.0
+offset_right = 339.0
+offset_bottom = 403.0
+
+[connection signal="pressed" from="margin/closebutton" to="." method="_on_closebutton_pressed"]

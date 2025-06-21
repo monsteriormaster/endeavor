@@ -1,6 +1,6 @@
 extends Node2D
 
-const CONFIRM_DIALOG_PATH = "res://scnene/confirmdialog.tscn"
+signal panel_opened(character_name)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,21 +12,12 @@ func _process(delta):
 	pass
 
 func debuging():
-	var confirm_dialog = load(CONFIRM_DIALOG_PATH).instantiate()
-	confirm_dialog.setup(
-		"确认离开",
-		"该页面不会保存，确定要离开吗？",
-		"确认",
-		"返回"
-		)
-	confirm_dialog.confirmed.connect(func (): get_tree().change_scene_to_file('res://scnene/loading.tscn'))
-	remove_child(confirm_dialog)
-	add_child(confirm_dialog)
-	confirm_dialog.show_dialog()
-	
+	var character_name = 'Falayee'
+		
+	var popup = preload("res://scnene/character_panel.tscn").instantiate()
+	popup.setup(character_name)
+	get_tree().root.add_child(popup)
 
 
-
-func _on_button_pressed():
-	print('pressed')
+func _on_bug_begin_pressed():
 	debuging()
