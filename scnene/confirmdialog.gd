@@ -1,9 +1,9 @@
-extends Popup
+extends PopupPanel
 
-@export var my_title: String = ''
-@export var message:String = ''
-@export var confirm_text:String = '确认'
-@export var cancel_text:String = '取消'
+var my_title: String = ''
+var message:String = ''
+var confirm_text:String = '确认'
+var cancel_text:String = '取消'
 
 signal confirmed()
 signal canceled()
@@ -16,28 +16,21 @@ signal canceled()
 
 
 func _ready():
-	update_ui()
-	if cancel_button_ele:
-		cancel_button_ele.pressed.connect(_on_cancel_pressed.bind())
-		confirm_button_ele.pressed.connect(_on_confirm_pressed.bind())
+	pass
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
  
 func update_ui():
-	print("title_ele 存在：", title_ele != null)
-	print("message_ele 存在：", message_ele != null)
-	print("cancel_button_ele 存在：", cancel_button_ele != null)
-	print("confirm_button_ele 存在：", confirm_button_ele != null)
-	if title_ele:	
 		print("已经update_ui了\n")
-		title_ele.text = my_title
-		message_ele.text = message
-		cancel_button_ele.text = cancel_text
-		confirm_button_ele.text = confirm_text
-
+		$dialogbox/title.text = my_title
+		$dialogbox/message.text = message
+		$dialogbox/buttonbox/cancelbutton.text = cancel_text
+		$dialogbox/buttonbox/confirmbutton.text = confirm_text
+		$dialogbox/buttonbox/cancelbutton.pressed.connect(_on_cancel_pressed.bind())
+		$dialogbox/buttonbox/confirmbutton.pressed.connect(_on_confirm_pressed.bind())
 	
 func setup(cur_title:String, cur_message:String,
 			cur_confirm_text:String ='确认', cur_cancel_text:String = '取消'):
@@ -47,13 +40,6 @@ func setup(cur_title:String, cur_message:String,
 	confirm_text = cur_confirm_text
 	cancel_text = cur_cancel_text
 	update_ui()
-
-
-func show_dialog(pause_game: bool = true):
-	print("已经show了\n")
-	popup_centered()
-	if pause_game:
-		get_tree().paused = true
 
 	 
 func _on_confirm_pressed():
@@ -67,6 +53,4 @@ func _on_cancel_pressed():
 	
 
 func close_dialog():
-	if get_tree().paused:
-		get_tree().paused = false  
 	queue_free()	

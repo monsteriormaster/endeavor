@@ -199,7 +199,6 @@ func _on_next_pressed():
 		confirm_dialog.confirmed.connect(func (): get_tree().change_scene_to_file('res://scnene/main.tscn'))
 		remove_child(confirm_dialog)
 		add_child(confirm_dialog)
-		confirm_dialog.show_dialog()
 		
 	else:
 		get_tree().change_scene_to_file('res://scnene/main.tscn')
@@ -216,6 +215,6 @@ func _on_pre_pressed():
 		confirm_dialog.confirmed.connect(func (): get_tree().change_scene_to_file('res://scnene/loading.tscn'))
 		remove_child(confirm_dialog)
 		add_child(confirm_dialog)
-		confirm_dialog.show_dialog()
+		
 	else:
 		get_tree().change_scene_to_file('res://scnene/loading.tscn')	
