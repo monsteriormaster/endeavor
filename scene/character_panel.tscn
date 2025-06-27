@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bmjcvgo5m2hl6"]
 
-[ext_resource type="Script" uid="uid://dlprtox37xn81" path="res://scnene/character_panel.gd" id="1_2g3gq"]
+[ext_resource type="Script" uid="uid://dlprtox37xn81" path="res://scene/character_panel.gd" id="1_2g3gq"]
 
 [node name="CharacterPanel" type="PopupPanel"]
 initial_position = 1

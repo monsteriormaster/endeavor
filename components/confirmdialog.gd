@@ -8,13 +8,6 @@ var cancel_text:String = '取消'
 signal confirmed()
 signal canceled()
 
-@onready var title_ele: Label = $dialogbox/title
-@onready var message_ele: Label = $dialogbox/message
-@onready var cancel_button_ele: Button = $dialogbox/buttonbox/cancelbutton
-@onready var confirm_button_ele: Button = $dialogbox/buttonbox/confirmbutton
-
-
-
 func _ready():
 	pass
 	

@@ -1,6 +1,6 @@
 extends Node2D
 
-const CONFIRM_DIALOG_PATH = "res://scnene/confirmdialog.tscn"
+const CONFIRM_DIALOG_PATH = "res://components/confirmdialog.tscn"
 
 var gifts = Player.gifts
 var check_boxes = []
@@ -196,12 +196,12 @@ func _on_next_pressed():
 			"确认",
 			"返回"
 			)
-		confirm_dialog.confirmed.connect(func (): get_tree().change_scene_to_file('res://scnene/main.tscn'))
+		confirm_dialog.confirmed.connect(func (): get_tree().change_scene_to_file('res://scene/main.tscn'))
 		remove_child(confirm_dialog)
 		add_child(confirm_dialog)
 		
 	else:
-		get_tree().change_scene_to_file('res://scnene/main.tscn')
+		get_tree().change_scene_to_file('res://scene/main.tscn')
 	
 func _on_pre_pressed():
 	if Player.gift_att < origin_gift_att || Player.player_att < origin_player_att:
@@ -212,9 +212,9 @@ func _on_pre_pressed():
 			"确认",
 			"返回"
 			)
-		confirm_dialog.confirmed.connect(func (): get_tree().change_scene_to_file('res://scnene/loading.tscn'))
+		confirm_dialog.confirmed.connect(func (): get_tree().change_scene_to_file('res://scene/loading.tscn'))
 		remove_child(confirm_dialog)
 		add_child(confirm_dialog)
 		
 	else:
-		get_tree().change_scene_to_file('res://scnene/loading.tscn')	
+		get_tree().change_scene_to_file('res://scene/loading.tscn')	

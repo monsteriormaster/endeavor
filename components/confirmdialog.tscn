@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b8ljdq15av614"]
 
-[ext_resource type="Script" uid="uid://b3l2hb4dtv2g6" path="res://scnene/confirmdialog.gd" id="1_dlp4s"]
+[ext_resource type="Script" uid="uid://b3l2hb4dtv2g6" path="res://components/confirmdialog.gd" id="1_dlp4s"]
 
 [node name="Confirmdialog" type="PopupPanel"]
 position = Vector2i(90, 200)
