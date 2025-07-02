@@ -17,157 +17,16 @@ extends Node
 
 @export var gift_att = 60
 
-@export var gifts = {
-	"兵贵神速":{
-	 "name":"兵贵神速",
-	 "quality":"SR",
-	 "description":"好快的男人，你比想象中得还要快。 魅力-1，获得标签神速",
-	 "effect":"魅力-1，获得标签神速",
-	 "price":"10",
-	 "condition":"",
-	 "cor_label":"神速",
-	},
-	
-	"貌比东施":{
-	 "name":"貌比东施",	
-	 "quality":"R",
-	 "description":"土还想学披发导致的。 魅力-1，智力-1，获得标签学习",
-	 "effect":"魅力-1，智力-1，获得标签学习",
-	 "price":"5",
-	 "condition":"",
-	 "cor_label":"学习",
-	},
-	
-	"闭月羞花":{
-	 "name":"闭月羞花",	
-	 "quality":"SSR",
-	 "description":"当你回眸，众生低头，最娇嫩的花也不敢用你譬喻。 魅力+5 获得标签灾厄",
-	 "effect":"魅力+5 获得标签灾厄",
-	 "price":"20",
-	 "condition":"",
-	 "cor_label":"灾厄",
-	},
-	
-	"勤能补拙":{
-	 "name":"勤能补拙",		
-	 "quality":"R",
-	 "description":"失败是成功之母，成功可真听他妈的话。 智力-2，获得标签学习",
-	 "effect":"智力-2，获得标签学习",
-	 "price":"10",
-	 "condition":"",
-	 "cor_label":"学习",
-	},
-	
-	"平凡可贵":{
-	 "name":"平凡可贵",	
-	 "quality":"SR",
-	 "description":"失败并不可怕，可怕的是你真的相信这句话。 属性值小于3时变为3，高于7时变为7",
-	 "effect":"属性值小于3时变为3，高于7时变为7",
-	 "price":"15",
-	 "condition":"",
-	 "cor_label":"",
-	},
 
-	"眼疾手快":{
-	 "name":"眼疾手快",	
-	 "quality":"R",
-	 "description":"独自深夜锻炼右（左）手至今练就了非凡手速。 体魄+1，力量+1",
-	 "effect":"体魄+1，力量+1",
-	 "price":"5",
-	 "condition":"",
-	 "cor_label":"",
-	},
-	
-	"如梦初醒":{
-	 "name":"如梦初醒",	
-	 "quality":"R",
-	 "description":"总有些梦会让裤子湿湿的。 体魄-1，力量-1,获得标签灵感",
-	 "effect":"体魄+1，力量+1",
-	 "price":"10",
-	 "condition":"",
-	 "cor_label":"灵感",
-	}, 
-	
-	"死生契阔":{
-	 "name":"死生契阔",	 
-	 "quality":"SSR",
-	 "description":"死生契阔，与子成说，执子之手，与子偕老。你们在战争中结识，友谊牢不可破 获得同伴还没想好",
-	 "effect":"获得同伴还没想好",
-	 "price":"15",
-	 "condition":"",
-	 "cor_label":"",
-	},
-	
-	"痴人说梦":{
-	 "name":"痴人说梦",	
-	 "quality":"SR",
-	 "description":"谁在小轩窗梳妆，你苦苦追忆是否如梦一场。 魅力+1，体魄-1,获得标签灵感",
-	 "effect":"魅力+1，体魄-1,获得标签灵感",
-	 "price":"15",
-	 "condition":"",
-	 "cor_label":"",
-	},
-	
-	"博采众长":{
-	 "name":"博采众长",	
-	 "quality":"R",
-	 "description":"你的特长不仅是舌头，你的脖子也特长。 体魄+3，魅力-1",
-	 "effect":"体魄+3,魅力-1",
-	 "price":"10",
-	 "condition":"",
-	 "cor_label":"",
-	},
-	
-	"祸福相依":{
-	 "name":"祸福相依",	
-	 "quality":"SR",
-	 "description":"世上总是充满意外，比如你以为我会举个例子。 获得标签灵感",
-	 "effect":"获得标签灵感",
-	 "price":"15",
-	 "condition":"",
-	 "cor_label":"灵感",
-	},
-	
-	"谁主沉浮":{
-	 "name":"谁主沉浮",		
-	 "quality":"SRR",
-	 "description":"别了人间，日月换新天。命运的挑战者，能否裁定自己的命运 获得标签灾厄,获得标签灵感",
-	 "effect":"获得标签灵感，灾厄",
-	 "price":"30",
-	 "condition":"",
-	 "cor_label":"灵感 灾厄",
-	},
-
-	"手脚灵活":{
-	 "name":"手脚灵活",	
-	 "quality":"R",
-	 "description":"你的脚活儿和你的手活儿一样灵巧。 智力-2，获得标签神速",
-	 "effect":"智力-2，获得标签神速",
-	 "price":"5",
-	 "condition":"",
-	 "cor_label":"神速",
-	},
-	
-	"以力破巧":{
-	 "name":"以力破巧",		
-	 "quality":"R",
-	 "description":"大力出奇迹，有时可能只是出人命。 力量+3，体魄-1",
-	 "effect":"力量+3，体魄-1",
-	 "price":"5",
-	 "condition":"",
-	 "cor_label":"",
-	},
-}
-
-@export var character_label = {
-	"神速":{"description":"增加逃跑，窃取的选项，在与速度相关的体质或力量坚定中获得优势（投点两次，取较优的值）"},
-	
-	"灵感":{"description":"开启通灵相关剧情"},
-
-	"灾厄":{"description":"开启灾厄相关剧情，人物初始好感降低"},	
-	
-	"学习":{"description":"开启知识相关剧情，在智力鉴定中取得优势（投点两次，取较优的值）"},
-}
+#@export var character_label = {
+	#"神速":{"description":"当你追上了风，当声音被甩在身后，会是怎样光景？"},
+	#
+	#"灵感":{"description":"世界的真相在你眼前浮现。"},
+#
+	#"灾厄":{"description":"灾厄是一把可怕的钥匙，它会开启什么呢？"},	
+	#
+	#"学习":{"description":"苟日新，日日新。"},
+#}
 
 #属性改变函数
 func change_int(value:int):

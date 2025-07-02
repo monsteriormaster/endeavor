@@ -20,7 +20,9 @@ func add_plot(file_path:String, plot_name:String):
 
 func load_json(file_path: String) -> Dictionary:
 	var file = FileAccess.open(file_path, FileAccess.READ)
-	return JSON.parse_string(file.get_as_text()) 
+	var reply = JSON.parse_string(file.get_as_text())
+	file.close()
+	return reply
 
 
 func find_plot(all_plot, plot_name:String):
@@ -35,7 +37,7 @@ func execute_dialogue(plot):
 	
 	var dialogue_group = DialogueGroup.new()
 	
-	for i in range(1000):  # 假设最多100条对话，可根据需要调整
+	for i in range(1000):  
 		var key = str(i) + "th"
 		if plot.has(key):
 			var dialogue_data = plot[key]
@@ -44,10 +46,9 @@ func execute_dialogue(plot):
 			dialogue.character_name = dialogue_data.get("name", "")
 			dialogue.content = dialogue_data.get("text", "")
 			
-			# 添加到对话组
 			dialogue_group.dialogue_list.append(dialogue)
 		else:
-			break  # 遇到不存在的序号时停止遍历
+			break  
 	print("show了\n")
 	dialogue_ui.show_dialogue_group(dialogue_group)
 	

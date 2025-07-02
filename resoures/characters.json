@@ -1,0 +1,27 @@
+{ 
+	"Hero": {
+	"name": "主角",
+	"gender": "",
+	"int": 0,
+	"app": 0,
+	"str": 0,
+	"bod": 0,
+	"tags": {},
+	"equipment": {},
+	"description": "曾热爱艺术，家庭发生变故后，不得已继承家业放弃梦想。不过野心依旧。",
+	},
+	
+	"Falayee": {
+	"name": "法拉耶",
+	"gender": "男",
+	"int": 4,
+	"app": 6,
+	"str": 7,
+	"bod": 4,
+	"tags": {"侠义": 1},
+	"equipment": {
+		"weapon": "多功能军刀"
+		},
+	"description": "一个沉默寡言的男人，手上把玩着多功能军刀",
+	}	
+}

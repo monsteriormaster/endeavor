@@ -1,8 +1,11 @@
 extends Node2D
 
 const CONFIRM_DIALOG_PATH = "res://components/confirmdialog.tscn"
+const GIFT = "res://resoures/gifts_begin.json"
+const TAGS = "res://resoures/tags.json"
 
-var gifts = Player.gifts
+var gifts 
+var tags
 var check_boxes = []
 var origin_gift_att = Player.gift_att
 var origin_player_att = Player.player_att
@@ -10,6 +13,7 @@ var choose_condition = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_data()
 	update_all_att_label()
 	setup_buttons()
 	update_button_states()
@@ -24,8 +28,6 @@ func _process(_delta):
 
 func _on_line_edit_text_changed(new_text):
 	Player.player_name = new_text
-	print("player name is " + Player.player_name)
-
 
 func reduce_attribute(attribute_name: String):
 	var attribute_value = Player.get("player_" + attribute_name)
@@ -114,8 +116,8 @@ func setup_gift_selection():
 	description_area.bbcode_enabled = true
 	description_area.text = ""
 	
-	for gift_name in Player.gifts:
-		var gift_data = Player.gifts[gift_name]
+	for gift_name in gifts:
+		var gift_data = gifts[gift_name]
 		var hbox = HBoxContainer.new()
 		var checkbox = CheckBox.new()
 		var name_label = Label.new()
@@ -138,7 +140,6 @@ func setup_gift_selection():
 
 
 func _on_gift_hover(gift_data, description_area):
-	print("悬停触发，礼物名称：", gift_data.name)
 	var desc = "[b]名称[/b]：" + gift_data.name + "\n"
 	desc += "[b]品质[/b]：" + gift_data.quality + "\n"
 	desc += "[b]描述[/b]：" + gift_data.description + "\n"
@@ -148,7 +149,7 @@ func _on_gift_hover(gift_data, description_area):
 		var cor_labels = gift_data.cor_label.split(' ')
 		for add_description in cor_labels:
 			desc += add_description + '\n' +\
-					Player.character_label[add_description].description + "\n"  
+					tags[add_description].description + "\n"  
 	
 	description_area.text = desc
 
@@ -218,3 +219,11 @@ func _on_pre_pressed():
 		
 	else:
 		get_tree().change_scene_to_file('res://scene/loading.tscn')	
+		
+func get_data():
+	var file = FileAccess.open(GIFT,FileAccess.READ)
+	gifts = JSON.parse_string(file.get_as_text())	
+	file.close()
+	file = FileAccess.open(TAGS,FileAccess.READ)
+	tags = JSON.parse_string(file.get_as_text())	
+	file.close()	

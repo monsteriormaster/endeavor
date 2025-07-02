@@ -17,15 +17,16 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 [autoload]
 
 Player="*res://script/player.gd"
-Confirmdialog="*res://components/confirmdialog.gd"
-Characters="*res://script/characters.gd"
-Equipment="*res://script/equipment.gd"
-PlotImporter="*res://addons/plot_importer.gd"
+PlotImporter="*res://script/plot_importer.gd"
 
 [display]
 
 window/size/viewport_width=720
 window/size/viewport_height=1080
+
+[editor]
+
+movie_writer/movie_file="C:/Users/26464/picture/test.avi"
 
 [rendering]
 
