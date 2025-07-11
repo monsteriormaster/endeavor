@@ -13,4 +13,4 @@ func _process(_delta):
 
 func _on_button_pressed():
 	print("按下了\n")
-	PlotImporter.add_plot("res://plot/test.json","测试事件1")
+	PlotImporter.add_plot("E:/Users/20744/IdeaProjects/endeavor/resoures/plot/test.json","测试事件1")

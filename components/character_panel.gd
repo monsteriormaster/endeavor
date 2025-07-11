@@ -9,6 +9,12 @@ var einfo
 const TAGS = "res://resoures/tags.json"
 const CHARACTERS = "res://resoures/characters.json"
 const EQUIPMENT = "res://resoures/equipment.json"
+#主题颜色定义
+const PRIMARY_COLOR = Color("5e35b1")
+const SECONDARY_COLOR = Color("ff7043")
+const ACCENT_COLOR = Color("29b6f6")
+const TEXT_COLOR = Color("f5f5f5")
+const WARNING_COLOR = Color("ff5252")
 
 func _ready():
 	tagtip.name = 'tagtip'
@@ -16,7 +22,8 @@ func _ready():
 	tagtip.hide()
 	$margin.add_child(tagtip)
 	
-
+	#设置背景
+	$Background.color = Color("1a237e")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
@@ -95,4 +102,24 @@ func get_info():
 	file.close()	
 	file = FileAccess.open(EQUIPMENT, FileAccess.READ)
 	einfo = JSON.parse_string(file.get_as_text())
-	
+
+
+func _on_SettingButton_pressed():
+	#打开设置菜单，弹出面板或者切换到设置场景
+	print("打开设置")
+	$SettingPopup.popup_centered()
+
+func _on_InformationButtion_press():
+	'''用于查看角色属性'''
+	print("查看属性")
+	pass
+
+#用于地图场景切换
+func _on_Scence_1():
+	print("转到场景/地图1")
+	pass
+
+
+func _on_Scence_2():
+	print("转到场景2/地图2")
+	pass
