@@ -23,7 +23,6 @@ func _ready():
 	$margin.add_child(tagtip)
 	
 	#设置背景
-	$Background.color = Color("1a237e")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass

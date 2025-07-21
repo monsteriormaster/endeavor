@@ -1,10 +1,16 @@
 extends Node
 
+@export_group("curtain_scence")
+@export var path = ''#当前路径
+@export var plot = ''#当前正在经历的事件
+@export var exact_situation = {}#该回合已经进行的操作 
+
+@export_group("player")
 @export var player_age =16.0 
 #用于定义时间相关的事件
 @export var player_money =100
 @export var player_app_fact =""
-@export var player_name ="阿轩"
+@export var player_name ="请输入你的名字"
 
 @export var player_app:int =0 #魅力
 @export var player_int:int =0 #智力
@@ -14,8 +20,13 @@ extends Node
 @export var player_bac:int =1 #背景，暂时忽略
 @export var player_att:int =20 #属性点
 #属性，用于鉴定,edu 和 bac暂时保留
-
+@export var player_equipment = []#装备
+@export var player_tags = []#词条
 @export var gift_att = 60
+
+@export_group("others")
+@export var partner = {}#伙伴
+@export var development = {}#剧情发展情况
 
 
 #@export var character_label = {

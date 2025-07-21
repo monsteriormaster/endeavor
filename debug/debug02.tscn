@@ -10,6 +10,23 @@ offset_left = 30.0
 offset_top = 926.0
 offset_right = 186.0
 offset_bottom = 1008.0
-text = "begin"
+text = "继续游戏"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 6.0
+offset_top = 773.0
+offset_right = 194.0
+offset_bottom = 844.0
+text = "save"
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 64.0
+offset_top = 512.0
+offset_right = 235.0
+offset_bottom = 687.0
+text = "change
+"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
