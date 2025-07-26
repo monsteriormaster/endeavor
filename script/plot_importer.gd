@@ -11,10 +11,7 @@ extends Node
 const UI = 'res://components/dialogue_ui.tscn'
 
 func add_plot(file_path:String, plot_name:String):
-	print("已经add_plot了\n")
 	var plot =find_plot(load_json(file_path),plot_name)
-	print(plot)
-	print('\n')
 	execute_dialogue(plot)
 	
 
@@ -45,11 +42,22 @@ func execute_dialogue(plot):
 			var dialogue = Dialogue.new()
 			dialogue.character_name = dialogue_data.get("name", "")
 			dialogue.content = dialogue_data.get("text", "")
+			dialogue.is_option = dialogue_data.get("is_option",false)
+			dialogue.next =dialogue_data.get("next",-1)
+			
+			dialogue.options = []
+			if dialogue_data.has("options"):
+				for option_data in dialogue_data["options"]:
+					var option = {
+						"text": option_data.get("text", ""),
+						"next": option_data.get("next", -1)
+					}
+					dialogue.options.append(option)
+			
 			
 			dialogue_group.dialogue_list.append(dialogue)
 		else:
 			break  
-	print("show了\n")
 	dialogue_ui.show_dialogue_group(dialogue_group)
 	
 	

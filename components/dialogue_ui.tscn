@@ -2,24 +2,31 @@
 
 [ext_resource type="Script" uid="uid://3kyghulebmsc" path="res://components/dialogue_ui.gd" id="1_jbnjv"]
 
-[node name="DiaologueUi" type="Control" node_paths=PackedStringArray("character_name_text", "text_box")]
+[node name="DiaologueUi" type="Control" node_paths=PackedStringArray("character_name_text", "text_box", "option_box")]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1081.0
+offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_jbnjv")
 character_name_text = NodePath("Panel/MarginContainer/VBoxContainer/name")
 text_box = NodePath("Panel/MarginContainer/VBoxContainer/content")
+option_box = NodePath("OptionContainer")
 
 [node name="Panel" type="Panel" parent="."]
-layout_mode = 2
-offset_top = -93.0
-offset_right = 720.0
-offset_bottom = 200.0
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -227.0
+grow_horizontal = 2
+grow_vertical = 0
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
@@ -48,5 +55,16 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "content"
 autowrap_mode = 3
+
+[node name="OptionContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -194.5
+offset_bottom = 155.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="gui_input" from="Panel" to="." method="_on_click"]

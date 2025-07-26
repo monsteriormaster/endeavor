@@ -2,43 +2,84 @@
 	"测试事件1":{
 		"0th":{
 			"name":"测试员1",
-			"text":"让我们做一个测试吧。"
+			"text":"让我们做一个测试吧。",
+			"is_option":false,
+			"next": 1,
 		},
 		"1th":{
 			"name":"测试员2",
 			"text":"好啊，那怎么做呢？",
+			"is_option": false,
+			"next": 2,
 		},
 		"2th":{
 			"name":"测试员1",
 			"text":"唔，我想我们就这样说话就好了。",
+			"is_option": false,
+			"next": 3,
 		},
 		"3th":{
 			"name":"测试员2",
 			"text":"测试原来简单吗？",
+			"is_option": false,
+			"next": 4,
 		},
 		"4th":{
 			"name":"",
 			"text":"霎时雨霁云开月出，微风阵阵。",
+			"is_option": false,
+			"next": 5,
 		},
 		"5th":{
 			"name":"测试员1",
 			"text":"月色真美。",
+			"is_option":true,
+			"options":[
+				{
+					"text":"测试员1想到了一些隐晦的东西。",
+					"next":6,
+				},
+				{
+					"text":"测试员1注意到了什么东西。",
+					"next":10,
+				},
+			]
 		},
 		"6th":{
 			"name":"",
 			"text":"测试员2突然脸红了。",
+			"is_option": false,
+			"next": 7,
 		},
 		"7th":{
 			"name":"测试员2",
 			"text":"怎么突然说这个。",
+			"is_option": false,
+			"next": 8,
 		},
 		"8th":{
 			"name":"",
 			"text":"测试员2闭上了眼。",
+			"is_option": false,
+			"next": 9,
 		},
 		"9th":{
 			"name":"测试员2",
 			"text":"怎么还没有亲?喂，人呢？",
+			"is_option": false,
+			"next": -1,
+		},
+		"10th":{
+			"name":"测试员2",
+			"text":"哇，快下班了，去摸鱼吧。",
+			"is_option": false,
+			"next": 11,
+		},
+		"11th":{
+			"name":"",
+			"text":"一起去愉快地摸鱼了。",
+			"is_option": false,
+			"next": -1,
 		},
 	},
 }
