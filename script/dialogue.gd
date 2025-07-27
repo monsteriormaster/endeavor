@@ -7,4 +7,5 @@ class_name Dialogue
 
 @export var is_option := false
 @export var options = []
-@export var next : int
+@export var next := -1
+@export var effect := ""

@@ -42,6 +42,10 @@ func data_get():
 	save_data["player_tags"] = Player.player_tags
 	#玩家信息
 	
+	save_data["child_name"] = Player.child_name
+	save_data["child"] = Player.child
+	#孩子信息
+	
 	save_data["development"] = Player.development
 	save_data["partner"] = Player.partner
 	#其他信息
@@ -67,6 +71,10 @@ func load_data(save_data):
 	Player.player_equipment = save_data["player_equipment"]
 	Player.player_tags = save_data["player_tags"]
 	#玩家信息
+
+	Player.child_name = save_data["child_name"]
+	Player.child = save_data["child"] 
+	#孩子信息
 
 	Player.development = save_data["development"]
 	Player.partner = save_data["partner"]

@@ -10,6 +10,8 @@ var main_dialogue : DialogueGroup
 var dialogue_index := 0
 var typing_tween : Tween
 
+var hero = Player.player_name
+
 func show_dialogue_group(dialogue_group: DialogueGroup) -> void:
 	main_dialogue = dialogue_group
 	dialogue_index = 0

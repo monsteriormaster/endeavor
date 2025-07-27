@@ -28,6 +28,8 @@ extends Node
 @export var partner = {}#伙伴
 @export var development = {}#剧情发展情况
 
+@export var child_name : String
+@export var child = {}#孩子的情况
 
 #@export var character_label = {
 	#"神速":{"description":"当你追上了风，当声音被甩在身后，会是怎样光景？"},

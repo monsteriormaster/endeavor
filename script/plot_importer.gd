@@ -50,7 +50,8 @@ func execute_dialogue(plot):
 				for option_data in dialogue_data["options"]:
 					var option = {
 						"text": option_data.get("text", ""),
-						"next": option_data.get("next", -1)
+						"next": option_data.get("next", -1),
+						"effect": option_data.get("effect", "")
 					}
 					dialogue.options.append(option)
 			
