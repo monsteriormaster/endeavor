@@ -36,7 +36,7 @@ scale = Vector2(8.33557, 5.40266)
 theme_override_font_sizes/font_size = 11
 text = "地图2"
 
-[node name="card1" type="Button" parent="."]
+[node name="card_area" type="Button" parent="."]
 offset_left = 54.0
 offset_top = 907.0
 offset_right = 134.0

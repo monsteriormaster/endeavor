@@ -1,20 +1,30 @@
-extends PopupPanel
+#变量声明和常量定义
+extends PopupPanel#弹出面板
 
 var tagtip = Label.new()
 
 var info
 var taginfo
 var einfo
-
+#资源文件路径
 const TAGS = "res://resoures/tags.json"
-const CHARACTERS = "res://resoures/characters.json"
-const EQUIPMENT = "res://resoures/equipment.json"
+#需要补充文件内容
+const CHARACTERS = "res://resoures/characters.json"#角色
+const EQUIPMENT = "res://resoures/equipment.json"#装备
+
+#新增加内容，添加卡组？
+const SKILLS = "res://resoures/skills.json"
+const DECKS = "res://resoures/decks.json"
 #主题颜色定义
 const PRIMARY_COLOR = Color("5e35b1")
 const SECONDARY_COLOR = Color("ff7043")
 const ACCENT_COLOR = Color("29b6f6")
 const TEXT_COLOR = Color("f5f5f5")
 const WARNING_COLOR = Color("ff5252")
+
+# 添加全局变量
+var sinfo  # 技能信息
+var decks  # 卡组配置
 
 func _ready():
 	tagtip.name = 'tagtip'
@@ -26,11 +36,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
-
+#进入场景时调用，初始化tagtip标签添加到面板
 
 func _on_closebutton_pressed():
 	hide()
-
+#关闭键
 
 func setup(character_name:String):
 	get_info()

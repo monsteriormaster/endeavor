@@ -13,4 +13,22 @@ offset_bottom = 454.0
 text = "test
 "
 
+[node name="Button2" type="Button" parent="."]
+offset_left = 429.0
+offset_top = 169.0
+offset_right = 612.0
+offset_bottom = 273.0
+text = "状态
+"
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 382.0
+offset_top = 441.0
+offset_right = 591.0
+offset_bottom = 605.0
+text = "和法拉叶交流
+"
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]

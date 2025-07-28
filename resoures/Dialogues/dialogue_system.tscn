@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm57n8e7c4rmg"]
+
+[ext_resource type="Script" uid="uid://c21rmjgx735d1" path="res://resoures/Dialogues/Dialogue_manager.gd" id="1_51mq6"]
+[ext_resource type="Texture2D" uid="uid://wh31xn24biur" path="res://resoures/Dialogues/traveller.png" id="2_t7t7p"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("character_name_text", "text_box")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+localize_numeral_system = false
+script = ExtResource("1_51mq6")
+character_name_text = NodePath("HBoxContainer/Panel/VBoxContainer/Name")
+text_box = NodePath("HBoxContainer/Panel/VBoxContainer/Dialogue")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -187.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="LeftAvatar" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+texture = ExtResource("2_t7t7p")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Panel" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Name" type="Label" parent="HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "角色名称"
+
+[node name="Dialogue" type="Label" parent="HBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "对话内容"
+autowrap_mode = 3
+
+[node name="RightAvatar" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+texture = ExtResource("2_t7t7p")
+expand_mode = 2
+stretch_mode = 5
+
+[connection signal="gui_input" from="HBoxContainer/Panel/MarginContainer" to="." method="_on_click"]

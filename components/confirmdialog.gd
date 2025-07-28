@@ -27,7 +27,6 @@ func update_ui():
 	
 func setup(cur_title:String, cur_message:String,
 			cur_confirm_text:String ='确认', cur_cancel_text:String = '取消'):
-	print("已经setup了\n")
 	my_title = cur_title
 	message = cur_message
 	confirm_text = cur_confirm_text
