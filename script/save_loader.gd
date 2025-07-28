@@ -48,6 +48,7 @@ func data_get():
 	
 	save_data["development"] = Player.development
 	save_data["partner"] = Player.partner
+	save_data["npc"] = Player.npc
 	#其他信息
 	
 	return save_data 	
@@ -78,4 +79,5 @@ func load_data(save_data):
 
 	Player.development = save_data["development"]
 	Player.partner = save_data["partner"]
+	Player.npc = save_data["npc"]
 	#其他信息

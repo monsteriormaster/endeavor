@@ -12,67 +12,21 @@
 			"is_option": true,
 			"options":[
 				{
+					"condition":"money > 1",
 					"text":"试探地给出1万元",
 					"next":2,
 					"effect":"money - 1",
 				},
 				{
+					"condition":"money > 10",
 					"text":"给出10万元",
+					"effect":"money - 10",
 					"next":3,
 				},
 				{
+					"condition":"money > 50",
 					"text":"给出50万元",
-					"next":4,
-				},
-				{
-					"text":"我临时想起还有点事，晚点再会。",
-					"next":-1,
-				},
-			]
-		},
-		"2th":{
-			"name":"狱卒",
-			"text":"请不要质疑我的职业操守。",
-			"is_option": false,
-			"next": -1,
-		},
-		"3th":{
-			"name":"狱卒",
-			"text":"先生，监狱钥匙在这里，探监完放回来就好。",
-			"is_option": false,
-			"next": 4,
-		},
-		"4th":{
-			"name":"狱卒",
-			"text":"您竟如此体谅我们的工作，监狱钥匙在这里，探监完放回来就好。虽然牢房的门都锁好了，但是越往里越是写穷凶恶极的东西，您还是小心些。要是有不长眼地得罪了您，给我说一声，他也就老实了。若是专门给某位行方便。（停顿片刻后，阳光灿烂得笑起来）",
-			"effect":"狱卒 获得 tag 贿赂",
-			"is_option": false,
-			"next": 5,
-		},
-	},
-	"与狱卒第一次交流":{
-		"0th":{
-			"name":"{player_name}",
-			"text":"先生，能行个方便吗？",
-			"is_option":false,
-			"next": 1,
-		},
-		"1th":{
-			"name":"狱卒",
-			"text":"（上下打量了片刻）先生，你知道的，我的工作就是看好这儿。",
-			"is_option": true,
-			"options":[
-				{
-					"text":"试探地给出1万元",
-					"next":2,
-					"effect":"money - 1",
-				},
-				{
-					"text":"给出10万元",
-					"next":3,
-				},
-				{
-					"text":"给出50万元",
+					"effect":"money - 50",
 					"next":4,
 				},
 				{
@@ -91,16 +45,19 @@
 		"3th":{
 			"name":"狱卒",
 			"text":"先生，监狱钥匙在这里，探监完放回来就好。",
+			"effect":"获得 tag 进入监狱许可",
 			"is_option": false,
-			"next": 4,
+			"next": -1,
 		},
 		"4th":{
 			"name":"狱卒",
 			"text":"您竟如此体谅我们的工作，监狱钥匙在这里，探监完放回来就好。虽然牢房的门都锁好了，但是越往里越是写穷凶恶极的东西，您还是小心些。要是有不长眼地得罪了您，给我说一声，他也就老实了。若是专门给某位行方便。（停顿片刻后，阳光灿烂得笑起来）",
+			"effect":"获得 tag 进入监狱许可; 狱卒 获得 tag 贿赂",
 			"is_option": false,
-			"next": 5,
+			"next": -1,
 		},
 	},
+	
 	
 	"50万后再次与狱卒交谈":{
 		"0th":{
@@ -117,6 +74,7 @@
 					"next":1,
 				},
 				{
+					"condition":"money > 5",
 					"text":"我想让某人过得好些",
 					"next":4,
 				},
@@ -128,16 +86,21 @@
 			"is_option":true,
 			"options":[
 				{
-					"condition":"tags:　认识法拉叶",
+					"condition":"tags: 认识法拉叶",
 					"text":"好像是叫法拉叶",
 					"next":2,
 				},
 				{
-					"condition":"tags:　认识衫斯",
+					"condition":"tags: 认识衫斯",
 					"text":"好像是叫衫斯",
 					"next":3,
 				},
+				{
+					"text":"让我再想想",
+					"next":8,
+				},
 			],
+			
 		},
 		"2th":{
 			"name":"狱卒",
@@ -159,16 +122,20 @@
 			"is_option":true,
 			"options":[
 				{
-					"condition":"tags:　认识法拉叶",
+					"condition":"tags: 认识法拉叶",
 					"text":"给狱卒5万元，让法拉叶吃得好些。",
-					"effect":"money -5",
+					"effect":"money - 5",
 					"next":5,
 				},
 				{
-					"condition":"tags:　认识衫斯",
+					"condition":"tags: 认识衫斯",
 					"text":"给狱卒5万元，让衫斯吃得好些。",
-					"effect":"money -5",
+					"effect":"money - 5",
 					"next":6,
+				},
+				{
+					"text":"让我再想想",
+					"next":8,
 				},
 			],
 		},
@@ -192,7 +159,60 @@
 			"is_option": false,
 			"next": -1,
 		},
+		"8th":{
+			"name":"",
+			"text":"还是再看看监狱里的情况吧。",
+			"is_option": false,
+			"next": -1,
+		},
 	},
+	
+	
+	"与法拉叶的第一次交流":{
+		"0th":{
+			"name":"",
+			"text":"这是一个还没有被磨平棱角的犯人，眼神里还有一股狠劲，像一匹没有被驯化的狼。",
+			"next":1,
+		},
+		"1th":{
+			"name":"{player_name}",
+			"text":"你叫什么名字，我对你感兴趣。",
+			"is_option": false,
+			"next": 2,
+		},
+		"2th":{
+			"name":"？？？",
+			"text":"法拉叶，你的兴趣有什么用？",
+			"is_option": false,
+			"next": 3,
+		},
+		"3th":{
+			"name":"player_name",
+			"text":"可以让你自由。说说吧，犯了什么事。",
+			"is_option": false,
+			"next": 4,
+		},
+		"4th":{
+			"name":"法拉叶",
+			"text":"何必消遣我。（忽然咧开嘴笑起来）老实说我不知道，只听说是什么聚众，什么斗殴。事实上，我仅仅只是路过。",
+			"is_option": false,
+			"next": 5,
+		},
+		"5th":{
+			"name":"",
+			"text":"他说是被冤枉的，你知道这个国家的警察的靠谱程度和贿赂成正比，可是到底应该有一点下限。",
+			"is_option": false,
+			"next": 6,
+		},
+		"6th":{
+			"name":"法拉叶",
+			"text":"先生，如果你对我尚存一丝怜悯，可以让我吃点好的吗，我已经一个月没有见过荤了。",
+			"is_option": false,
+			"effect":"获得 tag 认识法拉叶",
+			"next": -1,
+		},
+	},
+	
 	
 	"10万后再次与狱卒交谈":{
 		"0th":{
@@ -214,6 +234,7 @@
 					"next":2,
 				},
 				{
+					"condition":"money > 50",
 					"text":"贿赂狱卒",
 					"next":4,
 				},
@@ -249,5 +270,6 @@
 			"next": -1,
 		},
 	},
+	
 	
 }	

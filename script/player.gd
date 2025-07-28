@@ -8,7 +8,7 @@ extends Node
 @export_group("player")
 @export var player_age =16.0 
 #用于定义时间相关的事件
-@export var player_money =100
+@export var player_money =30
 @export var player_app_fact =""
 @export var player_name ="请输入你的名字"
 
@@ -27,7 +27,9 @@ extends Node
 @export_group("others")
 @export var partner = {}#伙伴
 @export var development = {}#剧情发展情况
+@export var npc = {}#其他角色
 
+@export_group("kid")
 @export var child_name : String
 @export var child = {}#孩子的情况
 
