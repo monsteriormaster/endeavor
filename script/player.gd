@@ -8,7 +8,7 @@ extends Node
 @export_group("player")
 @export var player_age =16.0 
 #用于定义时间相关的事件
-@export var player_money =30
+@export var player_money =100
 @export var player_app_fact =""
 @export var player_name ="请输入你的名字"
 
@@ -25,9 +25,8 @@ extends Node
 @export var gift_att = 60
 
 @export_group("others")
-@export var partner = {}#伙伴
 @export var development = {}#剧情发展情况
-@export var npc = {}#其他角色
+@export var npc = {}#其他角色，包括伙伴，伙伴仅仅多一个追随的标签
 
 @export_group("kid")
 @export var child_name : String
@@ -42,6 +41,8 @@ extends Node
 	#
 	#"学习":{"description":"苟日新，日日新。"},
 #}
+
+@export var is_dialogue_exist := false
 
 #属性改变函数
 func change_int(value:int):

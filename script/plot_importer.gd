@@ -11,6 +11,9 @@ extends Node
 const UI = 'res://components/dialogue_ui.tscn'
 
 func add_plot(file_path:String, plot_name:String):
+	if Player.is_dialogue_exist:
+		return
+	Player.is_dialogue_exist = true	
 	var plot =find_plot(load_json(file_path),plot_name)
 	execute_dialogue(plot)
 	
@@ -85,7 +88,6 @@ func sentence_condition(condition:String)-> bool:
 			var tag_list = group.get_slice("tags: ", 1)
 			var required_tags = tag_list.split("，")
 			for tag in required_tags:
-				print(Player.player_tags)
 				if tag not in Player.player_tags:
 					return false
 					

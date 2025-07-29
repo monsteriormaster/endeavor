@@ -10,14 +10,14 @@ offset_left = 17.0
 offset_top = 358.0
 offset_right = 168.0
 offset_bottom = 454.0
-text = "test
+text = "与狱卒交谈
 "
 
 [node name="Button2" type="Button" parent="."]
-offset_left = 429.0
-offset_top = 169.0
-offset_right = 612.0
-offset_bottom = 273.0
+offset_left = 18.0
+offset_top = 31.0
+offset_right = 201.0
+offset_bottom = 135.0
 text = "状态
 "
 
@@ -28,6 +28,17 @@ offset_right = 591.0
 offset_bottom = 605.0
 text = "和法拉叶交流
 "
+
+[node name="Label" type="Label" parent="."]
+offset_left = 425.0
+offset_top = 346.0
+offset_right = 537.0
+offset_bottom = 389.0
+text = "这里是监狱内部"
+
+[node name="money" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

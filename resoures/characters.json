@@ -6,7 +6,7 @@
 	"app": 0,
 	"str": 0,
 	"bod": 0,
-	"tags": {},
+	"tags": [],
 	"equipment": {},
 	"description": "曾热爱艺术，家庭发生变故后，不得已继承家业放弃梦想。不过野心依旧。",
 	},
@@ -18,10 +18,24 @@
 	"app": 6,
 	"str": 7,
 	"bod": 4,
-	"tags": {"侠义": 1},
+	"tags": ["侠义"],
 	"equipment": {
 		"weapon": "多功能军刀"
 		},
 	"description": "一个沉默寡言的男人，手上把玩着多功能军刀",
-	}	
+	},	
+	
+	"Sansi": {
+	"name": "衫斯",
+	"gender": "男",
+	"int": 8,
+	"app": 5,
+	"str": 3,
+	"bod": 4,
+	"tags": ["学习"],
+	"equipment": {
+		"jewelry": "章鱼尾人身塑像"
+		},
+	"description": "一个沉默寡言的男人，手上把玩着多功能军刀",
+	},	
 }

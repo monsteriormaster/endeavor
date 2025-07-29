@@ -5,6 +5,7 @@ extends Control
 @export var text_box : Label
 @export var option_box : VBoxContainer
 
+
 var main_dialogue : DialogueGroup
 
 var dialogue_index := 0
@@ -16,12 +17,15 @@ func show_dialogue_group(dialogue_group: DialogueGroup) -> void:
 	main_dialogue = dialogue_group
 	dialogue_index = 0
 	visible = true
+	EventSignal.emit_signal('dialogue_finished')
 	display_next_dialogue()
 
 
 func display_next_dialogue():
 	if dialogue_index == -1:
+		Player.is_dialogue_exist = false
 		visible = false
+		emit_signal("dialogue_finished") 
 		return
 	
 	clear_options()
@@ -44,8 +48,9 @@ func display_next_dialogue():
 		if dialogue.is_option == false:	
 			typing_tween.tween_callback(func(): dialogue_index = dialogue.next)
 
-	if dialogue.effect != '':
-		print(dialogue.effect)
+
+	if dialogue.effect != '' && !dialogue.is_effect_excute:
+		dialogue.is_effect_excute = true
 		deal_effect(dialogue.effect)
 
 	if dialogue.is_option:
@@ -61,7 +66,7 @@ func show_option(options):
 		if option["is_ava"]:
 			var option_label = Button.new()
 			option_label.text = option.text
-			option_label.pressed.connect(on_option_entered.bind(option.next))
+			option_label.pressed.connect(on_option_entered.bind(option.effect,option.next))
 			option_box.add_child(option_label)
 		else:
 			var option_label = Button.new()
@@ -79,7 +84,9 @@ func _on_click(event):
 		display_next_dialogue()
 
 
-func on_option_entered(next:int):
+func on_option_entered(effect,next:int):
+	if effect != "":
+		deal_effect(effect)
 	dialogue_index = next	
 	display_next_dialogue()
 	
@@ -90,43 +97,42 @@ func clear_options():
 
 
 func deal_effect(dialogue_effects):
-	var effects = dialogue_effects.split("；")
-	print(effects)
+	var effects = dialogue_effects.split(";")
+
 	for effect in effects:
 
 		effect = effect.strip_edges()
 		if effect == "":
 			continue
 
-		if effect.begins_with("获得 "):
+		if effect.begins_with("获得 tag"):
 			var tag = effect.get_slice("tag ", 1)
 			if tag not in Player.player_tags:
 				Player.player_tags.append(tag)
 			
 
-		elif effect.contains(" 获得 "):
-			var parts = effect.split(" 获得 ")	
+		elif effect.contains(" 获得 tag"):
+			var parts = effect.split(" 获得 tag")	
 			var character = parts[0].strip_edges()
-			var tag = parts[1].strip_edges()
+			var tags_union = parts[1].strip_edges()
 			if character not in Player.npc:
 				Player.npc[character]={}
 			if 'tags' not in Player.npc[character]:
-				Player.npc[character]['tags'
-				]=[]
-			if tag not in Player.npc[character]["tags"]:
-				Player.npc[character]["tags"].append(tag)
+				Player.npc[character]['tags']=[]
+			var tags_union_clean = tags_union.replace("，", ",").strip_edges()
+			var tags = tags_union_clean.split(",")
+			for tag in tags:
+				if tag not in Player.npc[character]["tags"]:
+					Player.npc[character]["tags"].append(tag)
 
 		elif effect.begins_with("money "):			
 			var getting = effect.get_slice("money ", 1)
 			var parts = getting.split(" ")
-			var pd = parts[1].strip_edges()
-			var value = int(parts[2].strip_edges())
+			var pd = parts[0].strip_edges()
+			var value = int(parts[1].strip_edges())
 			if pd == '-':
 				value *= -1
 			Player.player_money += value 
-			
-			
-
 
 
 func translate_condition(condition: String) -> String:
