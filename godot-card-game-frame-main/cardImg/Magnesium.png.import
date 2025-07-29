@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x1ovieegcyse"
-path="res://.godot/imported/Paimon.png-7c7f73fae7dd7234bc71405131cd67e6.ctex"
+uid="uid://b6qo0xktwua1u"
+path="res://.godot/imported/Magnesium.png-7529537eb3fc8236ae58401a8dc60038.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resoures/Dialogues/Paimon.png"
-dest_files=["res://.godot/imported/Paimon.png-7c7f73fae7dd7234bc71405131cd67e6.ctex"]
+source_file="res://cardImg/Magnesium.png"
+dest_files=["res://.godot/imported/Magnesium.png-7529537eb3fc8236ae58401a8dc60038.ctex"]
 
 [params]
 

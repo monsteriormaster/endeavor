@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://5aq8sw700syb"]
+
+[ext_resource type="Script" uid="uid://bbj5dijtm7hgy" path="res://deck/hand_deck.gd" id="1_qpce8"]
+
+[node name="handDeck" type="Panel" groups=["cardDeck", "cardDropable"]]
+offset_right = 1565.0
+offset_bottom = 360.0
+script = ExtResource("1_qpce8")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="cardPoiDeck" type="HBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="cardDcek" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = -36.0
+offset_right = -3.0
+offset_bottom = 359.0
+value = 17.05
+fill_mode = 3
+
+[node name="weight" type="Label" parent="."]
+layout_mode = 0
+offset_left = -96.0
+offset_top = 4.0
+offset_right = -56.0
+offset_bottom = 27.0
+text = "0/100"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wh31xn24biur"
-path="res://.godot/imported/traveller.png-0531b032c1a043899bde25f6ee92eae5.ctex"
+uid="uid://b52w6j1rwrac0"
+path="res://.godot/imported/Triangle_block.png-e45cf87e62c0e44015b8ed0884d075b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resoures/Dialogues/traveller.png"
-dest_files=["res://.godot/imported/traveller.png-0531b032c1a043899bde25f6ee92eae5.ctex"]
+source_file="res://cardImg/Triangle_block.png"
+dest_files=["res://.godot/imported/Triangle_block.png-e45cf87e62c0e44015b8ed0884d075b6.ctex"]
 
 [params]
 

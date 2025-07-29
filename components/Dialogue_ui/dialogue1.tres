@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="DialogueGroup" load_steps=8 format=3 uid="uid://b38f5jr6ascsr"]
 
-[ext_resource type="Script" uid="uid://blxuvhra45nha" path="res://resoures/Dialogues/dialogue.gd" id="1_iy63d"]
-[ext_resource type="Texture2D" uid="uid://x1ovieegcyse" path="res://resoures/Dialogues/Paimon.png" id="2_sd35u"]
-[ext_resource type="Texture2D" uid="uid://wh31xn24biur" path="res://resoures/Dialogues/traveller.png" id="3_4ytkc"]
+[ext_resource type="Script" uid="uid://blxuvhra45nha" path="res://components/Dialogue_ui/dialogue.gd" id="1_iy63d"]
+[ext_resource type="Texture2D" uid="uid://x1ovieegcyse" path="res://components/Dialogue_ui/Paimon.png" id="2_sd35u"]
+[ext_resource type="Texture2D" uid="uid://wh31xn24biur" path="res://components/Dialogue_ui/traveller.png" id="3_4ytkc"]
 [ext_resource type="Script" uid="uid://begdbyeo0lef1" path="res://resoures/DialogueGroup.gd" id="4_33gae"]
 
 [sub_resource type="Resource" id="Resource_d10d3"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bm57n8e7c4rmg"]
 
-[ext_resource type="Script" uid="uid://c21rmjgx735d1" path="res://resoures/Dialogues/Dialogue_manager.gd" id="1_51mq6"]
-[ext_resource type="Texture2D" uid="uid://wh31xn24biur" path="res://resoures/Dialogues/traveller.png" id="2_t7t7p"]
+[ext_resource type="Script" uid="uid://c21rmjgx735d1" path="res://components/Dialogue_ui/Dialogue_manager.gd" id="1_51mq6"]
+[ext_resource type="Texture2D" uid="uid://wh31xn24biur" path="res://components/Dialogue_ui/traveller.png" id="2_t7t7p"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("character_name_text", "text_box")]
 layout_mode = 3

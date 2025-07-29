@@ -54,5 +54,5 @@ scale = Vector2(8.68381, 4.76042)
 theme_override_font_sizes/font_size = 21
 text = "属性"
 
-[connection signal="pressed" from="avater" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="avater" to="." method="_on_avater_pressed"]
+[connection signal="pressed" from="avater" to="." method="_on_button_pressed"]
