@@ -20,6 +20,7 @@ Player="*res://script/player.gd"
 PlotImporter="*res://script/plot_importer.gd"
 SaveLoader="*res://script/save_loader.gd"
 CardInfos="*res://components/Card_ui/assets/cardInfos.gd"
+EventSignal="*res://script/event_signal.gd"
 
 [display]
 
