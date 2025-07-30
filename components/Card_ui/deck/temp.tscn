@@ -53,7 +53,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Button" type="Button" parent="."]
-offset_left = 16.0
-offset_top = 703.0
-offset_right = 177.0
-offset_bottom = 839.0
+offset_left = 91.0
+offset_top = 574.0
+offset_right = 252.0
+offset_bottom = 710.0
