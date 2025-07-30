@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxdouswhp583n"]
+
+[ext_resource type="PackedScene" uid="uid://bbdkpco7gukvh" path="res://components/Card_ui/control.tscn" id="1_uje2v"]
+[ext_resource type="PackedScene" uid="uid://bqtdb6px8a7g1" path="res://components/Card_ui/card/card_background.tscn" id="2_ay4it"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Control2" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("1_uje2v")]
+follow_target = NodePath("../Control")
+
+[node name="deck" type="Panel" parent="."]
+offset_right = 1650.0
+offset_bottom = 360.0
+
+[node name="cardDeck" type="Control" parent="deck"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="deck"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="deck/ScrollContainer"]
+layout_mode = 2
+
+[node name="cardBackground" parent="deck/ScrollContainer/HBoxContainer" instance=ExtResource("2_ay4it")]
+layout_mode = 2
+
+[node name="cardBackground2" parent="deck/ScrollContainer/HBoxContainer" instance=ExtResource("2_ay4it")]
+layout_mode = 2
+
+[node name="cardBackground3" parent="deck/ScrollContainer/HBoxContainer" instance=ExtResource("2_ay4it")]
+layout_mode = 2
+
+[node name="cardBackground4" parent="deck/ScrollContainer/HBoxContainer" instance=ExtResource("2_ay4it")]
+layout_mode = 2
+
+[node name="cardBackground5" parent="deck/ScrollContainer/HBoxContainer" instance=ExtResource("2_ay4it")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+offset_left = 16.0
+offset_top = 703.0
+offset_right = 177.0
+offset_bottom = 839.0

@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://fcuccbbhv85k"]
+
+[ext_resource type="PackedScene" uid="uid://bbdkpco7gukvh" path="res://components/Card_ui/control.tscn" id="1_kcrp1"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Control2" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("1_kcrp1")]
+follow_target = NodePath("../Control")
+
+[node name="Control3" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
