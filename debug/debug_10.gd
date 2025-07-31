@@ -17,7 +17,6 @@ func _on_button_pressed():
 				PlotImporter.add_plot("res://resoures/plot/rite/prison.json","50万后再次与狱卒交谈")
 				return
 		else:
-			print("触发了10万对话")
 			PlotImporter.add_plot("res://resoures/plot/rite/prison.json","10万后再次与狱卒交谈")
 			return
 		
