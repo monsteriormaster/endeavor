@@ -2,6 +2,7 @@ extends Node2D
 
 func _ready():
 	$Button3.disabled = true
+	$Button4.disabled = true
 	EventSignal.dialogue_finished.connect(unlock_button)
 
 
@@ -45,3 +46,15 @@ func _on_button_3_pressed():
 func unlock_button():
 		if "进入监狱许可" in Player.player_tags:
 			$Button3.disabled = false
+			$Button4.disabled = false
+
+
+func _on_button_4_pressed():
+	if "衫斯" in  Player.npc:
+		if '惩戒与伤痕' in Player.npc["衫斯"]["tags"]:
+			PlotImporter.add_plot("res://resoures/plot/rite/prison.json","伤痕后与衫斯的交流")
+			return
+		else:
+			if '惬意' in Player.npc["衫斯"]["tags"]:
+				PlotImporter.add_plot("res://resoures/plot/rite/prison.json","惬意后与衫斯的交流")
+	PlotImporter.add_plot("res://resoures/plot/rite/prison.json","与衫斯的第一次交流")

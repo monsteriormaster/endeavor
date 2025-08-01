@@ -29,6 +29,14 @@ offset_bottom = 605.0
 text = "和法拉叶交流
 "
 
+[node name="Button4" type="Button" parent="."]
+offset_left = 383.0
+offset_top = 626.0
+offset_right = 592.0
+offset_bottom = 790.0
+text = "和衫斯交流
+"
+
 [node name="Label" type="Label" parent="."]
 offset_left = 425.0
 offset_top = 346.0
@@ -43,3 +51,4 @@ offset_bottom = 23.0
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_button_4_pressed"]

@@ -23,6 +23,7 @@ extends Node
 @export var player_equipment = []#装备
 @export var player_tags = []#词条
 @export var gift_att = 60
+@export var  player_staff :=[]
 
 @export_group("others")
 @export var development = {}#剧情发展情况

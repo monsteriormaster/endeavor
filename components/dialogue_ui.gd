@@ -110,6 +110,10 @@ func deal_effect(dialogue_effects):
 			if tag not in Player.player_tags:
 				Player.player_tags.append(tag)
 			
+		elif effect.begins_with("获得 物品"):
+			var staff = effect.get_slice("物品 ", 1)
+			if staff not in Player.player_staff:
+				Player.player_staff.append(staff)	
 
 		elif effect.contains(" 获得 tag"):
 			var parts = effect.split(" 获得 tag")	

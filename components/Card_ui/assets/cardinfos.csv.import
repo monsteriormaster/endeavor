@@ -6,10 +6,10 @@ uid="uid://dqhby3hcbl02o"
 
 [deps]
 
-files=["res://components/Card_ui/assets/cardinfos.index.translation", "res://components/Card_ui/assets/card_infromation.base.translation", "res://components/Card_ui/assets/card_infromation.base.translation", "res://components/Card_ui/assets/card_infromation.base.translation"]
+files=["res://components/Card_ui/assets/card_infromation.index.translation", "res://components/Card_ui/assets/card_infromation.base.translation", "res://components/Card_ui/assets/card_infromation.base.translation", "res://components/Card_ui/assets/card_infromation.base.translation"]
 
 source_file="res://components/Card_ui/assets/cardinfos.csv"
-dest_files=["res://components/Card_ui/assets/cardinfos.index.translation", "res://components/Card_ui/assets/card_infromation.base.translation", "res://components/Card_ui/assets/card_infromation.base.translation", "res://components/Card_ui/assets/card_infromation.base.translation"]
+dest_files=["res://components/Card_ui/assets/card_infromation.index.translation", "res://components/Card_ui/assets/card_infromation.base.translation", "res://components/Card_ui/assets/card_infromation.base.translation", "res://components/Card_ui/assets/card_infromation.base.translation"]
 
 [params]
 

@@ -90,6 +90,13 @@ func sentence_condition(condition:String)-> bool:
 			for tag in required_tags:
 				if tag not in Player.player_tags:
 					return false
+		
+		if group.begins_with("物品: "):
+			var staff_list = group.get_slice("物品: ", 1)
+			var required_staff = staff_list.split("，")
+			for staff in required_staff:
+				if staff not in Player.player_staff:
+					return false
 					
 		elif group.contains(" tag "):
 			var parts = group.split(" tag ")	
