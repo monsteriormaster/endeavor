@@ -1,0 +1,271 @@
+{
+  "法拉叶闲聊_love2": {
+	"0th": {
+	  "name": "{player_name}",
+	  "text": "在我这里还习惯吗?",
+	  "is_option": false,
+	  "next": 1
+	},
+	"1th": {
+	  "name": "法拉叶",
+	  "text": "吃的睡的都好，少爷对我也好，只是我心里有些难安。",
+	  "is_option": false,
+	  "next": 2
+	},
+	"2th": {
+	  "name": "法拉叶",
+	  "text": "我欺骗了你。我入狱的原因我大概能猜到，那日我经过酒吧时……里面乱哄哄的。酒和血到处飞。我于是随手捡走几个钱包。",
+	  "is_option": true,
+	  "options": [
+		{
+		  "text": "你本职原来是小偷啊。",
+		  "next": 10
+		},
+		{
+		  "text": "你人还怪好的，替人保管财务。",
+		  "effect": "法拉叶 属性 love +1",
+		  "next": 12
+		}
+	  ]
+	},
+	"10th": {
+	  "name": "法拉叶",
+	  "text": "这是劫富济贫。",
+	  "is_option": false,
+	  "next": 11
+	},
+	"11th": {
+	  "name": "{player_name}",
+	  "text": "很显然，他把自己划分到贫穷的行列。",
+	  "is_option": false,
+	  "next": 13
+	},
+	"12th": {
+	  "name": "法拉叶",
+	  "text": "举手之劳，不足挂齿。",
+	  "is_option": false,
+	  "next": 13
+	},
+	"13th": {
+	  "name": "法拉叶",
+	  "text": "我把钱都拿出来，过程中发现一张比较特别的纸条，上面写的不乍像人话，后来我就被抓了。",
+	  "is_option": false,
+	  "next": 14
+	},
+	"14th": {
+	  "name": "法拉叶",
+	  "text": "我寻思我被关出来，怎么也走不通关系。这不应该是拿了别人的钱的事……思来想去也只有纸条上的信息可疑。",
+	  "is_option": false,
+	  "next": 15
+	},
+	"15th": {
+	  "name": "{player_name}",
+	  "text": "你还记得上面写着什么吗?",
+	  "is_option": false,
+	  "next": 16
+	},
+	"16th": {
+	  "name": "法拉叶",
+	  "text": "忘完了，不过东西好像扔在我在郊外的一个藏身之处。你要是感兴趣可以去看看",
+	  "effect": "获得 物品 法拉叶藏身处的钥匙",
+	  "is_option": false,
+	  "next": -1
+	}
+  },
+
+  "法拉叶藏身处探索": {
+	"0th": {
+	  "name": "",
+	  "text": "你来到郊外的一座小屋，环境极其简陋，唯一算得上家具的是地上的破草席。",
+	  "is_option": false,
+	  "next": 1
+	},
+	"1th": {
+	  "name": "",
+	  "text": "在四处翻找后，你发现了一个神秘纸条。上面画着郊外某处地点，写着‘书似青山常乱叠，灯如红豆最相思。’",
+	  "effect": "获得 物品 神秘纸条",
+	  "is_option": false,
+	  "next": -1
+	}
+  },
+
+  "与书店老板交谈_神秘纸条": {
+	"0th": {
+	  "name": "{player_name}",
+	  "text": "老板，看看这张纸条。",
+	  "is_option": false,
+	  "next": 1
+	},
+	"1th": {
+	  "name": "书店老板",
+	  "text": "这诗句对应郊外的某个地点，挖到箱子后可以找我换钥匙。",
+	  "effect": "获得 物品 郊外藏宝地点提示",
+	  "is_option": false,
+	  "next": -1
+	}
+  },
+
+  "郊外挖宝_神秘纸条": {
+	"0th": {
+	  "name": "",
+	  "text": "你根据提示来到郊外地点，挖出一个箱子。",
+	  "effect": "获得 物品 《舞春神》",
+	  "is_option": false,
+	  "next": -1
+	}
+  },
+
+  "处理失窃名画_舞春神": {
+	"0th": {
+	  "name": "{player_name}",
+	  "text": "一件精美的艺术品，可以是财富，也可以是一场危机。",
+	  "is_option": true,
+	  "options": [
+		{
+		  "text": "售卖",
+		  "effect": "money + 50;失去 物品 《舞春神》",
+		  "next": -1
+		},
+		{
+		  "text": "上交政府",
+		  "effect": "获得 tag 政府的表扬;money + 1;新闻 义举报道",
+		  "next": -1
+		},
+		{
+		  "text": "收藏",
+		  "effect": "获得 tag 艺术鉴赏;单次交易金钱增加",
+		  "next": -1
+		}
+	  ]
+	}
+  },
+
+  "法拉叶_恋爱进线_love1-3": {
+	"0th": {
+	  "name": "{player_name}",
+	  "text": "和我谈恋爱吧。",
+	  "is_option": false,
+	  "next": 1
+	},
+	"1th": {
+	  "name": "法拉叶",
+	  "text": "先生，妓院在商业街杂货店的后面。",
+	  "is_option": false,
+	  "next": -1
+	}
+  },
+
+
+  "法拉叶_恋爱进线_love4-5": {
+	"0th": {
+	  "name": "{player_name}",
+	  "text": "和我谈恋爱吧。",
+	  "is_option": false,
+	  "next": 1
+	},
+	"1th": {
+	  "name": "法拉叶",
+	  "text": "不要取笑我了，我承认过去我有些荤素不忌，但我真没有和男的搞过。",
+	  "is_option": false,
+	  "next": -1
+	}
+  },
+
+	"法拉叶_恋爱进线_love≥6": {
+	"0th": {
+	  "name": "{player_name}",
+	  "text": "和我谈恋爱吧。",
+	  "is_option": false,
+	  "next": 1
+	},
+	"1th": {
+	  "name": "法拉叶",
+	  "text": "player_name，我不想进精神病院也不想被烧死，为庄园找个女主人吧。",
+	  "effect": "法拉叶 获得 tag 被玩家的心意动摇",
+	  "is_option": false,
+	  "next": -1
+	},
+	},
+
+	"动摇时与法拉叶约会":{
+	  "0th": {
+	  "name": "{player_name}",
+	  "text": "一起去郊外吗，我想我们两个人一起，只是我们两个。",
+	  "effect": "money -5",
+	  "is_option": false,
+	  "next": 1
+	},
+	"1th": {
+	  "name": "",
+	  "text": "他这次没有说些拒绝的话，沉默了很久，红着脸点了头。",
+	  "is_option": false,
+	  "next": -1
+	},
+	},
+
+	"动摇时与法拉叶第一次约会":{
+		"0th": {
+	  "name": "",
+	  "text": "他这次没有说些拒绝的话，沉默了很久，红着脸点了头。",
+	  "is_option": false,
+	  "next": 4
+	},
+	"4th": {
+	  "name": "",
+	  "text": "法拉叶的藏身处是个不错的地方，你花了一点小钱把这里捯饬了一番。",
+	  "is_option": false,
+	  "next": 5
+	},
+	"5th": {
+	  "name": "法拉叶",
+	  "text": "你做了这些。我其实很少来这里。你喜欢就好。",
+	  "is_option": false,
+	  "next": 6
+	},
+	"6th": {
+	  "name": "",
+	  "text": "法拉叶有些手足无措，虽然是在自己的地盘，但是很显然他非常紧张，坐在床边，离你远远的。",
+	  "is_option": false,
+	  "next": 7
+	},
+	"7th": {
+	  "name": "{player_name}",
+	  "text": "我先去洗澡了。",
+	  "is_option": true,
+	  "option":[
+		{
+			"condition":"bod > 6||tags: 敏锐",
+			"text":"奇怪的声音引起了你的注意",
+			"next":8,
+		},
+		{
+			"text":"满怀期待地等待",
+			"next":9,
+		}
+	],
+	  "next": 8
+	},
+	"8th": {
+	  "name": "",
+	  "text": "你看到了让人血脉贲张的一幕。你忘了你今天提前在这里洗澡，贴身衣物留在了浴室。你看到法拉叶.......（不敢写，h得没边了，一会儿删了吧）",
+	  "is_option": false,
+	  "next": 9
+	},
+	"9th": {
+	  "name": "",
+	  "text": "你与法拉叶在小窝里度过一个美好的下午。什么话也不说只是一点一点坐得更近了些。",
+	  "effect": "love +1",
+	  "is_option": false,
+	  "next": -1
+	},		
+	},
+	
+	"动摇时与法拉叶的日常约会1":{
+		
+	},
+
+	"动摇且有伴侣时与法拉叶约会":{
+		
+	},
+
+}

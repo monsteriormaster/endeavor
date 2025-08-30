@@ -197,12 +197,12 @@ func _on_next_pressed():
 			"确认",
 			"返回"
 			)
-		confirm_dialog.confirmed.connect(func (): get_tree().change_scene_to_file('res://scene/main.tscn'))
+		confirm_dialog.confirmed.connect(before_trans)
 		remove_child(confirm_dialog)
 		add_child(confirm_dialog)
 		
 	else:
-		get_tree().change_scene_to_file('res://scene/main.tscn')
+		before_trans()
 	
 func _on_pre_pressed():
 	if Player.gift_att < origin_gift_att || Player.player_att < origin_player_att:
@@ -227,3 +227,29 @@ func get_data():
 	file = FileAccess.open(TAGS,FileAccess.READ)
 	tags = JSON.parse_string(file.get_as_text())	
 	file.close()	
+	
+
+func before_trans():
+	for data in choose_condition:
+		if choose_condition[data] == true:
+			Player.player_tags.append(data)
+	Player.npc = {
+		"Hero":{
+			"name" :"",
+			"tags" :[],
+			"int" :0,
+			"str" :0,
+			"bod" :0,
+			"app" :0,
+			"equipment":{},
+			"description": "曾热爱艺术，家庭发生变故后，不得已继承家业放弃梦想。不过野心依旧。",
+		}
+	}		
+	Player.npc["Hero"]["name"] =  Player.player_name
+	#Player.npc["Hero"]["tags"] =  Player.player_tags 		
+	Player.npc["Hero"]["int"] =  Player.player_int
+	Player.npc["Hero"]["str"] =  Player.player_str
+	Player.npc["Hero"]["bod"] =  Player.player_bod
+	Player.npc["Hero"]["app"] =  Player.player_app
+	SaveLoader.save_game()
+	get_tree().change_scene_to_file('res://scene/main.tscn')	

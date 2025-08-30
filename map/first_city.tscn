@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://2udkh5fdg8an"]
+
+[ext_resource type="PackedScene" uid="uid://cbxeto13xsdq1" path="res://components/scene_spot.tscn" id="1_xsxxt"]
+
+[node name="FirstCity" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 22.0
+offset_top = 110.0
+offset_right = 699.0
+offset_bottom = 880.0
+
+[node name="Node" type="Node" parent="Control"]
+
+[node name="prison" parent="Control/Node" instance=ExtResource("1_xsxxt")]
+spot_name = "监狱_初始"
+ordinary = Vector2(60, 180)

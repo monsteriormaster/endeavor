@@ -1,3 +1,10 @@
+"""
+游戏内实时数据
+所有人物都会以字典的形式存在npc里，为便于调试主角的数据单独列出来了
+注意 在该文件添加修改的变量必须在 res://script/save_loader.gd 中做对应修改，确保存档系统正常
+"""
+
+
 extends Node
 
 @export_group("curtain_scence")
@@ -6,7 +13,8 @@ extends Node
 @export var exact_situation = {}#该回合已经进行的操作 
 
 @export_group("player")
-@export var player_age =16.0 
+@export var player_age :=16.0 
+@export var time := "六月上旬"
 #用于定义时间相关的事件
 @export var player_money =100
 @export var player_app_fact =""
@@ -17,7 +25,7 @@ extends Node
 @export var player_edu:int =1 #教育，暂时只和学校的剧情相关
 @export var player_bod:int =0 #体魄
 @export var player_str:int =0 #力量
-@export var player_bac:int =1 #背景，暂时忽略
+@export var player_bac:String ="男爵" #背景，暂时忽略
 @export var player_att:int =20 #属性点
 #属性，用于鉴定,edu 和 bac暂时保留
 @export var player_equipment = []#装备

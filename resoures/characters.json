@@ -13,6 +13,7 @@
 	
 	"Falayee": {
 	"name": "法拉叶",
+	"image": "res://art/falayee.png",
 	"gender": "男",
 	"int": 4,
 	"app": 6,
@@ -27,6 +28,7 @@
 	
 	"Sansi": {
 	"name": "衫斯",
+	"image": "res://art/sansi.png",
 	"gender": "男",
 	"int": 8,
 	"app": 5,
@@ -36,6 +38,20 @@
 	"equipment": {
 		"jewelry": "章鱼尾人身塑像"
 		},
-	"description": "一个沉默寡言的男人，手上把玩着多功能军刀",
+	"description": "海在呼唤他的孩子，可是他必须继续往前。",
+	},	
+	
+	"Jailer": {
+	"name": "狱卒",
+	"image": "res://art/jailer.png",
+	"gender": "男",
+	"int": 4,
+	"app": 4,
+	"str": 4,
+	"bod": 6,
+	"equipment": {
+
+		},
+	"description": "狱卒，如果你看到这个说明我的程序出现了问题。",
 	},	
 }

@@ -1,3 +1,10 @@
+"""
+存档管理- 负责数据存档过程
+使用方法：
+调用 save_game()存档；load_game()读档 
+"""
+
+
 extends Node
 
 func save_game():
@@ -27,6 +34,7 @@ func data_get():
 	save_data["path"] = Player.path
 	save_data["plot"] = Player.plot
 	save_data["exact_situation"] = Player.exact_situation
+	save_data["time"] = Player.time
 	#环境信息
 	
 	save_data["player_app"] = Player.player_app
@@ -47,7 +55,6 @@ func data_get():
 	#孩子信息
 	
 	save_data["development"] = Player.development
-	save_data["partner"] = Player.partner
 	save_data["npc"] = Player.npc
 	#其他信息
 	
@@ -58,6 +65,7 @@ func load_data(save_data):
 	Player.path = save_data["path"]
 	Player.plot = save_data["plot"]
 	Player.exact_situation = save_data["exact_situation"]
+	Player.time = save_data["time"] 
 	#环境信息
 
 	Player.player_app = save_data["player_app"]
@@ -78,6 +86,5 @@ func load_data(save_data):
 	#孩子信息
 
 	Player.development = save_data["development"]
-	Player.partner = save_data["partner"]
 	Player.npc = save_data["npc"]
 	#其他信息

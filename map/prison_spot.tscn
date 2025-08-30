@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cygk04pfrprl7"]
+
+[ext_resource type="PackedScene" uid="uid://cbxeto13xsdq1" path="res://components/scene_spot.tscn" id="1_iw5kc"]
+
+[node name="PrisonSpot" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 22.0
+offset_top = 110.0
+offset_right = 699.0
+offset_bottom = 880.0
+
+[node name="Node" type="Node" parent="Control"]
+
+[node name="prison_out" parent="Control/Node" instance=ExtResource("1_iw5kc")]
+spot_name = "离开_监狱"
+ordinary = Vector2(60, 500)

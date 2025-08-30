@@ -1,58 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://ca2iw4ov6jw4d"]
+[gd_scene load_steps=4 format=3 uid="uid://b05wtelegp3er"]
 
-[ext_resource type="Script" uid="uid://bf7q0sl40fil4" path="res://scene/main.gd" id="1_itxqv"]
+[ext_resource type="Script" uid="uid://c4lv5girtsf37" path="res://scene/main.gd" id="1_itxqv"]
+[ext_resource type="PackedScene" uid="uid://2udkh5fdg8an" path="res://map/first_city.tscn" id="2_wp4xf"]
+[ext_resource type="PackedScene" uid="uid://ca2iw4ov6jw4d" path="res://components/main_ui.tscn" id="3_brvut"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_itxqv")
 
-[node name="avater" type="Button" parent="."]
-offset_right = 64.0
-offset_bottom = 60.0
-text = "头像 "
+[node name="FirstCity" parent="." instance=ExtResource("2_wp4xf")]
 
-[node name="setting" type="Button" parent="."]
-offset_left = 658.0
-offset_right = 698.0
-offset_bottom = 31.0
-scale = Vector2(1.54263, 2.00493)
-text = "设置
-"
+[node name="Main_ui" parent="." instance=ExtResource("3_brvut")]
 
-[node name="map1" type="Button" parent="."]
-offset_left = 67.0
-offset_top = 535.0
-offset_right = 117.0
-offset_bottom = 566.0
-scale = Vector2(8.0147, 7.05397)
-theme_override_font_sizes/font_size = 11
-text = "地图1"
-
-[node name="map2" type="Button" parent="."]
-offset_left = 307.0
-offset_top = 355.0
-offset_right = 344.0
-offset_bottom = 379.0
-scale = Vector2(8.33557, 5.40266)
-theme_override_font_sizes/font_size = 11
-text = "地图2"
-
-[node name="card_area" type="Button" parent="."]
-offset_left = 54.0
-offset_top = 907.0
-offset_right = 134.0
-offset_bottom = 949.0
-scale = Vector2(6.91019, 3.39722)
-theme_override_font_sizes/font_size = 24
-text = "卡牌区"
-
-[node name="information" type="Button" parent="."]
-offset_left = 134.0
-offset_top = 7.0
-offset_right = 184.0
-offset_bottom = 45.0
-scale = Vector2(8.68381, 4.76042)
-theme_override_font_sizes/font_size = 21
-text = "属性"
-
-[connection signal="pressed" from="avater" to="." method="_on_avater_pressed"]
-[connection signal="pressed" from="avater" to="." method="_on_button_pressed"]
+[node name="background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

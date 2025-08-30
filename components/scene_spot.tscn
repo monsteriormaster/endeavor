@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbxeto13xsdq1"]
+
+[ext_resource type="Script" uid="uid://b8lxqci3bb0fd" path="res://components/scene_spot.gd" id="1_4piec"]
+
+[node name="SceneSpot" type="Button"]
+offset_left = 293.0
+offset_top = 166.0
+offset_right = 355.0
+offset_bottom = 216.0
+script = ExtResource("1_4piec")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_top = -100.0
+offset_right = 305.0
+offset_bottom = -10.0
+
+[node name="Label" type="Label" parent="PanelContainer"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+size_flags_vertical = 1
+autowrap_mode = 3
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,0 +1,16 @@
+{
+	"监狱_初始":{
+		"name":"监狱",
+		"description":"一个人才济济的地方。也许是因为提供免费住宿，三餐和特色服饰，不少人留在这里，甚至有人来了终生不走。",
+		"path":"res://scene/prison.tscn",
+		"icon":"res://art/prison.png"
+		
+	},
+	"离开_监狱":{
+		"name":"监狱出口",
+		"description":"尽早离去吧",
+		"path":"res://scene/main.tscn",
+		"icon":"res://art/prison_out.png"
+		
+	},
+}

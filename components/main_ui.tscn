@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca2iw4ov6jw4d"]
+
+[ext_resource type="Script" uid="uid://bf7q0sl40fil4" path="res://components/main_ui.gd" id="1_xqdl1"]
+
+[node name="Main_ui" type="Node2D"]
+script = ExtResource("1_xqdl1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 719.0
+offset_bottom = 78.0
+size_flags_horizontal = 3
+
+[node name="top_container" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="avater" type="Button" parent="MarginContainer/top_container"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "头像 "
+
+[node name="information" type="HBoxContainer" parent="MarginContainer/top_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 25
+
+[node name="money" type="Label" parent="MarginContainer/top_container/information"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "金钱："
+
+[node name="time" type="Label" parent="MarginContainer/top_container/information"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "时间："
+
+[node name="noble" type="Label" parent="MarginContainer/top_container/information"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "贵族等级："
+
+[node name="setting" type="Button" parent="MarginContainer/top_container"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 20
+text = "设置
+"
+
+[connection signal="pressed" from="MarginContainer/top_container/avater" to="." method="_on_avater_pressed"]
+[connection signal="pressed" from="MarginContainer/top_container/avater" to="." method="_on_button_pressed"]
