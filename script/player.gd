@@ -2,6 +2,11 @@
 游戏内实时数据
 所有人物都会以字典的形式存在npc里，为便于调试主角的数据单独列出来了
 注意 在该文件添加修改的变量必须在 res://script/save_loader.gd 中做对应修改，确保存档系统正常
+
+以下是一些辅助函数
+player_attr_meet(att: String, compare: String, value: int)，用于比较pc的数值
+npc_has_tags(npc: String, tags: Array, method := 1),用于判断npc是否满足标签，method1为all，0为any
+player_has_tag(tags: Array, method := 1),用于判断pc是否满足标签，method1为all，0为any
 """
 
 
@@ -57,15 +62,68 @@ extends Node
 func change_int(value:int):
 	player_int += value
 
+
 func change_app(value:int):
 	player_app += value	
+
 	
 func change_bod(value:int):
 	player_bod += value
+
 	
 func change_str(value:int):
 	player_str += value	
+
 	
 func change_att(value:int):
 	player_att += value	
 	
+
+func get_npc_data(npc_name: String) -> Dictionary:
+	return npc.get(npc_name, {})
+
+
+func npc_has_tags(npc: String, tags: Array, method := 1) -> bool:
+	var npc_data = get_npc_data(npc)
+	var npc_tags = npc_data.get("tags", [])
+	if method == 1 :
+		return tags.all(func(tag): return tag in npc_tags)
+	else:
+		return tags.any(func(tag): return tag in npc_tags)
+	
+	
+func player_attr_meet(att: String, compare: String, value: int) -> bool:
+	var player_attr  
+	match att:
+		"app":
+			player_attr = player_app
+		"int":
+			player_attr = player_int
+		"bod":
+			player_attr = player_bod
+		"str":
+			player_attr = player_str
+		"edu":
+			player_attr = player_edu
+		_:
+			return false  
+
+
+	match compare:
+		"=":
+			return player_attr == value
+		">":
+			return player_attr >= value
+		"<":
+			return player_attr <= value
+		_:
+			return false  
+		
+
+func player_has_tags(tags: Array, method := 1) -> bool:
+	if method == 1 :
+		return tags.all(func(tag): return tag in player_tags)
+	else:
+		return tags.any(func(tag): return tag in player_tags)		
+		
+		

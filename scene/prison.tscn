@@ -12,11 +12,14 @@
 
 [node name="jailer" parent="PrisonSpot" instance=ExtResource("3_4rbc7")]
 charcter_name = "Jailer"
+config_path = "res://resoures/configs/prison/jailer_in_prison.json"
 
 [node name="sansi" parent="PrisonSpot" instance=ExtResource("3_4rbc7")]
 charcter_name = "Sansi"
+config_path = "res://resoures/configs/prison/sansi_in_prison.json"
 ordinary = Vector2(360, 480)
 
 [node name="falayee" parent="PrisonSpot" instance=ExtResource("3_4rbc7")]
 charcter_name = "Falayee"
+config_path = "res://resoures/configs/prison/falayee_in_prison.json"
 ordinary = Vector2(360, 120)

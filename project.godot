@@ -31,6 +31,10 @@ window/size/viewport_height=1080
 
 movie_writer/movie_file="C:/Users/26464/picture/test.avi"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/imjp94.yafsm/plugin.cfg")
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

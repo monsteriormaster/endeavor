@@ -1,0 +1,44 @@
+{
+	"dialogs":{
+		"与狱卒第一次交流":{
+			"name":"与狱卒第一次交流",
+			"path":"res://resoures/plot/rite/prison.json",
+			"conditions":{},
+			"limits":{
+				"method":0,
+				"tags":["进入监狱许可","贿赂",]
+			},
+		},	
+		
+		"50万后再次与狱卒交谈":{
+			"name":"50万后再次与狱卒交谈",
+			"path":"res://resoures/plot/rite/prison.json",
+			"conditions":{
+				"npc":{
+					"狱卒":{
+						"tags":["贿赂"],
+					}
+				}
+			},
+			"limits":{},
+			
+		},
+		
+		"10万后再次与狱卒交谈":{
+			"name":"10万后再次与狱卒交谈",
+			"path":"res://resoures/plot/rite/prison.json",
+			"conditions":{
+				"tags":["进入监狱许可"]
+			},
+			"limits":{
+				"npc":{
+					"狱卒":{
+						"method":1,
+						"tags":["贿赂"],
+					},
+				},	
+			},
+		},
+		
+	},
+}

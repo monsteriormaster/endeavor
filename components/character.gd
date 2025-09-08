@@ -1,20 +1,24 @@
 """
 人物点 - 地图中用于人物显示
 使用方法：
-在检查器中设定spot_name,按需求设定max_size,min_size,ordinary
+在检查器中设定spot_name,按需求设定max_size,min_size,ordinary;添加YAFSM管理剧情
 """
 
 extends Button
 
-const  CHARACTERS = "res://resoures/characters.json"
+const CHARACTERS = "res://resoures/characters.json"
+
 @export var charcter_name:String
+@export var config_path: String
+
 @export var max_size: Vector2 = Vector2(200, 400)  # 最大宽高
 @export var min_size: Vector2 = Vector2(100, 200)   # 最小宽高
 @export var ordinary := Vector2(120,120)
 
 @onready var sprite = $Sprite2D
 
-var info
+var info :={}
+var map :={}
 
 func _ready():
 	setup()
@@ -27,6 +31,10 @@ func setup():
 	info = all_info.get(charcter_name,{})
 	sprite.texture = load(info["image"])
 	fit_icon_to_constraints()
+	
+	var config_file = FileAccess.open(config_path, FileAccess.READ)
+	map = JSON.parse_string(config_file.get_as_text())
+	config_file.close()
 	
 	
 func fit_icon_to_constraints():
@@ -54,4 +62,70 @@ func fit_icon_to_constraints():
 
 
 func _on_pressed():
-	pass	
+	var target_dialog = get_dialog()
+	if target_dialog == null:
+		return
+	PlotImporter.add_plot(target_dialog["path"], target_dialog["name"])
+	
+	
+func get_dialog():
+	# 获取对话字典（而非数组）
+	var dialogs = map.get("dialogs", {})
+	
+	# 遍历对话字典的值（而非键）
+	for dialog_name in dialogs:
+		var dialog = dialogs[dialog_name]
+		var conditions = dialog.get("conditions", {})
+		var limits = dialog.get("limits", {})
+		var method = 1
+		var flag := false
+		
+		# 处理玩家标签条件
+		if "method" in conditions:
+			method = conditions.method
+		if "tags" in conditions:
+			if not Player.player_has_tags(conditions.tags, method):
+				continue
+				
+		# 处理NPC条件
+		if "npc" in conditions:
+			var npc_conditions = conditions.npc
+			# 遍历NPC条件字典
+			for npc_name in npc_conditions:
+				var npc = npc_conditions[npc_name]
+				var npc_method = 1
+				if "method" in npc:
+					npc_method = npc.method 	
+				if "tags" in npc:
+					if not Player.npc_has_tags(npc_name, npc.tags, npc_method):
+						flag = true
+						break
+		
+		if flag:
+			continue
+			
+		# 处理限制条件
+		if "method" in limits:
+			method = limits.method
+		if "tags" in limits:
+			if Player.player_has_tags(limits.tags, method):
+				continue
+				
+		# 处理NPC限制条件
+		if "npc" in limits:
+			var npc_limits = limits.npc
+			# 遍历NPC限制字典
+			for npc_name in npc_limits:
+				var npc = npc_limits[npc_name]
+				var npc_method = 1
+				if "method" in npc:
+					npc_method = npc.method 	
+				if "tags" in npc:
+					if Player.npc_has_tags(npc_name, npc.tags, npc_method):
+						flag = true
+						break
+						
+		if flag:
+			continue
+		return dialog
+		

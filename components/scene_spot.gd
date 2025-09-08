@@ -36,9 +36,7 @@ func setup():
 
 
 func _on_pressed():
-	print_tree()
 	get_tree().change_scene_to_file(info["path"])
-	print_tree()
 	
 
 func _on_mouse_entered():

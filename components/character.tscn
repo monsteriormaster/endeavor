@@ -10,3 +10,5 @@ offset_bottom = 595.0
 script = ExtResource("1_88t6f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

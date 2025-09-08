@@ -1,0 +1,50 @@
+{
+	"dialogs":{
+		"与法拉叶的第一次交流":{
+			"name":"与法拉叶的第一次交流",
+			"path":"res://resoures/plot/rite/prison.json",
+			"conditions":{
+				"tags":["进入监狱许可"],
+			},
+			"limits":{
+				"method":0,
+				"tags":["伤痕后与法拉叶的交流","惬意后与法拉叶的交流",]
+			},
+		},
+		
+		"伤痕后与法拉叶的交流":{
+			"name":"伤痕后与法拉叶的交流",
+			"path":"res://resoures/plot/rite/prison.json",
+			"conditions":{
+				"tags":["进入监狱许可"],
+				"npc":{
+					"法拉叶":{
+						"method":1,
+						"惩戒与伤痕":1,
+						
+					}
+				}
+			},
+			"limits":{},
+		},
+		
+		"惬意后与法拉叶的交流":{
+			"name":"惬意后与法拉叶的交流",
+			"path":"res://resoures/plot/rite/prison.json",
+			"conditions":{
+				"tags":["进入监狱许可"],
+				"npc":{
+					"法拉叶":{
+						"method":1,
+						"tags":["惬意"],
+						
+					}
+				}
+			},
+			"limits":{
+				"tags":["伤痕后与法拉叶的交流"],
+			},
+		},
+		
+	},
+}
