@@ -8,5 +8,5 @@ class_name Dialogue
 @export var is_option := false
 @export var options = []
 @export var next := -1
-@export var effect := ""
+@export var effect := {}
 @export var is_effect_excute := false

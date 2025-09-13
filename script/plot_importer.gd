@@ -47,15 +47,15 @@ func execute_dialogue(plot):
 			dialogue.content = dialogue_data.get("text", "")
 			dialogue.is_option = dialogue_data.get("is_option",false)
 			dialogue.next =dialogue_data.get("next",-1)
-			dialogue.effect = dialogue_data.get("effect","")
+			dialogue.effect = dialogue_data.get("effect",{})
 			dialogue.options = []
 			if dialogue_data.has("options"):
 				for option_data in dialogue_data["options"]:
 					var option = {
 						"text": option_data.get("text", ""),
 						"next": option_data.get("next", -1),
-						"effect": option_data.get("effect", ""),
-						"condition": option_data.get("condition", "")
+						"effect": option_data.get("effect", {}),
+						"condition": option_data.get("condition", {})
 					}
 					option['is_ava'] = deal_condition(option["condition"])
 					dialogue.options.append(option)
@@ -66,8 +66,8 @@ func execute_dialogue(plot):
 	dialogue_ui.show_dialogue_group(dialogue_group)
 	
 
-func deal_condition(condition:String)-> bool:
-	if condition == "": 
+func deal_condition(condition)-> bool:
+	if condition == {}: 
 		return true
 	else:
 		if sentence_condition(condition):
@@ -75,48 +75,43 @@ func deal_condition(condition:String)-> bool:
 	return false	
 		
 
-func sentence_condition(condition:String)-> bool:
-
-	var condition_groups = condition.split("；")
-
-	for group in condition_groups:
-		group = group.strip_edges()
-		if group == "":
-			continue
+func sentence_condition(condition)-> bool:
+	
+	if "money" in condition:
+		var money_condition = condition.money
+		var left = money_condition.get("left", 0)
+		var right = money_condition.get("right", 9999999)
 		
-		if group.begins_with("tags: "):
-			var tag_list = group.get_slice("tags: ", 1)
-			var required_tags = tag_list.split("，")
-			for tag in required_tags:
-				if tag not in Player.player_tags:
-					return false
+		# 检查玩家金钱是否在[left, right]范围内
+		if Player.player_money < left or Player.player_money > right:
+			return false
+	
+	if "tags" in condition:
+		var tags = condition.tags
 		
-		if group.begins_with("物品: "):
-			var staff_list = group.get_slice("物品: ", 1)
-			var required_staff = staff_list.split("，")
-			for staff in required_staff:
-				if staff not in Player.player_staff:
-					return false
-					
-		elif group.contains(" tag "):
-			var parts = group.split(" tag ")	
-			var character = parts[0].strip_edges()
-			var tags = parts[1].strip_edges()
-			var required_tags = tags.split("，")
-			for tag in required_tags:
-				if tag not in Player.npc[character][tags]:
-					return false
-
-		elif group.begins_with("money "):
-			var parts = group.split(" ")
-			var pd = parts[1].strip_edges()
-			var value = int(parts[2].strip_edges())
+		# 检查玩家是否拥有指定标签
+		if not Player.player_has_tags(tags, 1):
+			return false
+	
+	if "num_tags" in condition:
+		var num_tags = condition.num_tags
+		for num_tag in num_tags:
+			if not Player.player_meet_num_tag(num_tags[num_tag].name,num_tags[num_tag].left,num_tags[num_tag].right):
+				return false
+	
+	if "npc" in condition:
+		var npc_conditions = condition.npc
+		
+		for npc_name in npc_conditions:
+			var npc_condition = npc_conditions[npc_name]
+			var tags = npc_condition.get("tags", [])
+			var num_tags = npc_condition.get("num_tags", {})
+			# 检查NPC是否拥有指定标签
+			if not Player.npc_has_tags(npc_name, tags, 1):
+				return false
 			
-			if pd == ">" || pd == ">=":
-				if Player.player_money < value:
-					return false
-
-			if pd == "<" || pd == "<=":
-				if Player.player_money > value:
-					return false
+			for num_tag_name in num_tags:
+				if not Player.npc_meet_num_tags(num_tags[num_tag_name].name,npc_name,num_tags[num_tag_name].left,num_tags[num_tag_name].right):
+					return false	
+					
 	return true

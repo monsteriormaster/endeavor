@@ -49,7 +49,7 @@ func display_next_dialogue():
 			typing_tween.tween_callback(func(): dialogue_index = dialogue.next)
 
 
-	if dialogue.effect != '' && !dialogue.is_effect_excute:
+	if dialogue.effect != {} && !dialogue.is_effect_excute:
 		dialogue.is_effect_excute = true
 		deal_effect(dialogue.effect)
 
@@ -70,7 +70,7 @@ func show_option(options):
 			option_box.add_child(option_label)
 		else:
 			var option_label = Button.new()
-			option_label.text = option.condition + "时解锁该选项"
+			option_label.text = option["condition"].description
 			option_label.disabled = true
 			option_box.add_child(option_label)
 
@@ -85,7 +85,7 @@ func _on_click(event):
 
 
 func on_option_entered(effect,next:int):
-	if effect != "":
+	if effect != {}:
 		deal_effect(effect)
 	dialogue_index = next	
 	display_next_dialogue()
@@ -97,101 +97,39 @@ func clear_options():
 
 
 func deal_effect(dialogue_effects):
-	var effects = dialogue_effects.split(";")
-
-	for effect in effects:
-
-		effect = effect.strip_edges()
-		if effect == "":
-			continue
-
-		if effect.begins_with("获得 tag"):
-			var tag = effect.get_slice("tag ", 1)
-			if tag not in Player.player_tags:
-				Player.player_tags.append(tag)
-			
-		elif effect.begins_with("获得 物品"):
-			var staff = effect.get_slice("物品 ", 1)
-			if staff not in Player.player_staff:
-				Player.player_staff.append(staff)	
-
-		elif effect.contains(" 获得 tag"):
-			var parts = effect.split(" 获得 tag")	
-			var character = parts[0].strip_edges()
-			var tags_union = parts[1].strip_edges()
-			if character not in Player.npc:
-				Player.npc[character]={}
-			if 'tags' not in Player.npc[character]:
-				Player.npc[character]['tags']=[]
-			var tags_union_clean = tags_union.replace("，", ",").strip_edges()
-			var tags = tags_union_clean.split(",")
-			for tag in tags:
-				if tag not in Player.npc[character]["tags"]:
-					Player.npc[character]["tags"].append(tag)
-
-		elif effect.begins_with("money "):			
-			var getting = effect.get_slice("money ", 1)
-			var parts = getting.split(" ")
-			var pd = parts[0].strip_edges()
-			var value = int(parts[1].strip_edges())
-			if pd == '-':
-				value *= -1
-			Player.player_money += value 
-
-
-func translate_condition(condition: String) -> String:
-	 
-	var translated_parts = []
-	var condition_groups = condition.split("；")
-	
-	for group in condition_groups:
-		group = group.strip_edges()
-		if group == "":
-			continue
-			
-		# 处理角色tag条件
-		if group.contains(" tag "):
-			var parts = group.split(" tag ")
-			if parts.size() == 2:
-				var character = parts[0].strip_edges()
-				var required_tag = parts[1].strip_edges()
-				translated_parts.append(character + "必须被" + required_tag)
+	for effect_name in dialogue_effects:
+		var effect = dialogue_effects[effect_name]
 		
-		# 处理玩家tag条件
-		elif group.begins_with("tag "):
-			var tag_list = group.get_slice("tag ", 1)
-			var required_tags = tag_list.split("，")
-			var saying := "你必须"
-			var i := 1
-   
-			for tag in tag_list:
-				saying = saying + tag 
-				if i == tag_list.length():
-					break
-				saying = saying + ' '
-				i = i + 1 	 
+		if effect_name == "money":
+			Player.player_money += effect.value * effect.operate
+		
+		if effect_name == "tags":
+			for tag in effect:
+				Player.player_tags.append(tag)
 				
-
-		# 处理money条件
-		elif group.begins_with("money "):
-			var parts = group.split(" ")
-			var op_text = ""
-			var operator = parts[1].strip_edges()
-			var value = parts[2].strip_edges()
-
-			if operator == ">" or operator == ">=":
-				op_text = "必须超过"
-			   
-			elif operator == "<=" or operator == "<":
-				op_text = "不能多于"
+		if effect_name == "num_tags":
+			for num_tag in effect:
+				Player.player_num_tags[num_tag] = effect[num_tag]
+		
 				
-			translated_parts.append("金钱" + op_text + value + "元")
+		if effect_name == "npc":
+			for npc_name in effect:
+				var npc = effect[npc_name]			
+				if npc_name not in Player.npc:
+					Player.npc[npc_name] = {
+						"tags" = [],
+						"num_tags" = {}
+					}
+				for cur_effect_name in npc:
+					
+					if cur_effect_name == "tags":
+						for tag in npc[cur_effect_name]:
+							Player.npc[npc_name]["tags"].append(tag)
+						
+					if 	cur_effect_name == "num_tags":
+						for num_tag in npc[cur_effect_name]:
+							Player.npc[npc_name]['num_tags'][num_tag] = npc[cur_effect_name][num_tag]
 	
-	# 将所有翻译后的条件用"并且"连接
-	var final_text = ""
-	for i in range(translated_parts.size()):
-		if i > 0:
-			final_text += "并且"
-		final_text += translated_parts[i]
 
-	return final_text
+func translate_condition(condition) -> String:
+	return condition.description

@@ -12,21 +12,54 @@
 			"is_option": true,
 			"options":[
 				{
-					"condition":"money > 1",
+					"condition":{
+						"description":"有更多金钱时解锁",
+						"money":{
+							"left":1,
+							"right":9999999,
+						},
+					},	
 					"text":"试探地给出1万元",
 					"next":2,
-					"effect":"money - 1",
+					"effect":{
+						"money":{
+							"value":1,
+							"operate":-1,
+						},
+					},
 				},
 				{
-					"condition":"money > 10",
+					"condition":{
+						"description":"有更多金钱时解锁",
+						"money":{
+							"left":10,
+							"right":9999999,
+						},
+					},	
 					"text":"给出10万元",
-					"effect":"money - 10",
+					"effect":{
+						"money":{
+							"value":10,
+							"operate":-1,
+						},
+					},
 					"next":3,
 				},
 				{
-					"condition":"money > 50",
+					"condition":{
+						"description":"有更多金钱时解锁",
+						"money":{
+							"left":50,
+							"right":9999999,
+						},
+					},	
 					"text":"给出50万元",
-					"effect":"money - 50",
+					"effect":{
+						"money":{
+							"value":50,
+							"operate":-1,
+						},
+					},
 					"next":4,
 				},
 				{
@@ -39,20 +72,34 @@
 			"name":"狱卒",
 			"text":"请不要质疑我的职业操守。",
 			"is_option": false,
-			"effect":"money + 1",
+			"effect":{
+				"money":{
+					"value":1,
+					"operate":1,
+				}
+			},
 			"next": -1,
 		},
 		"3th":{
 			"name":"狱卒",
 			"text":"先生，监狱钥匙在这里，探监完放回来就好。",
-			"effect":"获得 tag 进入监狱许可",
+			"effect":{
+				"tags":["进入监狱许可"]
+			},
 			"is_option": false,
 			"next": -1,
 		},
 		"4th":{
 			"name":"狱卒",
-			"text":"您竟如此体谅我们的工作，监狱钥匙在这里，探监完放回来就好。虽然牢房的门都锁好了，但是越往里越是写穷凶恶极的东西，您还是小心些。要是有不长眼地得罪了您，给我说一声，他也就老实了。若是专门给某位行方便。（停顿片刻后，阳光灿烂得笑起来）",
-			"effect":"获得 tag 进入监狱许可; 狱卒 获得 tag 贿赂",
+			"text":"您竟如此体谅我们的工作，监狱钥匙在这里，探监完放回来就好。虽然牢房的门都锁好了，但是越往里越是些穷凶恶极的东西，您还是小心些。要是有不长眼地得罪了您，给我说一声，他也就老实了。若是专门给某位行方便。（停顿片刻后，阳光灿烂得笑起来）",
+			"effect":{
+				"tags":["进入监狱许可"],
+				"npc":{
+					"狱卒":{
+						"tags":["贿赂"]
+					},
+				},
+			},
 			"is_option": false,
 			"next": -1,
 		},
@@ -74,7 +121,13 @@
 					"next":1,
 				},
 				{
-					"condition":"money > 5",
+					"condition":{
+						"description":"有更多金钱时解锁",
+						"money":{
+							"left":5,
+							"right":9999999,
+						},
+					},	
 					"text":"我想让某人过得好些",
 					"next":4,
 				},
@@ -90,12 +143,18 @@
 			"is_option":true,
 			"options":[
 				{
-					"condition":"tags: 认识法拉叶",
+					"condition":{
+						"description":"认识法拉叶时解锁",
+						"tags":["认识法拉叶"]
+					},	
 					"text":"好像是叫法拉叶",
 					"next":2,
 				},
 				{
-					"condition":"tags: 认识衫斯",
+					"condition":{
+						"description":"认识衫斯时解锁",
+						"tags":["认识衫斯"]
+					},	
 					"text":"好像是叫衫斯",
 					"next":3,
 				},
@@ -110,14 +169,38 @@
 			"name":"狱卒",
 			"text":"我这就去教训他一顿。",
 			"is_option": false,
-			"effect": "狱卒 获得 tag 使用中;法拉叶 获得 tag 使用中，惩戒与伤痕",
+			"effect":{
+				"npc":{
+					"狱卒":{
+						"tags":["使用中"]
+					},
+					"法拉叶":{
+						"tags":["使用中"],
+						"num_tags":{
+							"惩戒与伤痕":1,
+						}
+					}
+				}
+			},
 			"next": -1,
 		},
 		"3th":{
 			"name":"狱卒",
 			"text":"我这就去教训他一顿。",
 			"is_option": false,
-			"effect": "狱卒 获得 tag 使用中;衫斯 获得 tag 使用中，惩戒与伤痕",
+			"effect":{
+				"npc":{
+					"狱卒":{
+						"tags":["使用中"],
+					},
+					"衫斯":{
+						"tgas":["使用中"],
+						"numtags":{
+							"惩戒与伤痕":1,
+						}
+					}
+				}
+			},
 			"next": -1,
 		},
 		"4th":{
@@ -126,15 +209,37 @@
 			"is_option":true,
 			"options":[
 				{
-					"condition":"tags: 认识法拉叶",
+					"condition":{
+						"description":"认识法拉叶且金钱大于5时解锁",
+						"tags":["认识法拉叶"],
+						"money":{
+							"left":5,
+							"right":9999999,
+						},
+					},	
 					"text":"给狱卒5万元，让法拉叶吃得好些。",
-					"effect":"money - 5",
+					"effect":{
+						"money":{
+							"value":5,
+							"operate":-1,
+						}
+					},
 					"next":5,
 				},
 				{
-					"condition":"tags: 认识衫斯",
+					"condition":{
+						"description":"认识衫斯且金钱大于5时解锁",
+						"tags":["认识衫斯"],
+						"money":{
+							"left":5,
+							"right":9999999,
+						},
+					},	
 					"text":"给狱卒5万元，让衫斯吃得好些。",
-					"effect":"money - 5",
+					"effect":{
+						"value":5,
+						"operate":-1,
+					},
 					"next":6,
 				},
 				{
@@ -147,14 +252,30 @@
 			"name":"狱卒",
 			"text":"感谢您的慷慨。",
 			"is_option": false,
-			"effect": "狱卒 获得 tag 使用中;法拉叶 获得 tag 使用中，惬意",
+			"effect":{
+				"npc":{
+					"狱卒":{
+						"tags":["使用中"]
+					},
+					"法拉叶":{
+						"tags":["使用中","惬意"]
+					}
+				}
+			},
 			"next": -1,
 		},
 		"6th":{
 			"name":"狱卒",
 			"text":"感谢您的慷慨。",
 			"is_option": false,
-			"effect": "狱卒 获得 tag 使用中;衫斯 获得 tag 使用中，惬意",
+			"effect":{
+				"狱卒":{
+					"tags":["使用中"]
+				},
+				"衫斯":{
+					"tags":["使用中","惬意"]
+				}
+			},
 			"next": -1,
 		},
 		"7th":{
@@ -175,12 +296,18 @@
 			"is_option":true,
 			"options":[
 				{
-					"condition":"tags: 认识法拉叶",
+					"condition":{
+						"description":"认识法拉叶时解锁",
+						"tags":["认识法拉叶"]
+					},	
 					"text":"我想把法拉叶捞出来。",
 					"next":10,
 				},
 				{					
-					"condition":"money > 5;tag: 解救衫斯的机会",					
+					"condition":{
+						"description":"时机尚未成熟",
+						"tags":["解救衫斯的机会"],
+					},						
 					"text":"我想问问把衫斯捞出来需要多少钱，",					
 					"next":11,				
 				},
@@ -194,7 +321,7 @@
 			"name":"狱卒",
 			"text":"先生，这事我可做不了主。上头发了话，专门盯着他的。",
 		},
-		"10th":{
+		"11th":{
 			"name":"狱卒",
 			"text":"先生，按理说要20万梳理关系的，但是我也不忍心让一位慷慨的先生为这事儿太过破费。给我10万给你私下处理。",
 			"is_option":true,
@@ -204,9 +331,22 @@
 					"next":8,
 				},
 				{					
-					"condition":"money > 10;tag: 解救衫斯的机会",					
-					"text":"/` 细水长流，",					
-					"next":11,				
+					"condition":{
+						"money":{
+							"left":10,
+							"right":99999999,
+						},
+						"tags":["解救衫斯的机会"]
+					},					
+					"text":"细水长流",					
+					"next":-1,		
+					"effect":{
+						"npc":{
+							"衫斯":{
+								"tags":["总有人"]
+							}
+						}
+					}		
 				},
 			],
 		},
@@ -253,7 +393,9 @@
 			"name":"法拉叶",
 			"text":"先生，如果你对我尚存一丝怜悯，可以让我吃点好的吗，我已经一个月没有见过荤了。",
 			"is_option": false,
-			"effect":"获得 tag 认识法拉叶",
+			"effect":{
+				"tags":["认识法拉叶"],
+			},
 			"next": -1,
 		},
 	},
@@ -279,7 +421,13 @@
 					"next":2,
 				},
 				{
-					"condition":"money > 50",
+					"condition":{
+						"description":"有更多金钱时解锁",
+						"money":{
+							"left":40,
+							"right":9999999,
+						},
+					},
 					"text":"贿赂狱卒",
 					"next":4,
 				},
@@ -306,7 +454,17 @@
 		"4th":{
 			"name":"{player_name}",
 			"text":"你在这里工作想必很辛苦吧，这些是帮忙改善监狱环境的，我也不知道捐哪里，就交给你，让你帮忙了。也不必提我名字，举手之劳罢了。",
-			"effect":"狱卒 获得 tag 贿赂;money - 40",
+			"effect":{
+				"money":{
+					"value":40,
+					"oprate":-1,
+				},
+				"npc":{
+					"狱卒":{
+						"tags":["贿赂"]
+					}
+				}
+			},
 			"next": 5,
 		},
 		"5th":{
@@ -339,7 +497,10 @@
 				},
 				
 				{
-					"condition":"tag 知道法拉叶的事迹",
+					"condition":{
+						"description":"打听到法拉叶的事迹时解锁",
+						"tags":["知道法拉叶的事迹"]
+					},
 					"text":"我听说了你，要不要做我的手下做事。",
 					"next":5,
 				},
@@ -358,7 +519,13 @@
 		"4th":{
 			"name":"",
 			"text":"法拉叶一言不发，只是盯着你。",
-			"effect":"法拉叶 获得 tag 恶意",
+			"effect":{
+				"npc":{
+					"法拉叶":{
+						"tags":["恶意"]
+					}
+				}
+			},
 			"is_option": false,
 			"next": -1,
 		},
@@ -372,7 +539,7 @@
 			"name":"法拉叶",
 			"text":"收起你过剩的好心吧，哪怕只是让我安安静静地歇一会儿也行。",
 			"is_option": false,
-			"effect":"",
+			"effect":{},
 			"next": -1,
 		},
 	},
@@ -415,7 +582,10 @@
 					"next":6,
 				},
 				{
-					"condition":"tags: 灵感",
+					"condition":{
+						"description":"拥有灵感时解锁",
+						"tags":["灵感"]
+					},
 					"text":"悄然收集这份祭品",
 					"next":7,
 				}
@@ -424,88 +594,46 @@
 		"4th":{
 			"name":"法拉叶",
 			"text":"如果您能让我出去。",
-			"effect":"法拉叶 获得 tag 绝望的妥协",
+			"effect":{
+				"npc":{
+					"法拉叶":{
+						"tags":["绝望的妥协"]
+					}
+				}
+			},
 			"next":-1,
 		},
 		"5th":{
 			"name":"法拉叶",
 			"text":"呵",
-			"effect":"法拉叶 获得 tag 绝望的妥协",
+			"effect":{
+				"npc":{
+					"法拉叶":{
+						"tags":["绝望的妥协"]
+					}
+				}
+			},
 			"next":6,
 		},
 		"6th":{
 			"name":"",
 			"text":"你离开几天后，听说法拉叶死在狱中，不过这都与你无关了。",
-			"effect":"法拉叶 获得 tag 死亡",
+			"effect":{
+				"npc":{
+					"法拉叶":{
+						"tags":["死亡"]
+					}
+				}
+			},
 			"next":-1,
 		},
 		"7th":{
 			"name":"",
 			"text":"你离开几天后，听说法拉叶死在狱中，不过这都与你无关了。",
-			"effect":" 获得 物品 折断的桀骜",
+			"effect":{
+				"stuff":["折断的桀骜"]
+			},
 			"next":-1,
-		},
-	},
-	
-	"伤痕后与法拉叶的交流":{
-		"0th":{
-			"name":"法拉叶",
-			"text":"哦，你又来看我笑话了吗？",
-			"next":1,
-			"effect":"伤痕后与法拉叶的交流",
-		},
-		"1th":{
-			"name":"",
-			"text":"法拉叶的脸上多了一道长长的伤疤，穿过鼻子横亘在眼睛下，眼睛仍然有光",
-			"is_option": false,
-			"next": 2,
-		},
-		"2th":{
-			"name":"{player_name}",
-			"text":"驯服似乎是一个好玩的游戏。",
-			"is_option": true,
-			"options":[
-				{
-					"text":"这是你应得的",
-					"next":3,
-				},
-				
-				{
-					"condition":"tag 知道法拉叶的事迹",
-					"text":"我听说了你，要不要做我的手下做事。",
-					"next":5,
-				},
-				{
-					"text":"很抱歉看见你这样，我会带你出去的。",
-					"next":6,
-				},
-			],
-		},
-		"3th":{
-			"name":"{player_name}",
-			"text":"你冒犯了我，这是你应得的惩罚。",
-			"is_option": false,
-			"next": 4,
-		},
-		"4th":{
-			"name":"",
-			"text":"法拉叶一言不发，只是盯着你。",
-			"effect":"法拉叶 获得 tag 恶意",
-			"is_option": false,
-			"next": -1,
-		},
-		"5th":{
-			"name":"法拉叶",
-			"text":"先生，如果我和你是在咖啡馆或者其他什么地方，我会对为你做事很感兴趣。可是......",
-			"is_option": false,
-			"next": -1,
-		},
-		"6th":{
-			"name":"法拉叶",
-			"text":"收起你过剩的好心吧，哪怕只是让我安安静静地歇一会儿也行。",
-			"is_option": false,
-			"effect":"",
-			"next": -1,
 		},
 	},
 	
@@ -514,7 +642,9 @@
 			"name":"法拉叶",
 			"text":"是你啊先生，最近吃得不错。是你做了什么吧。",
 			"next":1,
-			"effect":"获得 tag 惬意后与法拉叶的交流",
+			"effect":{
+				"tags":["惬意后与法拉叶的交流"]
+			},
 		},
 		"1th":{
 			"name":"{player_name}",
@@ -530,10 +660,19 @@
 					"next":5,
 				},
 				{
-					"condition":"tag 知道法拉叶的事迹",
+					"condition":{
+						"description":"打听到更多消息时解锁",
+						"tags":["知道法拉叶的事迹"]
+					},
 					"text":"我听说了你，我需要一个像你一样能干的人。",
 					"next":5,
-					"effect":"法拉叶 获得 tag 自负"
+					"effect":{
+						"npc":{
+							"法拉叶":{
+								"tags":["自负"],
+							}
+						}
+					},
 				},
 			],
 		},
@@ -551,7 +690,9 @@
 			"name":"法拉叶",
 			"text":"（嘴角和太阳肩并肩）我已经摸清了监狱的作息，以及周围的地形。缺一些工具和接应。（递给了你一张写了一些小物件名字的纸条）",
 			"next":7,
-			"effect":"获得 tag 知晓越狱所需工具",
+			"effect":{
+				"tags":["知晓越狱所需工具"]
+			},
 		},
 		"5th":{
 			"name":"法拉叶",
@@ -605,7 +746,9 @@
 			"text":"“大海并非永远平静，暴风雨从未停歇。”感谢你的好意，但这是我应受的苦难。",
 			"is_option": false,
 			"next": -1,
-			"effect":"获得 tag 认识衫斯",
+			"effect":{
+				"tags":["认识衫斯"]
+			},
 		},	
 	},
 	
@@ -614,7 +757,9 @@
 			"name":"",
 			"text":"肉眼可见的，衫斯脸红润了些。不过非要说有什么变化可能只是他神神叨叨得更精神了。",
 			"next":1,
-			"effect":"惬意后与衫斯的交流",
+			"effect":{
+				"tags":["惬意后与衫斯的交流"]
+			},
 		},
 		"1th":{
 			"name":"{player_name}",
@@ -638,7 +783,9 @@
 			"name":"",
 			"text":"“他人经受我必经受......”经过狱卒的教训，衫斯很虚弱靠在墙边却仍然嘀咕不停。",
 			"next":1,
-			"effect":"伤痕后与衫斯的交流",
+			"effect":{
+				"tags":["伤痕后与衫斯的交流"]
+			},
 		},
 		"1th":{
 			"name":"{player_name}",
@@ -678,7 +825,10 @@
 			"is_option": true,
 			"options":[
 				{
-					"condition":"tags: 灵感",
+					"condition":{
+						"description":"拥有灵感时解锁",
+						"tags":["灵感"]
+					},
 					"text":"这正是我需要的。",
 					"next":7,
 				},
@@ -693,14 +843,20 @@
 			"name":"",
 			"text":"你微笑地离去，几天后听说了一个异教徒病死在了狱中，不过这又和你有什么关系呢？",
 			"is_option": false,
-			"effect":"衫斯 获得 tag 死亡",
-			"effect":"",
+			"effect":{
+				"npc":{
+					"tags":["死亡"]
+				}
+			},
+			"effect":{},
 			"next": -1,
 		},
 		"6th":{
 			"name":"衫斯",
 			"text":"我并没有什么才能，不过只要是您用得上我的地方，我一定尽力去做，给我个机会吧！",
-			"effect":"获得 tag 解救衫斯的机会",
+			"effect":{
+				"tags":["解救衫斯的机会"]
+			},
 			"is_option": false,
 			"next": -1,
 		},
@@ -708,13 +864,22 @@
 			"name":"衫斯",
 			"text":"“海洋容纳一切河流。”神会宽恕我的。",
 			"is_option": false,
-			"effect":"获得 tag 解救衫斯的机会",
+			"effect":{
+				"tags":["解救衫斯的机会"]
+			},
 			"next": -1,
 		},
 		"8th":{
 			"name":"衫斯",
 			"text":"（闭上了眼）我愿意奉献我的一切。",
-			"effect":"获得 tag 解救衫斯的机会;衫斯 获得 tag 仪式的觉悟",
+			"effect":{
+				"tags":["解救衫斯的机会"],
+				"npc":{
+					"衫斯":{
+						"tags":["仪式的觉悟"]
+					}
+				}
+			},
 			"is_option": false,
 			"next": -1,
 		},

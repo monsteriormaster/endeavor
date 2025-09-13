@@ -35,8 +35,9 @@ extends Node
 #属性，用于鉴定,edu 和 bac暂时保留
 @export var player_equipment = []#装备
 @export var player_tags = []#词条
-@export var gift_att = 60
-@export var  player_staff :=[]
+@export var player_num_tags := {}#可堆叠的词条
+@export var gift_att = 60#天赋点数
+@export var  player_stuff :=[]#物品
 
 @export_group("others")
 @export var development = {}#剧情发展情况
@@ -127,3 +128,15 @@ func player_has_tags(tags: Array, method := 1) -> bool:
 		return tags.any(func(tag): return tag in player_tags)		
 		
 		
+func player_meet_num_tag(tag: String,left: int,right: int) -> bool:		
+	if tag in player_num_tags:
+		if player_num_tags[tag] >= left && player_num_tags[tag] <= right:
+			return true
+	return false
+	
+	
+func npc_meet_num_tag(tag: String,npcname: String,left: int,right: int) -> bool:		
+	if tag in npc[npcname].num_tags:
+		if npc.num_tags[tag] >= left && npc.num_tags[tag] <= right:
+			return true
+	return false

@@ -86,7 +86,12 @@ func get_dialog():
 		if "tags" in conditions:
 			if not Player.player_has_tags(conditions.tags, method):
 				continue
-				
+		if "num_tags" in conditions:
+			var num_tags = conditions["num_tags"]
+			for num_tag_name in num_tags:
+				if not Player.player_meet_num_tag(num_tags[num_tag_name].name,num_tags[num_tag_name].left,num_tags[num_tag_name].right):
+					flag = true
+					break	
 		# 处理NPC条件
 		if "npc" in conditions:
 			var npc_conditions = conditions.npc
@@ -100,7 +105,15 @@ func get_dialog():
 					if not Player.npc_has_tags(npc_name, npc.tags, npc_method):
 						flag = true
 						break
-		
+				if "num_tags" in npc:
+					var num_tags = npc["num_tags"]
+					for num_tag_name in num_tags:
+						if not Player.npc_meet_num_tag(num_tags[num_tag_name].name,npc_name,num_tags[num_tag_name].left,num_tags[num_tag_name].right):
+							flag = true
+							break
+					if flag:
+						break		
+				
 		if flag:
 			continue
 			
@@ -110,6 +123,11 @@ func get_dialog():
 		if "tags" in limits:
 			if Player.player_has_tags(limits.tags, method):
 				continue
+		if "num_tags" in conditions:
+			for num_tag in conditions["num_tags"]:
+				if Player.player_meet_num_tags(num_tag,num_tag.left,num_tag.right):
+					flag = true
+					break	
 				
 		# 处理NPC限制条件
 		if "npc" in limits:
@@ -124,8 +142,16 @@ func get_dialog():
 					if Player.npc_has_tags(npc_name, npc.tags, npc_method):
 						flag = true
 						break
+				if "num_tags" in npc:
+					for num_tag in conditions["num_tags"]:
+						if Player.npc_meet_num_tags(num_tag.name,npc_name,num_tag.left,num_tag.right):
+							flag = true
+							break
+					if flag:
+						break
 						
 		if flag:
 			continue
+		
 		return dialog
 		
