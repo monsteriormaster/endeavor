@@ -47,5 +47,13 @@ theme_override_font_sizes/font_size = 20
 text = "设置
 "
 
+[node name="next_day" type="Button" parent="."]
+offset_left = 645.0
+offset_top = 1010.0
+offset_right = 718.0
+offset_bottom = 1078.0
+text = "下一天"
+
 [connection signal="pressed" from="MarginContainer/top_container/avater" to="." method="_on_avater_pressed"]
 [connection signal="pressed" from="MarginContainer/top_container/avater" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="next_day" to="." method="_on_next_day_pressed"]

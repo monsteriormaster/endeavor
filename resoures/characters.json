@@ -54,4 +54,18 @@
 		},
 	"description": "狱卒，如果你看到这个说明我的程序出现了问题。",
 	},	
+	
+	"Sicourge": {
+	"name": "斯库奇",
+	"image": "res://art/sicourge.png",
+	"gender": "男",
+	"int": 6,
+	"app": 4,
+	"str": 4,
+	"bod": 6,
+	"equipment": {
+
+		},
+	"description": "管家，如果你看到这个说明我的程序出现了问题。",
+	},	
 }

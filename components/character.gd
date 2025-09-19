@@ -143,8 +143,9 @@ func get_dialog():
 						flag = true
 						break
 				if "num_tags" in npc:
-					for num_tag in conditions["num_tags"]:
-						if Player.npc_meet_num_tags(num_tag.name,npc_name,num_tag.left,num_tag.right):
+					var num_tags = npc["num_tags"]
+					for num_tag_name in npc["num_tags"]:
+						if Player.npc_meet_num_tag(num_tags[num_tag_name].name,npc_name,num_tags[num_tag_name].left,num_tags[num_tag_name].right):
 							flag = true
 							break
 					if flag:

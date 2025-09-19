@@ -135,8 +135,10 @@ func player_meet_num_tag(tag: String,left: int,right: int) -> bool:
 	return false
 	
 	
-func npc_meet_num_tag(tag: String,npcname: String,left: int,right: int) -> bool:		
-	if tag in npc[npcname].num_tags:
-		if npc.num_tags[tag] >= left && npc.num_tags[tag] <= right:
-			return true
+func npc_meet_num_tag(tag: String,npcname: String,left: int,right: int) -> bool:	
+	if npcname in npc:
+		if "num_tags" in npc[npcname]:	
+			if tag in npc[npcname].num_tags:
+				if npc[npcname].num_tags[tag] >= left && npc[npcname].num_tags[tag] <= right:
+					return true
 	return false

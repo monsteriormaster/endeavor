@@ -34,3 +34,9 @@ func data_upgrade():
 	$MarginContainer/top_container/information/money.text = "金钱：" + str(Player.player_money) + "万"
 	$MarginContainer/top_container/information/noble.text = "贵族等级：" + Player.player_bac
 	$MarginContainer/top_container/information/time.text = "时间" + Player.time
+
+
+func _on_next_day_pressed():
+	Player.path = "res://scene/main.tscn"
+	SaveLoader.save_game()
+	SaveLoader.load_game()
