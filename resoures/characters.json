@@ -1,7 +1,8 @@
 { 
 	"Hero": {
 	"name": "主角",
-	"gender": "",
+	"image": "res://art/hero.png",
+	"gender": "男",
 	"int": 0,
 	"app": 0,
 	"str": 0,

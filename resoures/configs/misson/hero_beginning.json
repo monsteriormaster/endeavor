@@ -1,0 +1,36 @@
+{
+	"dialogs":{
+		"游戏开始":{
+			"name":"游戏开始",
+			"path":"res://resoures/plot/misson/beginning.json",
+			"conditions":{
+			},
+			"limits":{
+				"method":0,
+				"tags":["游戏开始"],
+			},
+			
+		},
+		
+		"第二天剧情":{
+			"name":"第二天剧情",
+			"path":"res://resoures/plot/misson/beginning.json",
+			"conditions":{
+				"others":{
+					"time":{
+						"name":"time",
+						"value":2,
+						"sentence":0,
+					},
+					
+				}
+			},
+			"limits":{
+				"method":0,
+				"tags":["第二天剧情"],
+			},
+			
+		},
+		
+	}
+}

@@ -1,7 +1,7 @@
 """
 人物点 - 地图中用于人物显示
 使用方法：
-在检查器中设定spot_name,按需求设定max_size,min_size,ordinary;添加YAFSM管理剧情
+在检查器中设定character_name,按需求设定max_size,min_size,ordinary;添加YAFSM管理剧情
 """
 
 extends Button
@@ -80,6 +80,26 @@ func get_dialog():
 		var method = 1
 		var flag := false
 		
+		#处理其他数值条件
+		if  "others" in conditions:
+			var others = conditions.others
+			for other in others:
+				var res = Player[others[other].name] - others[other].value
+				var sentence = others[other].sentence
+			
+				if sentence == 0:
+					if res != 0:
+						flag = true
+						break
+				if sentence == 1:
+					if res < 0:
+						flag = true
+						break
+				if sentence == -1:		
+					if res > 0:			
+						flag = true
+						break
+			
 		# 处理玩家标签条件
 		if "method" in conditions:
 			method = conditions.method
@@ -155,4 +175,5 @@ func get_dialog():
 			continue
 		
 		return dialog
-		
+	
+	return null	

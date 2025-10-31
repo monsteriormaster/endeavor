@@ -11,6 +11,8 @@ const TAGS = "res://resoures/tags.json"
 #需要补充文件内容
 const CHARACTERS = "res://resoures/characters.json"#角色
 const EQUIPMENT = "res://resoures/equipment.json"#装备
+const WID = 220
+const LEN = 440
 
 func _ready():
 	tagtip.name = 'tagtip'
@@ -30,7 +32,13 @@ func _on_closebutton_pressed():
 func setup(character_name:String):
 	get_info()
 	info = Player.npc[character_name]
-	print(info)
+	
+	var texture = load(info["image"])
+	$margin/avatar.texture = texture
+	var original_size = texture.get_size()
+	var scale_ratio =  min(WID / original_size.x,LEN / original_size.y)
+	$margin/avatar.position = Vector2(350, 200)
+	$margin/avatar.scale = Vector2(scale_ratio, scale_ratio)
 	
 	$margin/att.text =  "智力" + " " + str(info['int']) + '\n' + \
 						"魅力" + " " + str(info['app']) + '\n' + \
@@ -44,6 +52,9 @@ func setup(character_name:String):
 func tagsdeal():
 
 	for data in info['tags']:
+		if data not in taginfo:
+			continue
+		
 		var name_label = Label.new()
 		name_label.text = data
 
@@ -95,3 +106,5 @@ func get_info():
 	file.close()	
 	file = FileAccess.open(EQUIPMENT, FileAccess.READ)
 	einfo = JSON.parse_string(file.get_as_text())
+	
+		

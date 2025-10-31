@@ -26,8 +26,12 @@ func load_game():
 	file.close()
 	
 	load_data(save_data)
-	get_tree().change_scene_to_file(Player.path)	
-
+	if Player.path != "":
+		get_tree().change_scene_to_file(Player.path)	
+	else:
+		get_tree().change_scene_to_file('res://scene/main.tscn')
+		
+		
 func data_get():
 	var save_data = {}
 	

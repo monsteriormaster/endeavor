@@ -17,7 +17,6 @@ func show_dialogue_group(dialogue_group: DialogueGroup) -> void:
 	main_dialogue = dialogue_group
 	dialogue_index = 0
 	visible = true
-	EventSignal.emit_signal('dialogue_finished')
 	display_next_dialogue()
 
 
@@ -25,7 +24,7 @@ func display_next_dialogue():
 	if dialogue_index == -1:
 		Player.is_dialogue_exist = false
 		visible = false
-		emit_signal("dialogue_finished") 
+		EventSignal.emit_signal('dialogue_finished')
 		return
 	
 	clear_options()

@@ -19,7 +19,7 @@ extends Node
 
 @export_group("player")
 @export var player_age :=16.0 
-@export var time := "六月上旬"
+@export var time := 1
 #用于定义时间相关的事件
 @export var player_money =100
 @export var player_app_fact =""
@@ -142,3 +142,13 @@ func npc_meet_num_tag(tag: String,npcname: String,left: int,right: int) -> bool:
 				if npc[npcname].num_tags[tag] >= left && npc[npcname].num_tags[tag] <= right:
 					return true
 	return false
+
+
+func hero_merge():
+	npc.hero["name"] = player_name
+	npc.hero["int"] = player_int
+	npc.hero["app"] = player_app
+	npc.hero["str"] = player_str
+	npc.hero["bod"] = player_bod
+	npc.hero["equipment"] = player_equipment
+	npc.hero["tags"] = player_tags

@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj73vh6ed2vf8"]
+
+[ext_resource type="Script" uid="uid://be6u7qxn214ip" path="res://scene/guide.gd" id="1_vh7cx"]
+[ext_resource type="PackedScene" uid="uid://ca2iw4ov6jw4d" path="res://components/main_ui.tscn" id="2_rgave"]
+[ext_resource type="PackedScene" uid="uid://bydeed2mwdvwu" path="res://components/character.tscn" id="3_rgave"]
+
+[node name="Guide" type="Node2D"]
+script = ExtResource("1_vh7cx")
+
+[node name="Main_ui" parent="." instance=ExtResource("2_rgave")]
+
+[node name="sicourge" parent="." instance=ExtResource("3_rgave")]
+offset_left = 379.0
+offset_top = 277.0
+offset_right = 598.0
+offset_bottom = 599.0
+charcter_name = "Sicourge"
+config_path = "res://resoures/configs/misson/sicourge_beginning.json"
+
+[node name="hero" parent="." instance=ExtResource("3_rgave")]
+offset_left = 109.0
+offset_right = 328.0
+charcter_name = "Hero"
+config_path = "res://resoures/configs/misson/hero_beginning.json"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 106.0
+offset_top = 930.0
+offset_right = 311.0
+offset_bottom = 1024.0
+text = "debug"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

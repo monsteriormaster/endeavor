@@ -2,8 +2,13 @@ extends Node2D
 
 const CHARACTER_PANNEL_PATH = "res://components/character_panel.tscn"
 const CHARACTER = "res://resoures/characters.json"
-var hero := "Hero"
 
+@export var is_next_day_locked = false:
+	set(value):
+		is_next_day_locked = value  # 更新变量值
+		locked_next_day()  # 立即更新按钮状态
+
+var hero := "Hero"
 
 func _ready() -> void:
 	assist_func()
@@ -12,9 +17,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	data_upgrade()
 	pass
-
-
-
 
 
 func _on_avater_pressed() -> void:
@@ -33,10 +35,20 @@ func assist_func():
 func data_upgrade():
 	$MarginContainer/top_container/information/money.text = "金钱：" + str(Player.player_money) + "万"
 	$MarginContainer/top_container/information/noble.text = "贵族等级：" + Player.player_bac
-	$MarginContainer/top_container/information/time.text = "时间" + Player.time
+	$MarginContainer/top_container/information/time.text = "时间：第" + str(Player.time) + "天"
 
 
 func _on_next_day_pressed():
-	Player.path = "res://scene/main.tscn"
+	Player.time += 1
 	SaveLoader.save_game()
 	SaveLoader.load_game()
+
+
+func locked_next_day():
+	if is_next_day_locked:
+		$next_day.disabled = true
+	else:
+		$next_day.disabled = false
+	
+	
+		

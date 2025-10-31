@@ -1,0 +1,29 @@
+{
+	"dialogs":{
+		"斯库奇引导1":{
+			"name":"斯库奇引导1",
+			"path":"res://resoures/plot/misson/beginning.json",
+			"conditions":{
+			},
+			"limits":{
+				"method":0,
+				"tags":["斯库奇引导1"],
+			},
+			
+		},
+		
+		"斯库奇引导2":{
+			"name":"斯库奇引导2",
+			"path":"res://resoures/plot/misson/beginning.json",
+			"conditions":{
+				"tags":["斯库奇引导1"]
+			},
+			"limits":{
+				"method":0,
+				"tags":["斯库奇引导2"],
+			},
+			
+		},
+		
+	}
+}

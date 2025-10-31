@@ -6,4 +6,4 @@ func _process(_delta):
 
 
 func _on_button_pressed():
-	PlotImporter.add_plot("res://resoures/plot/test.json","测试事件1")
+	PlotImporter.add_plot("res://resoures/plot/misson/beginning.json","游戏开始")
