@@ -1,72 +1,90 @@
-{ 
+{
 	"Hero": {
-	"name": "主角",
-	"image": "res://art/hero.png",
-	"gender": "男",
-	"int": 0,
-	"app": 0,
-	"str": 0,
-	"bod": 0,
-	"tags": [],
-	"equipment": {},
-	"description": "曾热爱艺术，家庭发生变故后，不得已继承家业放弃梦想。不过野心依旧。",
+		"name": "主角",
+		"image": "res://art/hero.png",
+		"gender": "男",
+		"int": 0,
+		"app": 0,
+		"str": 0,
+		"bod": 0,
+		"tags": ["player"],
+		"equipment": {},
+		"description": "曾热爱艺术，家庭发生变故后，不得已继承家业放弃梦想。不过野心依旧。"
 	},
-	
 	"Falayee": {
-	"name": "法拉叶",
-	"image": "res://art/falayee.png",
-	"gender": "男",
-	"int": 4,
-	"app": 6,
-	"str": 7,
-	"bod": 4,
-	"tags": ["侠义"],
-	"equipment": {
-		"weapon": "多功能军刀"
+		"name": "法拉叶",
+		"image": "res://art/falayee.png",
+		"gender": "男",
+		"int": 4,
+		"app": 6,
+		"str": 7,
+		"bod": 4,
+		"tags": ["侠义","神偷"],
+		"equipment": {
+			"weapon": "多功能军刀"
 		},
-	"description": "一个沉默寡言的男人，手上把玩着多功能军刀",
-	},	
-	
+		"description": "一个沉默寡言的男人，手上把玩着多功能军刀"
+	},
 	"Sansi": {
-	"name": "衫斯",
-	"image": "res://art/sansi.png",
-	"gender": "男",
-	"int": 8,
-	"app": 5,
-	"str": 3,
-	"bod": 4,
-	"tags": ["学习"],
-	"equipment": {
-		"jewelry": "章鱼尾人身塑像"
+		"name": "衫斯",
+		"image": "res://art/sansi.png",
+		"gender": "男",
+		"int": 8,
+		"app": 5,
+		"str": 3,
+		"bod": 4,
+		"tags": ["学习"],
+		"equipment": {
+			"jewelry": "章鱼尾人身塑像"
 		},
-	"description": "海在呼唤他的孩子，可是他必须继续往前。",
-	},	
-	
+		"description": "海在呼唤他的孩子，可是他必须继续往前。"
+	},
 	"Jailer": {
-	"name": "狱卒",
-	"image": "res://art/jailer.png",
-	"gender": "男",
-	"int": 4,
-	"app": 4,
-	"str": 4,
-	"bod": 6,
-	"equipment": {
-
-		},
-	"description": "狱卒，如果你看到这个说明我的程序出现了问题。",
-	},	
-	
+		"name": "狱卒",
+		"image": "res://art/jailer.png",
+		"gender": "男",
+		"int": 4,
+		"app": 4,
+		"str": 4,
+		"bod": 6,
+		"tags": [],
+		"equipment": {},
+		"description": "狱卒，如果你看到这个说明我的程序出现了问题。"
+	},
 	"Sicourge": {
-	"name": "斯库奇",
-	"image": "res://art/sicourge.png",
-	"gender": "男",
-	"int": 6,
-	"app": 4,
-	"str": 4,
-	"bod": 6,
-	"equipment": {
-
-		},
-	"description": "管家，如果你看到这个说明我的程序出现了问题。",
-	},	
+		"name": "斯库奇",
+		"image": "res://art/sicourge.png",
+		"gender": "男",
+		"int": 6,
+		"app": 4,
+		"str": 4,
+		"bod": 6,
+		"tags": [],
+		"equipment": {},
+		"description": "你忠诚的管家，无论发生什么永远值得信任。"
+	},
+	"July": {
+		"name": "小七",
+		"image": "",
+		"gender": "男",
+		"int": 5,
+		"app": 3,
+		"str": 3,
+		"bod": 3,
+		"tags": ["gifted","child"],
+		"equipment": {},
+		"description": "一个被你寄予厚望的少年，他能攀上艺术的高峰吗？"
+	},
+	"Electra": {
+		"name": "伊莱克",
+		"image": "",
+		"gender": "男",
+		"int": 4,
+		"app": 4,
+		"str": 4,
+		"bod": 4,
+		"tags": ["common","child"],
+		"equipment": {},
+		"description": "他也许没有天赋，没什么是特别的。可你选择了他，因此他独一无二。"
+	}
 }

@@ -14,10 +14,10 @@ offset_bottom = 40.0
 scale = Vector2(17.9676, 26.9154)
 
 [node name="LineEdit" type="LineEdit" parent="."]
-offset_left = 170.0
-offset_top = 59.0
-offset_right = 545.0
-offset_bottom = 149.0
+offset_left = 290.0
+offset_top = 60.0
+offset_right = 670.0
+offset_bottom = 150.0
 theme_override_font_sizes/font_size = 45
 placeholder_text = "请输入你的姓名"
 alignment = 1
@@ -25,10 +25,10 @@ alignment = 1
 [node name="attribute" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 46.0
-offset_top = 186.0
-offset_right = 689.0
-offset_bottom = 609.0
+offset_left = 100.0
+offset_top = 200.0
+offset_right = 743.0
+offset_bottom = 623.0
 
 [node name="Label" type="Label" parent="attribute"]
 layout_mode = 0
@@ -166,10 +166,10 @@ theme_override_font_sizes/font_size = 18
 text = "+"
 
 [node name="gift_container" type="VBoxContainer" parent="."]
-offset_left = 113.0
-offset_top = 514.0
-offset_right = 640.0
-offset_bottom = 971.0
+offset_left = 1000.0
+offset_top = 80.0
+offset_right = 1820.0
+offset_bottom = 540.0
 size_flags_horizontal = 4
 theme_override_constants/separation = 8
 
@@ -184,27 +184,27 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="description_area" type="RichTextLabel" parent="."]
-offset_left = 349.0
-offset_top = 545.0
-offset_right = 549.0
-offset_bottom = 931.0
+offset_left = 1000.0
+offset_top = 560.0
+offset_right = 1820.0
+offset_bottom = 950.0
 theme_override_font_sizes/bold_italics_font_size = 1
 text = "这是描述框
 "
 
 [node name="next" type="Button" parent="."]
-offset_left = 548.0
-offset_top = 955.0
-offset_right = 666.0
-offset_bottom = 1010.0
+offset_left = 1000.0
+offset_top = 990.0
+offset_right = 1120.0
+offset_bottom = 1045.0
 theme_override_font_sizes/font_size = 21
 text = "下一步"
 
 [node name="pre" type="Button" parent="."]
-offset_left = 393.0
-offset_top = 955.0
-offset_right = 511.0
-offset_bottom = 1010.0
+offset_left = 820.0
+offset_top = 990.0
+offset_right = 940.0
+offset_bottom = 1045.0
 theme_override_font_sizes/font_size = 21
 text = "返回"
 

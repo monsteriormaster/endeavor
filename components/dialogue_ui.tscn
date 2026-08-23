@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://3kyghulebmsc" path="res://components/dialogue_ui.gd" id="1_jbnjv"]
 
-[node name="DiaologueUi" type="Control" node_paths=PackedStringArray("character_name_text", "text_box", "option_box")]
+[node name="DiaologueUi" type="Control" node_paths=PackedStringArray("character_name_text", "text_box", "option_box", "panel")]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 3
 anchors_preset = 12
@@ -17,6 +17,7 @@ script = ExtResource("1_jbnjv")
 character_name_text = NodePath("Panel/MarginContainer/VBoxContainer/name")
 text_box = NodePath("Panel/MarginContainer/VBoxContainer/content")
 option_box = NodePath("OptionContainer")
+panel = NodePath("Panel")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

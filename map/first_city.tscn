@@ -9,11 +9,43 @@ layout_mode = 3
 anchors_preset = 0
 offset_left = 22.0
 offset_top = 110.0
-offset_right = 699.0
-offset_bottom = 880.0
+offset_right = 1898.0
+offset_bottom = 970.0
 
 [node name="Node" type="Node" parent="Control"]
 
 [node name="prison" parent="Control/Node" instance=ExtResource("1_xsxxt")]
 spot_name = "监狱_初始"
-ordinary = Vector2(60, 180)
+ordinary = Vector2(150, 380)
+
+[node name="commercial" parent="Control/Node" instance=ExtResource("1_xsxxt")]
+spot_name = "商业区"
+ordinary = Vector2(520, 200)
+
+[node name="school" parent="Control/Node" instance=ExtResource("1_xsxxt")]
+spot_name = "学校"
+ordinary = Vector2(520, 430)
+
+[node name="home" parent="Control/Node" instance=ExtResource("1_xsxxt")]
+spot_name = "家业"
+ordinary = Vector2(820, 430)
+
+[node name="theater" parent="Control/Node" instance=ExtResource("1_xsxxt")]
+spot_name = "剧院"
+ordinary = Vector2(820, 200)
+
+[node name="plaza" parent="Control/Node" instance=ExtResource("1_xsxxt")]
+spot_name = "市政广场"
+ordinary = Vector2(1120, 200)
+
+[node name="hospital" parent="Control/Node" instance=ExtResource("1_xsxxt")]
+spot_name = "医院"
+ordinary = Vector2(1120, 430)
+
+[node name="church" parent="Control/Node" instance=ExtResource("1_xsxxt")]
+spot_name = "教会"
+ordinary = Vector2(700, 660)
+
+[node name="transport" parent="Control/Node" instance=ExtResource("1_xsxxt")]
+spot_name = "交通运输站"
+ordinary = Vector2(1100, 660)

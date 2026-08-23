@@ -35,6 +35,7 @@
 	},
 	
 	"第二天剧情":{
+		"layout":"newspaper",
 		"0th":{
 			"name":"{player_name}",
 			"text":"这是订的最后一期报纸，还要订的话要去商业街报亭一趟。",

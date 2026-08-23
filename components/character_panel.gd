@@ -1,11 +1,18 @@
 #变量声明和常量定义
 extends PopupPanel#弹出面板
 
+## 人物详情面板。由 main_ui 的头像按钮 / 卡牌系统呼出，统一交给 OverlayRoot 托管：
+##   OverlayRoot.push_overlay(panel, {"close_method": "close_panel"})
+##   panel.setup("Hero")
+
+signal closed
+
 var tagtip = Label.new()
 
 var info
 var taginfo
 var einfo
+var _closing: bool = false
 #资源文件路径
 const TAGS = "res://resoures/tags.json"
 #需要补充文件内容
@@ -25,9 +32,21 @@ func _process(_delta):
 	pass
 
 
-func _on_closebutton_pressed():
-	hide()
 #关闭键
+func _on_closebutton_pressed():
+	close_panel()
+
+
+## 关闭面板。Esc 与「关闭」按钮共用；重复调用安全。
+## 旧实现只 hide()，节点会一直挂在树上，每次点头像都新建一个 → 泄漏且越叠越多。
+func close_panel() -> void:
+	if _closing:
+		return
+	_closing = true
+	closed.emit()
+	# 未被 OverlayRoot 托管时（例如调试场景里直接 add_child）自行销毁
+	if not OverlayRoot.close_overlay(self):
+		queue_free()
 
 func setup(character_name:String):
 	get_info()

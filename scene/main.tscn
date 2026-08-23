@@ -1,17 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://b05wtelegp3er"]
+[gd_scene format=3 uid="uid://b05wtelegp3er"]
 
 [ext_resource type="Script" uid="uid://c4lv5girtsf37" path="res://scene/main.gd" id="1_itxqv"]
 [ext_resource type="PackedScene" uid="uid://2udkh5fdg8an" path="res://map/first_city.tscn" id="2_wp4xf"]
 [ext_resource type="PackedScene" uid="uid://ca2iw4ov6jw4d" path="res://components/main_ui.tscn" id="3_brvut"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=1878218908]
 script = ExtResource("1_itxqv")
 
-[node name="FirstCity" parent="." instance=ExtResource("2_wp4xf")]
+[node name="FirstCity" parent="." unique_id=505383923 instance=ExtResource("2_wp4xf")]
+visible = false
 
-[node name="Main_ui" parent="." instance=ExtResource("3_brvut")]
+[node name="Main_ui" parent="." unique_id=276205018 instance=ExtResource("3_brvut")]
 
-[node name="background" type="TextureRect" parent="."]
+[node name="background" type="TextureRect" parent="." unique_id=656193142]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

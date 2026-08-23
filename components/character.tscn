@@ -3,12 +3,50 @@
 [ext_resource type="Script" uid="uid://dysrh6hbrud35" path="res://components/character.gd" id="1_88t6f"]
 
 [node name="Character" type="Button"]
-offset_left = 89.0
-offset_top = 273.0
-offset_right = 308.0
-offset_bottom = 595.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 200.0
+offset_bottom = 400.0
+mouse_default_cursor_shape = 2
+text = ""
+icon = null
 script = ExtResource("1_88t6f")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Card" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="Portrait" type="TextureRect" parent="Card"]
+custom_minimum_size = Vector2(160, 220)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="Card"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+text = "Name"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TooltipPanel" type="PanelContainer" parent="."]
+visible = false
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="TooltipPanel"]
+mouse_filter = 2
+text = "Tooltip"
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -143,14 +143,14 @@ func _on_gift_hover(gift_data, description_area):
 	var desc = "[b]名称[/b]：" + gift_data.name + "\n"
 	desc += "[b]品质[/b]：" + gift_data.quality + "\n"
 	desc += "[b]描述[/b]：" + gift_data.description + "\n"
-	desc += "[b]效果[/b]：" + gift_data.effect + "\n\n"
+	desc += "[b]效果[/b]：" + _format_effect(gift_data.effect) + "\n\n"
 	if gift_data.cor_label != '':
 		desc += "[b]标签[/b]：" + '\n'
 		var cor_labels = gift_data.cor_label.split(' ')
 		for add_description in cor_labels:
 			desc += add_description + '\n' +\
-					tags[add_description].description + "\n"  
-	
+					tags[add_description].description + "\n"
+
 	description_area.text = desc
 
 
@@ -198,7 +198,6 @@ func _on_next_pressed():
 			"返回"
 			)
 		confirm_dialog.confirmed.connect(before_trans)
-		remove_child(confirm_dialog)
 		add_child(confirm_dialog)
 		
 	else:
@@ -214,7 +213,6 @@ func _on_pre_pressed():
 			"返回"
 			)
 		confirm_dialog.confirmed.connect(func (): get_tree().change_scene_to_file('res://scene/loading.tscn'))
-		remove_child(confirm_dialog)
 		add_child(confirm_dialog)
 		
 	else:
@@ -230,9 +228,8 @@ func get_data():
 	
 
 func before_trans():
-	for data in choose_condition:
-		if choose_condition[data] == true:
-			Player.player_tags.append(data)
+	# 1. 初始化主角卡 Hero（属性先占位 0，effect+clamp 后再同步最终值）。
+	#    先建 Hero 卡再 apply effect：避免 Player.npc = {Hero} 覆盖掉 effect 加进来的 npc（如"死生契阔"的法拉叶）。
 	Player.npc = {
 		"Hero":{
 			"name" :"",
@@ -244,12 +241,99 @@ func before_trans():
 			"equipment":{},
 			"description": "曾热爱艺术，家庭发生变故后，不得已继承家业放弃梦想。不过野心依旧。",
 		}
-	}		
+	}
+	# 2. 对所有已选天赋应用 effect（天赋无 flow_tags，tags/attrs/npc 等直接落 Player）。
+	#    天赋名不再作为 tag 加入——天赋的效应完全由 effect 字典决定。
+	for data in choose_condition:
+		if choose_condition[data] == true:
+			var eff: Dictionary = gifts[data].get("effect", {})
+			if not eff.is_empty():
+				EffectProcessor.apply(eff)
+	# 3. 平凡可贵 clamp_attrs（最后生效，仅此界面；进入游戏后玩家可通过其他 effect 超出范围）
+	_apply_clamp_attrs()
+	# 4. 同步主角卡属性（含 effect 增减与 clamp 后的最终值）
 	Player.npc["Hero"]["name"] =  Player.player_name
-	#Player.npc["Hero"]["tags"] =  Player.player_tags 		
 	Player.npc["Hero"]["int"] =  Player.player_int
 	Player.npc["Hero"]["str"] =  Player.player_str
 	Player.npc["Hero"]["bod"] =  Player.player_bod
 	Player.npc["Hero"]["app"] =  Player.player_app
+	# 角色创建完成后自动进入新手引导；若教学已完成（读档/二周目）则直接进主城。
+	# 先确定目标场景并写入存档路径，再存档、切场景（避免存档里 path 为空导致回档跳关）。
+	if TutorialManager.is_completed("opening"):
+		Player.path = "res://scene/main.tscn"
+	else:
+		Player.path = "res://scene/guide.tscn"
 	SaveLoader.save_game()
-	get_tree().change_scene_to_file('res://scene/main.tscn')	
+	get_tree().change_scene_to_file(Player.path)
+
+
+## 平凡可贵：属性夹值（最后生效，仅 selection 界面）。
+## 扫描已选天赋的 clamp_attrs，取最严约束（min 取最大、max 取最小），
+## 对 int/app/str/bod 执行一次性夹值。仅在该界面生效一次，非持续 modifier。
+func _apply_clamp_attrs() -> void:
+	var clamp_min := -9999
+	var clamp_max := 9999
+	var has_clamp := false
+	for data in choose_condition:
+		if choose_condition[data] == true:
+			var eff: Dictionary = gifts[data].get("effect", {})
+			if eff.has("clamp_attrs"):
+				has_clamp = true
+				var c: Dictionary = eff["clamp_attrs"]
+				clamp_min = max(clamp_min, int(c.get("min", -9999)))
+				clamp_max = min(clamp_max, int(c.get("max", 9999)))
+	if not has_clamp:
+		return
+	Player.player_int = clampi(Player.player_int, clamp_min, clamp_max)
+	Player.player_app = clampi(Player.player_app, clamp_min, clamp_max)
+	Player.player_str = clampi(Player.player_str, clamp_min, clamp_max)
+	Player.player_bod = clampi(Player.player_bod, clamp_min, clamp_max)
+	Player.notify_stats_changed()
+
+
+## 把 effect 字典格式化为可读文本（用于描述区显示，替代旧的字符串 effect）。
+func _format_effect(eff: Dictionary) -> String:
+	if not (eff is Dictionary) or eff.is_empty():
+		return "无"
+	var parts: Array = []
+	if eff.has("attrs"):
+		var attrs: Dictionary = eff["attrs"]
+		var names := {"int": "智力", "app": "魅力", "str": "力量", "bod": "体魄"}
+		for k in attrs:
+			var n: String = names.get(String(k), String(k))
+			parts.append("%s%+d" % [n, int(attrs[k])])
+	if eff.has("tags"):
+		parts.append("获得标签：" + " ".join(eff["tags"]))
+	if eff.has("num_tags"):
+		var nt: Dictionary = eff["num_tags"]
+		var segs: Array = []
+		for k in nt:
+			segs.append("%s=%d" % [k, int(nt[k])])
+		parts.append("可堆叠词条：" + " ".join(segs))
+	if eff.has("stuff"):
+		parts.append("获得物品：" + " ".join(eff["stuff"]))
+	if eff.has("money"):
+		parts.append("金钱%+d" % int(eff["money"]))
+	if eff.has("npc"):
+		var npcs: Array = []
+		for nk in eff["npc"]:
+			npcs.append(String(nk))
+		parts.append("获得同伴：" + " ".join(npcs))
+	if eff.has("equipment"):
+		parts.append("获得装备")
+	if eff.has("remove_tags"):
+		parts.append("移除标签：" + " ".join(eff["remove_tags"]))
+	if eff.has("remove_num_tags"):
+		parts.append("移除可堆叠词条")
+	if eff.has("goto_scene"):
+		parts.append("前往新场景")
+	if eff.has("child"):
+		parts.append("获得孩子")
+	if eff.has("name_child"):
+		parts.append("为孩子取名")
+	if eff.has("clamp_attrs"):
+		var c: Dictionary = eff["clamp_attrs"]
+		parts.append("属性夹至[%d,%d]" % [int(c.get("min", 0)), int(c.get("max", 0))])
+	if parts.is_empty():
+		return "无"
+	return "，".join(parts)
