@@ -1,10 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://oarww5yjxb7n"]
+[gd_scene format=3 uid="uid://oarww5yjxb7n"]
 
 [ext_resource type="PackedScene" uid="uid://ca2iw4ov6jw4d" path="res://components/main_ui.tscn" id="1_0oy5q"]
 [ext_resource type="PackedScene" uid="uid://cygk04pfrprl7" path="res://map/prison_spot.tscn" id="2_3cjne"]
+[ext_resource type="Texture2D" uid="uid://d0txv0jpun2hl" path="res://art/backgrounds_gentle/监狱.png" id="bg_tex"]
+[ext_resource type="Script" path="res://components/map_sketch.gd" id="sk_sketch"]
 
-[node name="Prison" type="Node2D"]
+[node name="Prison" type="Node2D" unique_id=595138369]
 
-[node name="Main_ui" parent="." instance=ExtResource("1_0oy5q")]
+[node name="background" type="TextureRect" parent="." unique_id=1408966024]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 4.0
+offset_right = 1918.0
+offset_bottom = 1078.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("bg_tex")
 
-[node name="PrisonSpot" parent="." instance=ExtResource("2_3cjne")]
+[node name="Sketch" type="Control" parent="background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+script = ExtResource("sk_sketch")
+
+[node name="Main_ui" parent="." unique_id=281905219 instance=ExtResource("1_0oy5q")]
+
+[node name="PrisonSpot" parent="." unique_id=670610884 instance=ExtResource("2_3cjne")]

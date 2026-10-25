@@ -1,50 +1,187 @@
-[gd_scene load_steps=4 format=3 uid="uid://ca2iw4ov6jw4d"]
+[gd_scene load_steps=15 format=3 uid="uid://ca2iw4ov6jw4d"]
 
 [ext_resource type="Script" uid="uid://bf7q0sl40fil4" path="res://components/main_ui.gd" id="1_xqdl1"]
 [ext_resource type="PackedScene" path="res://components/card_area.tscn" id="2_cardarea"]
 [ext_resource type="PackedScene" path="res://components/action_panel.tscn" id="3_actionpanel"]
+[ext_resource type="Texture2D" path="res://art/ui/paper_tile.png" id="4_paper"]
+
+[sub_resource type="Gradient" id="G_topshadow"]
+offsets = PackedFloat32Array(0, 0.35, 1)
+colors = PackedColorArray(0.0784314, 0.0588235, 0.0313726, 0.470588, 0.0784314, 0.0588235, 0.0313726, 0.176471, 0.0784314, 0.0588235, 0.0313726, 0)
+
+[sub_resource type="GradientTexture2D" id="T_topshadow"]
+gradient = SubResource("G_topshadow")
+width = 8
+height = 64
+fill_from = Vector2(0, 0)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="SB_toprule"]
+bg_color = Color(0.435294, 0.317647, 0.129412, 1)
+
+[sub_resource type="StyleBoxFlat" id="SB_tb_normal"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.898039, 0.847059, 0.756863, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.466667, 0.345098, 0.145098, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="SB_tb_hover"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.94902, 0.905882, 0.831373, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.588235, 0.443137, 0.184314, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="SB_tb_pressed"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.647059, 0.490196, 0.203922, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.360784, 0.262745, 0.0901961, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="SB_tb_disabled"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.780392, 0.741176, 0.670588, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.545098, 0.509804, 0.462745, 0.6)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxLine" id="SB_sep"]
+color = Color(0.509804, 0.380392, 0.160784, 0.55)
+thickness = 2
+grow_begin = 14.0
+grow_end = 14.0
+vertical = true
+
+[sub_resource type="StyleBoxEmpty" id="SB_empty"]
+
+[sub_resource type="Theme" id="TH_topbar"]
+Button/colors/font_color = Color(0.168627, 0.12549, 0.0784314, 1)
+Button/colors/font_disabled_color = Color(0.45098, 0.423529, 0.376471, 1)
+Button/colors/font_hover_color = Color(0.113725, 0.0862745, 0.0509804, 1)
+Button/colors/font_pressed_color = Color(0.976471, 0.945098, 0.878431, 1)
+Button/font_sizes/font_size = 20
+Button/styles/disabled = SubResource("SB_tb_disabled")
+Button/styles/focus = SubResource("SB_empty")
+Button/styles/hover = SubResource("SB_tb_hover")
+Button/styles/normal = SubResource("SB_tb_normal")
+Button/styles/pressed = SubResource("SB_tb_pressed")
+Label/colors/font_color = Color(0.152941, 0.113725, 0.0705882, 1)
+VSeparator/styles/separator = SubResource("SB_sep")
 
 [node name="Main_ui" type="Node2D"]
 script = ExtResource("1_xqdl1")
+
+[node name="TopBarPaper" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 78.0
+mouse_filter = 2
+texture = ExtResource("4_paper")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TopBarRule" type="Panel" parent="."]
+offset_top = 74.0
+offset_right = 1920.0
+offset_bottom = 78.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_toprule")
+
+[node name="TopBarShadow" type="TextureRect" parent="."]
+offset_top = 78.0
+offset_right = 1920.0
+offset_bottom = 100.0
+mouse_filter = 2
+texture = SubResource("T_topshadow")
+expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 1920.0
 offset_bottom = 78.0
 size_flags_horizontal = 3
+theme = SubResource("TH_topbar")
 
 [node name="top_container" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="avater" type="Button" parent="MarginContainer/top_container"]
+[node name="cheat" type="Button" parent="MarginContainer/top_container"]
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 20
-text = "主角"
+text = "作弊"
 
 [node name="information" type="HBoxContainer" parent="MarginContainer/top_container"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 25
+theme_override_constants/separation = 14
+alignment = 1
 
 [node name="money" type="Label" parent="MarginContainer/top_container/information"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 22
 text = "金钱："
+
+[node name="sep1" type="VSeparator" parent="MarginContainer/top_container/information"]
+layout_mode = 2
+size_flags_vertical = 4
 
 [node name="time" type="Label" parent="MarginContainer/top_container/information"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 22
 text = "时间："
+
+[node name="sep2" type="VSeparator" parent="MarginContainer/top_container/information"]
+layout_mode = 2
+size_flags_vertical = 4
 
 [node name="noble" type="Label" parent="MarginContainer/top_container/information"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 22
 text = "贵族等级："
 
 [node name="setting" type="Button" parent="MarginContainer/top_container"]
 layout_mode = 2
 size_flags_horizontal = 8
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 20
 text = "设置"
 
@@ -55,16 +192,32 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 20.0
-offset_top = 850.0
-offset_right = 1700.0
-offset_bottom = 1080.0
+offset_top = 822.0
+offset_right = 1900.0
+offset_bottom = 1060.0
 
 [node name="next_day" type="Button" parent="."]
-offset_left = 1820.0
-offset_top = 1010.0
-offset_right = 1918.0
-offset_bottom = 1078.0
+offset_left = 1692.0
+offset_top = 899.0
+offset_right = 1868.0
+offset_bottom = 983.0
+theme_override_colors/font_color = Color(0.180392, 0.141176, 0.0941176, 1)
+theme_override_colors/font_disabled_color = Color(0.45098, 0.423529, 0.376471, 1)
+theme_override_colors/font_hover_color = Color(0.113725, 0.0862745, 0.0509804, 1)
+theme_override_colors/font_pressed_color = Color(0.180392, 0.141176, 0.0941176, 1)
+theme_override_font_sizes/font_size = 26
 text = "下一天"
+
+[node name="newspaper_btn" type="Button" parent="."]
+offset_left = 10.0
+offset_top = 500.0
+offset_right = 136.0
+offset_bottom = 566.0
+theme_override_colors/font_color = Color(0.168627, 0.12549, 0.0784314, 1)
+theme_override_colors/font_hover_color = Color(0.0784314, 0.0588235, 0.0313726, 1)
+theme_override_colors/font_pressed_color = Color(0.243137, 0.180392, 0.0627451, 1)
+theme_override_font_sizes/font_size = 22
+text = "报纸"
 
 [node name="ActionPanel" parent="." instance=ExtResource("3_actionpanel")]
 layout_mode = 0
@@ -72,7 +225,22 @@ offset_left = 1520.0
 offset_top = 90.0
 offset_right = 1900.0
 offset_bottom = 450.0
+visible = false
 
-[connection signal="pressed" from="MarginContainer/top_container/avater" to="." method="_on_avater_pressed"]
+[node name="event_list_btn" type="Button" parent="."]
+offset_left = 10.0
+offset_top = 580.0
+offset_right = 136.0
+offset_bottom = 646.0
+theme_override_colors/font_color = Color(0.168627, 0.12549, 0.0784314, 1)
+theme_override_colors/font_hover_color = Color(0.0784314, 0.0588235, 0.0313726, 1)
+theme_override_colors/font_pressed_color = Color(0.243137, 0.180392, 0.0627451, 1)
+theme_override_font_sizes/font_size = 22
+toggle_mode = true
+text = "事件列表"
+
+[connection signal="pressed" from="MarginContainer/top_container/cheat" to="." method="_on_cheat_pressed"]
 [connection signal="pressed" from="MarginContainer/top_container/setting" to="." method="_on_setting_pressed"]
 [connection signal="pressed" from="next_day" to="." method="_on_next_day_pressed"]
+[connection signal="pressed" from="newspaper_btn" to="." method="_on_newspaper_pressed"]
+[connection signal="toggled" from="event_list_btn" to="." method="_on_event_list_pressed"]

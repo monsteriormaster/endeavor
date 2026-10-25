@@ -1,0 +1,72 @@
+{
+	"与露易丝的重逢": {
+		"0th": {
+			"name": "",
+			"text": "所谓熙熙攘攘即是利来利往，变故后的家冷清了不少，是什么人会在这个时候到访呢？",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "",
+			"text": "竟然是她。{player_name}想不起这个名字，偏偏又觉得有那么一丝熟悉。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "",
+			"text": "她还记得{player_name}。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "？？",
+			"portrait": "露易丝",
+			"text": "{player_name}，好久不见。抱歉你家里发生了那么多事，我却现在才来。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "？？",
+			"portrait": "露易丝",
+			"text": "不过我已经和家里说好了，接下来的日子，请让我为你提供一些帮助吧。",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "{player_name}",
+			"text": "谢谢你，但是，那个，你是谁来着，我一下子没想起来。",
+			"is_option": false,
+			"next": 6
+		},
+		"6th": {
+			"name": "？？",
+			"portrait": "露易丝",
+			"text": "……露易丝。",
+			"is_option": false,
+			"next": 7
+		},
+		"7th": {
+			"name": "{player_name}",
+			"text": "哦哦哦，原来是……",
+			"is_option": false,
+			"next": 8
+		},
+		"8th": {
+			"name": "露易丝",
+			"text": "没关系，我知道你根本没有想起来。{player_name}还是和小时候一样啊。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"重逢"
+				],
+				"npc": {
+					"Louise": {"tags": ["追随"]}
+				},
+				"enqueue_talk": {
+					"Louise": {"path": "res://resoures/plot/louise/露易丝的打算.json", "name": "露易丝有话说"}
+				}
+			},
+			"next": -1
+		}
+	}
+}

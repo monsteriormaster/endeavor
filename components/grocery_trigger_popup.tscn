@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://components/grocery_trigger_popup.gd" id="1_grocery"]
+[ext_resource type="PackedScene" path="res://components/trigger_popup.tscn" id="2_base"]
+
+[node name="GroceryTriggerPopup" instance=ExtResource("2_base")]
+script = ExtResource("1_grocery")

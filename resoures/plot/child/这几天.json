@@ -1,0 +1,779 @@
+{
+	"这几天": {
+		"0th": {
+			"name": "",
+			"text": "这几天{child_name}的行为有点反常，这种感觉过于隐约，贴近直觉之类的东西。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"孩子的反常"
+				]
+			},
+			"next": 1
+		},
+		"1th": {
+			"name": "",
+			"text": "像是没和你打招呼，躲着你，吃的少了之类的——自然是，一件都没有。要是有这样欲盖弥彰的行为，很快就会暴露了，你们也和之前一样的交流。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "",
+			"text": "闲聊时和司库奇谈起，获得同感后，有意识的多留意了一下。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "",
+			"text": "确实不是你捕风捉影，在{child_name}身上两三个不起眼的地方看到了挫伤和淤青。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "",
+			"text": "脑子里闪过了几种怎么受伤的可能性，和为什么不和你说的小心思，不想告诉你的意图倒是已经很明显了，既然这样——",
+			"is_option": true,
+			"options": [
+				{
+					"text": "他不想告诉我的话，我也好奇完了，不是什么大事，算了吧。",
+					"next": 5
+				},
+				{
+					"text": "应该是学校里发生了什么，这几天抽空去处理一下吧。",
+					"effect": {
+						"delayed_event": {
+							"days": 3,
+							"plot": "这几天-去学校"
+						}
+					},
+					"next": 64
+				}
+			]
+		},
+		"5th": {
+			"name": "",
+			"text": "某天{child_name}在厨房的角落里处理伤口，用冷水敷着淤青。你以为是玩闹便没有在意。",
+			"is_option": false,
+			"next": 6
+		},
+		"6th": {
+			"name": "",
+			"text": "在那之后，一切如常。直到司库奇告诉了你关于{child_name}的一些事。",
+			"is_option": false,
+			"next": 7
+		},
+		"7th": {
+			"name": "管家 司库奇",
+			"text": "小主人在学校里似乎过得不太好。",
+			"is_option": false,
+			"next": 8
+		},
+		"8th": {
+			"name": "管家 司库奇",
+			"text": "您没有做出决定，我不便插手，也许这确实是一次重要的磨练。",
+			"is_option": false,
+			"next": 9
+		},
+		"9th": {
+			"name": "",
+			"text": "校园霸凌和你是两个世界的东西，没有不长眼的想来惹你麻烦，你记忆里同学们都是很和蔼的……你并不擅长修辞，这不重要，即使有些打斗……",
+			"is_option": false,
+			"next": 10
+		},
+		"10th": {
+			"name": "",
+			"text": "司库奇大概以为你知道发生了什么，于是继续往后说。",
+			"is_option": false,
+			"next": 11
+		},
+		"11th": {
+			"name": "",
+			"text": "你并没有不耻下问的美德，毕竟保持威严也是贵族的美德。",
+			"is_option": false,
+			"next": 12
+		},
+		"12th": {
+			"name": "管家 司库奇",
+			"text": "据我了解小主人应该是这样处理的。",
+			"is_option": false,
+			"nexts": [
+				{
+					"condition": {
+						"description": "力量见长——他学会了用拳头",
+						"top_attr": {
+							"who": "child",
+							"one_of": [
+								"str"
+							]
+						}
+					},
+					"next": 13
+				},
+				{
+					"condition": {
+						"description": "心思渐深——他学会了混进他们中间",
+						"top_attr": {
+							"who": "child",
+							"one_of": [
+								"int"
+							]
+						}
+					},
+					"next": 19
+				},
+				{
+					"condition": {
+						"description": "笑容成了武器——他学会了逗他们",
+						"top_attr": {
+							"who": "child",
+							"one_of": [
+								"app"
+							]
+						}
+					},
+					"next": 24
+				},
+				{
+					"condition": {
+						"description": "把一切咽下去——他学会了忍",
+						"top_attr": {
+							"who": "child",
+							"one_of": [
+								"bod"
+							]
+						}
+					},
+					"next": 61
+				},
+				{
+					"next": 61
+				}
+			]
+		},
+		"13th": {
+			"name": "",
+			"text": "寻常的一天。",
+			"is_option": false,
+			"next": 14
+		},
+		"14th": {
+			"name": "",
+			"text": "{child_name}正在卫生间洗手，透过镜子看到了几个熟悉的身影。",
+			"is_option": false,
+			"next": 15
+		},
+		"15th": {
+			"name": "混混",
+			"portrait": "校霸",
+			"text": "哟，哥几个手头紧，借点零花钱花花。",
+			"is_option": false,
+			"next": 16
+		},
+		"16th": {
+			"name": "{child_name}",
+			"text": "我今天没带钱，但是可以借你们几个拳头使使。",
+			"is_option": false,
+			"next": 17
+		},
+		"17th": {
+			"name": "",
+			"text": "话没落地，人已经扑了上来。{child_name}没有躲，侧身让开第一拳，反手抓住第二个人的手腕往墙上一带，又用膝盖抵住扑上来的第三个。等有人喊来老师，走廊里倒了两个，他自己的指节也破了皮。",
+			"is_option": false,
+			"next": 18
+		},
+		"18th": {
+			"name": "",
+			"text": "原来问题的解决那么简单，只需要诉诸暴力，可是代价真的值得吗？",
+			"is_option": false,
+			"next": -1
+		},
+		"19th": {
+			"name": "管家 司库奇",
+			"text": "我担心小主人学坏，不过他似乎只是学会了要和光同尘……",
+			"is_option": false,
+			"next": 20
+		},
+		"20th": {
+			"name": "",
+			"text": "自某天起，学校里横行霸道的团伙中多了一个{child_name}。",
+			"is_option": false,
+			"next": 21
+		},
+		"21th": {
+			"name": "",
+			"text": "与其他人没有什么不一样，打架，勒索。",
+			"is_option": false,
+			"next": 22
+		},
+		"22th": {
+			"name": "管家 司库奇",
+			"text": "小主人没有跟着逃学，我想他知道孰轻孰重。",
+			"is_option": false,
+			"next": 23
+		},
+		"23th": {
+			"name": "",
+			"text": "想想，{child_name}确实很聪明，没有把恶习带回家里，这些小朋友间的玩闹自然是随他了。",
+			"is_option": false,
+			"next": -1
+		},
+		"24th": {
+			"name": "管家 司库奇",
+			"text": "我想我们应该和{child_name}说些有关长大的事，有关男女之别，有关正确的恋爱。",
+			"is_option": false,
+			"next": 25
+		},
+		"25th": {
+			"name": "{player_name}",
+			"text": "哦。",
+			"is_option": false,
+			"next": 26
+		},
+		"26th": {
+			"name": "",
+			"text": "厌恶与厌恶间亦有区别。",
+			"is_option": false,
+			"next": 27
+		},
+		"27th": {
+			"name": "",
+			"text": "又开始了。那个后桌的男孩又在后面折腾{child_name}。",
+			"is_option": false,
+			"next": 28
+		},
+		"28th": {
+			"name": "",
+			"text": "离下课还有整整20分钟。",
+			"is_option": false,
+			"next": 29
+		},
+		"29th": {
+			"name": "",
+			"text": "可是那有如何？已经忍无可忍了。",
+			"is_option": false,
+			"next": 30
+		},
+		"30th": {
+			"name": "",
+			"text": "{child_name}忽然站起来，在所有老师同学的面前，用力把那孩子的头往课桌上砸了三下。咚咚咚的声音把周围的人都吓住了。",
+			"is_option": false,
+			"next": 31
+		},
+		"31th": {
+			"name": "{child_name}",
+			"text": "抱歉，老师你继续吧。",
+			"is_option": false,
+			"next": 32
+		},
+		"32th": {
+			"name": "{player_name}",
+			"text": "果然面对那些不长眼的东西教训一顿就好了。那为什么你要说长大什么的？",
+			"is_option": false,
+			"next": 33
+		},
+		"33th": {
+			"name": "管家 司库奇",
+			"text": "少主，事情还没有结束。",
+			"is_option": false,
+			"next": 34
+		},
+		"34th": {
+			"name": "",
+			"text": "老师没有为难{child_name}，就那点工资也没什么必要和谁过不去。放学后{child_name}便像往常一样回家了。",
+			"is_option": false,
+			"next": 35
+		},
+		"35th": {
+			"name": "",
+			"text": "可是老师不为难他，自有当事人拦路。",
+			"is_option": false,
+			"next": 36
+		},
+		"36th": {
+			"name": "混混",
+			"portrait": "校霸",
+			"text": "嘿，你不会以为这件事就这么算了吧。",
+			"is_option": false,
+			"next": 37
+		},
+		"37th": {
+			"name": "{child_name}",
+			"text": "想挨揍就继续。",
+			"is_option": false,
+			"next": 38
+		},
+		"38th": {
+			"name": "混混",
+			"portrait": "校霸",
+			"text": "你……你给我等着，看我不叫人把你收拾了。",
+			"is_option": false,
+			"next": 39
+		},
+		"39th": {
+			"name": "{child_name}",
+			"text": "啊？你就这点本事吗？要是你一个人找我约架我还当你是个有骨气，这叫人讨厌，这种狗仗人势的家伙。",
+			"is_option": false,
+			"next": 40
+		},
+		"40th": {
+			"name": "混混",
+			"portrait": "校霸",
+			"text": "啊，对不起，我不是故意的。",
+			"is_option": false,
+			"next": 41
+		},
+		"41th": {
+			"name": "{child_name}",
+			"text": "你到底想怎样？我要回家了，没心情和你闹。",
+			"is_option": false,
+			"next": 42
+		},
+		"42th": {
+			"name": "混混",
+			"portrait": "校霸",
+			"text": "啊，那，那明天，放学别走。",
+			"is_option": false,
+			"next": 43
+		},
+		"43th": {
+			"name": "{player_name}",
+			"text": "{child_name}被欺负了吗？几个人，对面有背景吗？能教训回去吗？",
+			"is_option": false,
+			"next": 44
+		},
+		"44th": {
+			"name": "管家 司库奇",
+			"text": "不是那样，不过也好不到哪去。",
+			"is_option": false,
+			"next": 45
+		},
+		"45th": {
+			"name": "",
+			"text": "次日放学后。",
+			"is_option": false,
+			"next": 46
+		},
+		"46th": {
+			"name": "{child_name}",
+			"text": "快点开始吧，你一个人吗？",
+			"is_option": false,
+			"next": 47
+		},
+		"47th": {
+			"name": "混混",
+			"portrait": "校霸",
+			"text": "对。但是我不是想打你。我是想和你玩，但是你……",
+			"is_option": false,
+			"next": 48
+		},
+		"48th": {
+			"name": "{child_name}",
+			"text": "什么东西。要打架就快点，没事我就先回去了。",
+			"is_option": false,
+			"next": 49
+		},
+		"49th": {
+			"name": "混混",
+			"portrait": "校霸",
+			"text": "我不想被你看不起，如果我打赢你，你能陪我玩吗？",
+			"is_option": false,
+			"next": 50
+		},
+		"50th": {
+			"name": "{child_name}",
+			"text": "我不缺你这个朋友，你也不缺我这一个。",
+			"is_option": false,
+			"next": 51
+		},
+		"51th": {
+			"name": "混混",
+			"portrait": "校霸",
+			"text": "但是，但是，但是。",
+			"is_option": false,
+			"next": 52
+		},
+		"52th": {
+			"name": "",
+			"text": "一句话没说完，坏小孩却完全脸红了。似乎气血上头，迫不及待想打一架，又像是才经历过激烈的战斗一般，额头上还有几颗汗珠。",
+			"is_option": false,
+			"next": 53
+		},
+		"53th": {
+			"name": "混混",
+			"portrait": "校霸",
+			"text": "我喜欢你。",
+			"is_option": false,
+			"next": 54
+		},
+		"54th": {
+			"name": "{player_name}",
+			"text": "司库奇，你怎么知道得那么清楚。",
+			"is_option": false,
+			"next": 55
+		},
+		"55th": {
+			"name": "管家 司库奇",
+			"text": "因为小主人担心，对面会来很多人，和我说了这件事，让我在一旁看着。",
+			"is_option": false,
+			"next": 56
+		},
+		"56th": {
+			"name": "{player_name}",
+			"text": "{child_name}怎么不和我说，要我在，绝对把他狠狠地打一顿。",
+			"is_option": false,
+			"next": 57
+		},
+		"57th": {
+			"name": "管家 司库奇",
+			"text": "这大概就是小主人不找你的原因。我说他可能不好意思打扰你。",
+			"is_option": false,
+			"next": 58
+		},
+		"58th": {
+			"name": "{player_name}",
+			"text": "{child_name}确实很懂事。后来呢？",
+			"is_option": false,
+			"next": 59
+		},
+		"59th": {
+			"name": "管家 司库奇",
+			"text": "小主人骂他神经病然后走了。",
+			"is_option": false,
+			"next": 60
+		},
+		"60th": {
+			"name": "{player_name}",
+			"text": "不打他一顿真是便宜他了，哼。",
+			"is_option": false,
+			"next": -1
+		},
+		"61th": {
+			"name": "",
+			"text": "{child_name}默默忍受，不声不响，也没给欺负他的人什么回应，呜咽和眼泪也几乎没有了，像个木头人。",
+			"is_option": false,
+			"next": 62
+		},
+		"62th": {
+			"name": "",
+			"text": "有人说，面对霸凌的解法之一就是克制不做反应让对方没有兴趣……感受不到反馈，就会找别人去了。不过，这也都是可能，就像就是有人会因为「无趣」来欺负别人。",
+			"is_option": false,
+			"next": 63
+		},
+		"63th": {
+			"name": "",
+			"text": "大约半个月，一切就回归了平静。",
+			"is_option": false,
+			"next": -1
+		},
+		"64th": {
+			"name": "{player_name}",
+			"text": "（这几天抽空去一趟学校吧。）",
+			"is_option": false,
+			"next": -1
+		}
+	},
+
+	"这几天-去学校": {
+		"0th": {
+			"name": "",
+			"text": "你挑了个下午，去了{child_name}读书的学校。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "",
+			"text": "你打算从哪里下手？",
+			"is_option": true,
+			"options": [
+				{
+					"text": "找老师。",
+					"condition": {
+						"description": "智识为你最高的属性时解锁",
+						"top_attr": {
+							"who": "player",
+							"one_of": [
+								"int"
+							]
+						}
+					},
+					"next": 2
+				},
+				{
+					"text": "找那帮坏孩子。",
+					"condition": {
+						"description": "力量或体魄为你最高的属性时解锁",
+						"top_attr": {
+							"who": "player",
+							"one_of": [
+								"str",
+								"bod"
+							]
+						}
+					},
+					"next": 10
+				},
+				{
+					"text": "找几个看起来友善的学生。",
+					"condition": {
+						"description": "容貌为你最高的属性时解锁",
+						"top_attr": {
+							"who": "player",
+							"one_of": [
+								"app"
+							]
+						}
+					},
+					"next": 19
+				},
+				{
+					"text": "直接去校长室。",
+					"condition": {
+						"description": "贵族等级 2 及以上解锁",
+						"nobility": {
+							">": 2
+						}
+					},
+					"next": 25
+				}
+			]
+		},
+		"2th": {
+			"name": "",
+			"text": "你来到学校，要求见{child_name}的老师。办公室里，一位中年女教师放下手中的笔，不耐烦地看着你。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "教师",
+			"text": "这位先生，您有什么事。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "",
+			"text": "你把{child_name}身上的伤告诉了她。",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "教师",
+			"text": "这，可能是，同学间闹着玩吧。{child_name}也是个男孩子，对吧……",
+			"is_option": false,
+			"next": 6
+		},
+		"6th": {
+			"name": "",
+			"text": "辩论，就是要晓之以理，动之以情。你把这个问题引向对学校秩序的影响，并且这是暗示老师的责任，提及了教师的惩戒权，不应当不作为……",
+			"is_option": false,
+			"next": 7
+		},
+		"7th": {
+			"name": "",
+			"text": "老师泰然自若。",
+			"is_option": false,
+			"next": 8
+		},
+		"8th": {
+			"name": "",
+			"text": "你只好用贵族的处理方式了。",
+			"is_option": false,
+			"effect": {
+				"money": -5
+			},
+			"next": 9
+		},
+		"9th": {
+			"name": "",
+			"text": "你给了她无法拒绝的理由，老师承诺会警告那几个坏孩子，并加强对{child_name}的关注。",
+			"is_option": false,
+			"next": 35
+		},
+		"10th": {
+			"name": "",
+			"text": "在想着找谁打听打听之前，正巧你在操场边找到了几个孩子，他们正围着一个小朋友推搡。",
+			"is_option": false,
+			"next": 11
+		},
+		"11th": {
+			"name": "",
+			"text": "最大的那人手里还攥着个不知道哪来的煤块，正要往他脸上涂。",
+			"is_option": false,
+			"next": 12
+		},
+		"12th": {
+			"name": "",
+			"text": "你直勾勾走向领头的大个子，听到有大人靠近，他把煤一丢，看清不是老师，又挑衅地扬起下巴。",
+			"is_option": false,
+			"next": 13
+		},
+		"13th": {
+			"name": "混混",
+			"portrait": "校霸",
+			"text": "怎么，想给他出头？",
+			"is_option": false,
+			"next": 14
+		},
+		"14th": {
+			"name": "",
+			"text": "你没说什么，只是把那块煤捡起，握在掌心，随后咔吧一声，裂纹从你的指缝间蔓延开来。",
+			"is_option": false,
+			"next": 15
+		},
+		"15th": {
+			"name": "",
+			"text": "直到碎块和煤屑悉数落下，你握着煤炭的拳头贴他脸贴得更近，全都掉在他的鞋子上。",
+			"is_option": false,
+			"next": 16
+		},
+		"16th": {
+			"name": "",
+			"text": "小头头明显被吓住，其他孩子也散开。",
+			"is_option": false,
+			"next": 17
+		},
+		"17th": {
+			"name": "",
+			"text": "嗯……但这些人，会刚好是欺负了{child_name}的人吗？这个答案已经没有必要了。",
+			"is_option": false,
+			"next": 18
+		},
+		"18th": {
+			"name": "",
+			"text": "几天后，{child_name}有一个会为他出头的人的消息不胫而走。",
+			"is_option": false,
+			"next": 35
+		},
+		"19th": {
+			"name": "",
+			"text": "你在走廊拦下了几个看起来友善的孩子，那些同学被你叫时，明显有点紧张。",
+			"is_option": false,
+			"next": 20
+		},
+		"20th": {
+			"name": "{player_name}",
+			"text": "我听说，最近有些孩子总在欺负{child_name}，可以告诉大哥哥，你们知道些什么吗？",
+			"is_option": false,
+			"next": 21
+		},
+		"21th": {
+			"name": "",
+			"text": "几个孩子互相看了看，没人开口，盯着互相看也不好意思。大概在想这书包可真书包，这地板可真地板。",
+			"is_option": false,
+			"next": 22
+		},
+		"22th": {
+			"name": "{player_name}",
+			"text": "我不需要你们去打架，或者带我去当面指认谁，只需要有人告诉我，到底发生了什么，以及如果老师问起来，你们愿不愿意悄悄地说句实话。",
+			"is_option": false,
+			"next": 23
+		},
+		"23th": {
+			"name": "",
+			"text": "自己应该是安全的，偷偷地讲就不会被报复，小小的善良的心，再加上一点点小糖果的作用……",
+			"is_option": false,
+			"next": 24
+		},
+		"24th": {
+			"name": "",
+			"text": "几个同学愿意作证，还有聪明的帮忙在其他班之间传话，坏孩子们有反过来在被排挤的苗头，他们因此收敛了。",
+			"is_option": false,
+			"next": 35
+		},
+		"25th": {
+			"name": "",
+			"text": "你直接来到校长室，校长认出了{player_name}的姓氏，这态度比老师都还恭敬几分。",
+			"is_option": false,
+			"next": 26
+		},
+		"26th": {
+			"name": "校长",
+			"text": "{player_name}先生！请坐请坐。",
+			"is_option": false,
+			"next": 27
+		},
+		"27th": {
+			"name": "",
+			"text": "校长绕过书桌，为你拉开椅子，又对门外喊了一声送茶来。",
+			"is_option": false,
+			"next": 28
+		},
+		"28th": {
+			"name": "{player_name}",
+			"text": "校长先生客气了，许久不见，您还是这样精神。",
+			"is_option": false,
+			"next": 29
+		},
+		"29th": {
+			"name": "",
+			"text": "恰当的身份，相称的人，一些拉近关系的过往寒暄……",
+			"is_option": false,
+			"next": 30
+		},
+		"30th": {
+			"name": "校长",
+			"text": "哪里哪里……{player_name}先生今日亲自前来，想必有什么事？",
+			"is_option": false,
+			"next": 31
+		},
+		"31th": {
+			"name": "{player_name}",
+			"text": "也不是什么大事，只是今天来贵校，见了不少学生，有些感慨。",
+			"is_option": false,
+			"next": 32
+		},
+		"32th": {
+			"name": "{player_name}",
+			"text": "要是贵校的学生，都能像校长这般的绅士，那该多好。",
+			"is_option": false,
+			"next": 33
+		},
+		"33th": {
+			"name": "",
+			"text": "校长脸上笑容一僵，很快他也不再绕弯，你简述情况后，校长摸着胡子，严肃的点了点头。",
+			"is_option": false,
+			"next": 34
+		},
+		"34th": {
+			"name": "校长",
+			"text": "我明白您的意思了，您放心，我这两天就查清楚，肯定会公道又妥善处理给您交代。",
+			"is_option": false,
+			"next": 35
+		},
+		"35th": {
+			"name": "",
+			"text": "一天后的晚上，该是{child_name}睡觉的时间，他敲响书房的门，坐在你边上低头玩着衣角。",
+			"is_option": false,
+			"next": 36
+		},
+		"36th": {
+			"name": "{child_name}",
+			"text": "其实……我自己也可以的，但是，谢谢你，先生。",
+			"is_option": false,
+			"next": 37
+		},
+		"37th": {
+			"name": "",
+			"text": "男孩耳朵红红的，眼睛偷偷瞟你。",
+			"is_option": false,
+			"next": 38
+		},
+		"38th": {
+			"name": "{player_name}",
+			"text": "（少见的，可爱的风景呢，要是说出来的话，会羞羞恼恼不承认的吧。）",
+			"is_option": false,
+			"next": 39
+		},
+		"39th": {
+			"name": "{player_name}",
+			"text": "好好好，我能干又厉害的小朋友。",
+			"is_option": false,
+			"next": 40
+		},
+		"40th": {
+			"name": "",
+			"text": "你就只是rua了一把他的头发，逗得他红扑扑的回到了房间。",
+			"is_option": false,
+			"next": -1
+		}
+	}
+}

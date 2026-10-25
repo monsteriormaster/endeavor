@@ -1,0 +1,331 @@
+{
+	"毕业作品-选择方向": {
+		"0th": {
+			"name": "",
+			"text": "{child_name}就要从学院毕业了，他需要一副倾尽全力的作品，作为完成受训阶段，可以作为独立画家的证明。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "",
+			"text": "考虑过往的故事，你敲打了一下执拗的{child_name}，至少这次别增加你的肖像了，装傻也不行！",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "",
+			"text": "优秀的毕业生们，还会在这里去争一争金奖。如果能受导师们认可，这就是叩开上流社会大门的敲门砖。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "",
+			"text": "嘛，不过有你在呢，{child_name}还不急着担心那些更远的东西。长久以来，{child_name}的画笔已经走向了某条道路。而你依然可以为{child_name}提供指引。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "",
+			"text": "（提醒：接下来将决定{child_name}的毕业作品，同时也确立{child_name}的主攻风格和流派，这将无法更改。每种风格都有其独一无二的特点。得益于学院打下的坚实基础，{child_name}依然能以70%的效能创作其它风格的绘画。在部分需求较高的场合中，这份差距或许会凸显出来。）",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "{player_name}",
+			"text": "先定下画面的骨头——写实，还是抽象？",
+			"is_option": true,
+			"options": [
+				{
+					"text": "写实——经典、严谨、稳妥。永远受主流青睐的安全坦途。",
+					"effect": {
+						"child_tags": [
+							"毕业作品·写实"
+						]
+					},
+					"next": 6
+				},
+				{
+					"text": "抽象——挣脱表象与常规，这注定带来争议和危险。",
+					"effect": {
+						"child_tags": [
+							"毕业作品·抽象"
+						]
+					},
+					"next": 6
+				}
+			]
+		},
+		"6th": {
+			"name": "{player_name}",
+			"text": "再看灵魂——人，还是宗教神话？",
+			"is_option": true,
+			"options": [
+				{
+					"text": "人——聚于尘世，形形色色的血肉之躯，是你，也是我。",
+					"effect": {
+						"child_tags": [
+							"毕业作品·人"
+						]
+					},
+					"next": 7
+				},
+				{
+					"text": "宗教神话——着眼神圣和史诗，仰望崇高吧。",
+					"effect": {
+						"child_tags": [
+							"毕业作品·宗教神话"
+						]
+					},
+					"next": 7
+				}
+			]
+		},
+		"7th": {
+			"name": "",
+			"text": "{child_name}点了点头，把这件事牢牢记住。",
+			"is_option": false,
+			"next": -1
+		}
+	},
+
+	"毕业作品-毕业展": {
+		"0th": {
+			"name": "",
+			"text": "几个月后，你受邀去看美术馆的毕业展中心。明天的公众开放日，会成为市民们的娱乐狂欢。今夜，这里汇聚了最苛刻的评论家，和最顶级的赞助人。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "",
+			"text": "你看着走在你身边，穿着挺括正装的{child_name}。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "{player_name}",
+			"text": "紧张吗？这是你的画第一次面向社会各界吧。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "{child_name}",
+			"text": "不，只要您在我身边，就没有什么好怕的。而且……",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "",
+			"text": "{child_name}澄澈的眼睛正注视着你。",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "{child_name}",
+			"text": "您知道的，对我来说，我真正想要的观众，就算只有您一人，也足够了。",
+			"is_option": false,
+			"next": 6
+		},
+		"6th": {
+			"name": "",
+			"text": "你哑然失笑，拍拍{child_name}的肩膀，步入了大厅。在展厅的一角，你找到了{child_name}的画作。",
+			"is_option": false,
+			"nexts": [
+				{
+					"condition": {
+						"description": "写实 ≥ 抽象，人 ≥ 宗教神话（古典学院派）",
+						"child": {
+							"*": {
+								"tags": [
+									"毕业作品·写实",
+									"毕业作品·人"
+								]
+							}
+						}
+					},
+					"next": 7
+				},
+				{
+					"condition": {
+						"description": "写实 ≥ 抽象，宗教神话 ＞ 人（新古典主义）",
+						"child": {
+							"*": {
+								"tags": [
+									"毕业作品·写实",
+									"毕业作品·宗教神话"
+								]
+							}
+						}
+					},
+					"next": 10
+				},
+				{
+					"condition": {
+						"description": "抽象 ＞ 写实，人 ＞ 宗教神话（表现主义/立体派）",
+						"child": {
+							"*": {
+								"tags": [
+									"毕业作品·抽象",
+									"毕业作品·人"
+								]
+							}
+						}
+					},
+					"next": 13
+				},
+				{
+					"condition": {
+						"description": "抽象 ＞ 写实，宗教神话 ＞ 人（象征主义/神秘主义）",
+						"child": {
+							"*": {
+								"tags": [
+									"毕业作品·抽象",
+									"毕业作品·宗教神话"
+								]
+							}
+						}
+					},
+					"next": 17
+				},
+				{
+					"next": 7
+				}
+			]
+		},
+		"7th": {
+			"name": "",
+			"text": "你看到了一副群像油画。",
+			"is_option": false,
+			"next": 8
+		},
+		"8th": {
+			"name": "",
+			"text": "盛装打扮的贵妇人，精明睿智的商人，佝偻身躯的劳工，无家可归的小报童……不同人眼中的疲惫，是那么的逼真。",
+			"is_option": false,
+			"next": 9
+		},
+		"9th": {
+			"name": "",
+			"text": "路过的观众们也毫不吝啬的给出惊叹。",
+			"is_option": false,
+			"effect": {
+				"child_tags": [
+					"古典学院派",
+					"毕业作品金奖的可能"
+				]
+			},
+			"next": 21
+		},
+		"10th": {
+			"name": "",
+			"text": "一片压抑的阴沉天空。神圣的光芒破开云层直射而下。",
+			"is_option": false,
+			"next": 11
+		},
+		"11th": {
+			"name": "",
+			"text": "带着悲悯的天使，就这么降临在信者的面前。",
+			"is_option": false,
+			"next": 12
+		},
+		"12th": {
+			"name": "",
+			"text": "现场的几位牧师教士，像画中的信徒一样，一同流下泪痕。",
+			"is_option": false,
+			"effect": {
+				"child_tags": [
+					"新古典主义",
+					"毕业作品金奖的可能"
+				]
+			},
+			"next": 21
+		},
+		"13th": {
+			"name": "",
+			"text": "画面带来了极度的冲击与些许不安。",
+			"is_option": false,
+			"next": 14
+		},
+		"14th": {
+			"name": "",
+			"text": "没有符合真人比例的人类，用扭曲的线条，色块的拼接，解构了一场贵族的舞会。",
+			"is_option": false,
+			"next": 15
+		},
+		"15th": {
+			"name": "",
+			"text": "夸张化的脸庞，像是痛苦的面具，也像放纵的漩涡。",
+			"is_option": false,
+			"next": 16
+		},
+		"16th": {
+			"name": "",
+			"text": "不少导师们不赞同的皱眉，另一些年轻的评论家激动得颤抖。",
+			"is_option": false,
+			"effect": {
+				"child_tags": [
+					"表现主义/立体派"
+				]
+			},
+			"next": 21
+		},
+		"17th": {
+			"name": "",
+			"text": "画面被巨大的、旋转的金黄光柱与深渊般的暗影割裂。",
+			"is_option": false,
+			"next": 18
+		},
+		"18th": {
+			"name": "",
+			"text": "悬浮在中心的光团，连接着燃烧的荆棘，又像是跃动的神经与血管。",
+			"is_option": false,
+			"next": 19
+		},
+		"19th": {
+			"name": "",
+			"text": "该说是前卫的审美吗，大概会是小众但狂热的领域。",
+			"is_option": false,
+			"next": 20
+		},
+		"20th": {
+			"name": "",
+			"text": "嘛，没有任何明确的标识，就不会被那些牧师指责为异端了。",
+			"is_option": false,
+			"effect": {
+				"child_tags": [
+					"象征主义/神秘主义"
+				]
+			},
+			"next": 21
+		},
+		"21th": {
+			"name": "",
+			"text": "你的心里升起一种震撼和失落交织的复杂情绪。那个孩子，那个承载了你未竟梦想的孩子，真真切切的长出了丰满的羽翼。",
+			"is_option": false,
+			"next": 22
+		},
+		"22th": {
+			"name": "",
+			"text": "在技法上，你已经没有可以指导{child_name}的东西了。",
+			"is_option": false,
+			"next": 23
+		},
+		"23th": {
+			"name": "{player_name}",
+			"text": "（如果，是我继续深造几年的话。）",
+			"is_option": false,
+			"next": 24
+		},
+		"24th": {
+			"name": "{player_name}",
+			"text": "（……）",
+			"is_option": false,
+			"next": 25
+		},
+		"25th": {
+			"name": "{player_name}",
+			"text": "（至少，{child_name}也不用为了生计，迫切地讨好金主了。）",
+			"is_option": false,
+			"next": -1
+		}
+	}
+}

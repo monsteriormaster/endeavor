@@ -1,0 +1,16 @@
+{
+	"_comment": "商业街打听池（D-DOC14）。打听触发器 resolver=inquiry 结算时从本池随机抽一条「未抽过」的事件剧情；池空→随机给 秘氛/困惑/博学。事件 id 落地后记入 Player.inquiry_drawn（随机不重复）。",
+	"打听家事A": {
+		"name": "打听家事A",
+		"condition": { "day": { "min": 1, "max": 3 } },
+		"plot": { "path": "res://resoures/plot/rite/商业街.json", "name": "打听家事A" },
+		"hero_plot": { "path": "res://resoures/plot/rite/商业街.json", "name": "打听家事A_主角" }
+	},
+	"打听法拉叶事迹": {
+		"name": "打听法拉叶事迹",
+		"_note": "2026-10-22：监狱期打听入口。第 2 天起可抽（报纸 day2 登「古画失窃案疑犯就逮」），不设上限——抽过一次就进 Player.inquiry_drawn，不会再抽。剧情末句落 tag「知道法拉叶的事迹」，供 prison.json 的招募话术解锁。",
+		"condition": { "day": { "min": 2 } },
+		"plot": { "path": "res://resoures/plot/rite/商业街.json", "name": "打听法拉叶事迹" },
+		"hero_plot": { "path": "res://resoures/plot/rite/商业街.json", "name": "打听法拉叶事迹_主角" }
+	}
+}

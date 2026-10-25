@@ -1,2 +1,28 @@
-# Godot 4+ specific ignores
+# Godot 4+
 .godot/
+*.translation
+
+# 构建与导出产物
+build/
+*.exe
+*.pck
+
+# 大体积二进制（不进版本库，见 README「素材说明」）
+# 音频 wav 合计约 130MB，仅影响 BGM 播放，不影响运行；字体保留以保证中文正常显示
+demo_kit/*.zip
+audio/**/*.wav
+art/**/*.log
+
+# 本地环境与工具数据
+.workbuddy/
+.idea/
+*.log
+
+# 临时文件
+_tmp_*.txt
+_trig_list.txt
+_schema_comment.txt
+
+# 系统文件
+.DS_Store
+Thumbs.db

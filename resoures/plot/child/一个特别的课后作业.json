@@ -1,0 +1,633 @@
+{
+	"一个特别的课后作业": {
+		"0th": {
+			"name": "",
+			"text": "在你泡在各种社交季的请柬和认捐函里，进行着重复枯燥的机械劳动时，管家敲响了书房的门。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"课后作业"
+				]
+			},
+			"next": 1
+		},
+		"1th": {
+			"name": "管家 司库奇",
+			"text": "少主，我见小少爷在你门外徘徊了好久，始终没有敲门，刚才回去了。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "{player_name}",
+			"text": "这不是挺好，总不能整天在屋里坐着，走走多好啊。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "管家 司库奇",
+			"text": "咳咳，听说学校那边留了一个家庭作业，需要家长协助，我想他是想和您一起，又不好意思当面说。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "",
+			"text": "你看着司库奇，心想着这老管家消息总是这么灵通，{child_name}都还没和你开口，他就先知道前因后果了，真是什么都瞒不过他的眼睛。",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "{player_name}",
+			"text": "那我去看看吧，桌上这些就先搁着，反正多半是些无聊宴会。",
+			"is_option": false,
+			"next": 6
+		},
+		"6th": {
+			"name": "管家 司库奇",
+			"text": "请放心，我会替您归类整理好的。",
+			"is_option": false,
+			"next": 7
+		},
+		"7th": {
+			"name": "{player_name}",
+			"text": "（没有后顾之忧了，今晚时间可以全都交给{child_name}了。）",
+			"is_option": false,
+			"next": 8
+		},
+		"8th": {
+			"name": "",
+			"text": "你去到{child_name}的房间，{child_name}开门见到你，很是意外的样子。",
+			"is_option": false,
+			"next": 9
+		},
+		"9th": {
+			"name": "{child_name}",
+			"text": "先生？您不是还在书房忙吗，发生什么事了吗？",
+			"is_option": false,
+			"next": 10
+		},
+		"10th": {
+			"name": "{player_name}",
+			"text": "没有什么事就不能找你吗？",
+			"is_option": false,
+			"next": 11
+		},
+		"11th": {
+			"name": "",
+			"text": "你笑得灿烂，{child_name}也不禁灿烂起来。",
+			"is_option": false,
+			"next": 12
+		},
+		"12th": {
+			"name": "{child_name}",
+			"text": "我还没有完成作业，先生晚点再来检查吧。",
+			"is_option": false,
+			"next": 13
+		},
+		"13th": {
+			"name": "",
+			"text": "{child_name}站起来，挡在了书桌前似乎是不想让你发现身后的东西。不过已经从管家那里知道了作业，你已经打定主意要蛮不讲理，肆无忌惮了。",
+			"is_option": false,
+			"next": 14
+		},
+		"14th": {
+			"name": "{player_name}",
+			"text": "这是什么？手工吗？我也喜欢，让我也一起呗。",
+			"is_option": false,
+			"next": 15
+		},
+		"15th": {
+			"name": "",
+			"text": "{child_name}有点意外从你口中听到这件事，在他眼里你日理万机，不可以拿自己的事打扰。作为一个贵族你确实有很多应酬，可是在{child_name}前，他们都不值一提。",
+			"is_option": false,
+			"next": 16
+		},
+		"16th": {
+			"name": "",
+			"text": "{child_name}有些不好意思的让开了身子，露出了被挡住的大半个书桌。书桌上有着一叠白纸，和一本封面画着动物，家具，建筑的小册子。",
+			"is_option": false,
+			"next": 17
+		},
+		"17th": {
+			"name": "",
+			"text": "你翻开小册子看了看，里面是各种各样的带有图解步骤，黑白线稿的折纸手工手册。",
+			"is_option": false,
+			"next": 18
+		},
+		"18th": {
+			"name": "{player_name}",
+			"text": "具体的说，作业有什么要求吗，数量或者题材之类的。",
+			"is_option": false,
+			"next": 19
+		},
+		"19th": {
+			"name": "{child_name}",
+			"text": "嗯嗯？没有的，先生，允许自由发挥，一只小猫小狗也是可以的。",
+			"is_option": false,
+			"next": 20
+		},
+		"20th": {
+			"name": "{player_name}",
+			"text": "（那样的话，会需要那么多纸吗？）",
+			"is_option": false,
+			"next": 21
+		},
+		"21th": {
+			"name": "{player_name}",
+			"text": "{child_name}有想法了吗，想做一间房子，还是动物。",
+			"is_option": false,
+			"next": 22
+		},
+		"22th": {
+			"name": "{child_name}",
+			"text": "我看先生一直在忙，本来想做几只青蛙之类的应付一下……",
+			"is_option": false,
+			"next": 23
+		},
+		"23th": {
+			"name": "",
+			"text": "{child_name}停了一停，悄悄的看了你两眼，看你没有离开也没有打断，继续说了下去。",
+			"is_option": false,
+			"next": 24
+		},
+		"24th": {
+			"name": "{child_name}",
+			"text": "现在，有先生在的话，我觉得可以挑战一下做出一个动物园了，或者，或者还是几只小动物也可以！",
+			"is_option": false,
+			"next": 25
+		},
+		"25th": {
+			"name": "{player_name}",
+			"text": "那我们快开始吧，明天就要回学校了。",
+			"is_option": false,
+			"next": 26
+		},
+		"26th": {
+			"name": "",
+			"text": "从白纸变成动物折纸，还缺了不少道具，你先去了你的画室一趟，取来了水彩笔，蜡笔，彩铅，剪刀，这下什么也不缺了。",
+			"is_option": false,
+			"next": 27
+		},
+		"27th": {
+			"name": "",
+			"text": "团队合作需要分工，你是想着，如果{child_name}更心灵手巧的话，就你来给纸画好花纹和色彩，由他折出动物的造型。不过{child_name}坚持地想看你从头到尾完成的动物，感觉他的眼睛正在变成星星一样闪亮。",
+			"is_option": false,
+			"next": 28
+		},
+		"28th": {
+			"name": "",
+			"text": "你一时忍俊不禁。",
+			"is_option": false,
+			"next": 29
+		},
+		"29th": {
+			"name": "{player_name}",
+			"text": "（{child_name}总归是小孩子，这样也好，本来也就是小孩子。）",
+			"is_option": false,
+			"next": 30
+		},
+		"30th": {
+			"name": "",
+			"text": "你拿起画笔，也拿起一张白纸。",
+			"is_option": false,
+			"nexts": [
+				{
+					"condition": {
+						"description": "分支1：你的体魄不高",
+						"attrs": {
+							"bod": {
+								"<": 5
+							}
+						}
+					},
+					"next": 31
+				},
+				{
+					"condition": {
+						"description": "分支2：你的体魄好，但你与孩子合起来也只是够用",
+						"attrs": {
+							"bod": {
+								">": 5
+							}
+						},
+						"attr_sum": {
+							"attr": "bod",
+							"of": [
+								"player",
+								"child"
+							],
+							"<": 11
+						}
+					},
+					"next": 46
+				},
+				{
+					"condition": {
+						"description": "分支3：你的体魄好，且你与孩子合起来绰绰有余",
+						"attrs": {
+							"bod": {
+								">": 5
+							}
+						},
+						"attr_sum": {
+							"attr": "bod",
+							"of": [
+								"player",
+								"child"
+							],
+							">": 11
+						}
+					},
+					"next": 61
+				},
+				{
+					"next": 46
+				}
+			]
+		},
+		"31th": {
+			"name": "",
+			"text": "差生文具多，{player_name}的内心正这么想着。",
+			"is_option": false,
+			"next": 32
+		},
+		"32th": {
+			"name": "",
+			"text": "对你来说，尽管和你之前相当时间练习的，什么调配松节油，光影和透视，在画布上作画不同。在白纸上用小朋友的启蒙画具，画好色块一样的简单的图案绝不是难题。",
+			"is_option": false,
+			"next": 33
+		},
+		"33th": {
+			"name": "",
+			"text": "事实也确实如此，折纸就是另一回事了。你没有眼神不好的问题，但是每次对折都会压偏了线。你没有自信得不遵守参考的毛病，那谁能解释一下，为什么眼睛会到脖子下面？你当然也没有跛脚的问题，所以为什么它们四脚不平，放到纸板上就倒下来啊？",
+			"is_option": false,
+			"next": 34
+		},
+		"34th": {
+			"name": "{player_name}",
+			"text": "……啊，算了，拆了重新做吧。",
+			"is_option": false,
+			"next": 35
+		},
+		"35th": {
+			"name": "{child_name}",
+			"text": "不，不用重做，先生。",
+			"is_option": false,
+			"next": 36
+		},
+		"36th": {
+			"name": "",
+			"text": "听到你的话，一边还在做自己的动物的{child_name}赶忙双手过来护住你的歪扭猫猫和歪脖长颈鹿。只是看了一眼。",
+			"is_option": false,
+			"next": 37
+		},
+		"37th": {
+			"name": "{child_name}",
+			"text": "噗嗤。",
+			"is_option": false,
+			"next": 38
+		},
+		"38th": {
+			"name": "{child_name}",
+			"text": "很，可爱，先生，我觉得它特别可爱，而且肯定跟其他人做的比，是独一无二的。",
+			"is_option": false,
+			"next": 39
+		},
+		"39th": {
+			"name": "{child_name}",
+			"text": "（以后这种的细致活，就让先生交给我来完成吧。）",
+			"is_option": false,
+			"next": 40
+		},
+		"40th": {
+			"name": "",
+			"text": "既然立不住，{child_name}决定折一些小草，帮它作为支撑。这下{child_name}也同意了你之前的提议，他请你在剪出小一圈的纸，画上相同的图案，最后由他来折出形体。",
+			"is_option": false,
+			"next": 41
+		},
+		"41th": {
+			"name": "",
+			"text": "你们又花了一些时间，最后，在绿色的纸板上，两个不得不“拄拐”的动物身边，都簇拥着灵巧的稳当的两三只小崽子了。",
+			"is_option": false,
+			"next": 42
+		},
+		"42th": {
+			"name": "{child_name}",
+			"text": "这样子，猫爸爸和长颈鹿爸爸，他们都有家人了。",
+			"is_option": false,
+			"next": 43
+		},
+		"43th": {
+			"name": "{player_name}",
+			"text": "话说，为什么说是爸爸，折纸真的能有性别之分吗？",
+			"is_option": false,
+			"next": 44
+		},
+		"44th": {
+			"name": "",
+			"text": "{child_name}没有回答，只是抬头对着你狡黠地笑了笑。",
+			"is_option": false,
+			"next": 45
+		},
+		"45th": {
+			"name": "",
+			"text": "今晚虽然没有做出巧夺天工的作品，但是看{child_name}还是挺开心的，这样就好吧。",
+			"is_option": false,
+			"effect": {
+				"child_attrs": {
+					"app": 1
+				},
+				"child_num_tag_add": {
+					"独立": 1,
+					"依恋": 1
+				}
+			},
+			"next": -1
+		},
+		"46th": {
+			"name": "",
+			"text": "你拿起刚才涂好的纸张，脑子里回忆了一下折纸的步骤。对你来说，不仅在纸上作画不是难题，要把它们折的标致也是。",
+			"is_option": false,
+			"next": 47
+		},
+		"47th": {
+			"name": "",
+			"text": "清脆的翻折声，把头部一压，翻出它的小尾巴。一只红红的小狐狸就完成了，它稳当的立在桌上。",
+			"is_option": false,
+			"next": 48
+		},
+		"48th": {
+			"name": "{player_name}",
+			"text": "咳咳。",
+			"is_option": false,
+			"next": 49
+		},
+		"49th": {
+			"name": "",
+			"text": "还在折大象的{child_name}被你刻意的咳嗽声吸引，放下手里的折纸，往你这边看来。他一下子就被那小狐狸勾住了，眼睛睁得大大的，发出一声长长的惊叹。",
+			"is_option": false,
+			"next": 50
+		},
+		"50th": {
+			"name": "{child_name}",
+			"text": "哇，先生，你折得简直和册子上一模一样，甚至更漂亮，好厉害！",
+			"is_option": false,
+			"next": 51
+		},
+		"51th": {
+			"name": "{player_name}",
+			"text": "是吧，是吧？",
+			"is_option": false,
+			"next": 52
+		},
+		"52th": {
+			"name": "",
+			"text": "不枉你的显摆，享受了一下孩子真心的夸赞，你的谦虚才姗姗来迟。",
+			"is_option": false,
+			"next": 53
+		},
+		"53th": {
+			"name": "{player_name}",
+			"text": "照猫画虎罢了，既然是家庭合作，就不能让它孤零零的站在这里。",
+			"is_option": false,
+			"next": 54
+		},
+		"54th": {
+			"name": "",
+			"text": "你鼓励着{child_name}一起继续作业，既然满足了{child_name}想看你做完整动物的希望，你有意把设计和折纸的重心都交给{child_name}。设计动物的花纹，还有册子上没有教的，草地和栅栏的尝试。",
+			"is_option": false,
+			"next": 55
+		},
+		"55th": {
+			"name": "",
+			"text": "在折叠太复杂的东西时{child_name}也会卡壳，不过这时候你会给出指导。随着时间推移，纸板上的动物越来越丰富，狮子，老虎，长颈鹿，狐狸，大象……一座井然有序的动物园就这么完成了。",
+			"is_option": false,
+			"next": 56
+		},
+		"56th": {
+			"name": "{player_name}",
+			"text": "大功告成了，这么看成品还是很不错的吧，交作业绰绰有余了。",
+			"is_option": false,
+			"next": 57
+		},
+		"57th": {
+			"name": "{child_name}",
+			"text": "这也是多亏了先生的帮忙。",
+			"is_option": false,
+			"next": 58
+		},
+		"58th": {
+			"name": "",
+			"text": "{child_name}脸上带着满满的喜悦和成就感，揉了揉发酸的手腕，把动物园往里推到书桌最安全的地方。",
+			"is_option": false,
+			"next": 59
+		},
+		"59th": {
+			"name": "{player_name}",
+			"text": "累了吗，嗯，那就喝杯热牛奶，然后早点休息吧。",
+			"is_option": false,
+			"next": 60
+		},
+		"60th": {
+			"name": "",
+			"text": "在等牛奶的时候，你和{child_name}一起坐在床边，有一句没一句的闲聊着。看着他放松的笑容，今晚不仅完成了一项出色的作业，想必他的空间构想与动手能力，也在这份喜悦中得到了扎实的锻炼吧。",
+			"is_option": false,
+			"effect": {
+				"child_attrs": {
+					"int": 1,
+					"bod": 1
+				},
+				"child_num_tag_add": {
+					"依恋": 1
+				}
+			},
+			"next": -1
+		},
+		"61th": {
+			"name": "",
+			"text": "你拿起刚才涂好的纸张，脑子里回忆了一下折纸的步骤。对你来说，不仅在纸上作画不是难题，要把它们折的标致也是。",
+			"is_option": false,
+			"next": 62
+		},
+		"62th": {
+			"name": "",
+			"text": "清脆的翻折声，把头部一压，翻出它的小尾巴。一只红红的小狐狸就完成了，它稳当的立在桌上。",
+			"is_option": false,
+			"next": 63
+		},
+		"63th": {
+			"name": "{player_name}",
+			"text": "咳咳。",
+			"is_option": false,
+			"next": 64
+		},
+		"64th": {
+			"name": "",
+			"text": "还在折大象的{child_name}被你刻意的咳嗽声吸引，放下手里的折纸，往你这边看来。他一下子就被那小狐狸勾住了，眼睛睁得大大的，发出一声长长的惊叹。",
+			"is_option": false,
+			"next": 65
+		},
+		"65th": {
+			"name": "{child_name}",
+			"text": "哇，先生，它简直就像活过来了一样，这也太神奇了。",
+			"is_option": false,
+			"next": 66
+		},
+		"66th": {
+			"name": "",
+			"text": "看着你大显身手，{child_name}眼里的惊叹很快转变成跃跃欲试的光芒，像是不甘落后，又觉得你们一起的话可以挑战更高难度的。",
+			"is_option": false,
+			"next": 67
+		},
+		"67th": {
+			"name": "",
+			"text": "接下来的时间里，这间卧室仿佛变成了魔法工坊，你们不需要太多的交流，你们想的就能通过你们的巧手实现。",
+			"is_option": false,
+			"nexts": [
+				{
+					"condition": {
+						"description": "孩子带 gifted 标签",
+						"child": {
+							"*": {
+								"tags": [
+									"gifted"
+								]
+							}
+						}
+					},
+					"next": 68
+				},
+				{
+					"next": 71
+				}
+			]
+		},
+		"68th": {
+			"name": "{child_name}",
+			"text": "{child_name}也展现了惊人的灵巧与色彩天赋，他不仅能迅速跟上你的节奏，还能提出一些天马行空的巧思。",
+			"is_option": false,
+			"next": 69
+		},
+		"69th": {
+			"name": "{child_name}",
+			"text": "如果我们在硬纸板上弯几根细铁丝，是不是就可以把云挂在空中了，就像他们真的在飘一样？",
+			"is_option": false,
+			"next": 70
+		},
+		"70th": {
+			"name": "{player_name}",
+			"text": "好主意，如果再给云的边缘涂上一点淡黄色，就好像是被阳光照着的样子。",
+			"is_option": false,
+			"next": 75
+		},
+		"71th": {
+			"name": "",
+			"text": "几个陆地动物完成之后，你总觉得缺点什么，像是水里游的，天上飞的。你在脑子里快要构建好复杂的立体结构了。",
+			"is_option": false,
+			"next": 72
+		},
+		"72th": {
+			"name": "{player_name}",
+			"text": "（不，不对，这样的话就像我在包办一切了吧，还是该引导{child_name}思考，看他的想法。）",
+			"is_option": false,
+			"next": 73
+		},
+		"73th": {
+			"name": "",
+			"text": "你停下手里的动作，问{child_name}关于下一步的想法。{child_name}抿着嘴巴思考了一会儿，眼睛亮了起来。",
+			"is_option": false,
+			"next": 74
+		},
+		"74th": {
+			"name": "{child_name}",
+			"text": "嗯……嗯……先生，地上已经满了，我们可以做一个水池，然后做天空，对吧？",
+			"is_option": false,
+			"next": 75
+		},
+		"75th": {
+			"name": "",
+			"text": "经由你们的联手，这份作品呈现了不可思议的层次感。",
+			"is_option": false,
+			"next": 76
+		},
+		"76th": {
+			"name": "",
+			"text": "透过镂空灌木丛正在吃草的小鹿，凑着池塘喝水的大象，水里扇着羽翼的天鹅，爬在树上摘葡萄的狐狸，伏在树后虎视眈眈的老虎。给人一种这微妙的平衡仿佛下一刻就会被打破的印象，以及和这一切无关一般天上的游云与飞鸟。",
+			"is_option": false,
+			"next": 77
+		},
+		"77th": {
+			"name": "{player_name}",
+			"text": "（这还是动物园吗？简直是个小世界了吧。）",
+			"is_option": false,
+			"next": 78
+		},
+		"78th": {
+			"name": "",
+			"text": "{child_name}转头看向你，眼里都是毫无保留的崇拜和依恋。他轻轻拽着你的衣角，声音软软的，带着几分不舍。",
+			"is_option": false,
+			"next": 79
+		},
+		"79th": {
+			"name": "{child_name}",
+			"text": "这个，大概会被老师在学校展评吧。等展评完我一定要把它带回来，放在房间最显眼的地方。",
+			"is_option": false,
+			"next": 80
+		},
+		"80th": {
+			"name": "{child_name}",
+			"text": "看到它的话，就能让我想到先生。",
+			"is_option": false,
+			"next": 81
+		},
+		"81th": {
+			"name": "{player_name}",
+			"text": "太夸张了吧，不过，你喜欢就好。",
+			"is_option": false,
+			"next": 82
+		},
+		"82th": {
+			"name": "{player_name}",
+			"text": "我对此也很有自信，不过就算没拿第一，也不用太气馁。",
+			"is_option": false,
+			"next": 83
+		},
+		"83th": {
+			"name": "",
+			"text": "拜极度的专注和兴奋所赐，花了比预想还要多的时间。大功告成之后，{child_name}的困意再也止不住。",
+			"is_option": false,
+			"next": 84
+		},
+		"84th": {
+			"name": "",
+			"text": "你正想说这么精巧的作品该带个木盒装去学校，却发现{child_name}已经靠着你的手臂睡着了。",
+			"is_option": false,
+			"next": 85
+		},
+		"85th": {
+			"name": "",
+			"text": "听到这平稳绵长的呼吸，你想起礼仪老师的规矩。如果就这么穿着常服上床睡觉，大概会被长篇大论念叨一个小时吧。",
+			"is_option": false,
+			"next": 86
+		},
+		"86th": {
+			"name": "",
+			"text": "但你只是笑了笑，轻手轻脚地给{child_name}放上床，脱去了皮鞋和外套，拉过柔软的被子。",
+			"is_option": false,
+			"next": 87
+		},
+		"87th": {
+			"name": "",
+			"text": "小小的艺术家，好梦。",
+			"is_option": false,
+			"effect": {
+				"child_attrs": {
+					"bod": 2
+				},
+				"child_num_tag_add": {
+					"依恋": 2
+				}
+			},
+			"next": -1
+		}
+	}
+}

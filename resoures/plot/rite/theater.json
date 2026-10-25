@@ -1,0 +1,569 @@
+{
+	"第一次进剧院": {
+		"0th": {
+			"name": "",
+			"text": "古典、优雅，据说戏剧是贵族的必修课。与贵族结交谈论艺术总是合适的。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "",
+			"text": "演出盛大开幕。弦乐先行，歌声亦不甘落后，层层叠叠，亦远亦近，宛如你听说过的东方的水墨画。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "{player_name}",
+			"text": "好困啊，早知道就不来附庸风雅了。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "",
+			"text": "那个女人叫的声音很高，音乐很催眠，椅子很软——不得不说这是一个睡觉的好地方。你细细回想了从小到大父母的所有教诲，终于维持住了贵族的体面。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "{player_name}",
+			"text": "（以后来这里治疗失眠吧。）",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"第一次进剧院",
+					"第一次看戏",
+					"剧院可治疗失眠"
+				]
+			},
+			"next": -1
+		}
+	},
+	"剧院多次打工_与阿尔温": {
+		"0th": {
+			"name": "{executor_name}",
+			"text": "虽然谈论主人的事不好，不过主人让我来这里如果不是，当然肯定不是因为钱不够了，那会是为什么呢？",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "阿尔温",
+			"text": "你在那里嘀嘀咕咕说什么呢？",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "",
+			"text": "阿尔温是同在这里打杂工的人，来这里工作了有些日子，平时对{executor_name}也多有照顾。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "{executor_name}",
+			"text": "抱怨下工资啦。",
+			"is_option": false,
+			"nexts": [
+				{
+					"condition": {
+						"attrs": {
+							"app": {
+								">": 7
+							}
+						}
+					},
+					"next": 4
+				},
+				{
+					"condition": {
+						"tags": [
+							"艺术"
+						]
+					},
+					"next": 4
+				},
+				{
+					"condition": {
+						"attrs": {
+							"str": {
+								">": 7
+							},
+							"bod": {
+								">": 5
+							}
+						}
+					},
+					"next": 15
+				},
+				{
+					"next": 22
+				}
+			]
+		},
+		"4th": {
+			"name": "",
+			"text": "阿尔温笑了笑哼了段轻快的旋律。",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "阿尔温",
+			"text": "是这样啊，这儿确实抠死人啦。要不是想在这里偷学，我早跑了。你为什么不走？留在这儿也是喜欢音乐吗？",
+			"is_option": false,
+			"next": 6
+		},
+		"6th": {
+			"name": "{executor_name}",
+			"text": "（只不过是主人的命令罢了。）",
+			"is_option": false,
+			"next": 7
+		},
+		"7th": {
+			"name": "{executor_name}",
+			"text": "当然，我也喜欢音乐。虽然很多时候并不能听懂啦。",
+			"is_option": false,
+			"next": 8
+		},
+		"8th": {
+			"name": "阿尔温",
+			"text": "我最近有尝试写自己的音乐，你，如果你不介意的话，之后我可以哼给你听。",
+			"is_option": false,
+			"next": 9
+		},
+		"9th": {
+			"name": "{executor_name}",
+			"text": "我还要打扫卫生，先走了。",
+			"is_option": false,
+			"next": 10
+		},
+		"10th": {
+			"name": "阿尔温",
+			"text": "我陪你，我今天也不是很急。",
+			"is_option": false,
+			"next": 11
+		},
+		"11th": {
+			"name": "{executor_name}",
+			"text": "打赌这家伙绝对是见色起意。不过免费的苦力不用白不用。",
+			"is_option": false,
+			"next": 12
+		},
+		"12th": {
+			"name": "",
+			"text": "剧院里打扫卫生是相对轻松的活儿，高昂的票价决定了来看戏的多是些老爷小姐。台上的道具都有人去爱惜，轮不到{executor_name}担心。",
+			"is_option": false,
+			"next": 13
+		},
+		"13th": {
+			"name": "{executor_name}",
+			"text": "你知道为什么这儿工资那么寒酸吗？明明都是服务那些贵族老爷的。",
+			"is_option": false,
+			"next": 14
+		},
+		"14th": {
+			"name": "阿尔温",
+			"text": "可能是因为人少，那些老爷也没时间每天来看吧。不过也给那么少真过分啊。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"阿尔温的知音"
+				]
+			},
+			"next": -1
+		},
+		"15th": {
+			"name": "",
+			"text": "阿尔温笑了笑哼了段明快的旋律。",
+			"is_option": false,
+			"next": 16
+		},
+		"16th": {
+			"name": "阿尔温",
+			"text": "是这样啊，这儿确实抠死人啦。要不是想在这里偷学，我早跑了。你为什么不走？留在这儿也是喜欢音乐吗？",
+			"is_option": false,
+			"next": 17
+		},
+		"17th": {
+			"name": "{executor_name}",
+			"text": "（对啊，我为什么不走........大人的决定谁知道呢？）",
+			"is_option": false,
+			"next": 18
+		},
+		"18th": {
+			"name": "{executor_name}",
+			"text": "随便找个活儿干呗。",
+			"is_option": false,
+			"next": 19
+		},
+		"19th": {
+			"name": "阿尔温",
+			"text": "如果你缺钱的话，报纸上会刊登些更合适的工作。你身强力壮的，总能找到写来钱快的。",
+			"is_option": false,
+			"next": 20
+		},
+		"20th": {
+			"name": "{executor_name}",
+			"text": "你知道为什么这儿工资那么寒酸吗？明明都是服务那些贵族老爷的。",
+			"is_option": false,
+			"next": 21
+		},
+		"21th": {
+			"name": "阿尔温",
+			"text": "可能是因为人少，那些老爷也没时间每天来看吧。不过也给那么少真过分啊。",
+			"is_option": false,
+			"next": -1
+		},
+		"22th": {
+			"name": "",
+			"text": "只是此照顾非彼照顾，{executor_name}用脚趾头想都知道决没有什么好事。",
+			"is_option": false,
+			"next": 23
+		},
+		"23th": {
+			"name": "阿尔温",
+			"text": "{executor_name}，帮我把今天的卫生做下呗。",
+			"is_option": false,
+			"next": 24
+		},
+		"24th": {
+			"name": "{executor_name}",
+			"text": "（如果不是主人要求，我又怎么会受这种东西的气。）",
+			"is_option": false,
+			"next": 25
+		},
+		"25th": {
+			"name": "{executor_name}",
+			"text": "你确定，我可以给你重新说话的机会。",
+			"is_option": false,
+			"next": 26
+		},
+		"26th": {
+			"name": "",
+			"text": "阿尔温冷冷地盯了会儿，很快泪水挤满了眼睛。",
+			"is_option": false,
+			"next": 27
+		},
+		"27th": {
+			"name": "{executor_name}",
+			"text": "（我就知道是这样，受不了啊。）",
+			"is_option": false,
+			"next": 28
+		},
+		"28th": {
+			"name": "{executor_name}",
+			"text": "今天又怎么了？",
+			"is_option": false,
+			"next": 29
+		},
+		"29th": {
+			"name": "阿尔温",
+			"text": "学校里的事，我还有作业要做。",
+			"is_option": false,
+			"next": 30
+		},
+		"30th": {
+			"name": "{executor_name}",
+			"text": "下不为例。",
+			"is_option": false,
+			"next": 31
+		},
+		"31th": {
+			"name": "阿尔温",
+			"text": "谢谢你先生。",
+			"is_option": false,
+			"next": 32
+		},
+		"32th": {
+			"name": "",
+			"text": "阿尔温笑起来正打算走，却被{executor_name}叫出。",
+			"is_option": false,
+			"next": 33
+		},
+		"33th": {
+			"name": "{executor_name}",
+			"text": "等等，你为什么要留在这里，我可以给你介绍更好的差事。",
+			"is_option": false,
+			"next": 34
+		},
+		"34th": {
+			"name": "阿尔温",
+			"text": "你不懂啦，况且你真有什么更好的差事怎么可能自己在这里嘛。",
+			"is_option": false,
+			"next": 35
+		},
+		"35th": {
+			"name": "",
+			"text": "沉默是今晚的兰心。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"阿尔温的依赖"
+				]
+			},
+			"next": -1
+		}
+	},
+	"夜间调查剧院_与阿尔温": {
+		"0th": {
+			"name": "{tags：多次打工剧院}",
+			"text": "虽然剧院的主要活动时间从下午开始，早上并没有人。但是为了不让街上的人发现我们最好还是在太阳升起前完成这一切。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "",
+			"text": "有风无月，是个好时机。时间紧迫，我们开始吧。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "",
+			"text": "四人小心翼翼地潜入剧院。根据{tags：多次打工剧院}的情报，{app}带来了保安喜欢的香烟，和他们聊了起来。{str}用蛮力推开了经理锁上的大门，正如{tags：多次打工剧院}，因为过往的事故，门锁并不牢固。{int}在经理的办公室找到了账本，发现了这里存在的资金问题，这或许能成为收购剧院的关键。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"发现账本_收购剧院线索"
+				]
+			},
+			"next": 3
+		},
+		"3th": {
+			"name": "{str}",
+			"text": "我拦住他，你们先走。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "{tags：多次打工剧院}",
+			"text": "让我来吧。",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "",
+			"text": "两人点点头，从另一侧绕了出去。接下来就交给{tags：多次打工剧院}了。",
+			"is_option": false,
+			"next": 6
+		},
+		"6th": {
+			"name": "",
+			"text": "（你转身走向那阵歌声的来源。）",
+			"is_option": false,
+			"nexts": [
+				{
+					"condition": {
+						"tags": [
+							"阿尔温的知音"
+						]
+					},
+					"next": 7
+				},
+				{
+					"condition": {
+						"tags": [
+							"阿尔温的依赖"
+						]
+					},
+					"next": 24
+				},
+				{
+					"condition": {
+						"attrs": {
+							"app": {
+								">": 7
+							}
+						}
+					},
+					"next": 7
+				},
+				{
+					"condition": {
+						"tags": [
+							"艺术"
+						]
+					},
+					"next": 7
+				},
+				{
+					"condition": {
+						"attrs": {
+							"str": {
+								">": 7
+							},
+							"bod": {
+								">": 5
+							}
+						}
+					},
+					"next": 16
+				},
+				{
+					"next": 24
+				}
+			]
+		},
+		"7th": {
+			"name": "阿尔温",
+			"text": "这么晚了，你怎么在这里？",
+			"is_option": false,
+			"next": 8
+		},
+		"8th": {
+			"name": "{tags：多次打工剧院}",
+			"text": "你不是说要让我听你唱歌吗？",
+			"is_option": false,
+			"next": 9
+		},
+		"9th": {
+			"name": "{tags：多次打工剧院}",
+			"text": "（好烂的借口.......大脑快动起来。）",
+			"is_option": false,
+			"next": 10
+		},
+		"10th": {
+			"name": "",
+			"text": "阿尔温很快脸红了，{tags：多次打工剧院}想起一个人愤怒时会面红耳赤心跳加速，不仅担心自己拙劣的谎言被当场戳破。阿尔温虽然不值得担心可要是吓到她，因他引来了其他人就不好了。",
+			"is_option": false,
+			"next": 11
+		},
+		"11th": {
+			"name": "阿尔温",
+			"text": "你也期待我的音乐吗？",
+			"is_option": false,
+			"next": 12
+		},
+		"12th": {
+			"name": "{tags：多次打工剧院}",
+			"text": "当然啦，我也喜欢音乐啊。",
+			"is_option": false,
+			"next": 13
+		},
+		"13th": {
+			"name": "阿尔温",
+			"text": "那，咳咳咳。",
+			"is_option": false,
+			"next": 14
+		},
+		"14th": {
+			"name": "",
+			"text": "（一段旋律自阿尔温喉间溢出，轻轻巧巧，却烫得人心头发颤——你忽然觉得，今晚这一趟或许不只为账本。）",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"听过阿尔温唱歌"
+				]
+			},
+			"next": 15
+		},
+		"15th": {
+			"name": "",
+			"text": "也许今日有比账本收获更大的东西。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"一首歌的约定"
+				]
+			},
+			"next": -1
+		},
+		"16th": {
+			"name": "阿尔温",
+			"text": "啊，你是加班到现在吗？经理也太过分了吧，怎么让你加班那么久。",
+			"is_option": false,
+			"next": 17
+		},
+		"17th": {
+			"name": "{tags：多次打工剧院}",
+			"text": "也不是，就是处理一点私事。",
+			"is_option": false,
+			"next": 18
+		},
+		"18th": {
+			"name": "",
+			"text": "阿尔温瞥见敞开的经理办公室一时沉默。",
+			"is_option": false,
+			"next": 19
+		},
+		"19th": {
+			"name": "{tags：多次打工剧院}",
+			"text": "你知道什么人能保守秘密吗？",
+			"is_option": false,
+			"next": 20
+		},
+		"20th": {
+			"name": "阿尔温",
+			"text": "死人！不要啊！",
+			"is_option": false,
+			"next": 21
+		},
+		"21th": {
+			"name": "{tags：多次打工剧院}",
+			"text": "如果有人听到了什么。我可不能保证你还能见到明天的太阳。",
+			"is_option": false,
+			"next": 22
+		},
+		"22th": {
+			"name": "{tags：多次打工剧院}",
+			"text": "知道该说什么吧。",
+			"is_option": false,
+			"next": 23
+		},
+		"23th": {
+			"name": "阿尔温",
+			"text": "我昨晚上一个人练歌，什么也没发现。",
+			"is_option": false,
+			"next": -1
+		},
+		"24th": {
+			"name": "阿尔温",
+			"text": "啊，你是加班到现在吗？经理也太过分了吧，怎么让你加班那么久。",
+			"is_option": false,
+			"next": 25
+		},
+		"25th": {
+			"name": "{tags：多次打工剧院}",
+			"text": "也不是，就是处理一点私事。",
+			"is_option": false,
+			"next": 26
+		},
+		"26th": {
+			"name": "",
+			"text": "阿尔温瞥见敞开的经理办公室一时沉默。",
+			"is_option": false,
+			"next": 27
+		},
+		"27th": {
+			"name": "{tags：多次打工剧院}",
+			"text": "你知道什么人能保守秘密吗？",
+			"is_option": false,
+			"next": 28
+		},
+		"28th": {
+			"name": "阿尔温",
+			"text": "当然是自己人啦。你要做什么怎么不早点拉我入伙，这就是你说的好差事吗？",
+			"is_option": false,
+			"next": 29
+		},
+		"29th": {
+			"name": "{tags：多次打工剧院}",
+			"text": "（拿这小孩没办法。）",
+			"is_option": false,
+			"next": 30
+		},
+		"30th": {
+			"name": "{tags：多次打工剧院}",
+			"text": "总之，今晚的事不要和任何人说，可以吗？",
+			"is_option": false,
+			"next": 31
+		},
+		"31th": {
+			"name": "阿尔温",
+			"text": "当然。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"阿尔温的信赖"
+				]
+			},
+			"next": -1
+		}
+	}
+}

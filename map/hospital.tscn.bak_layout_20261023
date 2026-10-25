@@ -1,0 +1,30 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://cbxeto13xsdq1" path="res://components/scene_spot.tscn" id="1_spot"]
+[ext_resource type="PackedScene" path="res://components/trigger_spot.tscn" id="2_trig"]
+
+[node name="HospitalMap" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 22.0
+offset_top = 110.0
+offset_right = 1898.0
+offset_bottom = 970.0
+mouse_filter = 2
+
+[node name="Node" type="Node" parent="Control"]
+
+[node name="treat" parent="Control/Node" instance=ExtResource("2_trig")]
+offset_left = 900.0
+offset_top = 200.0
+offset_right = 1020.0
+offset_bottom = 320.0
+trigger_id = "治疗"
+label_text = "治疗"
+
+[node name="Exit" parent="Control/Node" instance=ExtResource("1_spot")]
+spot_name = "返回_主城"
+max_size = Vector2(180, 180)
+ordinary = Vector2(1700, 610)

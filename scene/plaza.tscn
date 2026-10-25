@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://do0dtu3qq0f3i"]
+
+[ext_resource type="PackedScene" uid="uid://ca2iw4ov6jw4d" path="res://components/main_ui.tscn" id="1_mainui"]
+[ext_resource type="PackedScene" uid="uid://cbxeto13xsdq1" path="res://components/scene_spot.tscn" id="2_spot"]
+
+[node name="Plaza" type="Node2D"]
+
+[node name="Main_ui" parent="." instance=ExtResource("1_mainui")]
+
+[node name="Exit" parent="." instance=ExtResource("2_spot")]
+spot_name = "返回_主城"
+ordinary = Vector2(1700, 860)

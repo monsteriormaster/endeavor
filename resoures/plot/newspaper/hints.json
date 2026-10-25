@@ -1,0 +1,10 @@
+{
+	"报纸未订阅": {
+		"0th": {
+			"name": "{player_name}",
+			"text": "我应该先去订阅报纸。",
+			"is_option": false,
+			"next": -1
+		}
+	}
+}

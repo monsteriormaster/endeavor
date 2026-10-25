@@ -1,0 +1,59 @@
+{
+  "爱的艺术": {
+	"name": "爱的艺术",
+	"level": "S",
+	"class": ["book"],
+	"icon": "res://art/items/爱的艺术.png",
+	"description": "爱是自由的结合，而非占有的契约。他谈及身体与灵魂的合一，也谈及男人与男人之间不被命名的温柔。",
+	"condition": {},
+	"condition_text": "",
+	"before_read": "这是教我如何取悦人吗？",
+	"read_description": "爱不是一种偶然跌入的情绪，而是一门需以纪律、专注与勇气习得的技艺。它如同任何技艺，可以被学会，也可以被荒废。",
+	"after_read": { "attrs": { "app": 1 }, "tags": ["爱的艺术"], "player_tags": ["已读《爱的艺术》"] },
+	"tags": ["书", "爱"]
+  },
+  "物种起源": {
+	"name": "物种起源",
+	"level": "SR",
+	"class": ["book"],
+	"icon": "res://art/items/物种起源.png",
+	"description": "所有的生物有一个共同的起源，就像大树有无数枝叶，循其脉络终会回到根。",
+	"condition": { "attrs": { "int": { "min": 7 } }, "or_tags": ["学习"] },
+	"condition_text": "人怎么会是猴子变来的呢？",
+	"before_read": "为什么鸟会生双翼？我从来没有思考过这些。",
+	"read_description": "不止加拉帕戈斯群岛，到处都潜藏者起源的秘密啊。",
+	"after_read": { "attrs": { "int": 2 }, "tags": ["物种起源"], "player_tags": ["已读《物种起源》"] },
+	"tags": ["书", "科学"]
+  },
+  "几何原本": {
+	"name": "几何原本",
+	"level": "S",
+	"class": ["book"],
+	"icon": "res://art/items/几何原本.png",
+	"description": "勾三股四弦五",
+	"condition": { "attrs": { "int": { "min": 6 } }, "or_tags": ["学习"] },
+	"condition_text": "这些字我本来是认识的，但是现在连在一起就不认识了。",
+	"before_read": "左边等于右边？这是要学什么呢？",
+	"read_description": "等于同物的量彼此相等",
+	"after_read": { "attrs": { "int": 2 }, "tags": ["几何原本"], "player_tags": ["已读《几何原本》"] },
+	"tags": ["书", "科学"]
+  },
+  "雨国游记": {
+	"name": "雨国游记",
+	"level": "SSR",
+	"class": ["book"],
+	"icon": "res://art/items/雨国游记.png",
+	"description": "周游世界后发现我的故乡也有如此惊心动魄的美。",
+	"condition": {
+		"attrs": { "bod": { "min": 6 } },
+		"or_tags": ["学习"],
+		"forbid_executors": ["Hero"],
+		"forbid_text": "我对游记不感兴趣，比起他们天花乱坠的描述，我更喜欢亲眼去看看。"
+	},
+	"condition_text": "游玩也能写成书吗？为什么我要看别人怎么玩的，而不是自己亲自去呢？",
+	"before_read": "这上面写的好像就是这里。",
+	"read_description": "山海辽阔，天地浩大，我也想去看看！",
+	"after_read": { "attrs": { "int": 2 }, "tags": ["雨国游记"], "player_tags": ["已读《雨国游记》"], "enqueue_talk": { "path": "res://resoures/plot/misson/周游.json", "name": "雨国游记有话说", "effect": { "tags": ["事件周游"], "slot_tags": { "执行者": ["周游队长"] }, "slot_remove_tags": { "执行者": ["雨国游记"] } } } },
+	"tags": ["书", "游记"]
+  }
+}

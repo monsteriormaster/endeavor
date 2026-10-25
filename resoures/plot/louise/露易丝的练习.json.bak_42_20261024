@@ -1,0 +1,403 @@
+{
+	"露易丝的练习": {
+		"0th": {
+			"name": "",
+			"text": "夜里，{player_name}路过露易丝房门口，听见里头有动静。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "",
+			"text": "里头有人在数。一，二，三。停了。又从头。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "{player_name}",
+			"text": "（她在里头做什么。）",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "",
+			"text": "门没关严。他敲了两下，推开了。露易丝站在屋子中间，手里攥着一支掉了漆的话筒。地上那只铁皮罐还在打转。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "露易丝",
+			"text": "……您、您怎么……",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "{player_name}",
+			"text": "好酷。",
+			"is_option": false,
+			"next": 6
+		},
+		"6th": {
+			"name": "露易丝",
+			"text": "好酷？",
+			"is_option": false,
+			"next": 7
+		},
+		"7th": {
+			"name": "{player_name}",
+			"text": "刚才那段。挺酷的。",
+			"is_option": false,
+			"next": 8
+		},
+		"8th": {
+			"name": "",
+			"text": "她没接话，把话筒往身后藏。",
+			"is_option": false,
+			"next": 9
+		},
+		"9th": {
+			"name": "露易丝",
+			"text": "您别哄我。",
+			"is_option": false,
+			"next": 10
+		},
+		"10th": {
+			"name": "{player_name}",
+			"text": "我没哄。我也来一段。",
+			"is_option": false,
+			"next": 11
+		},
+		"11th": {
+			"name": "露易丝",
+			"text": "您会？",
+			"is_option": false,
+			"next": 12
+		},
+		"12th": {
+			"name": "{player_name}",
+			"text": "（不会。）",
+			"is_option": false,
+			"next": 13
+		},
+		"13th": {
+			"name": "",
+			"text": "他把话筒接过来，跟着拍子开口。头一个字就咬着舌头了。",
+			"is_option": false,
+			"next": 14
+		},
+		"14th": {
+			"name": "{player_name}",
+			"text": "（疼。）",
+			"is_option": false,
+			"next": 15
+		},
+		"15th": {
+			"name": "露易丝",
+			"text": "您这是在唱，还是在嚼东西。",
+			"is_option": false,
+			"next": 16
+		},
+		"16th": {
+			"name": "{player_name}",
+			"text": "在唱。",
+			"is_option": false,
+			"next": 17
+		},
+		"17th": {
+			"name": "露易丝",
+			"text": "嚼得挺香。",
+			"is_option": false,
+			"next": 18
+		},
+		"18th": {
+			"name": "",
+			"text": "她笑得弯下腰。笑完把话筒拿回去，站回屋子中间。",
+			"is_option": false,
+			"next": 19
+		},
+		"19th": {
+			"name": "露易丝",
+			"text": "那我唱一遍。就一遍。一，二，三。",
+			"is_option": false,
+			"next": 20
+		},
+		"20th": {
+			"name": "露易丝",
+			"text": "我翻过这堵墙，裙子上多了一道边。",
+			"is_option": false,
+			"next": 21
+		},
+		"21th": {
+			"name": "露易丝",
+			"text": "娘说这样不成体统，我说体统值几个钱。",
+			"is_option": false,
+			"next": 22
+		},
+		"22th": {
+			"name": "露易丝",
+			"text": "城墙上头那片天，底下的砖我数过，一整面。",
+			"is_option": false,
+			"next": 23
+		},
+		"23th": {
+			"name": "露易丝",
+			"text": "我画上去的颜色，谁擦，我就再画一遍。",
+			"is_option": false,
+			"next": 24
+		},
+		"24th": {
+			"name": "",
+			"text": "这回一句没断。唱完她坐到床沿上，两只手搁在膝盖上，坐得很直。",
+			"is_option": false,
+			"next": 25
+		},
+		"25th": {
+			"name": "露易丝",
+			"text": "{player_name}。",
+			"is_option": false,
+			"next": 26
+		},
+		"26th": {
+			"name": "{player_name}",
+			"text": "嗯。",
+			"is_option": false,
+			"next": 27
+		},
+		"27th": {
+			"name": "露易丝",
+			"text": "我这样，是不是不务正业。",
+			"is_option": false,
+			"next": 28
+		},
+		"28th": {
+			"name": "{player_name}",
+			"text": "啊？",
+			"is_option": false,
+			"next": 29
+		},
+		"29th": {
+			"name": "露易丝",
+			"text": "淑女不该做这些。我娘要是知道，会说我不成体统。",
+			"is_option": false,
+			"next": 30
+		},
+		"30th": {
+			"name": "露易丝",
+			"text": "外头的人也会说。好好的一个小姐，跑去墙头上乱画。",
+			"is_option": false,
+			"next": 31
+		},
+		"31th": {
+			"name": "露易丝",
+			"text": "还要站到台子上，扯着嗓子喊。",
+			"is_option": false,
+			"next": 32
+		},
+		"32th": {
+			"name": "",
+			"text": "说着说着，她的声音低下去。",
+			"is_option": false,
+			"next": 33
+		},
+		"33th": {
+			"name": "露易丝",
+			"text": "……我自己也那么觉得过。",
+			"is_option": false,
+			"next": 34
+		},
+		"34th": {
+			"name": "",
+			"text": "她攥着话筒，等他说话。",
+			"is_option": true,
+			"options": [
+				{
+					"text": "不淑女又怎么样。",
+					"next": 35
+				},
+				{
+					"text": "你刚才那句，卡在哪儿。",
+					"next": 43
+				}
+			]
+		},
+		"35th": {
+			"name": "{player_name}",
+			"text": "不淑女又怎么样。",
+			"is_option": false,
+			"next": 36
+		},
+		"36th": {
+			"name": "露易丝",
+			"text": "诶？",
+			"is_option": false,
+			"next": 37
+		},
+		"37th": {
+			"name": "{player_name}",
+			"text": "我觉得酷。",
+			"is_option": false,
+			"next": 38
+		},
+		"38th": {
+			"name": "露易丝",
+			"text": "……您就会说这一句。",
+			"is_option": false,
+			"next": 39
+		},
+		"39th": {
+			"name": "{player_name}",
+			"text": "那我再说一遍。酷。",
+			"is_option": false,
+			"next": 40
+		},
+		"40th": {
+			"name": "露易丝",
+			"text": "（他又来了。）",
+			"is_option": false,
+			"next": 41
+		},
+		"41th": {
+			"name": "",
+			"text": "她低下头，嘴角压着，压不住。",
+			"is_option": false,
+			"effect": {
+				"npc_num_tag_add": {
+					"Louise": {
+						"love": 1
+					}
+				}
+			},
+			"next": 50
+		},
+		"43th": {
+			"name": "{player_name}",
+			"text": "你刚才那句，卡在哪儿。",
+			"is_option": false,
+			"next": 44
+		},
+		"44th": {
+			"name": "露易丝",
+			"text": "……您听出来了。",
+			"is_option": false,
+			"next": 45
+		},
+		"45th": {
+			"name": "{player_name}",
+			"text": "拍子一记一记，是四下。你那句塞不进去。",
+			"is_option": false,
+			"next": 46
+		},
+		"46th": {
+			"name": "露易丝",
+			"text": "塞不进去？",
+			"is_option": false,
+			"next": 47
+		},
+		"47th": {
+			"name": "{player_name}",
+			"text": "画也是这样。格子就这么大，东西画多了，就得往外支。你把词换短的。",
+			"is_option": false,
+			"next": 48
+		},
+		"48th": {
+			"name": "",
+			"text": "她照着念了一遍。卡住的地方，过去了。",
+			"is_option": false,
+			"next": 49
+		},
+		"49th": {
+			"name": "露易丝",
+			"text": "您怎么懂这些。（他讲的明明是画。）",
+			"is_option": false,
+			"effect": {
+				"attrs": {
+					"app": 1
+				}
+			},
+			"next": 50
+		},
+		"50th": {
+			"name": "{player_name}",
+			"text": "画画就这点道理。",
+			"is_option": false,
+			"next": 51
+		},
+		"51th": {
+			"name": "露易丝",
+			"text": "城南下个月有个比赛。",
+			"is_option": false,
+			"next": 52
+		},
+		"52th": {
+			"name": "{player_name}",
+			"text": "什么比赛。",
+			"is_option": false,
+			"next": 53
+		},
+		"53th": {
+			"name": "露易丝",
+			"text": "就是……唱歌的。谁都能上。",
+			"is_option": false,
+			"next": 54
+		},
+		"54th": {
+			"name": "{player_name}",
+			"text": "你要去。",
+			"is_option": false,
+			"next": 55
+		},
+		"55th": {
+			"name": "露易丝",
+			"text": "我还不行。还得练。",
+			"is_option": false,
+			"next": 56
+		},
+		"56th": {
+			"name": "{player_name}",
+			"text": "练到什么时候。",
+			"is_option": false,
+			"next": 57
+		},
+		"57th": {
+			"name": "露易丝",
+			"text": "不知道。练好了再说。",
+			"is_option": false,
+			"next": 58
+		},
+		"58th": {
+			"name": "",
+			"text": "她把话筒在手里转了半圈，声音低下去。",
+			"is_option": false,
+			"next": 59
+		},
+		"59th": {
+			"name": "露易丝",
+			"text": "……练好了，也许有机会能去吧。",
+			"is_option": false,
+			"next": 60
+		},
+		"60th": {
+			"name": "{player_name}",
+			"text": "嗯。",
+			"is_option": false,
+			"next": 61
+		},
+		"61th": {
+			"name": "露易丝",
+			"text": "您别告诉别人。尤其是别让家里知道。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"听过她唱"
+				],
+				"npc": {
+					"Louise": {
+						"tags": [
+							"还在练习"
+						]
+					}
+				}
+			},
+			"next": -1
+		}
+	}
+}

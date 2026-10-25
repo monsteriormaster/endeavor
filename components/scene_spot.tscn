@@ -1,12 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbxeto13xsdq1"]
+[gd_scene load_steps=3 format=3 uid="uid://cbxeto13xsdq1"]
 
 [ext_resource type="Script" uid="uid://b8lxqci3bb0fd" path="res://components/scene_spot.gd" id="1_4piec"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_spot"]
 
 [node name="SceneSpot" type="Button"]
 offset_left = 293.0
 offset_top = 166.0
 offset_right = 355.0
 offset_bottom = 216.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_spot")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_spot")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_spot")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_spot")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_spot")
 script = ExtResource("1_4piec")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

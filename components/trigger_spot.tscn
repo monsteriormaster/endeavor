@@ -1,0 +1,70 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://components/trigger_spot.gd" id="1_trspot"]
+
+[node name="TriggerSpot" type="Button"]
+offset_left = 200.0
+offset_top = 200.0
+offset_right = 320.0
+offset_bottom = 320.0
+script = ExtResource("1_trspot")
+trigger_id = ""
+
+[node name="Badge" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -56.0
+offset_right = 56.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+pivot_offset = Vector2(56, 56)
+
+[node name="Base" type="TextureRect" parent="Badge"]
+offset_right = 112.0
+offset_bottom = 112.0
+mouse_filter = 2
+
+[node name="Symbol" type="TextureRect" parent="Badge"]
+offset_right = 112.0
+offset_bottom = 112.0
+mouse_filter = 2
+
+[node name="Mark" type="TextureRect" parent="Badge"]
+offset_right = 112.0
+offset_bottom = 112.0
+mouse_filter = 2
+
+[node name="NameLabel" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -30.0
+offset_right = 40.0
+offset_bottom = -2.0
+grow_horizontal = 2
+mouse_filter = 2
+text = ""
+horizontal_alignment = 1
+visible = false
+
+[node name="StatusLabel" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -2.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_horizontal = 2
+mouse_filter = 2
+text = ""
+horizontal_alignment = 1
+visible = false
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

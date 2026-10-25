@@ -1,0 +1,154 @@
+{
+	"雨国游记有话说": {
+		"0th": {
+			"name": "",
+			"text": "（{executor_name}合上《雨国游记》，似乎有话想说。）",
+			"is_option": false,
+			"nexts": [
+				{
+					"condition": {
+						"child": {
+							"*": {
+								"tags": ["周游队长"]
+							}
+						}
+					},
+					"next": 5
+				},
+				{
+					"next": 1
+				}
+			]
+		},
+		"1th": {
+			"name": "{executor_name}",
+			"text": "先生，你有没有感觉这个世界很美，自己却没有怎么去看过？",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "{player_name}",
+			"text": "我不大外出游玩，所见山山水水都是周围寻常的景象。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "{executor_name}",
+			"text": "先生我想去周围看看，把周围的风景都记录下来。也许还会有什么别的收获。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "{executor_name}",
+			"text": "世界那么大我想去看看！",
+			"is_option": false,
+			"next": -1
+		},
+		"5th": {
+			"name": "{executor_name}",
+			"text": "先生，你画过那么多风景，都是自己亲自去看过得吗？",
+			"is_option": false,
+			"next": -1
+		}
+	},
+	"幻界初见": {
+		"0th": {
+			"name": "{executor_name}",
+			"text": "先生， 你一点不会相信我看到了什么!",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "{executor_name}",
+			"text": "在港口以西不远的树林里，月光下出现了一片苍白的树林，天上有庞大的鲸鱼游动。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "{executor_name}",
+			"text": "你可能觉得我疯了，可是那些不可思议的东西，那样真切地出现了在了我的面前。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "{executor_name}",
+			"text": "我往里走了没多久就感到难以忍受的寒冷就匆匆离开了。正当我打算做好保暖再出发时月亮被遮住，白色树林也消失了。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "{executor_name}",
+			"text": "先生我真的没说谎！",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "{player_name}",
+			"text": "我知道了，我会给你多找点事做的，最近。",
+			"is_option": false,
+			"next": 6
+		},
+		"6th": {
+			"name": "{executor_name}",
+			"text": "呃.......",
+			"is_option": false,
+			"next": -1
+		}
+	},
+	"幻界初见·衫斯": {
+		"0th": {
+			"name": "{executor_name}",
+			"text": "先生， 你一点不会相信我看到了什么!",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "{executor_name}",
+			"text": "海洋回应了我，在第一次离牠那么近。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "{executor_name}",
+			"text": "一切会回归大海，沉入永恒温柔的怀抱。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "",
+			"text": "至少这些话衫斯说的还算能让你听懂，地质变迁什么的你也在科普读物上见过。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "{executor_name}",
+			"text": "先生，你愿意投入大海的怀抱吗？你的灵魂将在大海中得到安息。",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "{player_name}",
+			"text": "（我的灵魂只能在金钱中得到安息。）",
+			"is_option": false,
+			"next": 6
+		},
+		"6th": {
+			"name": "{player_name}",
+			"text": "我想你可能太闲了，我会多给你找点事做的。",
+			"is_option": false,
+			"next": 7
+		},
+		"7th": {
+			"name": "{executor_name}",
+			"text": "群鱼等待辛勤的人收获，我明白了先生。",
+			"is_option": false,
+			"next": 8
+		},
+		"8th": {
+			"name": "{player_name}",
+			"text": "（你明白什么了？我明白吗？）",
+			"is_option": false,
+			"next": -1
+		}
+	}
+}

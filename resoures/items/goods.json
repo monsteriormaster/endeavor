@@ -1,0 +1,63 @@
+{
+	"蓝宝石项链": {
+		"name": "蓝宝石项链",
+		"level": "R",
+		"class": ["jewelry","good"],
+		"bonus": { "app": 2 },
+		"tags": ["饰品", "可堆叠"],
+		"price": 10,
+		"icon": "res://art/items/蓝宝石项链.png",
+		"description": "华光溢彩，璀璨夺目。它会让你成为舞会上最耀眼的明珠。"
+	},
+	"多功能军刀": {
+		"name": "多功能军刀",
+		"level": "R",
+		"class": ["weapon","good"],
+		"bonus": { "str": 1 },
+		"tags": ["武器", "工具", "可堆叠"],
+		"price":3,
+		"icon": "res://art/items/多功能军刀.png",
+		"description": "上可进厨房，下可出战场。傍身得谈判专长，冲动造就犯罪现场。"
+	},
+	"古希腊长袍": {
+		"name": "古希腊长袍",
+		"level": "SR",
+		"class": ["armor","good"],
+		"bonus": { "bod": -1, "app": 2 },
+		"tags": ["防具", "可堆叠", "时尚"],
+		"price":5,
+		"icon": "res://art/items/古希腊长袍.png",
+		"description": "一张布的艺术，曾做过一个民主的梦。"
+	},	
+	"骑士盔甲": {
+		"name": "骑士盔甲",
+		"level": "R",
+		"class": ["armor","good"],
+		"bonus": { "bod": 1 },
+		"tags": ["防具", "可堆叠" ],
+		"price":5,
+		"icon": "res://art/items/骑士盔甲.png",
+		"description": "空有盔而无战马，穿上就成了奇士。"
+	},
+	"学生证": {
+		"name": "学生证",
+		"level": "R",
+		"class": ["jewelry","good"],
+		"tags": ["饰品","学生"],
+		"price":1,
+		"icon": "res://art/items/学生证.png",
+		"description": "一张学生证明不能带给人知识与智慧，却可以是通向智慧与知识的钥匙。"
+	},
+	"被诅咒的古董": {
+		"name": "被诅咒的古董",
+		"level": "SR",
+		"class": ["tool","good"],
+		"tags": ["诅咒"],
+		"price":5,
+		"icon": "res://art/items/被诅咒的古董.png",
+		"description": "上一任死于暴动，上上任死于情杀，上上上任死于疾病突发。"
+	},	
+	
+
+
+}

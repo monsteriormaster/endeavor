@@ -1,0 +1,32 @@
+{
+	"验证_完整": {
+		"title": "验证_完整",
+		"description": "{player_name} 的验证鉴定",
+		"attrs": {
+			"int": 2,
+			"app": 1
+		},
+		"difficulty": 5,
+		"modifiers": [
+			{"source": "tag", "name": "灵感", "bonus": 2, "desc": "灵光一闪"},
+			{"source": "tag", "name": "神速", "bonus": 3, "desc": "疾如闪电"}
+		],
+		"crit_success_margin": 3,
+		"crit_failure_margin": -3,
+		"branches": {
+			"crit_success": { "effect": { "tags": ["验证大成功"] } },
+			"success": { "effect": { "tags": ["验证成功"] } },
+			"failure": { "effect": { "tags": ["验证失败"] } },
+			"crit_failure": { "effect": { "tags": ["验证大失败"] } }
+		}
+	},
+	"验证_缺分支": {
+		"title": "验证_缺分支",
+		"description": "缺 failure 分支，应触发 D-C5 校验报错",
+		"attrs": { "int": 1 },
+		"difficulty": 5,
+		"branches": {
+			"success": { "effect": {} }
+		}
+	}
+}

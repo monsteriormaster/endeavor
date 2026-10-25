@@ -1,0 +1,18 @@
+{
+  "effect_pool": [
+    { "id": "shop_sale", "headline": "商业街全物品打折啦", "effect_todo": "商业街全物品打折" },
+    { "id": "theater_labor", "headline": "剧院正缺人手", "effect_todo": "剧院招募触发" },
+    { "id": "tavern_labor", "headline": "酒馆正缺人手", "effect_todo": "酒馆招募触发" },
+    { "id": "bookstore_sale", "headline": "书店大放价", "effect_todo": "书店打折" },
+    { "id": "mystic_sale", "headline": "神秘杂货铺大促销", "effect_todo": "神秘杂货铺打折" },
+    { "id": "noble_ball", "headline": "贵族舞会", "effect_todo": "贵族舞会事件" },
+    { "id": "good_weather", "headline": "一个周的好天气", "effect_todo": "一周好天气 buff" },
+    { "id": "church_donation", "headline": "教会募捐", "effect_todo": "教会募捐事件" },
+    { "id": "police_joke", "headline": "警察笑话", "effect_todo": "氛围" },
+    { "id": "wild_dogs", "headline": "野狗出没", "effect_todo": "野狗危险事件" }
+  ],
+  "flavor_news_pool": [
+    { "id": "flavor_1", "headline": "测试非剧情1", "body": "测试非剧情1正文占位，之后补充。" },
+    { "id": "flavor_2", "headline": "测试非剧情2", "body": "测试非剧情2正文占位，之后补充。" }
+  ]
+}

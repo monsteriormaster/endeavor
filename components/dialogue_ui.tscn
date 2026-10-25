@@ -1,8 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://csf1o44sc2pef"]
+[gd_scene load_steps=7 format=3 uid="uid://csf1o44sc2pef"]
 
 [ext_resource type="Script" uid="uid://3kyghulebmsc" path="res://components/dialogue_ui.gd" id="1_jbnjv"]
+[ext_resource type="Texture2D" uid="uid://b1pi8n7qypqa0" path="res://art/ui/dlg_panel.png" id="2_panel"]
+[ext_resource type="Texture2D" uid="uid://b30e8pxh5jr4a" path="res://art/ui/dlg_tag.png" id="3_tag"]
 
-[node name="DiaologueUi" type="Control" node_paths=PackedStringArray("character_name_text", "text_box", "option_box", "panel")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_panel"]
+
+[sub_resource type="StyleBoxTexture" id="SB_tag"]
+texture = ExtResource("3_tag")
+texture_margin_left = 32.0
+texture_margin_right = 32.0
+texture_margin_top = 10.0
+texture_margin_bottom = 10.0
+axis_stretch_horizontal = 1
+content_margin_left = 44.0
+content_margin_right = 44.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hist"]
+bg_color = Color(0.953, 0.941, 0.906, 1)
+
+[node name="DiaologueUi" type="Control" node_paths=PackedStringArray("character_name_text", "text_box", "option_box", "panel", "paper_art", "name_tag", "portrait_rect", "text_scroll", "content_margin", "history_button", "settings_button", "history_panel", "history_list", "history_scroll", "history_count")]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 3
 anchors_preset = 12
@@ -14,10 +33,31 @@ offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_jbnjv")
-character_name_text = NodePath("Panel/MarginContainer/VBoxContainer/name")
-text_box = NodePath("Panel/MarginContainer/VBoxContainer/content")
+character_name_text = NodePath("NameTag/Name")
+text_box = NodePath("Panel/MarginContainer/VBoxContainer/content_scroll/content")
 option_box = NodePath("OptionContainer")
 panel = NodePath("Panel")
+paper_art = NodePath("Panel/PaperArt")
+name_tag = NodePath("NameTag")
+portrait_rect = NodePath("Portrait")
+text_scroll = NodePath("Panel/MarginContainer/VBoxContainer/content_scroll")
+content_margin = NodePath("Panel/MarginContainer")
+history_button = NodePath("Panel/HistoryButton")
+settings_button = NodePath("Panel/SettingButton")
+history_panel = NodePath("HistoryPanel")
+history_list = NodePath("HistoryPanel/MarginContainer/VBoxContainer/HistoryScroll/HistoryList")
+history_scroll = NodePath("HistoryPanel/MarginContainer/VBoxContainer/HistoryScroll")
+history_count = NodePath("HistoryPanel/MarginContainer/VBoxContainer/Header/Count")
+
+[node name="Portrait" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 700.0
+offset_bottom = 1120.0
+mouse_filter = 2
+texture_filter = 2
+expand_mode = 1
+stretch_mode = 0
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -25,10 +65,23 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -227.0
+offset_left = 48.0
+offset_top = -180.0
+offset_right = -47.0
+offset_bottom = 34.0
 grow_horizontal = 2
 grow_vertical = 0
-size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_panel")
+
+[node name="PaperArt" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_top = -60.0
+offset_right = 1824.0
+offset_bottom = 214.0
+mouse_filter = 2
+texture = ExtResource("2_panel")
+expand_mode = 1
+stretch_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -37,35 +90,164 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 21
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 21
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_left = 66
+theme_override_constants/margin_top = 42
+theme_override_constants/margin_right = 66
+theme_override_constants/margin_bottom = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="name" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="content_scroll" type="ScrollContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "name"
+size_flags_vertical = 3
+mouse_filter = 1
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 1
 
-[node name="content" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="content" type="Label" parent="Panel/MarginContainer/VBoxContainer/content_scroll"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.262745, 0.215686, 0.164706, 1)
 theme_override_font_sizes/font_size = 18
 text = "content"
 autowrap_mode = 3
 
+[node name="HistoryButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -104.0
+offset_top = 10.0
+offset_right = -18.0
+offset_bottom = 40.0
+grow_horizontal = 0
+text = "历史"
+
+[node name="SettingButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -202.0
+offset_top = 10.0
+offset_right = -116.0
+offset_bottom = 40.0
+grow_horizontal = 0
+text = "设置"
+
+[node name="NameTag" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 82.0
+offset_top = -190.0
+offset_right = 82.0
+offset_bottom = -190.0
+grow_horizontal = 1
+grow_vertical = 0
+theme_override_styles/panel = SubResource("SB_tag")
+
+[node name="Name" type="Label" parent="NameTag"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.180392, 0.141176, 0.094118, 1)
+theme_override_font_sizes/font_size = 26
+text = "name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="OptionContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 14
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -194.5
-offset_bottom = 155.5
+offset_left = -284.0
+offset_top = -58.0
+offset_right = 284.0
+offset_bottom = 58.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="HistoryPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hist")
+
+[node name="MarginContainer" type="MarginContainer" parent="HistoryPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 44
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 36
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HistoryPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Header" type="HBoxContainer" parent="HistoryPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="HistoryPanel/MarginContainer/VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 26
+text = "历史记录"
+
+[node name="Count" type="Label" parent="HistoryPanel/MarginContainer/VBoxContainer/Header"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.353, 0.302, 0.243, 1)
+theme_override_font_sizes/font_size = 16
+text = "共 0 条"
+
+[node name="CloseButton" type="Button" parent="HistoryPanel/MarginContainer/VBoxContainer/Header"]
+custom_minimum_size = Vector2(88, 32)
+layout_mode = 2
+size_flags_vertical = 4
+text = "关闭"
+
+[node name="Rule" type="ColorRect" parent="HistoryPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.22, 0.161, 0.118, 0.18)
+
+[node name="HistoryScroll" type="ScrollContainer" parent="HistoryPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 1
+
+[node name="HistoryList" type="VBoxContainer" parent="HistoryPanel/MarginContainer/VBoxContainer/HistoryScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 14
+
+[node name="Hint" type="Label" parent="HistoryPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.35, 0.302, 0.243, 1)
+theme_override_font_sizes/font_size = 14
+text = "Esc 或点「关闭」返回对话"
 
 [connection signal="gui_input" from="Panel" to="." method="_on_click"]
+[connection signal="gui_input" from="NameTag" to="." method="_on_click"]
+[connection signal="pressed" from="Panel/HistoryButton" to="." method="_on_history_pressed"]
+[connection signal="pressed" from="Panel/SettingButton" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="HistoryPanel/MarginContainer/VBoxContainer/Header/CloseButton" to="." method="_close_history"]

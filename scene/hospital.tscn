@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwwnw63ao1uur"]
+
+[ext_resource type="PackedScene" uid="uid://ca2iw4ov6jw4d" path="res://components/main_ui.tscn" id="1_mainui"]
+[ext_resource type="PackedScene" path="res://map/hospital.tscn" id="2_map"]
+[ext_resource type="Texture2D" uid="uid://cace53a1pfnx5" path="res://art/backgrounds_gentle/医院.png" id="bg_tex"]
+[ext_resource type="Script" path="res://components/map_sketch.gd" id="sk_sketch"]
+
+[node name="Hospital" type="Node2D"]
+
+[node name="background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 1914.0
+offset_bottom = 1075.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("bg_tex")
+
+[node name="Sketch" type="Control" parent="background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+script = ExtResource("sk_sketch")
+
+[node name="Main_ui" parent="." instance=ExtResource("1_mainui")]
+
+[node name="HospitalMap" parent="." instance=ExtResource("2_map")]

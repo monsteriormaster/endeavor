@@ -1,0 +1,54 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://cbxeto13xsdq1" path="res://components/scene_spot.tscn" id="1_spot"]
+[ext_resource type="PackedScene" path="res://components/trigger_spot.tscn" id="2_trig"]
+
+[node name="SchoolMap" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 22.0
+offset_top = 110.0
+offset_right = 1898.0
+offset_bottom = 970.0
+mouse_filter = 2
+
+[node name="Node" type="Node" parent="Control"]
+
+[node name="school_study" parent="Control/Node" instance=ExtResource("2_trig")]
+offset_left = 860.0
+offset_top = 380.0
+offset_right = 980.0
+offset_bottom = 500.0
+trigger_id = "学校学习"
+label_text = "送学"
+
+[node name="library_survey" parent="Control/Node" instance=ExtResource("2_trig")]
+offset_left = 520.0
+offset_top = 380.0
+offset_right = 640.0
+offset_bottom = 500.0
+trigger_id = "图书馆"
+label_text = "图书馆"
+
+[node name="library_steal" parent="Control/Node" instance=ExtResource("2_trig")]
+offset_left = 1300.0
+offset_top = 380.0
+offset_right = 1420.0
+offset_bottom = 500.0
+trigger_id = "窃取舞春神"
+label_text = "窃取名画"
+
+[node name="library_survey2" parent="Control/Node" instance=ExtResource("2_trig")]
+offset_left = 520.0
+offset_top = 600.0
+offset_right = 640.0
+offset_bottom = 720.0
+trigger_id = "调查大学图书馆"
+label_text = "查画"
+
+[node name="Exit" parent="Control/Node" instance=ExtResource("1_spot")]
+spot_name = "返回_主城"
+max_size = Vector2(180, 180)
+ordinary = Vector2(1700, 610)

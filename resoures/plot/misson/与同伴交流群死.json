@@ -1,0 +1,167 @@
+
+{
+	"与同伴交流群死（法拉叶）": {
+		"0th": {
+			"name": "{player_name}",
+			"text": "关于我家里的事，我想问问你的想法。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "",
+			"text": "你拿出那张报纸，告诉了法拉叶关于死亡的疑点。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "法拉叶",
+			"text": "既然如此，你认为是直接杀死他们的，是雇佣的杀手还是伏藏已久的奸细呢？",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "{player_name}",
+			"text": "这有什么问题吗？不管怎样，他们也都死于那场意外啦。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "法拉叶",
+			"text": "不，这指向了幕后真凶。想要让人付出生命的代价，幕后之人需要付出很多。如果是杀手那么资金的流向就会说明问题；如果是后者，那么就是某个仆人有能力制造该意外的，又完全效忠于某个可能得利的人。",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "{player_name}",
+			"text": "让我想想。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"群死凶器的迷思"
+				]
+			},
+			"next": -1
+		}
+	},
+	"与同伴交流群死（阿尔温）": {
+		"0th": {
+			"name": "{player_name}",
+			"text": "关于我家里的事，我想问问你的想法。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "",
+			"text": "你拿出那张报纸，告诉了阿尔温关于死亡的疑点。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "阿尔温",
+			"text": "谋杀，这好可怕.......可是这样的问题也只能问警察了吧，如果警察不行，那就问问私家侦探了，我不知道啊。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"群死常规的处理的迷思"
+				]
+			},
+			"next": -1
+		}
+	},
+	"与同伴交流群死（sans）": {
+		"0th": {
+			"name": "{player_name}",
+			"text": "关于我家里的事，我想问问你的想法。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "",
+			"text": "你拿出那张报纸，告诉了衫斯关于死亡的疑点。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "衫斯",
+			"text": "这似乎是一个仪式。我听说一些晋升仪式需要很多鲜血。抱歉我又说了这种奇奇怪怪的话了。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"群死仪式的可能的迷思"
+				]
+			},
+			"next": -1
+		}
+	},
+	"与同伴交流群死（child）": {
+		"0th": {
+			"name": "{player_name}",
+			"text": "关于家里的事，我想问问你的想法。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "",
+			"text": "你拿出那张报纸，告诉了{child_name}关于死亡的疑点。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "",
+			"text": "",
+			"is_option": false,
+			"nexts": [
+				{
+					"condition": {
+						"child": {
+							"*": {
+								"tags": [
+									"gifted"
+								]
+							}
+						}
+					},
+					"next": 3
+				},
+				{
+					"next": 5
+				}
+			]
+		},
+		"3th": {
+			"name": "{child_name}",
+			"text": "我会保护你的，先生。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"child_保护的决心"
+				]
+			},
+			"next": 4
+		},
+		"4th": {
+			"name": "{player_name}",
+			"text": "谢谢我的小骑士啊，不过再怎么说也是我保护你啦，只是这件事确实蹊跷想看看你的想法。",
+			"is_option": false,
+			"next": -1
+		},
+		"5th": {
+			"name": "{child_name}",
+			"text": "我听说过，只是没想到这竟然是发生在先生的家里。",
+			"is_option": false,
+			"next": 6
+		},
+		"6th": {
+			"name": "{child_name}",
+			"text": "我认为现在的信息还是太少了，学业并不紧张，让我帮先生调查这件事吧。",
+			"is_option": false,
+			"next": 7
+		},
+		"7th": {
+			"name": "{player_name}",
+			"text": "（我需要更多的线索，但是应该并不需要让{child_name}耽搁学业。）",
+			"is_option": false,
+			"next": -1
+		}
+	}
+}

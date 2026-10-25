@@ -1,0 +1,116 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://components/achievement_popup.gd" id="1_apop"]
+[ext_resource type="StyleBoxTexture" path="res://theme/ach_tag_plate.tres" id="2_tag"]
+[ext_resource type="Texture2D" path="res://art/ui/achievement/popup_frame.png" id="3_frame"]
+
+[node name="AchievementPopup" type="Control"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = -260.0
+offset_top = 20.0
+offset_right = 260.0
+offset_bottom = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_apop")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("2_tag")
+
+[node name="ImageBox" type="Control" parent="Panel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 58.0
+offset_bottom = 56.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/ImageBox"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Frame" type="TextureRect" parent="Panel/ImageBox"]
+modulate = Color(0.560784, 0.423529, 0.180392, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_frame")
+expand_mode = 1
+stretch_mode = 0
+
+[node name="Rule" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = 306.0
+offset_top = 15.0
+offset_right = 307.0
+offset_bottom = 49.0
+mouse_filter = 2
+color = Color(0.45098, 0.333333, 0.145098, 0.35)
+
+[node name="EyebrowLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 6.0
+offset_right = 300.0
+offset_bottom = 21.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.451, 0.333, 0.149, 1)
+theme_override_font_sizes/font_size = 11
+text = "成就达成"
+
+[node name="TitleLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 20.0
+offset_right = 300.0
+offset_bottom = 57.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.18, 0.141, 0.094, 1)
+theme_override_font_sizes/font_size = 19
+text = "成就名称"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="DescLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 316.0
+offset_top = 6.0
+offset_right = 510.0
+offset_bottom = 57.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.262745, 0.215686, 0.164706, 1)
+theme_override_font_sizes/font_size = 13
+text = "成就描述"
+autowrap_mode = 3
+vertical_alignment = 1
+clip_text = true
+max_lines_visible = 2

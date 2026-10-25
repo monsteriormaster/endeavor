@@ -1,0 +1,29 @@
+{
+	"报纸_舞春神找回": {
+		"layout": "newspaper",
+		"0th": {
+			"name": "",
+			"text": "《失窃古画寻回 警署旬日破案》",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "",
+			"text": "前于乌鲁鲁大学失窃之古画，日前经警署缉获寻回。画件完好，已发还该校图书馆归藏。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "",
+			"text": "此案侦办未及旬日即破。馆长具函致谢，称警署办案之神速，为近年所仅见。本报记者 述",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "{player_name}",
+			"text": "（画完好。可那幅画现在靠在我家书桌上。）",
+			"is_option": false,
+			"next": -1
+		}
+	}
+}

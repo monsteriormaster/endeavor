@@ -1,0 +1,27 @@
+[gd_resource type="FontVariation" format=3]
+
+; 全局默认字体（2026-10-19 第二次选型）。
+;
+; 上一版是 SystemFont，按族名「幼圆 → 微软雅黑 → 黑体」向操作系统要字：
+;   好处是不复制字体文件，授权上干净；
+;   代价是**换一台机器就不是同一个字面** —— 幼圆只有 Windows 有，Mac 或英文系统上没有，
+;   兜底到雅黑后字重、字形全变。demo 要拿到别人的电脑上跑，这条不能留。
+;
+; 现在改成：**资源圆体简中 Light（Resource Han Rounded CN Light）**
+;   来源 https://github.com/CyanoHao/Resource-Han-Rounded ｜ 作者 Cyano Hao
+;   授权 SIL Open Font License 1.1（全文见 theme/fonts/OFL-License.txt）
+;     → 允许嵌入软件、随软件分发、商用，无需知会作者；禁止单独售卖字体文件本身
+;   为什么选它：简体基于中国版思源黑体改造，简体不缺字；做了圆角化处理；
+;               Light 字重最接近幼圆的笔画粗细（对比图 design/字体候选对照_v2.png）
+;
+; 🔴 实测：中文全角字宽度与幼圆**完全一致（0.0%）**，只有西文/数字宽 2.7%
+;      → 换这个字体不会撑破任何按幼圆调好的面板，只有西文标签可能略长一点。
+;
+; 换字体只改这一个文件，调用方（theme/default_theme.tres）无感。
+; 想要别的粗细：把 ttf 换成 ResourceHanRoundedCN-Normal / -Regular 即可。
+
+[ext_resource type="FontFile" path="res://theme/fonts/ResourceHanRoundedCN-Light.ttf" id="1_font"]
+
+[resource]
+base_font = ExtResource("1_font")
+allow_system_fallback = true

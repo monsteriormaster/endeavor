@@ -1,0 +1,272 @@
+{
+	"美丽的世界-装饰画": {
+		"0th": {
+			"name": "",
+			"text": "你正坐在沙发上翻阅闲书，{child_name}抱着一个比他还宽的画板，手里还抓着一个塞满画具的木盒，探头探脑的出现在门口。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"美丽的世界"
+				]
+			},
+			"next": 1
+		},
+		"1th": {
+			"name": "{player_name}",
+			"text": "怎么了，搬这么多东西过来，是要在书房采风吗。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "{child_name}",
+			"text": "啊，不……其实是，我想为先生画一幅画，作为礼物送给您。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "{child_name}",
+			"text": "可是，我想画您骑马的样子，也想画您看书的样子，想用颜料涂满，又怕画不出您的感觉。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "{child_name}",
+			"text": "我怕画砸了，所以想问先生，您想收到一副怎样的画。",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "",
+			"text": "你看着{child_name}期待又纠结的眼睛，你有在关注他学习练习的结果，现在要完成一幅画对他来说已经不是难事了。",
+			"is_option": false,
+			"next": 6
+		},
+		"6th": {
+			"name": "{player_name}",
+			"text": "你想收到一副怎样的画？",
+			"is_option": true,
+			"options": [
+				{
+					"text": "不用拘束，画一幅充满力量与气势的吧。",
+					"condition": {
+						"description": "孩子的力量大于5时解锁",
+						"child": {
+							"*": {
+								"attrs": {
+									"str": {
+										">": 5
+									}
+								}
+							}
+						}
+					},
+					"next": 7
+				},
+				{
+					"text": "画一副严谨写实的吧，把你看到的真实记录下来。",
+					"condition": {
+						"description": "孩子的智识大于5时解锁",
+						"child": {
+							"*": {
+								"attrs": {
+									"int": {
+										">": 5
+									}
+								}
+							}
+						}
+					},
+					"next": 10
+				},
+				{
+					"text": "画一幅让人感到温暖的吧，不用在意像不像，把你感受到的心情画出来就好。",
+					"condition": {
+						"description": "孩子的容貌大于5时解锁",
+						"child": {
+							"*": {
+								"attrs": {
+									"app": {
+										">": 5
+									}
+								}
+							}
+						}
+					},
+					"next": 13
+				},
+				{
+					"text": "画一幅充满动感的吧，用你的直觉，捕捉那些稍纵即逝的动作和风。",
+					"condition": {
+						"description": "孩子的体魄大于5时解锁",
+						"child": {
+							"*": {
+								"attrs": {
+									"bod": {
+										">": 5
+									}
+								}
+							}
+						}
+					},
+					"next": 16
+				}
+			]
+		},
+		"7th": {
+			"name": "",
+			"text": "几天之后，{child_name}气喘呼呼地把画板递了过来。",
+			"is_option": false,
+			"next": 8
+		},
+		"8th": {
+			"name": "",
+			"text": "画面上，你正披着大衣站在狂风中。身后的树木和远处的云层被粗犷的笔触搅动得极具气势。极具爆发力的厚重色彩，让这幅画好像燃着一团火。",
+			"is_option": false,
+			"next": 9
+		},
+		"9th": {
+			"name": "",
+			"text": "看着画中坚不可摧的自己，你感受到了{child_name}的崇拜。",
+			"is_option": false,
+			"next": 19
+		},
+		"10th": {
+			"name": "",
+			"text": "几天之后，{child_name}郑重其事地把画板递了过来。",
+			"is_option": false,
+			"next": 11
+		},
+		"11th": {
+			"name": "",
+			"text": "画面很干净，用细炭笔勾勒出了你在书桌前工作的侧影。每一本书的厚度，阳光照入的夹角，都无可挑剔。",
+			"is_option": false,
+			"next": 12
+		},
+		"12th": {
+			"name": "",
+			"text": "想来要做到这点，怎么也需要一张草稿打满辅助线，再一点点透写出来。",
+			"is_option": false,
+			"next": 19
+		},
+		"13th": {
+			"name": "",
+			"text": "几天之后，{child_name}带着笑意把画板交给你。",
+			"is_option": false,
+			"next": 14
+		},
+		"14th": {
+			"name": "",
+			"text": "画中的你正坐在阳光房里，微微侧过头，看着画面外的某人，嘴角挂着柔和的微笑。大块的暖色调如午后阳光在纸上晕染、交融。",
+			"is_option": false,
+			"next": 15
+		},
+		"15th": {
+			"name": "",
+			"text": "就算知道这画的是自己，和画中人对视时，也能感受到被深深凝视着的浪漫和温情。",
+			"is_option": false,
+			"next": 19
+		},
+		"16th": {
+			"name": "",
+			"text": "几天之后，{child_name}踩着步子，把画板交给你。",
+			"is_option": false,
+			"next": 17
+		},
+		"17th": {
+			"name": "",
+			"text": "那是一张颇有张力的动态速写，画面上的你正利落地翻身上马。线条狂奔飞扬，又能精准的抓住重心和发力点。",
+			"is_option": false,
+			"next": 18
+		},
+		"18th": {
+			"name": "",
+			"text": "真是敏锐的动态视觉和不可思议的身体直觉。",
+			"is_option": false,
+			"next": 19
+		},
+		"19th": {
+			"name": "{player_name}",
+			"text": "（这可真是，独一无二的杰作。）",
+			"is_option": false,
+			"next": 20
+		},
+		"20th": {
+			"name": "",
+			"text": "你双手接过画板，仔细端详了很久。然后抬起头，对上{child_name}忐忑又期待的目光。",
+			"is_option": false,
+			"next": 21
+		},
+		"21th": {
+			"name": "{player_name}",
+			"text": "谢谢你，{child_name}，这真是超棒的礼物。",
+			"is_option": false,
+			"next": 22
+		},
+		"22th": {
+			"name": "",
+			"text": "{child_name}的眼睛亮了起来，肩膀也不再紧绷了，绽放出大大的笑容，要不是在你面前，大概可以跳起来吧。",
+			"is_option": false,
+			"next": 23
+		},
+		"23th": {
+			"name": "{player_name}",
+			"text": "这样的作品，藏在抽屉里太可惜了。司库奇——！",
+			"is_option": false,
+			"next": 24
+		},
+		"24th": {
+			"name": "",
+			"text": "管家仿佛一直在门边待命，很快就出现在了门口。",
+			"is_option": false,
+			"next": 25
+		},
+		"25th": {
+			"name": "管家 司库奇",
+			"text": "少主，您有什么吩咐？",
+			"is_option": false,
+			"next": 26
+		},
+		"26th": {
+			"name": "{player_name}",
+			"text": "联系城里的装裱匠，选一副上好的画框，然后……把它挂在主楼梯的那面墙上。",
+			"is_option": false,
+			"next": 27
+		},
+		"27th": {
+			"name": "管家 司库奇",
+			"text": "遵命。小少爷的画作一定会为我们的楼梯增添不少光彩。",
+			"is_option": false,
+			"next": 28
+		},
+		"28th": {
+			"name": "",
+			"text": "一旁听着的{child_name}表情变化可真是精彩，大概是说到贵族家的挂画，总是先想到先祖肖像吧。",
+			"is_option": false,
+			"next": 29
+		},
+		"29th": {
+			"name": "{child_name}",
+			"text": "挂在那里？先，先生？可是这样的话，来访的客人们都会看到的。",
+			"is_option": false,
+			"next": 30
+		},
+		"30th": {
+			"name": "{player_name}",
+			"text": "那不是正好吗，不如说正是因为这样。",
+			"is_option": false,
+			"next": 31
+		},
+		"31th": {
+			"name": "{player_name}",
+			"text": "这可是我的孩子为我创作的画像，让他们都好好欣赏一番。",
+			"is_option": false,
+			"next": 32
+		},
+		"32th": {
+			"name": "",
+			"text": "你伸手去揉{child_name}毛茸茸的头发，笑得肆意又骄傲。",
+			"is_option": false,
+			"next": -1
+		}
+	}
+}

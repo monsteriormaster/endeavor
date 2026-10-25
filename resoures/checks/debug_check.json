@@ -1,0 +1,34 @@
+{
+	"智力检定": {
+		"title": "智力检定",
+		"description": "测试用 — 纯智力鉴定，方便观察骰面 x 随智力变化",
+		"attrs": {
+			"int": 1
+		},
+		"difficulty": 5,
+		"crit_success_margin": 3,
+		"crit_failure_margin": -3,
+		"branches": {
+			"crit_success": {
+				"effect": {
+					"tags": ["大成功"]
+				}
+			},
+			"success": {
+				"effect": {
+					"tags": ["成功"]
+				}
+			},
+			"failure": {
+				"effect": {
+					"tags": ["失败"]
+				}
+			},
+			"crit_failure": {
+				"effect": {
+					"tags": ["大失败"]
+				}
+			}
+		}
+	}
+}

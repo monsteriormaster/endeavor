@@ -1,0 +1,64 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://cbxeto13xsdq1" path="res://components/scene_spot.tscn" id="1_spot"]
+[ext_resource type="PackedScene" path="res://components/trigger_spot.tscn" id="2_trig"]
+
+[node name="TheaterMap" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 22.0
+offset_top = 110.0
+offset_right = 1898.0
+offset_bottom = 970.0
+mouse_filter = 2
+
+[node name="Node" type="Node" parent="Control"]
+
+[node name="theater_work" parent="Control/Node" instance=ExtResource("2_trig")]
+offset_left = 580.0
+offset_top = 290.0
+offset_right = 700.0
+offset_bottom = 410.0
+trigger_id = "在剧院打工"
+label_text = "剧院打工"
+
+[node name="theater_watch" parent="Control/Node" instance=ExtResource("2_trig")]
+offset_left = 900.0
+offset_top = 280.0
+offset_right = 1020.0
+offset_bottom = 400.0
+trigger_id = "剧院看剧"
+label_text = "看剧"
+
+[node name="theater_negotiate" parent="Control/Node" instance=ExtResource("2_trig")]
+offset_left = 560.0
+offset_top = 500.0
+offset_right = 680.0
+offset_bottom = 620.0
+trigger_id = "与经理交涉"
+label_text = "与经理交涉"
+label_on_dark = true
+
+[node name="theater_night" parent="Control/Node" instance=ExtResource("2_trig")]
+offset_left = 880.0
+offset_top = 500.0
+offset_right = 1000.0
+offset_bottom = 620.0
+trigger_id = "夜间调查剧院"
+label_text = "夜间调查"
+label_on_dark = true
+
+[node name="theater_allwin_future" parent="Control/Node" instance=ExtResource("2_trig")]
+offset_left = 1230.0
+offset_top = 460.0
+offset_right = 1350.0
+offset_bottom = 580.0
+trigger_id = "阿尔温的未来"
+label_text = "阿尔温的未来"
+
+[node name="Exit" parent="Control/Node" instance=ExtResource("1_spot")]
+spot_name = "返回_主城"
+max_size = Vector2(180, 180)
+ordinary = Vector2(1700, 610)

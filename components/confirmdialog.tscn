@@ -1,50 +1,109 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8ljdq15av614"]
+[gd_scene load_steps=5 format=3 uid="uid://b8ljdq15av614"]
 
 [ext_resource type="Script" uid="uid://b3l2hb4dtv2g6" path="res://components/confirmdialog.gd" id="1_dlp4s"]
+[ext_resource type="Texture2D" path="res://art/ui/confirm_panel.png" id="2_panel"]
+[ext_resource type="Script" path="res://components/ui_rule.gd" id="3_rule"]
 
-[node name="Confirmdialog" type="PopupPanel"]
-position = Vector2i(90, 200)
-size = Vector2i(550, 300)
-visible = true
+[sub_resource type="StyleBoxTexture" id="SB_panel"]
+texture = ExtResource("2_panel")
+
+[node name="Confirmdialog" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_dlp4s")
 
-[node name="dialogbox" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 546.0
-offset_bottom = 296.0
+[node name="VeilPaper" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.894118, 0.866667, 0.811765, 0.28)
 
-[node name="title" type="Label" parent="dialogbox"]
-layout_mode = 0
-offset_left = 150.0
-offset_top = 19.0
-offset_right = 327.0
-offset_bottom = 76.0
-text = "title
-"
+[node name="VeilShade" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.274510, 0.211765, 0.141176, 0.36)
 
-[node name="message" type="Label" parent="dialogbox"]
-layout_mode = 0
-offset_left = 85.0
-offset_top = 69.0
-offset_right = 439.0
-offset_bottom = 190.0
-text = "message"
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(680, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -200.0
+offset_right = 340.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("SB_panel")
 
-[node name="buttonbox" type="HBoxContainer" parent="dialogbox"]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 219.0
-offset_right = 535.0
-offset_bottom = 273.0
-theme_override_constants/separation = 400
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 42
+theme_override_constants/margin_top = 42
+theme_override_constants/margin_right = 42
+theme_override_constants/margin_bottom = 42
 
-[node name="cancelbutton" type="Button" parent="dialogbox/buttonbox"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
 layout_mode = 2
-text = "cancel"
+theme_override_constants/separation = 16
+theme_override_colors/font_color = Color(0.219608, 0.168627, 0.117647, 1)
+alignment = 1
 
-[node name="confirmbutton" type="Button" parent="dialogbox/buttonbox"]
+[node name="title" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "confirm"
+theme_override_font_sizes/font_size = 32
+text = "标题"
+horizontal_alignment = 1
+
+[node name="rule" type="Control" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+script = ExtResource("3_rule")
+line_color = Color(0.451, 0.333, 0.145, 0.55)
+
+[node name="message" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.266667, 0.215686, 0.160784, 1)
+theme_override_constants/line_spacing = 8
+theme_override_font_sizes/font_size = 22
+text = "正文"
+autowrap_mode = 3
+vertical_alignment = 0
+
+[node name="buttonbox" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 48
+alignment = 1
+
+[node name="cancelbutton" type="Button" parent="Panel/MarginContainer/VBoxContainer/buttonbox"]
+custom_minimum_size = Vector2(180, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "返回"
+
+[node name="confirmbutton" type="Button" parent="Panel/MarginContainer/VBoxContainer/buttonbox"]
+custom_minimum_size = Vector2(180, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "确认"

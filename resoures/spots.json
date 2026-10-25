@@ -3,68 +3,82 @@
 		"name":"监狱",
 		"description":"一个人才济济的地方。也许是因为提供免费住宿，三餐和特色服饰，不少人留在这里，甚至有人来了终生不走。",
 		"path":"res://scene/prison.tscn",
-		"icon":"res://art/prison.png"
-
+		"icon":"res://art/city_icons/prison.png"
 	},
 	"离开_监狱":{
 		"name":"监狱出口",
 		"description":"尽早离去吧",
 		"path":"res://scene/main.tscn",
-		"icon":"res://art/prison_out.png"
-
+		"icon":"res://art/return_signpost.png"
 	},
 	"商业区":{
 		"name":"商业区",
 		"description":"在这里钱可以买到任何东西，包括钱。",
-		"path":"res://map/shopping_area.tscn",
-		"icon":"res://art/commercial.png"
+		"path":"res://scene/commercial.tscn",
+		"icon":"res://art/city_icons/commercial.png"
 	},
 	"学校":{
 		"name":"学校",
 		"description":"这里是知识的殿堂，聚集了世界上最有潜力的人。",
 		"path":"res://scene/school.tscn",
-		"icon":"res://art/school.png"
+		"icon":"res://art/city_icons/school.png"
 	},
-	"家业":{
-		"name":"家业",
+	"孤儿院":{
+		"name":"孤儿院",
+		"description":"无家可归的孩子们在这里长大。也许其中有一个，能替你走完你走不到的路。",
+		"path":"res://scene/orphanage.tscn",
+		"icon":"res://art/city_icons/orphan.png"
+	},
+	"家":{
+		"name":"家",
 		"description":"你继承的家族产业，亦是每日归来的地方。",
 		"path":"res://scene/home.tscn",
-		"icon":"res://art/home.png"
+		"icon":"res://art/city_icons/home.png"
 	},
 	"剧院":{
 		"name":"剧院",
 		"description":"贵族的社交场所，身份的象征。",
 		"path":"res://scene/theater.tscn",
-		"icon":"res://art/theater.png"
+		"icon":"res://art/city_icons/theater.png"
 	},
 	"市政广场":{
 		"name":"市政广场",
-		"description":"待定。",
+		"description":"前方的区域以后再来探索吧",
 		"path":"res://scene/plaza.tscn",
-		"icon":"res://art/plaza.png"
+		"icon":"res://art/city_icons/plaza.png",
+		"future":true
 	},
 	"交通运输站":{
 		"name":"交通运输站",
-		"description":"远方，他乡。不过想去其他地方的前提是知道有这么一个地方。",
+		"description":"远方，他乡。不过想去其他地方的前提是知道有这么一个地方。——前方的区域以后再来探索吧",
 		"path":"res://scene/transport.tscn",
-		"icon":"res://art/transport.png"
+		"icon":"res://art/city_icons/transport.png",
+		"future":true
 	},
 	"医院":{
 		"name":"医院",
 		"description":"死人最多的地方，能在这里听到最虔诚的祈祷，最悲痛的哀悼。",
 		"path":"res://scene/hospital.tscn",
-		"icon":"res://art/hospital.png"
+		"icon":"res://art/city_icons/hospital.png"
 	},
 	"教会":{
 		"name":"教会",
-		"description":"待定。",
+		"description":"前方的区域以后再来探索吧",
 		"path":"res://scene/church.tscn",
-		"icon":"res://art/church.png"
+		"icon":"res://art/city_icons/church.png",
+		"future":true
 	},
 	"返回_主城":{
 		"name":"返回",
 		"description":"回到城市总览。",
 		"path":"res://scene/main.tscn",
-		"icon":"res://art/back.png"
+		"icon":"res://art/return_signpost.png",
+		"locked_when":["进行新手教程"],
+		"locked_description":"发生了那么大的事，先问问管家吧。",
+		"locked_when_not":["家业已执行"],
+		"locked_plot": {
+			"path": "res://resoures/plot/misson/beginning.json",
+			"name": "发生了那么大的事"
+		}
 	}
 }

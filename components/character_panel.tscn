@@ -1,70 +1,102 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmjcvgo5m2hl6"]
+[gd_scene load_steps=6 format=3 uid="uid://bmjcvgo5m2hl6"]
 
-[ext_resource type="Script" uid="uid://dlprtox37xn81" path="res://components/character_panel.gd" id="1_2g3gq"]
+[ext_resource type="Script" uid="uid://dlprtox37xn81" path="res://components/character_panel.gd" id="1_main"]
+[ext_resource type="Texture2D" path="res://art/ui/character_panel_card_bg.png" id="2_bgtex"]
+[ext_resource type="Texture2D" path="res://art/card.png" id="3_cardtex"]
+
+[sub_resource type="StyleBoxEmpty" id="SB_empty"]
+[sub_resource type="CanvasItemMaterial" id="CIM_premult"]
+blend_mode = 4
 
 [node name="CharacterPanel" type="PopupPanel"]
 oversampling_override = 1.0
 initial_position = 1
-size = Vector2i(500, 432)
+size = Vector2i(1344, 700)
 visible = true
-script = ExtResource("1_2g3gq")
+script = ExtResource("1_main")
+theme_override_styles/panel = SubResource("SB_empty")
 
 [node name="margin" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 496.0
-offset_bottom = 428.0
+offset_right = 1344.0
+offset_bottom = 700.0
+mouse_filter = 2
 
-[node name="closebutton" type="Button" parent="margin"]
+[node name="bg" type="TextureRect" parent="margin"]
 layout_mode = 0
-offset_left = 466.0
-offset_right = 492.0
-offset_bottom = 31.0
-grow_horizontal = 0
-size_flags_horizontal = 8
-size_flags_vertical = 0
-text = "x
-"
+offset_right = 1344.0
+offset_bottom = 700.0
+mouse_filter = 2
+material = SubResource("CIM_premult")
+texture_filter = 1
+texture = ExtResource("2_bgtex")
+expand_mode = 1
+stretch_mode = 0
 
-[node name="description" type="Label" parent="margin"]
+[node name="equipment" type="Control" parent="margin"]
 layout_mode = 0
-offset_left = 21.0
-offset_top = 34.0
-offset_right = 426.0
-offset_bottom = 74.0
-text = "dec"
-autowrap_mode = 3
+offset_right = 1344.0
+offset_bottom = 700.0
+mouse_filter = 2
 
-[node name="att" type="Label" parent="margin"]
+[node name="big" type="TextureRect" parent="margin"]
 layout_mode = 0
-offset_left = 19.0
-offset_top = 133.0
-offset_right = 165.0
-offset_bottom = 374.0
-
-[node name="tags" type="VBoxContainer" parent="margin"]
-layout_mode = 0
-offset_left = 172.0
-offset_top = 76.0
-offset_right = 318.0
-offset_bottom = 372.0
+offset_left = 230.0
+offset_top = 26.0
+offset_right = 606.0
+offset_bottom = 690.0
+mouse_filter = 2
+texture_filter = 1
+texture = ExtResource("3_cardtex")
+expand_mode = 1
+stretch_mode = 0
 
 [node name="avatar" type="Sprite2D" parent="margin"]
 
-[node name="nickname" type="Label" parent="margin"]
+[node name="charname" type="Label" parent="margin"]
 layout_mode = 0
-offset_left = 325.0
-offset_top = 10.0
-offset_right = 405.0
-offset_bottom = 33.0
+offset_left = 230.0
+offset_top = 78.0
+offset_right = 606.0
+offset_bottom = 126.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.180392, 0.129412, 0.0901961, 1)
+theme_override_font_sizes/font_size = 34
+horizontal_alignment = 1
 
-[node name="equipment" type="HBoxContainer" parent="margin"]
+[node name="description" type="Label" parent="margin"]
 layout_mode = 0
-offset_left = 17.0
-offset_top = 337.0
-offset_right = 339.0
-offset_bottom = 403.0
+offset_left = 666.0
+offset_top = 380.0
+offset_right = 1272.0
+offset_bottom = 458.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.309803, 0.262745, 0.215686, 1)
+theme_override_font_sizes/font_size = 18
+autowrap_mode = 3
+
+[node name="tags" type="HBoxContainer" parent="margin"]
+layout_mode = 0
+offset_left = 662.0
+offset_top = 600.0
+offset_right = 1274.0
+offset_bottom = 634.0
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="closebutton" type="Button" parent="margin"]
+layout_mode = 0
+offset_left = 1240.0
+offset_top = 62.0
+offset_right = 1284.0
+offset_bottom = 106.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+flat = true
+metadata/btn_skin_skip = true
+theme_override_styles/hover = SubResource("SB_empty")
+theme_override_styles/pressed = SubResource("SB_empty")
+theme_override_styles/focus = SubResource("SB_empty")
 
 [connection signal="pressed" from="margin/closebutton" to="." method="_on_closebutton_pressed"]

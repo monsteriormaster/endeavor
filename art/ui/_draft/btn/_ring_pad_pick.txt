@@ -1,0 +1,4 @@
+已存 C:\Users\26464\IdeaProjects\endeavor\art\ui\_draft\btn\_ring_pad_pick.png
+pad=(9,9)  圈高 125px  上下各溢出 13.1px  与邻居净空 43.9px  切进按钮 40% 的点
+pad=(10,16)  圈高 140px  上下各溢出 20.6px  与邻居净空 36.4px  切进按钮 30% 的点
+pad=(12,26)  圈高 162px  上下各溢出 31.3px  与邻居净空 25.7px  切进按钮 24% 的点

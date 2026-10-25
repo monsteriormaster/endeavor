@@ -1,0 +1,854 @@
+{
+	"涂鸦比拼_甲": {
+		"0th": {
+			"name": "",
+			"text": "天擦黑。那堵断墙早被写花了，一层压着一层，底下的早认不出是什么颜色。地上滚着几个空罐，一脚踩上去当啷响。风里有股喷漆的味儿，又甜又冲。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "",
+			"text": "露易丝站在墙前，把罐子摇了摇，里面的铁珠哗啦哗啦撞着罐壁。她抬手，一根颜色贴着墙面拉开。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "",
+			"text": "巷口晃过来几个人影。兜帽扣到眉毛，手背和指甲缝里全是五颜六色的。为首的肩上搭着包，走一步，包里的罐头磕一下。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "萨格",
+			"text": "嘿。那墙是属于我萨格的。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "",
+			"text": "他抬起罐子，手腕一抖，一串字母跳上了墙，正好压在露易丝刚拉的那条线上。",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "萨格",
+			"text": "从这条街到码头，所有的墙都是我们的。",
+			"is_option": false,
+			"next": 6
+		},
+		"6th": {
+			"name": "露易丝",
+			"text": "哟，哪里的愣头青，连我的名头都没听说过，还敢在这里大放厥词。",
+			"is_option": false,
+			"next": 7
+		},
+		"7th": {
+			"name": "萨格",
+			"text": "那你是谁？",
+			"is_option": false,
+			"next": 8
+		},
+		"8th": {
+			"name": "露易丝",
+			"text": "……{child_name}！",
+			"is_option": false,
+			"next": 9
+		},
+		"9th": {
+			"name": "",
+			"text": "萨格和周围的人交头接耳，讨论了下，似乎都没有听说过{child_name}。",
+			"is_option": false,
+			"next": 10
+		},
+		"10th": {
+			"name": "萨格",
+			"text": "遇到我们，算你倒霉，你那名头可不管用，赶紧回家找妈妈去。",
+			"is_option": false,
+			"next": 11
+		},
+		"11th": {
+			"name": "萨格",
+			"text": "哟，妈妈，救命，我要吃奶我要吃奶。",
+			"is_option": false,
+			"next": 12
+		},
+		"12th": {
+			"name": "",
+			"text": "几个人笑起来，不怀好意的目光上下打量露易丝。",
+			"is_option": false,
+			"next": 13
+		},
+		"13th": {
+			"name": "露易丝",
+			"text": "江湖规矩，谁画得好是谁的。",
+			"is_option": false,
+			"next": 14
+		},
+		"14th": {
+			"name": "萨格",
+			"text": "我怎么不知道有这规矩、",
+			"is_option": false,
+			"next": 15
+		},
+		"15th": {
+			"name": "混混",
+			"text": "和她说那么多干嘛，把她办了她就知道什么是规矩了。",
+			"is_option": false,
+			"next": 16
+		},
+		"16th": {
+			"name": "萨格",
+			"text": "慢着，我们也不是不讲理的人。那就按这个规矩来。如果我赢了，你就滚回去，如果你赢了，这堵墙就送你了。",
+			"is_option": false,
+			"next": 17
+		},
+		"17th": {
+			"name": "露易丝",
+			"text": "知道自己要滚回去就好，来吧。",
+			"is_option": false,
+			"next": 18
+		},
+		"18th": {
+			"name": "{child_name}",
+			"text": "（露易丝姐姐早上好像说，傍晚是要去买丝线的。算了，现在该怎么办？）",
+			"is_option": false,
+			"next": 19
+		},
+		"19th": {
+			"name": "",
+			"text": "两人在竖线分界各自开始展现画技。",
+			"is_option": false,
+			"next": 20
+		},
+		"20th": {
+			"name": "",
+			"text": "一个是黑白字母，尽显酷炫；一个是七彩骷髅头，别具新意。且看字母连缀，洒下阴影宛如立体，又见骷髅头色彩晕染如真似幻；竖线两边各显神通，好似滚滚大江水冲进厕所沟，两边低山臭水难舍难分。",
+			"is_option": false,
+			"next": 21
+		},
+		"21th": {
+			"name": "{child_name}",
+			"text": "你们在做什么？",
+			"is_option": false,
+			"next": 22
+		},
+		"22th": {
+			"name": "混混",
+			"text": "哪来的小屁孩滚一边去。",
+			"is_option": false,
+			"next": 23
+		},
+		"23th": {
+			"name": "",
+			"text": "墙上的污渍丑得别具匠心，实在让{child_name}难以忍受，终于他鼓起了勇气。",
+			"is_option": false,
+			"next": 24
+		},
+		"24th": {
+			"name": "{child_name}",
+			"text": "我说你们是在比赛吗？",
+			"is_option": false,
+			"next": 25
+		},
+		"25th": {
+			"name": "混混",
+			"text": "算你有点眼光，看我们老大写的，啧啧，多带劲。",
+			"is_option": false,
+			"next": 26
+		},
+		"26th": {
+			"name": "",
+			"text": "{child_name}尴尬地笑了两声。",
+			"is_option": false,
+			"next": 27
+		},
+		"27th": {
+			"name": "{child_name}",
+			"text": "哥哥姐姐们，不介意让我试试吧，我也很喜欢画画。",
+			"is_option": false,
+			"next": 28
+		},
+		"28th": {
+			"name": "萨格",
+			"text": "我的艺术甚至可以启蒙小朋友，比你的垃圾好看多了。",
+			"is_option": false,
+			"next": 29
+		},
+		"29th": {
+			"name": "露易丝",
+			"text": "明明是我的画作吸引来的观众，和你那堆不知什么东西有什么关系？",
+			"is_option": false,
+			"next": 30
+		},
+		"30th": {
+			"name": "",
+			"text": "{child_name}尽量不让余光扫到两边的大片污渍，沿着中心的线，色彩开始蔓延。长空之上，大河席卷而来，气势滔滔怒若奔雷行如风，涤荡污浊，洗尽天地，一片浩然。",
+			"is_option": false,
+			"next": 31
+		},
+		"31th": {
+			"name": "",
+			"text": "奔腾的大河之水一路跌宕终扫清阻碍，奔赴大海……",
+			"is_option": false,
+			"next": 32
+		},
+		"32th": {
+			"name": "",
+			"text": "不知何时周围人都停了下来，目不转睛地看着{child_name}作画。嘴巴张得老大，却没有发出声音，像是怕打扰画师此刻的意境。",
+			"is_option": false,
+			"next": 33
+		},
+		"33th": {
+			"name": "{child_name}",
+			"text": "你们还在啊。",
+			"is_option": false,
+			"next": 34
+		},
+		"34th": {
+			"name": "露易丝",
+			"text": "小哥，我没有想到你那么厉害，快教教我！",
+			"is_option": false,
+			"next": 35
+		},
+		"35th": {
+			"name": "萨格",
+			"text": "师傅，别理他，这个我们的成师礼一切从简，总之今天起你就是我师傅了！",
+			"is_option": false,
+			"next": 36
+		},
+		"36th": {
+			"name": "",
+			"text": "{child_name}画完，退到一边。可墙前那两个人还没散，反倒凑得更近了。",
+			"is_option": false,
+			"next": 37
+		},
+		"37th": {
+			"name": "露易丝",
+			"text": "你刚才那串字母，为什么压着左边的线走。",
+			"is_option": false,
+			"next": 38
+		},
+		"38th": {
+			"name": "萨格",
+			"text": "动势。说了你也不懂。",
+			"is_option": false,
+			"next": 39
+		},
+		"39th": {
+			"name": "露易丝",
+			"text": "动什么势，歪得乱七八糟，呕……",
+			"is_option": false,
+			"next": 40
+		},
+		"40th": {
+			"name": "萨格",
+			"text": "你那颗骷髅头就好看了？那么大一片黄像屎一样。",
+			"is_option": false,
+			"next": 41
+		},
+		"41th": {
+			"name": "露易丝",
+			"text": "那叫撞色。",
+			"is_option": false,
+			"next": 42
+		},
+		"42th": {
+			"name": "萨格",
+			"text": "那是撞屎。",
+			"is_option": false,
+			"next": 43
+		},
+		"43th": {
+			"name": "",
+			"text": "两个人你一句我一句，火气越来越大，眼看就要撸袖子。{child_name}赶紧挤到两人中间。",
+			"is_option": false,
+			"next": 44
+		},
+		"44th": {
+			"name": "{child_name}",
+			"text": "别吵了。你们俩，也就半斤八两，多练练吧。",
+			"is_option": false,
+			"next": 45
+		},
+		"45th": {
+			"name": "萨格",
+			"text": "师傅教导得是。",
+			"is_option": false,
+			"next": 46
+		},
+		"46th": {
+			"name": "露易丝",
+			"text": "不要脸的东西。",
+			"is_option": false,
+			"next": 47
+		},
+		"47th": {
+			"name": "萨格",
+			"text": "老子认了就行，用得着你点头，是吧师傅？",
+			"is_option": false,
+			"next": 48
+		},
+		"48th": {
+			"name": "{child_name}",
+			"text": "？？？",
+			"is_option": false,
+			"next": 49
+		},
+		"49th": {
+			"name": "露易丝",
+			"text": "……你！",
+			"is_option": false,
+			"next": 50
+		},
+		"50th": {
+			"name": "",
+			"text": "过了一会儿，两人不知怎么又聊回画上。{child_name}在旁边听着，越听越不对。这两个嘴上骂个不停的人，一说起画来一套一套的，书上没这么讲过。他干脆捂住耳朵，怕听多了把自己那点画商带歪。",
+			"is_option": false,
+			"next": 51
+		},
+		"51th": {
+			"name": "",
+			"text": "露易丝蹲在墙这头，萨格蹲在墙那头，从喷漆聊到城南哪家店偷偷卖进口的罐子。路灯亮起来的时候，两个人都还蹲着。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"相见恨晚"
+				],
+				"pending_tags": [
+					"涂鸦约战"
+				]
+			},
+			"next": -1
+		}
+	},
+
+	"涂鸦比拼_乙": {
+		"0th": {
+			"name": "",
+			"text": "天擦黑。那堵断墙早被写花了，一层压着一层，底下的早认不出是什么颜色。地上滚着几个空罐，一脚踩上去当啷响。风里有股喷漆的味儿，又甜又冲。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "",
+			"text": "露易丝站在墙前，把罐子摇了摇，里面的铁珠哗啦哗啦撞着罐壁。她抬手，一根颜色贴着墙面拉开。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "",
+			"text": "巷口晃过来几个人影。兜帽扣到眉毛，手背和指甲缝里全是五颜六色的。为首的肩上搭着包，走一步，包里的罐头磕一下。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "萨格",
+			"text": "嘿。那墙是属于我萨格的。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "",
+			"text": "他抬起罐子，手腕一抖，一串字母跳上了墙，正好压在露易丝刚拉的那条线上。",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "萨格",
+			"text": "从这条街到码头，所有的墙都是我们的。",
+			"is_option": false,
+			"next": 6
+		},
+		"6th": {
+			"name": "露易丝",
+			"text": "哟，哪里的愣头青，连我的名头都没听说过，还敢在这里大放厥词。",
+			"is_option": false,
+			"next": 7
+		},
+		"7th": {
+			"name": "萨格",
+			"text": "那你是谁？",
+			"is_option": false,
+			"next": 8
+		},
+		"8th": {
+			"name": "露易丝",
+			"text": "……{child_name}！",
+			"is_option": false,
+			"next": 9
+		},
+		"9th": {
+			"name": "",
+			"text": "萨格和周围的人交头接耳，讨论了下，似乎都没有听说过{child_name}。",
+			"is_option": false,
+			"next": 10
+		},
+		"10th": {
+			"name": "萨格",
+			"text": "遇到我们，算你倒霉，你那名头可不管用，赶紧回家找妈妈去。",
+			"is_option": false,
+			"next": 11
+		},
+		"11th": {
+			"name": "萨格",
+			"text": "哟，妈妈，救命，我要吃奶我要吃奶。",
+			"is_option": false,
+			"next": 12
+		},
+		"12th": {
+			"name": "",
+			"text": "几个人笑起来，不怀好意的目光上下打量露易丝。",
+			"is_option": false,
+			"next": 13
+		},
+		"13th": {
+			"name": "露易丝",
+			"text": "江湖规矩，谁画得好是谁的。",
+			"is_option": false,
+			"next": 14
+		},
+		"14th": {
+			"name": "萨格",
+			"text": "我怎么不知道有这规矩、",
+			"is_option": false,
+			"next": 15
+		},
+		"15th": {
+			"name": "混混",
+			"text": "和她说那么多干嘛，把她办了她就知道什么是规矩了。",
+			"is_option": false,
+			"next": 16
+		},
+		"16th": {
+			"name": "萨格",
+			"text": "慢着，我们也不是不讲理的人。那就按这个规矩来。如果我赢了，你就滚回去，如果你赢了，这堵墙就送你了。",
+			"is_option": false,
+			"next": 17
+		},
+		"17th": {
+			"name": "露易丝",
+			"text": "知道自己要滚回去就好，来吧。",
+			"is_option": false,
+			"next": 18
+		},
+		"18th": {
+			"name": "{child_name}",
+			"text": "（露易丝姐姐早上好像说，傍晚是要去买丝线的。算了，现在该怎么办？）",
+			"is_option": false,
+			"next": 19
+		},
+		"19th": {
+			"name": "",
+			"text": "两人在竖线分界各自开始展现画技。",
+			"is_option": false,
+			"next": 20
+		},
+		"20th": {
+			"name": "",
+			"text": "一个是黑白字母，尽显酷炫；一个是七彩骷髅头，别具新意。且看字母连缀，洒下阴影宛如立体，又见骷髅头色彩晕染如真似幻；竖线两边各显神通，好似滚滚大江水冲进厕所沟，两边低山臭水难舍难分。",
+			"is_option": false,
+			"next": 21
+		},
+		"21th": {
+			"name": "",
+			"text": "萨格那伙人围着墙，你一言我一语地评起来。左边说字母够劲，右边说骷髅头稀罕，评了半天，一致认定，萨格赢。",
+			"is_option": false,
+			"next": 22
+		},
+		"22th": {
+			"name": "萨格",
+			"text": "听见没，群众的眼睛是雪亮的。",
+			"is_option": false,
+			"next": 23
+		},
+		"23th": {
+			"name": "露易丝",
+			"text": "你们自己人投自己人，也好意思叫群众。应该去找个路过的人，和我们两个无关的。",
+			"is_option": false,
+			"next": 24
+		},
+		"24th": {
+			"name": "萨格",
+			"text": "看你硬要一个公平结果，是个输不起的种儿，罢了，我大人有大量，找路人就找路人。",
+			"is_option": false,
+			"next": 25
+		},
+		"25th": {
+			"name": "",
+			"text": "话音刚落，巷口咚咚咚跑来一个人。有现成的路人，众人立刻把这个人围了起来。",
+			"is_option": false,
+			"next": 26
+		},
+		"26th": {
+			"name": "{child_name}",
+			"text": "嗯，你们，你们好？",
+			"is_option": false,
+			"next": 27
+		},
+		"27th": {
+			"name": "露易丝",
+			"text": "就他了，你们应该不认识，正好我也不认识。你来看看到底哪边画得好。",
+			"is_option": false,
+			"next": 28
+		},
+		"28th": {
+			"name": "{child_name}",
+			"text": "（如果都不好看我能走掉吗？）",
+			"is_option": false,
+			"next": 29
+		},
+		"29th": {
+			"name": "",
+			"text": "两边都盯着{child_name}。",
+			"is_option": true,
+			"options": [
+				{
+					"text": "这个什么彩球好。",
+					"next": 30
+				},
+				{
+					"text": "这个……这个字母好。一眼就认得出是字母。",
+					"next": 40
+				}
+			]
+		},
+		"30th": {
+			"name": "萨格",
+			"text": "你个小兔崽子，再说一遍。",
+			"is_option": false,
+			"next": 31
+		},
+		"31th": {
+			"name": "",
+			"text": "萨格挽起袖子，身边的人也抄起家伙，一脸凶神恶煞。咚咚咚。",
+			"is_option": false,
+			"next": 32
+		},
+		"32th": {
+			"name": "萨格",
+			"text": "小朋友，你是不是看错了，来，再说一遍？",
+			"is_option": false,
+			"next": 33
+		},
+		"33th": {
+			"name": "露易丝",
+			"text": "呸，你这输不起的家伙。",
+			"is_option": false,
+			"next": 34
+		},
+		"34th": {
+			"name": "萨格",
+			"text": "你才输不起！",
+			"is_option": false,
+			"next": 35
+		},
+		"35th": {
+			"name": "巡警",
+			"text": "别告诉我你们在玩过家家。",
+			"is_option": false,
+			"next": 36
+		},
+		"36th": {
+			"name": "",
+			"text": "突然出现的巡警把那伙人吓得如鸟兽四散，最后萨格跑得慢了一点，被抓个正着。",
+			"is_option": false,
+			"next": 37
+		},
+		"37th": {
+			"name": "露易丝",
+			"text": "这警察什么时候那么及时了。",
+			"is_option": false,
+			"next": 38
+		},
+		"38th": {
+			"name": "{child_name}",
+			"text": "（因为是我去叫的。）这次运气好，露易丝姐姐以后不要一个人到危险的地方了哦。",
+			"is_option": false,
+			"next": 39
+		},
+		"39th": {
+			"name": "露易丝",
+			"text": "嘿嘿。",
+			"is_option": false,
+			"effect": {
+				"pending_tags": [
+					"涂鸦约战"
+				]
+			},
+			"next": -1
+		},
+		"40th": {
+			"name": "萨格",
+			"text": "听见没，群众的眼睛是雪亮的。",
+			"is_option": false,
+			"next": 41
+		},
+		"41th": {
+			"name": "",
+			"text": "露易丝鼓起腮帮子，过了会儿才气呼呼地开口。",
+			"is_option": false,
+			"next": 42
+		},
+		"42th": {
+			"name": "露易丝",
+			"text": "这次算我手生，走神了。下次再来，我让你看看什么叫真的。",
+			"is_option": false,
+			"next": 43
+		},
+		"43th": {
+			"name": "萨格",
+			"text": "随时奉陪。",
+			"is_option": false,
+			"next": 44
+		},
+		"44th": {
+			"name": "",
+			"text": "话音刚落，巷口咚咚咚一阵脚步。两个胳膊上套着反光条的人拐了进来。萨格脸上的笑一下僵住，手忙脚乱地把喷漆罐往身后藏。",
+			"is_option": false,
+			"next": 45
+		},
+		"45th": {
+			"name": "巡警",
+			"text": "谁报的案？说这儿有人聚众斗殴。",
+			"is_option": false,
+			"next": 46
+		},
+		"46th": {
+			"name": "",
+			"text": "巷子里安安静静。萨格两只空手举在胸前，一脸无辜。露易丝背着手站在自己那半边墙跟前。{child_name}往墙边挪了半步，低着头，怕被认出来。",
+			"is_option": false,
+			"next": 47
+		},
+		"47th": {
+			"name": "{child_name}",
+			"text": "（那个，好像是我叫的）",
+			"is_option": false,
+			"next": 48
+		},
+		"48th": {
+			"name": "巡警",
+			"text": "谁又在乱画？算了也不归我管。",
+			"is_option": false,
+			"next": 49
+		},
+		"49th": {
+			"name": "",
+			"text": "两个巡警背着手走了。等他们拐过街角，萨格才把那口憋着的气吐出来。",
+			"is_option": false,
+			"next": 50
+		},
+		"50th": {
+			"name": "萨格",
+			"text": "我的妈，刚才那一下，老子腿都软了。",
+			"is_option": false,
+			"next": 51
+		},
+		"51th": {
+			"name": "露易丝",
+			"text": "怂包。",
+			"is_option": false,
+			"next": 52
+		},
+		"52th": {
+			"name": "萨格",
+			"text": "怂个屁。老子是怕你一个姑娘家在这儿吃亏。再说了，你那面墙也不赖，要是被清理了怪可惜的。",
+			"is_option": false,
+			"next": 53
+		},
+		"53th": {
+			"name": "露易丝",
+			"text": "（……哼。）",
+			"is_option": false,
+			"next": 54
+		},
+		"54th": {
+			"name": "萨格",
+			"text": "喂。",
+			"is_option": false,
+			"next": 55
+		},
+		"55th": {
+			"name": "露易丝",
+			"text": "干嘛。",
+			"is_option": false,
+			"next": 56
+		},
+		"56th": {
+			"name": "萨格",
+			"text": "看到了吗？那面墙也是我的，明天再给你一次机会。",
+			"is_option": false,
+			"next": 57
+		},
+		"57th": {
+			"name": "露易丝",
+			"text": "……你输得起？",
+			"is_option": false,
+			"next": 58
+		},
+		"58th": {
+			"name": "萨格",
+			"text": "也不知道今天是谁输了。",
+			"is_option": false,
+			"next": 59
+		},
+		"59th": {
+			"name": "露易丝",
+			"text": "哼。谁怕谁啊。",
+			"is_option": false,
+			"next": 60
+		},
+		"60th": {
+			"name": "",
+			"text": "说完，两人拎起罐子，一个往东，一个往西。",
+			"is_option": false,
+			"effect": {
+				"pending_tags": [
+					"涂鸦约战"
+				]
+			},
+			"next": -1
+		}
+	},
+
+	"涂鸦胜利": {
+		"0th": {
+			"name": "",
+			"text": "绚丽夺目的色彩泼洒肆意的青春。一颗激昂不屈的心，要淋漓尽致，要恣肆畅快，蛮横张扬别有七分可爱。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "萨格",
+			"text": "确实很有色彩。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "露易丝",
+			"text": "这是在夸我，还是骂我？不会又输不起吧。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "萨格",
+			"text": "很漂亮。况且我什么时候输不起了？",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "",
+			"text": "萨格盯着那半边墙看了半天。",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "萨格",
+			"text": "这墙，归你了。",
+			"is_option": false,
+			"next": 6
+		},
+		"6th": {
+			"name": "露易丝",
+			"text": "没关系，你想画点什么就画呗，别遮住我的就好了。你画得招骂其实也挺酷的，要不试试不同的色彩？",
+			"is_option": false,
+			"next": 7
+		},
+		"7th": {
+			"name": "萨格",
+			"text": "我就喜欢黑色和白色，这是我的招牌。从这条街到码头，满城都认得。",
+			"is_option": false,
+			"next": 8
+		},
+		"8th": {
+			"name": "露易丝",
+			"text": "吹牛皮。",
+			"is_option": false,
+			"next": 9
+		},
+		"9th": {
+			"name": "萨格",
+			"text": "嘿嘿。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"涂鸦了断"
+				],
+				"enqueue_talk": {
+					"Louise": {
+						"path": "res://resoures/plot/louise/有关恋爱的对话.json",
+						"name": "有关恋爱的对话"
+					}
+				}
+			},
+			"next": -1
+		}
+	},
+
+	"涂鸦失败": {
+		"0th": {
+			"name": "",
+			"text": "在一片黑暗压抑与不妥协间一种其他的东西正在被孕育，单调的色彩，灰暗的墙壁却书写了一段荒诞与诙谐。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "",
+			"text": "瞥了眼对方的画作露易丝忍不住笑出了声。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "萨格",
+			"text": "怎么样？知道我的厉害了吧。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "",
+			"text": "露易丝尽力想洒脱一点，像一个黑道大佬准备金盆洗手，可是眼眶却反射出了一丝落寞的光。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "露易丝",
+			"text": "你赢了，我不会再来了。",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "萨格",
+			"text": "等等，那个，你想学吗？",
+			"is_option": false,
+			"next": 6
+		},
+		"6th": {
+			"name": "露易丝",
+			"text": "？？",
+			"is_option": false,
+			"next": 7
+		},
+		"7th": {
+			"name": "萨格",
+			"text": "诶，我其实，唔，也不差你一个，你想来画就一起来画呗。有你的色彩也挺好的。",
+			"is_option": false,
+			"next": 8
+		},
+		"8th": {
+			"name": "露易丝",
+			"text": "虽然不明白为什么你突然，好吧，总之谢谢你啦。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"涂鸦了断"
+				],
+				"enqueue_talk": {
+					"Louise": {
+						"path": "res://resoures/plot/louise/有关恋爱的对话.json",
+						"name": "有关恋爱的对话"
+					}
+				}
+			},
+			"next": -1
+		}
+	}
+}

@@ -1,35 +1,59 @@
-[gd_scene load_steps=3 format=3 uid="uid://cygk04pfrprl7"]
+[gd_scene format=3 uid="uid://cygk04pfrprl7"]
 
 [ext_resource type="PackedScene" uid="uid://cbxeto13xsdq1" path="res://components/scene_spot.tscn" id="1_iw5kc"]
 [ext_resource type="PackedScene" uid="uid://bydeed2mwdvwu" path="res://components/character.tscn" id="2_char"]
+[ext_resource type="PackedScene" path="res://components/trigger_spot.tscn" id="3_trig"]
 
-[node name="PrisonSpot" type="Node2D"]
+[node name="PrisonSpot" type="Node2D" unique_id=710979619]
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=1701913218]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 22.0
 offset_top = 110.0
 offset_right = 1898.0
 offset_bottom = 970.0
+mouse_filter = 2
 
-[node name="Node" type="Node" parent="Control"]
+[node name="Node" type="Node" parent="Control" unique_id=663490200]
 
-[node name="prison_out" parent="Control/Node" instance=ExtResource("1_iw5kc")]
+[node name="prison_out" parent="Control/Node" unique_id=1976118481 instance=ExtResource("1_iw5kc")]
+offset_left = 429.0
+offset_top = 716.0
+offset_right = 570.0
+offset_bottom = 798.0
 spot_name = "离开_监狱"
+max_size = Vector2(180, 180)
 ordinary = Vector2(100, 600)
 
-[node name="jailer" parent="." instance=ExtResource("2_char")]
-position = Vector2(260, 170)
+[node name="escape" parent="Control/Node" unique_id=1812856124 instance=ExtResource("3_trig")]
+offset_left = 1410.0
+offset_top = 500.0
+offset_right = 1530.0
+offset_bottom = 620.0
+trigger_id = "越狱"
+label_text = "越狱"
+
+[node name="jailer" parent="." unique_id=1911261076 instance=ExtResource("2_char")]
+offset_left = 436.0
+offset_top = 337.0
+offset_right = 636.0
+offset_bottom = 690.333
 charcter_name = "Jailer"
 config_path = "res://resoures/configs/prison/jailer_in_prison.json"
 
-[node name="sansi" parent="." instance=ExtResource("2_char")]
-position = Vector2(760, 170)
+[node name="sansi" parent="." unique_id=545540734 instance=ExtResource("2_char")]
+offset_left = 718.0
+offset_top = 337.0
+offset_right = 918.0
+offset_bottom = 690.333
 charcter_name = "Sansi"
 config_path = "res://resoures/configs/prison/sansi_in_prison.json"
 
-[node name="falayee" parent="." instance=ExtResource("2_char")]
-position = Vector2(1260, 170)
+[node name="falayee" parent="." unique_id=1131306127 instance=ExtResource("2_char")]
+offset_left = 964.0
+offset_top = 337.0
+offset_right = 1164.0
+offset_bottom = 690.333
 charcter_name = "Falayee"
 config_path = "res://resoures/configs/prison/falayee_in_prison.json"

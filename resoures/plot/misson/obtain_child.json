@@ -1,0 +1,523 @@
+{
+	"直接去孤儿院": {
+		"0th": {
+			"name": "",
+			"text": "虽然这样做有些任性，但是无论如何你都不愿意放弃艺术的梦。因此继承家业的第一件事就是找一个有天赋的小孩，让他继承你的梦。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "",
+			"text": "孩子们知道你的到来是一个给他们家的机会。他们乖巧地看着你，像街上失去了主人的流浪狗。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "孤儿院 院长",
+			"text": "先生，这些都是懂事的，不会给您添麻烦。不知道哪个小孩有幸可以有个家呢？",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "{player_name}",
+			"text": "我想要一个有点灵性的。我可以让他们画点东西让我看看吗？",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "孤儿院 院长",
+			"text": "先生你说笑了，这些小东西哪里知道怎么握笔，怎么画画啊。",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "{player_name}",
+			"text": "（会不会画画还是其次，大概是这些小孩一会儿还要工作，院长不想我耽搁他们太久。只能相信命运了吗？）",
+			"is_option": false,
+			"next": 6
+		},
+		"6th": {
+			"name": "{player_name}",
+			"text": "院长，如果我选的小孩在家不懂规则惹麻烦的话.......",
+			"is_option": false,
+			"next": 7
+		},
+		"7th": {
+			"name": "孤儿院 院长",
+			"text": "那就是这个小东西没有福分，是在孤儿院长大的命。届时你要是仍然想要孩子还可以在这里挑。",
+			"is_option": false,
+			"next": 8
+		},
+		"8th": {
+			"name": "{player_name}",
+			"text": "让我看看吧。",
+			"is_option": false,
+			"next": 9
+		},
+		"9th": {
+			"name": "",
+			"text": "你环视四周，周围都是孩子们期待的眼神，又没有吵吵闹闹，大概是院长管理有方。",
+			"is_option": false,
+			"next": 10
+		},
+		"10th": {
+			"name": "",
+			"text": "在角落，一个男孩看向了窗外。幼稚的面庞，可爱的大眼睛，和其他小朋友没什么不同。可你总觉得他会是特别的。",
+			"is_option": true,
+			"options": [
+				{
+					"condition": {
+						"description": "金钱大于5时解锁",
+						"money": {
+							"left": 5,
+							"right": 9999999
+						}
+					},
+					"text": "院长，这些钱让孩子们吃点好的吧。这个我就带走了。",
+					"effect": {
+						"money": -5
+					},
+					"next": 13
+				},
+				{
+					"condition": {
+						"description": "贵族等级大于2",
+						"nobility": {
+							">": 2
+						}
+					},
+					"text": "这个孩子我就带走了",
+					"next": 12
+				},
+				{
+					"text": "让我再想想",
+					"next": 11
+				}
+			]
+		},
+		"11th": {
+			"name": "孤儿院 院长",
+			"text": "哈哈，我知道找到一个符合心意的小孩不容易。要是有了想法您还可以来看看。",
+			"is_option": false,
+			"next": 0
+		},
+		"12th": {
+			"name": "孤儿院 院长",
+			"text": "大人您能来我们这里挑选小孩是我们的荣幸。还不快谢谢老爷。",
+			"is_option": false,
+			"next": 14
+		},
+		"13th": {
+			"name": "孤儿院 院长",
+			"text": "孩子们会永远记得您的善心。",
+			"is_option": false,
+			"next": 14
+		},
+		"14th": {
+			"name": "??",
+			"text": "谢谢您，先生。",
+			"is_option": false,
+			"next": 15
+		},
+		"15th": {
+			"name": "{player_name}",
+			"text": "你叫什么名字？",
+			"is_option": false,
+			"next": 16
+		},
+		"16th": {
+			"name": "??",
+			"text": "先生，我听说我在七月出生所以他们都叫我小七。先生要是不喜欢这个名字就取一个别的吧。",
+			"is_option": false,
+			"next": 17
+		},
+		"17th": {
+			"name": "{player_name}",
+			"text": "（要给孩子取个名字吗？）",
+			"is_option": true,
+			"options": [
+				{
+					"text": "小七，我记住了，你的生日在七月。",
+					"effect": {
+						"child": {
+							"July": {
+								"name": "小七",
+								"tags": [
+									"gifted"
+								]
+							}
+						}
+					},
+					"next": 18
+				},
+				{
+					"text": "既然你是我的孩子，那就叫这个吧。",
+					"effect": {
+						"name_child": {
+							"default": "小七",
+							"id": "July",
+							"tags": [
+								"gifted"
+							]
+						}
+					},
+					"next": 18
+				}
+			]
+		},
+		"18th": {
+			"name": "{player_name}",
+			"text": "你牵着孩子的手，踏上了回家的路。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"收养了孩子"
+				],
+				"add_to_hand": [
+					"July"
+				],
+				"enqueue_talk": {
+					"July": {
+						"path": "res://resoures/plot/misson/与同伴交流群死.json",
+						"name": "与同伴交流群死（child）"
+					}
+				}
+			},
+			"next": -1
+		}
+	},
+
+	"两次失败后遇到有天赋的孩子": {
+		"0th": {
+			"name": "",
+			"text": "来孤儿院挑选孩子是一件很依赖运气的事，你能做的只有祈祷。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "",
+			"text": "不过上天似乎并不总是眷顾你。这次的孩子能实现你的心愿吗？",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "？？",
+			"text": "先生，你能带我走吗？",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "",
+			"text": "挑选小孩时，这些孩童都是安安静静的。从未有人这样主动走向了你。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "{player_name}",
+			"text": "我的要求是严苛的，如果不满意你还是会回到这里。",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "？？",
+			"text": "先生，求求您，给我这个机会吧。",
+			"is_option": false,
+			"next": 6
+		},
+		"6th": {
+			"name": "{player_name}",
+			"text": "(我需要的真的是个能替我实现梦想的人吗？)",
+			"is_option": true,
+			"options": [
+				{
+					"condition": {
+						"description": "金钱大于5时解锁",
+						"money": {
+							"left": 5,
+							"right": 9999999
+						}
+					},
+					"text": "跟我回家吧。",
+					"effect": {
+						"money": -5
+					},
+					"next": 9
+				},
+				{
+					"text": "抱歉孩子，我不喜欢这样不懂规矩的人。",
+					"next": 7
+				}
+			]
+		},
+		"7th": {
+			"name": "",
+			"text": "他咬咬牙，蹬了你一眼。",
+			"is_option": false,
+			"next": 8
+		},
+		"8th": {
+			"name": "",
+			"text": "今天也没能找到合适的小孩。",
+			"is_option": false,
+			"next": 0
+		},
+		"9th": {
+			"name": "",
+			"text": "你拉着他的手走出了孤儿院。",
+			"is_option": false,
+			"next": 10
+		},
+		"10th": {
+			"name": "{player_name}",
+			"text": "你叫什么名字？为什么想和我走？",
+			"is_option": false,
+			"next": 11
+		},
+		"11th": {
+			"name": "??",
+			"text": "先生，我听说我在七月出生所以他们都叫我小七。先生要是不喜欢这个名字就取一个别的吧。",
+			"is_option": false,
+			"next": 12
+		},
+		"12th": {
+			"name": "{player_name}",
+			"text": "（要给孩子取个名字吗？）",
+			"is_option": true,
+			"options": [
+				{
+					"text": "小七，我记住了，你的生日在七月。",
+					"effect": {
+						"child": {
+							"July": {
+								"name": "小七",
+								"tags": [
+									"gifted"
+								]
+							}
+						}
+					},
+					"next": 13
+				},
+				{
+					"text": "既然你是我的孩子，那就叫这个吧。",
+					"effect": {
+						"name_child": {
+							"default": "小七",
+							"id": "July",
+							"tags": [
+								"gifted"
+							]
+						}
+					},
+					"next": 13
+				}
+			]
+		},
+		"13th": {
+			"name": "{child_name}",
+			"text": "谢谢您先生，我喜欢这个名字。",
+			"is_option": false,
+			"next": 14
+		},
+		"14th": {
+			"name": "{player_name}",
+			"text": "知道我是做什么的吗？为什么想跟着我呢？",
+			"is_option": false,
+			"next": 15
+		},
+		"15th": {
+			"name": "{child_name}",
+			"text": "我知道先生您是人贩子。我想无论如何我不能继续待在那里了。先生我可以为您干活，如果要是要卖器官的话，可以等我再长几年吗？",
+			"is_option": false,
+			"next": 16
+		},
+		"16th": {
+			"name": "{player_name}",
+			"text": "哈哈，想象力怎么那么丰富。先和我回家吧。",
+			"is_option": false,
+			"next": 17
+		},
+		"17th": {
+			"name": "{player_name}",
+			"text": "你牵着孩子的手，消失在孤儿院的门口。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"收养了孩子"
+				],
+				"add_to_hand": [
+					"July"
+				],
+				"enqueue_talk": {
+					"July": {
+						"path": "res://resoures/plot/misson/与同伴交流群死.json",
+						"name": "与同伴交流群死（child）"
+					}
+				}
+			},
+			"next": -1
+		}
+	},
+
+	"遇到没有天赋的孩子": {
+		"0th": {
+			"name": "",
+			"text": "来孤儿院挑选孩子是一件很依赖运气的事，你能做的只有祈祷。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "",
+			"text": "因为提前和院长联系，看上满意的小孩把钱留下，人就可以带走了。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "",
+			"text": "孩童们围绕着你，眼里写满了期待，看上去差不多......总之就是你了。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "",
+			"text": "",
+			"is_option": false,
+			"next": 4,
+			"effect": {
+				"name_child": {
+					"default": "伊莱克",
+					"id": "Electra",
+					"tags": [
+						"common"
+					]
+				}
+			}
+		},
+		"4th": {
+			"name": "{player_name}",
+			"text": "你带着孩子离开了孤儿院。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"收养了孩子"
+				],
+				"add_to_hand": [
+					"Electra"
+				],
+				"enqueue_talk": {
+					"Electra": {
+						"path": "res://resoures/plot/misson/与同伴交流群死.json",
+						"name": "与同伴交流群死（child）"
+					}
+				}
+			},
+			"next": -1
+		}
+	},
+
+	"遇到有天赋的孩子": {
+		"0th": {
+			"name": "",
+			"text": "来孤儿院挑选孩子是一件很依赖运气的事，你能做的只有祈祷。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "",
+			"text": "因为提前和院长联系，看上满意的小孩把钱留下，人就可以带走了。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "",
+			"text": "孩童们围绕着你，眼里写满了期待，看上去差不多......总之就是你了。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "",
+			"text": "",
+			"is_option": false,
+			"next": 4,
+			"effect": {
+				"name_child": {
+					"default": "小七",
+					"id": "July",
+					"tags": [
+						"gifted"
+					]
+				}
+			}
+		},
+		"4th": {
+			"name": "{player_name}",
+			"text": "你带着孩子离开了孤儿院。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"收养了孩子"
+				],
+				"add_to_hand": [
+					"July"
+				],
+				"enqueue_talk": {
+					"July": {
+						"path": "res://resoures/plot/misson/与同伴交流群死.json",
+						"name": "与同伴交流群死（child）"
+					}
+				}
+			},
+			"next": -1
+		}
+	},
+
+	"归还孩子": {
+		"0th": {
+			"name": "",
+			"text": "你牵着{child_name}的手，再一次走进了孤儿院的大门。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "孤儿院 院长",
+			"text": "先生？您这是……",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "{player_name}",
+			"text": "（我说不出口。可我需要的是一个能替我实现梦想的人。）",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "孤儿院 院长",
+			"text": "唉，我都明白。可怜的孩子，我们会照顾好他的。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "",
+			"text": "{child_name}松开了你的手，没有哭，也没有回头。",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "{player_name}",
+			"text": "你独自走出了孤儿院。",
+			"is_option": false,
+			"effect": {
+				"remove_child": true,
+				"remove_tags": [
+					"收养了孩子"
+				],
+				"num_tags": {
+					"孤儿院归还次数": {
+						"add": 1
+					}
+				}
+			},
+			"next": -1
+		}
+	}
+}

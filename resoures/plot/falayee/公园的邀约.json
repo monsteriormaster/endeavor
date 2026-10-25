@@ -1,0 +1,57 @@
+{
+	"公园的邀约": {
+		"0th": {
+			"name": "法拉叶",
+			"text": "去公园一趟好吗？我有点话.....想对你说。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "{player_name}",
+			"text": "现在？就在这儿说不是省事。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "法拉叶",
+			"text": "……这里不行。人太多，耳朵也太多。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "",
+			"text": "他走在你前面半步，一路没怎么开口。进了园子，他在湖边的长椅前站住，抬手把椅面上的灰掸了掸。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "法拉叶",
+			"text": "那句话，我在心里过了很多遍。真到了要说的时候，又觉得说得不够像样。",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "{player_name}",
+			"text": "练了那么多遍，临到头却不说？",
+			"is_option": false,
+			"next": 6
+		},
+		"6th": {
+			"name": "法拉叶",
+			"text": "再给我几天。等它像一句配得上你的话了，我自然会说。……你还会来这里吧？",
+			"is_option": false,
+			"next": 7
+		},
+		"7th": {
+			"name": "{player_name}",
+			"text": "会。你把话备好，我随时有空。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"法拉叶的邀约"
+				]
+			},
+			"next": -1
+		}
+	}
+}

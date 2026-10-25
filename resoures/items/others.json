@@ -1,0 +1,141 @@
+{
+	"越狱工具": {
+		"name": "越狱工具",
+		"level": "R",
+		"class": ["tool"],
+		"bonus": { "bod": 1 },
+		"tags": ["越狱工具","可堆叠"],
+		"icon": "res://art/items/越狱工具.png",
+		"description": "虽然它长得不像钥匙，可它确实打开自由之门的钥匙。"
+	},
+	"越狱工具清单": {
+		"name": "越狱工具清单",
+		"level": "R",
+		"class": [""],
+		"tags": ["越狱工具清单"],
+		"icon": "res://art/items/越狱工具清单.png",
+		"description": "撬棍、复杂的药剂名称，希望他的使用方式不是一口气全吞了。"
+	},
+	"银之钥":{
+		"name": "银之钥",
+		"level": "R",
+		"class": ["jewelry"],
+		"bonus": { "int": 5 },
+		"tags": ["银之钥"],
+		"icon": "res://art/items/银之钥.png",
+		"description": "穿越银钥之门，瞥见万物归一。"
+	},
+	"可疑的信": {
+		"name": "可疑的信",
+		"level": "R",
+		"icon": "res://art/items/可疑的信.png",
+		"description": "委托人，我们至今未收到100的尾款，8月23号我们会在欢愉酒馆等你。希望你不会做出让自己后悔的事。——红鼹鼠"
+	},
+	"奇怪的箱子": {
+		"name": "奇怪的箱子",
+		"level": "R",
+		"class": ["clue"],
+		"tags": ["奇怪的箱子"],
+		"icon": "res://art/items/奇怪的箱子.png",
+		"description": "神秘的盒子，藏起来的是一段什么秘密呢？"
+	},
+	"外挂": {
+		"name": "外挂",
+		"level": "SSR",
+		"bonus": { "int": 10,"app": 10,"str": 10,"bod": 10 },
+		"tags": ["可堆叠"],
+		"icon": "res://art/items/外挂.png",
+		"description": "没关就是开了？"
+	},
+	"理性": {
+		"name": "理性",
+		"level": "R",
+		"class": ["clue"],
+		"tags": ["理性"],
+		"icon": "res://art/items/理性.png",
+		"description": "澄明的理性说智慧是见识与逻辑交错。"
+	},
+	"感性": {
+		"name": "感性",
+		"level": "R",
+		"class": ["clue"],
+		"tags": ["感性"],
+		"icon": "res://art/items/感性.png",
+		"description": "感性、欲望、肉体真切或是虚假，爱欲是没有答案的问题。"
+	},
+	"知觉": {
+		"name": "知觉",
+		"level": "R",
+		"class": ["clue"],
+		"tags": ["知觉"],
+		"icon": "res://art/items/知觉.png",
+		"description": "知觉，世界交互之所，真实的身体即真实的世界。"
+	},
+	"秘氛": {
+		"name": "秘氛",
+		"level": "R",
+		"class": ["clue"],
+		"bonus": {"app": 1,},
+		"tags": ["秘氛","消耗","可堆叠"],
+		"icon": "res://art/items/秘氛.png",
+		"description": "只可意会不可言传的气息。某些门只为嗅觉敏锐者敞开。"
+	},
+	"困惑": {
+		"name": "困惑",
+		"level": "R",
+		"class": ["clue"],
+		"bonus": {"bod": 1,},
+		"tags": ["困惑","消耗","可堆叠"],
+		"icon": "res://art/items/困惑.png",
+		"description": "越知越多，越知越少。它未必是答案，却一定是问题。"
+	},
+	"博学": {
+		"name": "博学",
+		"level": "R",
+		"class": ["clue"],
+		"bonus": {"int": 1,},
+		"tags": ["博学","消耗","可堆叠"],
+		"icon": "res://art/items/博学.png",
+		"description": "纸上得来终觉浅，绝知此事要躬行。"
+	},
+	"《舞春神》": {
+		"name": "《舞春神》",
+		"level": "SSR",
+		"class": ["tool"],
+		"icon": "res://art/items/舞春神.png",
+		"description": "耐他风雪耐他寒，纵寒已是春寒了。"
+	},
+	"折断的桀骜": {
+		"name": "折断的桀骜",
+		"level": "R",
+		"class": ["story"],
+		"tags": ["折断的桀骜"],
+		"icon": "res://art/items/折断的桀骜.png",
+		"description": "断成两截的一柄短刃，刃口早卷了，断口却磨得发亮。他从不拿它削东西，只是带着。"
+	},
+	"法拉叶藏身处的钥匙": {
+		"name": "法拉叶藏身处的钥匙",
+		"level": "R",
+		"class": ["story"],
+		"tags": ["法拉叶藏身处的钥匙"],
+		"icon": "res://art/items/法拉叶藏身处的钥匙.png",
+		"description": "一枚黄铜钥匙，齿被磨得发亮。郊外那间小屋的门锁，比它老得多。"
+	},
+	"神秘纸条": {
+		"name": "神秘纸条",
+		"level": "R",
+		"class": ["story"],
+		"tags": ["神秘纸条"],
+		"icon": "res://art/items/神秘纸条.png",
+		"description": "一张折了四折的纸条，墨迹被手汗浸开了。上面写着「书似青山常乱叠，灯如红豆最相思」。"
+	},
+	"舞春神的钥匙": {
+		"name": "舞春神的钥匙",
+		"level": "R",
+		"class": ["story"],
+		"tags": ["舞春神的钥匙"],
+		"icon": "res://art/items/舞春神的钥匙.png",
+		"description": "细长的一枚钥匙，柄上刻着一朵认不出名字的花。谁给的，就用来开谁要你开的东西。"
+	}
+	
+}

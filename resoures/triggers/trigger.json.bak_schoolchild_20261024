@@ -1,0 +1,7979 @@
+{
+	"_schema_version": "v7",
+	"_comment": "schema v7（2026-08-25 新增 D-DOC 系列能力，向后兼容 v6）。v6 基线：①卡牌情况 省略→默认每个卡槽无条件约束（长度=len(slots)）。②check.type 省略→'compare'（performer 加权 x vs needs）；'dice' 才随机。③suc 分支省略 effect→suc1..N 自动得『当前 phase 名』tag、suc0 得 fail_state（默认'失败'）tag。④fail_state 可选（默认'失败'）。performer 省略→'执行者'。'_'开头键忽略。repeatable 省略→false；exclusive 省略→true。v6 新增（2026-08-23）：display.conditions（attrs/num_tags min/max 闭区间）、check.dice_num_tags、check.extra_dice、display/分支.plot {path,name}。v7 新增（2026-08-25，见 design/未实现与待定剧情.md §四）：①conditions.sum:true → attrs 按全部已放角色卡求和判定（队伍总属性）。②check.mode:'multi'/'multi_all'/'multi_any' → 多骰模式：每个 attr 各掷一骰，按 multi_needs:{attr:[阈值...]} 定档，总档=min(all)/max(any)；check.combine:'dual' → 双骰双阈值精确 5 档（双<1→0/仅A过线→1/仅B过线→2/双≥1非双≥2→3/双≥2→4），branches 需 suc0..suc4 共 5 个；check.sides_mode:'sum' → 每个骰的骰面=所有已放角色卡该属性之和（1d 总和，非固定 sides，调查丹尼斯专用）；check.thief_tag:'神偷' → dual 模式下队伍任一角色带该 tag 时 bod 判定被替代（int≥8→大成功、int≥5→过线）。③branch.empty_goto/phase.empty_goto:'turn_id' → 可选支援槽全空时跳转该 turn（失败阶段）。④display.lock_execute:true|[tag...] → 禁止按确定（布尔=该 display 选中即禁；数组=已放卡命中 tag 即禁）。⑤slots.accept_name:[名字...] → 限定只接受特定 NPC。⑥slots.auto_fill:npc_id → 固定 NPC 自动入槽。⑦effect.slot_tags:{槽:[tag...]}、effect.slot_attrs:{槽:{attr:N}} → 对槽位角色施加 tag/属性增量（主角→player，NPC→npc 条目）。⑧effect.delayed_event:{days:N,plot:'键名'} → 延迟 N 天播剧情。⑨剧情占位符 {executor_nameN} → 按角色槽放入顺序取第 N 个执行者名。v8/D-DOC13 新增（越狱，2026-08-25）：⑩slots.auto_attract:'tag' → 按 tag 吸附一张卡入槽（动态 npc tag + 静态注册表，随机，匹配 accept 类型）。⑪check.dice_attrs:[attr...] → 每项掷 1d(执行者该属性生效值) 求和；check.num_tag_penalty:{tag:系数} → 再减 系数×执行者该 num_tag 值。⑫effect.slot_remove_tags:{槽:[tag...]} → 移除槽位角色 tag（不存在则安全跳过）；effect.slot_num_tags:{槽:{tag:{\"add\",\"cap\"}或int}} → 槽位角色 num_tag 增量/赋值。⑬resolver:'prison_break' → 越狱嵌套结算（阶段1 1d str+1d bod−2×越狱次数；失败阶段 1d bod≥4 或 神偷；越狱次数每次尝试前+1）。v9/D-DOC23 新增（神秘杂货店，2026-09-10）：①slots.auto_attract 支持对象形式 {class:[...],exclude_sold:true} —— 按物品 class 从注册表吸附（跨槽去重：同次重建已吸附卡不重复；exclude_sold=true 排除 Player.trigger_consumed 里已消耗的商品（D-DOC24 起为通用键，按触发 id 分桶），随机不重复口径同打听池）；字符串 tag 形式向后兼容。②CardData 新增 price 字段（goods.json 商品售价，grocery 结算扣款依据）。③display.conditions 新增 player_stuff:[物品名...]（Player.player_stuff 全含判定，specificity 各计 1）。④resolver:'grocery' → 神秘杂货店即时结算（货四~六人物槽配对购买货一~三：金钱-价格/入包/记已售；持有越狱工具清单→交易愉快交换：失去清单/获得越狱工具/金钱-5；钱不够该对不成交）。",
+	"回家": {
+		"id": "回家",
+		"badge": "回家",
+		"title": "回家",
+		"type": "normal",
+		"repeatable": false,
+		"resolver": "go_home",
+		"duration": 1,
+		"_status_note": "2026-10-24 全量盘点：全工程没有地图挂点、也没有代码以该 id 打开触发器（resolver go_home 的结算逻辑仍在 trigger_popup.gd，但进家已改走主城「家」scene_spot 直接切场景）。留档不删；真要接的时候，地图挂点和显隐口径两样都得补。",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "回家",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"回家": {
+								"显示内容": "发生了那么大的变故，为什么你什么都不知道。必须回去看看。",
+								"slots": {
+									"主角": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	},
+	"家业管理": {
+		"id": "家业管理",
+		"badge": "出航",
+		"title": "家业管理",
+		"type": "normal",
+		"repeatable": true,
+		"resolver": "voyage",
+		"duration": 1,
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "出航",
+						"require": null,
+						"displays": {
+							"仅主管·法拉叶": {
+								"显示内容": "我脑子里长的都是肌肉，你是真敢放心啊。",
+								"conditions": {
+									"any_slot": {
+										"names": [
+											"法拉叶"
+										],
+										"slots": [
+											"主管"
+										]
+									},
+									"placed_count": {
+										"slots": [
+											"护卫",
+											"货物"
+										],
+										"max": 0
+									}
+								},
+								"slots": {
+									"主管": {
+										"accept": "character",
+										"required": true
+									},
+									"护卫": {
+										"accept": "character",
+										"required": true,
+										"forbid_tags": [
+											"受伤"
+										]
+									},
+									"货物": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3
+								],
+								"check": null
+							},
+							"仅主管·司库奇": {
+								"显示内容": "交给我先生就放心吧。",
+								"conditions": {
+									"any_slot": {
+										"names": [
+											"司库奇"
+										],
+										"slots": [
+											"主管"
+										]
+									},
+									"placed_count": {
+										"slots": [
+											"护卫",
+											"货物"
+										],
+										"max": 0
+									}
+								},
+								"slots": {
+									"主管": {
+										"accept": "character",
+										"required": true
+									},
+									"护卫": {
+										"accept": "character",
+										"required": true,
+										"forbid_tags": [
+											"受伤"
+										]
+									},
+									"货物": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3
+								],
+								"check": null
+							},
+							"仅主管·露易丝": {
+								"显示内容": "让我负责这个，{player_name}可真信任我。我定不会让你失望的。",
+								"conditions": {
+									"any_slot": {
+										"names": [
+											"露易丝"
+										],
+										"slots": [
+											"主管"
+										]
+									},
+									"placed_count": {
+										"slots": [
+											"护卫",
+											"货物"
+										],
+										"max": 0
+									}
+								},
+								"slots": {
+									"主管": {
+										"accept": "character",
+										"required": true
+									},
+									"护卫": {
+										"accept": "character",
+										"required": true,
+										"forbid_tags": [
+											"受伤"
+										]
+									},
+									"货物": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3
+								],
+								"check": null
+							},
+							"仅主管·阿尔温": {
+								"显示内容": "我也能做到吗？",
+								"conditions": {
+									"any_slot": {
+										"names": [
+											"阿尔温"
+										],
+										"slots": [
+											"主管"
+										]
+									},
+									"placed_count": {
+										"slots": [
+											"护卫",
+											"货物"
+										],
+										"max": 0
+									}
+								},
+								"slots": {
+									"主管": {
+										"accept": "character",
+										"required": true
+									},
+									"护卫": {
+										"accept": "character",
+										"required": true,
+										"forbid_tags": [
+											"受伤"
+										]
+									},
+									"货物": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3
+								],
+								"check": null
+							},
+							"仅主管·衫斯": {
+								"显示内容": "大海会赐予人们应得的一切，强求不会有好的结果。",
+								"conditions": {
+									"any_slot": {
+										"names": [
+											"衫斯"
+										],
+										"slots": [
+											"主管"
+										]
+									},
+									"placed_count": {
+										"slots": [
+											"护卫",
+											"货物"
+										],
+										"max": 0
+									}
+								},
+								"slots": {
+									"主管": {
+										"accept": "character",
+										"required": true
+									},
+									"护卫": {
+										"accept": "character",
+										"required": true,
+										"forbid_tags": [
+											"受伤"
+										]
+									},
+									"货物": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3
+								],
+								"check": null
+							},
+							"仅主管·Hero": {
+								"显示内容": "我？我真的要去吗？",
+								"conditions": {
+									"any_slot": {
+										"names": [
+											"Hero"
+										],
+										"slots": [
+											"主管"
+										]
+									},
+									"placed_count": {
+										"slots": [
+											"护卫",
+											"货物"
+										],
+										"max": 0
+									}
+								},
+								"slots": {
+									"主管": {
+										"accept": "character",
+										"required": true
+									},
+									"护卫": {
+										"accept": "character",
+										"required": true,
+										"forbid_tags": [
+											"受伤"
+										]
+									},
+									"货物": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3
+								],
+								"check": null
+							},
+							"仅主管": {
+								"显示内容": "接下来只要有人相护就能出发了。",
+								"conditions": {
+									"placed_count": {
+										"slots": [
+											"护卫",
+											"货物"
+										],
+										"max": 0
+									}
+								},
+								"slots": {
+									"主管": {
+										"accept": "character",
+										"required": true
+									},
+									"护卫": {
+										"accept": "character",
+										"required": true,
+										"forbid_tags": [
+											"受伤"
+										]
+									},
+									"货物": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3
+								],
+								"check": null
+							},
+							"仅护卫": {
+								"显示内容": "准备好商谈交易的人就可以开始出发了。",
+								"conditions": {
+									"placed_count": {
+										"slots": [
+											"主管",
+											"货物"
+										],
+										"max": 0
+									}
+								},
+								"slots": {
+									"主管": {
+										"accept": "character",
+										"required": true
+									},
+									"护卫": {
+										"accept": "character",
+										"required": true,
+										"forbid_tags": [
+											"受伤"
+										]
+									},
+									"货物": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3
+								],
+								"check": null
+							},
+							"仅护卫·法拉叶": {
+								"显示内容": "我其实不太擅长正面作战，不过我能确保自己不会受伤。",
+								"conditions": {
+									"any_slot": {
+										"names": [
+											"法拉叶"
+										],
+										"slots": [
+											"护卫"
+										]
+									},
+									"placed_count": {
+										"slots": [
+											"主管",
+											"货物"
+										],
+										"max": 0
+									}
+								},
+								"slots": {
+									"主管": {
+										"accept": "character",
+										"required": true
+									},
+									"护卫": {
+										"accept": "character",
+										"required": true,
+										"forbid_tags": [
+											"受伤"
+										]
+									},
+									"货物": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3
+								],
+								"check": null
+							},
+							"仅护卫·司库奇": {
+								"显示内容": "优秀的管家上能辅助家业下能武打搏斗，护人周全。",
+								"conditions": {
+									"any_slot": {
+										"names": [
+											"司库奇"
+										],
+										"slots": [
+											"护卫"
+										]
+									},
+									"placed_count": {
+										"slots": [
+											"主管",
+											"货物"
+										],
+										"max": 0
+									}
+								},
+								"slots": {
+									"主管": {
+										"accept": "character",
+										"required": true
+									},
+									"护卫": {
+										"accept": "character",
+										"required": true,
+										"forbid_tags": [
+											"受伤"
+										]
+									},
+									"货物": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3
+								],
+								"check": null
+							},
+							"仅护卫·露易丝": {
+								"显示内容": "谁说女子不如男。",
+								"conditions": {
+									"any_slot": {
+										"names": [
+											"露易丝"
+										],
+										"slots": [
+											"护卫"
+										]
+									},
+									"placed_count": {
+										"slots": [
+											"主管",
+											"货物"
+										],
+										"max": 0
+									}
+								},
+								"slots": {
+									"主管": {
+										"accept": "character",
+										"required": true
+									},
+									"护卫": {
+										"accept": "character",
+										"required": true,
+										"forbid_tags": [
+											"受伤"
+										]
+									},
+									"货物": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3
+								],
+								"check": null
+							},
+							"仅护卫·阿尔温": {
+								"显示内容": "是想让我跟着挨打吗？",
+								"conditions": {
+									"any_slot": {
+										"names": [
+											"阿尔温"
+										],
+										"slots": [
+											"护卫"
+										]
+									},
+									"placed_count": {
+										"slots": [
+											"主管",
+											"货物"
+										],
+										"max": 0
+									}
+								},
+								"slots": {
+									"主管": {
+										"accept": "character",
+										"required": true
+									},
+									"护卫": {
+										"accept": "character",
+										"required": true,
+										"forbid_tags": [
+											"受伤"
+										]
+									},
+									"货物": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3
+								],
+								"check": null
+							},
+							"仅护卫·衫斯": {
+								"显示内容": "风暴会庇佑我们。",
+								"conditions": {
+									"any_slot": {
+										"names": [
+											"衫斯"
+										],
+										"slots": [
+											"护卫"
+										]
+									},
+									"placed_count": {
+										"slots": [
+											"主管",
+											"货物"
+										],
+										"max": 0
+									}
+								},
+								"slots": {
+									"主管": {
+										"accept": "character",
+										"required": true
+									},
+									"护卫": {
+										"accept": "character",
+										"required": true,
+										"forbid_tags": [
+											"受伤"
+										]
+									},
+									"货物": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3
+								],
+								"check": null
+							},
+							"仅护卫·Hero": {
+								"显示内容": "不能去这里玩啊，要是真的遇上危险就麻烦了",
+								"conditions": {
+									"any_slot": {
+										"names": [
+											"Hero"
+										],
+										"slots": [
+											"护卫"
+										]
+									},
+									"placed_count": {
+										"slots": [
+											"主管",
+											"货物"
+										],
+										"max": 0
+									}
+								},
+								"slots": {
+									"主管": {
+										"accept": "character",
+										"required": true
+									},
+									"护卫": {
+										"accept": "character",
+										"required": true,
+										"forbid_tags": [
+											"受伤"
+										]
+									},
+									"货物": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3
+								],
+								"check": null
+							},
+							"满槽": {
+								"显示内容": "贪婪、扩张、欲望像深海的漩涡吞没无知胆小怯懦的船只。勇敢无畏一往无前。",
+								"conditions": {
+									"placed_count": {
+										"slots": [
+											"主管",
+											"护卫"
+										],
+										"min": 2,
+										"max": 2
+									}
+								},
+								"slots": {
+									"主管": {
+										"accept": "character",
+										"required": true
+									},
+									"护卫": {
+										"accept": "character",
+										"required": true,
+										"forbid_tags": [
+											"受伤"
+										]
+									},
+									"货物": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3
+								],
+								"check": null
+							},
+							"default": {
+								"显示内容": "大海的另一边是梦想是野心，最重要的是财富。",
+								"slots": {
+									"主管": {
+										"accept": "character",
+										"required": true
+									},
+									"护卫": {
+										"accept": "character",
+										"required": true,
+										"forbid_tags": [
+											"受伤"
+										]
+									},
+									"货物": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3
+								],
+								"check": null
+							}
+						}
+					}
+				]
+			}
+		}
+	},
+	"与同伴交流": {
+		"id": "与同伴交流",
+		"badge": "交游",
+		"title": "家·与同伴交流",
+		"type": "normal",
+		"repeatable": true,
+		"resolver": "companion_talk",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "交谈",
+						"require": null,
+						"displays": {
+							"交谈": {
+								"显示内容": "语言是一种谬误，越是表达，越是背道而驰。语言不是语言难道是情绪吗？",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								}
+							}
+						}
+					}
+				]
+			}
+		}
+	},
+	"休闲": {
+		"id": "休闲",
+		"badge": "休闲",
+		"title": "偷得浮生半日闲",
+		"type": "normal",
+		"repeatable": true,
+		"duration": 1,
+		"_note": "2026-10-24 家中新增，同日改版：刷好感度触发器。主角槽 auto_fill:'Hero' 自动入槽（占星小屋口径）——玩家物理上放不进第二个 Hero，好感永远落在同伴槽。结算 = dice 1d2 + needs:[2]（各 50%），两分支显式 effect 带 slot_num_tags:{同伴:{love:{add:1}}}（对齐 D-DOC19 群体羁绊 +1 口径；Hero 走 _apply_slot_num_tags 会写 player_num_tags 造成污染，故绝不给主角槽写 love）。display 分层：法拉叶同伴 placed_count+any_slot(50) > 满槽 placed_count(30) > 随机引导档 random(1) > 默认兜底(0)。{executor_name} = 首个已放角色卡名。",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "休闲",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"法拉叶同伴": {
+								"显示内容": "「法拉叶」：在这里没必要顺走东西啦",
+								"conditions": {
+									"placed_count": {
+										"slots": [
+											"主角",
+											"同伴"
+										],
+										"min": 2,
+										"max": 2
+									},
+									"any_slot": {
+										"names": [
+											"法拉叶"
+										]
+									}
+								},
+								"slots": {
+									"主角": {
+										"accept": "character",
+										"required": true,
+										"auto_fill": "Hero"
+									},
+									"同伴": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": {
+									"type": "dice",
+									"performer": "主角",
+									"sides": 2,
+									"needs": [
+										2
+									],
+									"branches": {
+										"suc0": {
+											"text": "睡吧睡吧睡吧，你竟然可以足足睡一天一夜，啊，{executor_name}已经走了哦。",
+											"effect": {
+												"slot_num_tags": {
+													"同伴": {
+														"love": {
+															"add": 1
+														}
+													}
+												}
+											}
+										},
+										"suc1": {
+											"text": "玩物丧志，但是你不好好玩耍怎么能体现你的家业呢？何况在家里也不费钱嘛。",
+											"effect": {
+												"slot_num_tags": {
+													"同伴": {
+														"love": {
+															"add": 1
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							},
+							"满槽": {
+								"显示内容": "发生了一些少儿不宜的事.........",
+								"conditions": {
+									"placed_count": {
+										"slots": [
+											"主角",
+											"同伴"
+										],
+										"min": 2,
+										"max": 2
+									}
+								},
+								"slots": {
+									"主角": {
+										"accept": "character",
+										"required": true,
+										"auto_fill": "Hero"
+									},
+									"同伴": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": {
+									"type": "dice",
+									"performer": "主角",
+									"sides": 2,
+									"needs": [
+										2
+									],
+									"branches": {
+										"suc0": {
+											"text": "睡吧睡吧睡吧，你竟然可以足足睡一天一夜，啊，{executor_name}已经走了哦。",
+											"effect": {
+												"slot_num_tags": {
+													"同伴": {
+														"love": {
+															"add": 1
+														}
+													}
+												}
+											}
+										},
+										"suc1": {
+											"text": "玩物丧志，但是你不好好玩耍怎么能体现你的家业呢？何况在家里也不费钱嘛。",
+											"effect": {
+												"slot_num_tags": {
+													"同伴": {
+														"love": {
+															"add": 1
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							},
+							"随机引导档": {
+								"显示内容": "独乐乐不如众乐乐，和谁一起度过愉快的一天呢？",
+								"conditions": {
+									"random": {
+										"key": "leisure_idle",
+										"p": 0.5
+									}
+								},
+								"slots": {
+									"主角": {
+										"accept": "character",
+										"required": true,
+										"auto_fill": "Hero"
+									},
+									"同伴": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							},
+							"默认": {
+								"显示内容": "一个人就叫偷懒了哦",
+								"slots": {
+									"主角": {
+										"accept": "character",
+										"required": true,
+										"auto_fill": "Hero"
+									},
+									"同伴": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	},
+	"书店购书": {
+		"id": "书店购书",
+		"badge": "采买",
+		"title": "白桦书肆·购书",
+		"type": "normal",
+		"repeatable": true,
+		"resolver": "bookshop",
+		"duration": 1,
+		"gate_tag": "第一次到书店",
+		"entry_plot": {
+			"path": "res://resoures/plot/rite/书店.json",
+			"name": "第一次到书店"
+		},
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "购书",
+						"require": null,
+						"displays": {
+							"购书": {
+								"requires": [
+									"第一次到书店"
+								],
+								"显示内容": "放入角色后可以购买书籍，通常是3，有时也可能是1。",
+								"slots": {
+									"人物": {
+										"accept": "character",
+										"required": true
+									},
+									"物品": {
+										"accept": "item",
+										"required": false
+									}
+								}
+							},
+							"书店关闭": {
+								"conditions": {
+									"tags": [
+										"书肆读尽"
+									]
+								},
+								"显示内容": "匾额摘了，门上落着锁。",
+								"slots": {},
+								"check": null
+							}
+						}
+					}
+				]
+			}
+		}
+	},
+	"报亭": {
+		"id": "报亭",
+		"badge": "采买",
+		"title": "报亭",
+		"type": "normal",
+		"repeatable": true,
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "订报",
+						"require": null,
+						"displays": {
+							"取消订阅": {
+								"requires": [
+									"订阅报纸"
+								],
+								"显示内容": "要订报纸吗？足不出户可知天下大事。\n你已决定退订报纸。",
+								"结算文本": "{执行者}取消了报纸订阅。要是对报纸感兴趣随时可以来续订。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"effect": {
+									"remove_tags": [
+										"订阅报纸"
+									]
+								}
+							},
+							"订阅": {
+								"显示内容": "要订报纸吗？足不出户可知天下大事。\n只需金钱1，不再错过任何趣闻热点。",
+								"结算文本": "每两个周报童都会把报纸送到你家里的。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"effect": {
+									"tags": [
+										"订阅报纸"
+									]
+								}
+							}
+						}
+					}
+				]
+			}
+		}
+	},
+	"打探消息": {
+		"id": "打探消息",
+		"badge": "探问",
+		"title": "打探消息",
+		"_status_note": "2026-10-23 全量盘点：全工程没有地图挂点（无 trigger_spot 引用）、也没有代码引用，display 仍是「占位：功能尚未配置」。留档不删；真要接的时候，show_when 和地图挂点两样都得补，只补一样等于没接。",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "打探消息",
+						"require": null,
+						"displays": {
+							"占位": {
+								"显示内容": "（占位：打探消息 功能尚未配置）",
+								"slots": {}
+							}
+						}
+					}
+				]
+			}
+		}
+	},
+	"神秘杂货店": {
+		"id": "神秘杂货店",
+		"badge": "采买",
+		"title": "神秘杂货店",
+		"type": "normal",
+		"repeatable": true,
+		"init_scope": "turn",
+		"resolver": "grocery",
+		"_note": "D-DOC23（2026-09-10，商业街.doc 神秘杂货店）：resolver=grocery，不写 duration=0 回合立即执行（即时结算，无 ActionQueue）。结构：①货一~三 auto_attract {class:['good'],exclude_sold:true} 吸附商品（商品池 resoures/items/goods.json，class 统一 'good'，price 字段记售价）；D-DOC24（2026-09-13）起本触发器声明 init_scope 为 turn：货架在**回合边界**由 TriggerManager.advance_turn 生成回合实例（本回合内固定——多次打开看到同一套三件货），弹窗只读实例、不再现场随机；被买走的商品记入 Player.trigger_consumed 的「神秘杂货店」键（**仅本回合**——本回合再开该槽保持空位，池不足就空着），过天由 advance_turn 清空回池 + 重建实例重新抽三件（取代旧的 goods_sold 单数组，2026-09-13 通用化为按触发 id 分桶）；2026-09-10 拍板「非永久下架」口径不变）；②货四~六 放任意人物卡=购买对应货一/二/三（4→1、5→2、6→3）：金钱-价格、获得物品（stuff+手牌 book_acquired）、记已售下架；钱不够该对不成交并提示（不写失败情景口径）；③阶段2：结算时玩家持有越狱工具清单（player_stuff 门控，买没买货都触发）→「交易愉快」失去清单、获得越狱工具、金钱-5；④右侧槽 accept=item：放入越狱工具清单卡（按物品 tag 识别）→ 触发清单交换，放入的清单卡交换时消耗（不回流手牌）；stuff 持有清单也触发（两轨任一）；其余物品按 tag 加分支为后续扩展。待办：触发器图片背景实装后做槽位布局细节（当前 3+3+1 占位 [1,2,3,5,6,7,9]）+ 货槽卡牌显示价格而非属性值（CardData.price 已备，渲染未接）。⑤成交即下架（2026-09-10 需求；2026-09-13 D-DOC24 改为「已消耗表」驱动）：购得的货立即入手牌、对应货槽当场清空，因该商品已进 Player.trigger_consumed 的「神秘杂货店」键，本回合重开该槽保持空位（基类回合实例路径自动过滤；原 GroceryTriggerPopup._sold_slots / _slot_attract_locked 已删除）；配对购买槽再放人→右侧动态文案「该商品已售罄」+ 禁止执行（已放购买槽全部售罄才禁；混合时仍可买有货对，售罄对由结算文本提示）。",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "选购",
+						"require": null,
+						"displays": {
+							"普通迎客": {
+								"显示内容": "快来瞧，快来看。又实用又精美，这么多年一个价。哪里贵了？小本生意，恕不赊账。",
+								"slots": {
+									"货一": {
+										"accept": "item",
+										"accept_class": [
+											"good"
+										],
+										"required": false,
+										"auto_attract": {
+											"class": [
+												"good"
+											],
+											"exclude_sold": true
+										}
+									},
+									"货二": {
+										"accept": "item",
+										"accept_class": [
+											"good"
+										],
+										"required": false,
+										"auto_attract": {
+											"class": [
+												"good"
+											],
+											"exclude_sold": true
+										}
+									},
+									"货三": {
+										"accept": "item",
+										"accept_class": [
+											"good"
+										],
+										"required": false,
+										"auto_attract": {
+											"class": [
+												"good"
+											],
+											"exclude_sold": true
+										}
+									},
+									"货四": {
+										"accept": "character",
+										"required": false
+									},
+									"货五": {
+										"accept": "character",
+										"required": false
+									},
+									"货六": {
+										"accept": "character",
+										"required": false
+									},
+									"右侧": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3,
+									5,
+									6,
+									7,
+									9
+								],
+								"check": null
+							},
+							"清单迎客": {
+								"conditions": {
+									"player_stuff": [
+										"越狱工具清单"
+									]
+								},
+								"显示内容": "这些东西别处想买可不太容易，不过既然你来都来了自然不会让你空手而归。只是价钱嘛，你懂的。",
+								"slots": {
+									"货一": {
+										"accept": "item",
+										"accept_class": [
+											"good"
+										],
+										"required": false,
+										"auto_attract": {
+											"class": [
+												"good"
+											],
+											"exclude_sold": true
+										}
+									},
+									"货二": {
+										"accept": "item",
+										"accept_class": [
+											"good"
+										],
+										"required": false,
+										"auto_attract": {
+											"class": [
+												"good"
+											],
+											"exclude_sold": true
+										}
+									},
+									"货三": {
+										"accept": "item",
+										"accept_class": [
+											"good"
+										],
+										"required": false,
+										"auto_attract": {
+											"class": [
+												"good"
+											],
+											"exclude_sold": true
+										}
+									},
+									"货四": {
+										"accept": "character",
+										"required": false
+									},
+									"货五": {
+										"accept": "character",
+										"required": false
+									},
+									"货六": {
+										"accept": "character",
+										"required": false
+									},
+									"右侧": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3,
+									5,
+									6,
+									7,
+									9
+								],
+								"check": null
+							}
+						}
+					}
+				]
+			}
+		}
+	},
+	"占星小屋": {
+		"id": "占星小屋",
+		"badge": "采买",
+		"title": "占星小屋",
+		"type": "normal",
+		"repeatable": true,
+		"show_when": {
+			"tags": [
+				"收养了孩子"
+			]
+		},
+		"_show_when_note": "2026-10-23 显隐收口到 tags：没孩子算不了命。原来恒显，靠「孩子」槽必填隐式挡——点开才发现放不进卡，属于另一种形式的假点位。",
+		"_note": "待办（见 商业街.doc）：①「Tags：child 且 没有 检查孩子天赋」的进店门控（子态门控引擎未支持，当前靠「孩子」槽必填隐式满足 child）；②「检查孩子天赋」重复检查防抖（slot_tags 已给子打 tag，但 display 无法按子 tag 反向门控）。",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "观星",
+						"require": null,
+						"displays": {
+							"占卜天赋": {
+								"显示内容": "遵循星相的指引。命运本飘忽不定，充满可能。知道与否会让结局改变吗？",
+								"slots": {
+									"主角": {
+										"accept": "character",
+										"required": true,
+										"auto_fill": "Hero"
+									},
+									"孩子": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"effect": {
+									"slot_tags": {
+										"孩子": [
+											"检查孩子天赋"
+										]
+									}
+								},
+								"plot": {
+									"path": "res://resoures/plot/misson/check_child_gift.json",
+									"name": "占星小屋"
+								}
+							}
+						}
+					}
+				]
+			}
+		}
+	},
+	"收养孩子": {
+		"id": "收养孩子",
+		"badge": "托付",
+		"title": "孤儿院",
+		"type": "normal",
+		"repeatable": true,
+		"show_when": {
+			"unless_tags": [
+				"收养了孩子"
+			]
+		},
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "挑选",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"非主角": {
+								"显示内容": "这个孩子对你至关重要，还是亲自去挑选吧。",
+								"slots": {
+									"主角": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							},
+							"首次": {
+								"显示内容": "这也许是你离梦想最近的时刻。",
+								"conditions": {
+									"tags": [
+										"与小七相遇"
+									],
+									"any_slot": {
+										"names": [
+											"Hero"
+										],
+										"slots": [
+											"主角"
+										]
+									}
+								},
+								"slots": {
+									"主角": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/plot/misson/obtain_child.json",
+									"name": "直接去孤儿院"
+								}
+							},
+							"复访_保底": {
+								"显示内容": "这也许是你离梦想最近的时刻。",
+								"conditions": {
+									"unless_tags": [
+										"与小七相遇"
+									],
+									"num_tags": {
+										"孤儿院归还次数": {
+											"min": 2,
+											"max": 2
+										}
+									},
+									"any_slot": {
+										"names": [
+											"Hero"
+										],
+										"slots": [
+											"主角"
+										]
+									}
+								},
+								"slots": {
+									"主角": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/plot/misson/obtain_child.json",
+									"name": "两次失败后遇到有天赋的孩子"
+								}
+							},
+							"复访_随机_有天赋": {
+								"显示内容": "这也许是你离梦想最近的时刻。",
+								"conditions": {
+									"unless_tags": [
+										"与小七相遇"
+									],
+									"num_tags": {
+										"孤儿院归还次数": {
+											"min": 3
+										}
+									},
+									"random": {
+										"key": "孤儿院挑选",
+										"p": 0.5
+									},
+									"any_slot": {
+										"names": [
+											"Hero"
+										],
+										"slots": [
+											"主角"
+										]
+									}
+								},
+								"slots": {
+									"主角": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/plot/misson/obtain_child.json",
+									"name": "遇到有天赋的孩子"
+								}
+							},
+							"复访_随机_没天赋": {
+								"显示内容": "这也许是你离梦想最近的时刻。",
+								"conditions": {
+									"unless_tags": [
+										"与小七相遇"
+									],
+									"num_tags": {
+										"孤儿院归还次数": {
+											"min": 3
+										}
+									},
+									"any_slot": {
+										"names": [
+											"Hero"
+										],
+										"slots": [
+											"主角"
+										]
+									}
+								},
+								"slots": {
+									"主角": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/plot/misson/obtain_child.json",
+									"name": "遇到没有天赋的孩子"
+								}
+							},
+							"复访_没天赋": {
+								"显示内容": "这也许是你离梦想最近的时刻。",
+								"conditions": {
+									"unless_tags": [
+										"与小七相遇"
+									],
+									"num_tags": {
+										"孤儿院归还次数": {
+											"max": 1
+										}
+									},
+									"any_slot": {
+										"names": [
+											"Hero"
+										],
+										"slots": [
+											"主角"
+										]
+									}
+								},
+								"slots": {
+									"主角": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/plot/misson/obtain_child.json",
+									"name": "遇到没有天赋的孩子"
+								}
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"duration": 1
+	},
+	"归还孩子": {
+		"id": "归还孩子",
+		"badge": "托付",
+		"title": "孤儿院",
+		"type": "normal",
+		"repeatable": true,
+		"show_when": {
+			"tags": [
+				"收养了孩子"
+			]
+		},
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "归还",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"仅司库奇": {
+								"显示内容": "先生是想给我找个孩子养老吗？多谢先生好意，不过我已经对未来做好了规划与准备了。",
+								"conditions": {
+									"any_slot": {
+										"names": [
+											"司库奇"
+										],
+										"slots": [
+											"child"
+										]
+									}
+								},
+								"slots": {
+									"主角": {
+										"accept": "character",
+										"required": true
+									},
+									"child": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							},
+							"仅法拉叶": {
+								"显示内容": "除非真的要饿死了，不然我不会偷小朋友的东西。",
+								"conditions": {
+									"any_slot": {
+										"names": [
+											"法拉叶"
+										],
+										"slots": [
+											"child"
+										]
+									}
+								},
+								"slots": {
+									"主角": {
+										"accept": "character",
+										"required": true
+									},
+									"child": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							},
+							"仅露易丝": {
+								"显示内容": "你是想到了小时候的事吗？",
+								"conditions": {
+									"any_slot": {
+										"names": [
+											"露易丝"
+										],
+										"slots": [
+											"child"
+										]
+									}
+								},
+								"slots": {
+									"主角": {
+										"accept": "character",
+										"required": true
+									},
+									"child": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							},
+							"child非孩子": {
+								"显示内容": "这可不是能送回去的孩子啊。",
+								"conditions": {
+									"any_slot": {
+										"lack_tags": [
+											"child"
+										],
+										"slots": [
+											"child"
+										]
+									}
+								},
+								"slots": {
+									"主角": {
+										"accept": "character",
+										"required": true
+									},
+									"child": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							},
+							"slot1非主角": {
+								"显示内容": "手续必须你亲自办理。",
+								"conditions": {
+									"any_slot": {
+										"lack_tags": [
+											"主角"
+										],
+										"slots": [
+											"主角"
+										]
+									}
+								},
+								"slots": {
+									"主角": {
+										"accept": "character",
+										"required": true
+									},
+									"child": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							},
+							"归还": {
+								"显示内容": "把他送回去，你就还能再挑一个。你的梦想等不起。",
+								"卡牌情况": [
+									[
+										[
+											"主角"
+										]
+									],
+									[
+										[
+											"child"
+										]
+									]
+								],
+								"conditions": {
+									"placed_count": {
+										"slots": [
+											"child"
+										],
+										"min": 1,
+										"max": 1
+									}
+								},
+								"slots": {
+									"主角": {
+										"accept": "character",
+										"required": true
+									},
+									"child": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/plot/misson/obtain_child.json",
+									"name": "归还孩子"
+								}
+							},
+							"待放入孩子": {
+								"显示内容": "请把要送回的孩子放进孩子栏。",
+								"slots": {
+									"主角": {
+										"accept": "character",
+										"required": true
+									},
+									"child": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"duration": 1
+	},
+	"酒馆打工": {
+		"id": "酒馆打工",
+		"badge": "营生",
+		"title": "酒馆·打工",
+		"type": "normal",
+		"repeatable": true,
+		"duration": 1,
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "打工",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"引导": {
+								"显示内容": "有气力的可以去后厨帮忙，长得好看则可以更轻松些。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								}
+							},
+							"拒绝_骚扰的过往": {
+								"卡牌情况": [
+									[
+										[
+											"骚扰的过往"
+										]
+									]
+								],
+								"显示内容": "{执行者}在这里有不愉快的回忆，无论如何是不愿意在这里工作的。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								}
+							},
+							"拒绝_疾病": {
+								"卡牌情况": [
+									[
+										[
+											"疾病"
+										]
+									]
+								],
+								"显示内容": "{执行者}的身体已经很虚弱了，如果不医治无法从事这些工作。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								}
+							},
+							"零_美人罪过": {
+								"conditions": {
+									"attrs": {
+										"app": {
+											"min": 9
+										}
+									}
+								},
+								"显示内容": "美丽有时是一种罪过。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/plot/rite/酒馆.json",
+									"name": "酒馆骚扰"
+								}
+							},
+							"一_弱不禁风": {
+								"conditions": {
+									"attrs": {
+										"str": {
+											"min": 1,
+											"max": 2
+										},
+										"app": {
+											"min": 1,
+											"max": 5
+										}
+									}
+								},
+								"显示内容": "这恐怕并不是个适合的工作。虽然在{执行者}万千恳求下，酒馆老板同意给{执行者}这个工作的机会。但是就凭这点拿瓶酒都费劲的力气，被辞退也是毫不意外。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null
+							},
+							"三_老师傅": {
+								"conditions": {
+									"attrs": {
+										"str": {
+											"min": 3
+										},
+										"app": {
+											"min": 1,
+											"max": 5
+										}
+									},
+									"num_tags": {
+										"酒馆后厨工作经验": {
+											"min": 3,
+											"max": 3
+										}
+									}
+								},
+								"显示内容": "出卖体力可是件辛苦的事。长期的历练让{执行者}已是后厨的老手。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": {
+									"type": "dice",
+									"performer": "执行者",
+									"sides": 10,
+									"dice_num_tags": {
+										"酒馆后厨工作经验": 1
+									},
+									"extra_dice": {
+										"sides_attr": "bod",
+										"below": 3,
+										"text_prefix": "好累啊……",
+										"effect": {
+											"fatigue": true
+										}
+									},
+									"needs": [
+										5
+									],
+									"branches": {
+										"suc0": {
+											"text": "长期的工作经验让{执行者}能做一手好菜，这可比流水的招待员值钱。",
+											"effect": {
+												"tags": [
+													"厨艺"
+												],
+												"money": 4
+											}
+										},
+										"suc1": {
+											"text": "长期的工作经验让{执行者}能做一手好菜，这可比流水的招待员值钱。",
+											"effect": {
+												"tags": [
+													"厨艺"
+												],
+												"money": 5
+											}
+										}
+									}
+								}
+							},
+							"二_后厨帮工": {
+								"conditions": {
+									"attrs": {
+										"str": {
+											"min": 3
+										},
+										"app": {
+											"min": 1,
+											"max": 5
+										}
+									},
+									"num_tags": {
+										"酒馆后厨工作经验": {
+											"min": 0,
+											"max": 2
+										}
+									}
+								},
+								"显示内容": "出卖体力可是件辛苦的事。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": {
+									"type": "dice",
+									"performer": "执行者",
+									"sides": 10,
+									"dice_num_tags": {
+										"酒馆后厨工作经验": 1
+									},
+									"extra_dice": {
+										"sides_attr": "bod",
+										"below": 3,
+										"text_prefix": "好累啊……",
+										"effect": {
+											"fatigue": true
+										}
+									},
+									"needs": [
+										2,
+										5
+									],
+									"branches": {
+										"suc0": {
+											"text": "虽然没有收获工钱，但至少收获了一身的疲倦。"
+										},
+										"suc1": {
+											"text": "这点工资和乞讨比如何呢？也难怪这老板经常招人了。",
+											"effect": {
+												"money": 1,
+												"num_tags": {
+													"酒馆后厨工作经验": {
+														"add": 1,
+														"cap": 3
+													}
+												}
+											}
+										},
+										"suc2": {
+											"text": "虽然已经尽力，却也只能勉强糊口，这样做不是办法。",
+											"effect": {
+												"money": 3,
+												"num_tags": {
+													"酒馆后厨工作经验": {
+														"add": 1,
+														"cap": 3
+													}
+												}
+											}
+										}
+									}
+								}
+							},
+							"四_门面招待": {
+								"conditions": {
+									"attrs": {
+										"app": {
+											"min": 6,
+											"max": 8
+										}
+									}
+								},
+								"显示内容": "有些人站着就可以赚钱，当然坐着也可以。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": {
+									"type": "dice",
+									"performer": "执行者",
+									"sides": 10,
+									"extra_dice": {
+										"sides_attr": "bod",
+										"below": 3,
+										"text_prefix": "好累啊……",
+										"effect": {
+											"fatigue": true
+										}
+									},
+									"needs": [
+										4
+									],
+									"branches": {
+										"suc0": {
+											"text": "在客人面前笑得脸都抽了也只能赚那么一点。",
+											"effect": {
+												"money": 2
+											}
+										},
+										"suc1": {
+											"text": "虽然阔气的客人不少，但是老板吃回扣也吃得太狠了。",
+											"effect": {
+												"money": 4
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	},
+	"在剧院打工": {
+		"id": "在剧院打工",
+		"badge": "营生",
+		"title": "剧院·打工",
+		"type": "normal",
+		"repeatable": true,
+		"duration": 1,
+		"note": "2026-09-09 doc对齐：双卡槽（人物必填+物品可选占位）；三段文案按执行者生效str分层（放卡即切、无匹配显初始）；骰 1d(生效str) 需>=3；失败=分支text（结算文本、不弹对话）；成功=分支text+tag[在剧院打工成功]+money+5；suc1.bonus：已有[在剧院打工成功] 且 无[多次打工剧情] → 补 tag[多次打工剧情]（一次性守卫接口，剧情待GD；充分了解剧院/执行者多次打工剧院 仍由『多次打工闲聊』授予）。",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "打工",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"引导_初始": {
+								"显示内容": "剧院的工作需要惊艳的容貌还是婉转的歌喉。很可惜该招聘似乎对有力气的情有独钟。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"物品": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"check": {
+									"type": "dice",
+									"performer": "执行者",
+									"dice_attrs": [
+										"str"
+									],
+									"needs": [
+										3
+									],
+									"branches": {
+										"suc0": {
+											"text": "{executor_name}单知道打工是要力气的，却不知道在剧院打工同样是一件力气活儿。自己毕竟细胳膊细腿，器材搬一半就搬不动了。在管事沉默的目光中，{executor_name}选择了自己体面。"
+										},
+										"suc1": {
+											"text": "音乐、灯光、舞蹈。明明是抽象出来的艺术却总能勾起真实的回忆，让人热泪盈眶。{executor_name}也不例外，至于为什么离舞台那么近，甚至还免了门票，眼泪却是流在头上、背上而不是眼睛上。也许是他来这里有比艺术更崇高的信仰。",
+											"effect": {
+												"tags": [
+													"在剧院打工成功"
+												],
+												"money": 5
+											},
+											"bonus": {
+												"if_player_tags": [
+													"在剧院打工成功"
+												],
+												"unless_player_tags": [
+													"多次打工剧情"
+												],
+												"effect": {
+													"tags": [
+														"多次打工剧情",
+														"充分了解剧院"
+													],
+													"slot_tags": {
+														"执行者": [
+															"多次打工剧院"
+														]
+													}
+												},
+												"plot": {
+													"path": "res://resoures/plot/rite/theater.json",
+													"name": "剧院多次打工_与阿尔温"
+												}
+											}
+										}
+									}
+								}
+							},
+							"力气活_身板单薄": {
+								"显示内容": "布景道具，铁架，钢琴这些可都不是随随便便就能搬得动的。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"物品": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"check": {
+									"type": "dice",
+									"performer": "执行者",
+									"dice_attrs": [
+										"str"
+									],
+									"needs": [
+										3
+									],
+									"branches": {
+										"suc0": {
+											"text": "{executor_name}单知道打工是要力气的，却不知道在剧院打工同样是一件力气活儿。自己毕竟细胳膊细腿，器材搬一半就搬不动了。在管事沉默的目光中，{executor_name}选择了自己体面。"
+										},
+										"suc1": {
+											"text": "音乐、灯光、舞蹈。明明是抽象出来的艺术却总能勾起真实的回忆，让人热泪盈眶。{executor_name}也不例外，至于为什么离舞台那么近，甚至还免了门票，眼泪却是流在头上、背上而不是眼睛上。也许是他来这里有比艺术更崇高的信仰。",
+											"effect": {
+												"tags": [
+													"在剧院打工成功"
+												],
+												"money": 5
+											},
+											"bonus": {
+												"if_player_tags": [
+													"在剧院打工成功"
+												],
+												"unless_player_tags": [
+													"多次打工剧情"
+												],
+												"effect": {
+													"tags": [
+														"多次打工剧情",
+														"充分了解剧院"
+													],
+													"slot_tags": {
+														"执行者": [
+															"多次打工剧院"
+														]
+													}
+												},
+												"plot": {
+													"path": "res://resoures/plot/rite/theater.json",
+													"name": "剧院多次打工_与阿尔温"
+												}
+											}
+										}
+									}
+								},
+								"conditions": {
+									"attrs": {
+										"str": {
+											"max": 5
+										}
+									},
+									"effective": true
+								}
+							},
+							"力气活_身强力壮": {
+								"显示内容": "出卖力气可是件辛苦的事啊。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"物品": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"check": {
+									"type": "dice",
+									"performer": "执行者",
+									"dice_attrs": [
+										"str"
+									],
+									"needs": [
+										3
+									],
+									"branches": {
+										"suc0": {
+											"text": "{executor_name}单知道打工是要力气的，却不知道在剧院打工同样是一件力气活儿。自己毕竟细胳膊细腿，器材搬一半就搬不动了。在管事沉默的目光中，{executor_name}选择了自己体面。"
+										},
+										"suc1": {
+											"text": "音乐、灯光、舞蹈。明明是抽象出来的艺术却总能勾起真实的回忆，让人热泪盈眶。{executor_name}也不例外，至于为什么离舞台那么近，甚至还免了门票，眼泪却是流在头上、背上而不是眼睛上。也许是他来这里有比艺术更崇高的信仰。",
+											"effect": {
+												"tags": [
+													"在剧院打工成功"
+												],
+												"money": 5
+											},
+											"bonus": {
+												"if_player_tags": [
+													"在剧院打工成功"
+												],
+												"unless_player_tags": [
+													"多次打工剧情"
+												],
+												"effect": {
+													"tags": [
+														"多次打工剧情",
+														"充分了解剧院"
+													],
+													"slot_tags": {
+														"执行者": [
+															"多次打工剧院"
+														]
+													}
+												},
+												"plot": {
+													"path": "res://resoures/plot/rite/theater.json",
+													"name": "剧院多次打工_与阿尔温"
+												}
+											}
+										}
+									}
+								},
+								"conditions": {
+									"attrs": {
+										"str": {
+											"min": 6
+										}
+									},
+									"effective": true
+								}
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	},
+	"8月23日偶遇时的酒馆喝酒": {
+		"id": "8月23日偶遇时的酒馆喝酒",
+		"badge": "小酌",
+		"title": "偶遇·酒馆小酌",
+		"type": "normal",
+		"repeatable": false,
+		"duration": 1,
+		"show_when": {
+			"tags": [
+				"823可疑的信"
+			],
+			"unless_tags": [
+				"红鼹鼠的证词"
+			]
+		},
+		"_status_note": "2026-10-23 实装（挂点 shopping_area.tscn tavern_meet，商业街 (960,400)）。显隐按 tags 拍板口径：夜探《调查丹尼斯之夜》末句落 tag「823可疑的信」后出现，交涉成功落地「红鼹鼠的证词」即收；「红鼹鼠的证词」同时是处置丹尼斯（家）/（绳之以法）的替代钥匙。标题里的「8月23日」是旧日历制遗留，id 不改。",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "小酌",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"发现可疑的信": {
+								"conditions": {
+									"num_tags": {
+										"823可疑的信": {
+											"min": 1
+										}
+									}
+								},
+								"显示内容": "你左右张望后，似乎发现了那位红鼹鼠。",
+								"slots": {
+									"红鼹鼠": {
+										"accept": "character",
+										"required": true,
+										"auto_fill": "红鼹鼠"
+									},
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"同伴": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/plot/rite/酒馆.json",
+									"name": "酒后吐真言"
+								}
+							},
+							"寻常小酌": {
+								"显示内容": "你点了杯甜甜的柠檬鸡尾酒，本以为可以和美人谈情说爱，结果醒来就是第二天了。",
+								"slots": {
+									"红鼹鼠": {
+										"accept": "character",
+										"required": true,
+										"auto_fill": "红鼹鼠"
+									},
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"同伴": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"check": null,
+								"effect": {
+									"remove_tags": [
+										"疲倦"
+									],
+									"money": -5
+								}
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	},
+	"群死凶器的调查": {
+		"id": "群死凶器的调查",
+		"badge": "探问",
+		"title": "群死·凶器的调查",
+		"type": "normal",
+		"repeatable": false,
+		"duration": 1,
+		"show_when": {
+			"tags": [
+				"与管家交流群死前",
+				"群死凶器的迷思"
+			]
+		},
+		"turns": {
+			"t1_初始": {
+				"phases": [
+					{
+						"phase": "勘查",
+						"require": null,
+						"displays": {
+							"洞察不足": {
+								"conditions": {
+									"sum": true,
+									"attrs": {
+										"int": {
+											"max": 12
+										}
+									}
+								},
+								"显示内容": "没有足够敏锐的洞察力，恐怕难以发现隐藏的真相。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"支援一": {
+										"accept": "character",
+										"required": false
+									},
+									"支援二": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"check": null,
+								"effect": {
+									"tags": [
+										"群死凶器_已勘查"
+									]
+								}
+							},
+							"行动迟缓": {
+								"conditions": {
+									"sum": true,
+									"attrs": {
+										"int": {
+											"min": 13
+										},
+										"bod": {
+											"max": 13
+										}
+									}
+								},
+								"显示内容": "证据是一种会被时间稀释的溶质，还不够快。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"支援一": {
+										"accept": "character",
+										"required": false
+									},
+									"支援二": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"check": null,
+								"effect": {
+									"tags": [
+										"群死凶器_已勘查"
+									]
+								}
+							},
+							"时机正好": {
+								"conditions": {
+									"sum": true,
+									"attrs": {
+										"int": {
+											"min": 13
+										},
+										"bod": {
+											"min": 14
+										}
+									}
+								},
+								"显示内容": "在痕迹彻底消失前。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"支援一": {
+										"accept": "character",
+										"required": false
+									},
+									"支援二": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"check": null,
+								"effect": {
+									"tags": [
+										"群死凶器_已勘查"
+									]
+								}
+							}
+						}
+					}
+				]
+			},
+			"t2_阶段二": {
+				"phases": [
+					{
+						"phase": "阶段二",
+						"require": [
+							"群死凶器_已勘查"
+						],
+						"displays": {
+							"推进": {
+								"显示内容": "进一步追查作案方式，智谋与行动力缺一不可。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"支援一": {
+										"accept": "character",
+										"required": false
+									},
+									"支援二": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"check": {
+									"type": "dice",
+									"mode": "multi",
+									"performer": "执行者",
+									"sides": 10,
+									"attrs": {
+										"int": 1,
+										"bod": 1
+									},
+									"multi_needs": {
+										"int": [
+											6
+										],
+										"bod": [
+											7
+										]
+									},
+									"branches": {
+										"suc0": {
+											"text": "是百密一疏，还是因为其实全是破绽。总之如果没有新的成员恐怕只会一无所获。我们需要更有谋略或者更有行动力的伙伴。",
+											"effect": {
+												"money": -5,
+												"tags": [
+													"群死凶器_阶段二"
+												]
+											},
+											"empty_goto": "t_失败"
+										},
+										"suc1": {
+											"text": "失事也许并非意外，游轮的登记名单中有一个名字引人深思。那些消息背景捕风捉影，那些传闻无非怪力乱神。不过顺着这条线，与下人的对话中，{执行者}发现他曾频繁与丹尼斯见面，自身似乎又有些说不清道不明的势力。还需要进一步调查。",
+											"effect": {
+												"money": -5,
+												"tags": [
+													"一个名字的印象",
+													"群死凶器_阶段二"
+												]
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				]
+			},
+			"t3_阶段三": {
+				"phases": [
+					{
+						"phase": "阶段三",
+						"require": [
+							"群死凶器_已勘查"
+						],
+						"displays": {
+							"收网": {
+								"显示内容": "顺着「一个名字的印象」深入调查。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"支援一": {
+										"accept": "character",
+										"required": false
+									},
+									"支援二": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"check": {
+									"type": "dice",
+									"mode": "multi",
+									"performer": "执行者",
+									"sides": 10,
+									"attrs": {
+										"int": 1,
+										"bod": 1
+									},
+									"multi_needs": {
+										"int": [
+											8
+										],
+										"bod": [
+											9
+										]
+									},
+									"branches": {
+										"suc0": {
+											"text": "真相似乎近在眼前，又似乎遥不可及。要想查明真相需要更多智慧与行动的援助。",
+											"effect": {
+												"money": -5,
+												"tags": [
+													"群死凶器_阶段三"
+												]
+											},
+											"empty_goto": "t_失败"
+										},
+										"suc1": {
+											"text": "丹尼斯恰好生病，却仍然派遣了从小一直养在身边的仆人去游轮，值得在意。更令人生疑的是，这个仆人在出发前似乎对安全问题格外操心，反反复复问了司库奇各种问题。只不过这些都不足以证明游轮失事是该仆人所为。调查戛然而止，调查才刚刚开始。",
+											"effect": {
+												"money": -5,
+												"tags": [
+													"丹尼斯的仆人的嫌疑",
+													"群死凶器_阶段三"
+												]
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				]
+			},
+			"t_成功": {
+				"phases": [
+					{
+						"phase": "调查收束",
+						"require": [
+							"群死凶器_阶段三"
+						],
+						"ending": "harvest",
+						"displays": {
+							"完成": {
+								"显示内容": "线索收束，矛头隐约指向了丹尼斯的仆人。",
+								"slots": {},
+								"check": null
+							}
+						}
+					}
+				]
+			},
+			"t_失败": {
+				"role": "fail",
+				"phases": [
+					{
+						"phase": "调查失败",
+						"require": [
+							"失败"
+						],
+						"ending": "fail_harvest",
+						"displays": {
+							"说明": {
+								"显示内容": "我们投入的准备不够，不过至少吸取了经验。",
+								"slots": {},
+								"check": null
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	},
+	"群死常规的处理的调查": {
+		"id": "群死常规的处理的调查",
+		"badge": "探问",
+		"title": "群死·常规的处理的调查",
+		"type": "normal",
+		"repeatable": false,
+		"duration": 1,
+		"show_when": {
+			"tags": [
+				"与管家交流群死前",
+				"群死常规的处理的迷思"
+			]
+		},
+		"turns": {
+			"t1_初始": {
+				"phases": [
+					{
+						"phase": "准备",
+						"require": null,
+						"displays": {
+							"孩童畏惧": {
+								"卡牌情况": [
+									[
+										[
+											"child"
+										]
+									],
+									[],
+									[]
+								],
+								"lock_execute": [
+									"child"
+								],
+								"显示内容": "小孩子害怕警察似乎是一件理所当然的事。当然长大了还害怕的也不在少数。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"美人": {
+										"accept": "character",
+										"required": false
+									},
+									"护卫": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"check": null
+							},
+							"套话不易": {
+								"conditions": {
+									"sum": true,
+									"attrs": {
+										"app": {
+											"max": 12
+										}
+									}
+								},
+								"显示内容": "想从警察口中套话并不是那么容易的事。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"美人": {
+										"accept": "character",
+										"required": false
+									},
+									"护卫": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"check": null,
+								"effect": {
+									"tags": [
+										"群死常规_已备"
+									]
+								}
+							},
+							"危险境地": {
+								"conditions": {
+									"sum": true,
+									"attrs": {
+										"app": {
+											"min": 13
+										},
+										"str": {
+											"max": 11
+										}
+									}
+								},
+								"lock_execute": true,
+								"显示内容": "这恐怕会让{执行者}陷入危险的境地。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"美人": {
+										"accept": "character",
+										"required": false
+									},
+									"护卫": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"check": null
+							},
+							"优良作风": {
+								"conditions": {
+									"sum": true,
+									"attrs": {
+										"app": {
+											"min": 13
+										},
+										"str": {
+											"min": 12
+										}
+									}
+								},
+								"显示内容": "希望警察们可以保持平日优良的作风。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"美人": {
+										"accept": "character",
+										"required": false
+									},
+									"护卫": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"check": null,
+								"effect": {
+									"tags": [
+										"群死常规_已备"
+									]
+								}
+							}
+						}
+					}
+				]
+			},
+			"t2_阶段二": {
+				"phases": [
+					{
+						"phase": "阶段二",
+						"require": [
+							"群死常规_已备"
+						],
+						"displays": {
+							"试探": {
+								"显示内容": "想从警察那里得到线索，金钱和美色比什么都管用，不过为了避免真的付出美色，还需要一个身强力壮的人。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"美人": {
+										"accept": "character",
+										"required": false
+									},
+									"护卫": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"check": {
+									"type": "dice",
+									"mode": "multi",
+									"performer": "执行者",
+									"sides": 10,
+									"attrs": {
+										"app": 1,
+										"str": 1
+									},
+									"multi_needs": {
+										"app": [
+											7,
+											9
+										],
+										"str": [
+											8,
+											10
+										]
+									},
+									"branches": {
+										"suc0": {
+											"text": "这些平日里不干正事的警察，偏偏在这个时候尽职起来。如果没有更多筹码或者更美的人恐怕不能获得有用的信息。",
+											"effect": {
+												"money": -5,
+												"tags": [
+													"群死常规_阶段二"
+												]
+											},
+											"empty_goto": "t_失败"
+										},
+										"suc1": {
+											"text": "警察看到美人眼都直了，碍于{执行者}壮硕的肌肉只好不停吞咽口水。",
+											"effect": {
+												"money": -5,
+												"tags": [
+													"群死常规_成功_段"
+												]
+											}
+										},
+										"suc2": {
+											"text": "毫无疑问的成功，当你派出他们时就不应该有失败考量。",
+											"effect": {
+												"money": -5,
+												"tags": [
+													"群死常规_成功_段"
+												],
+												"slot_attrs": {
+													"美人": {
+														"app": 1
+													},
+													"护卫": {
+														"str": 1
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				]
+			},
+			"t_成功": {
+				"phases": [
+					{
+						"phase": "查明",
+						"require": [
+							"群死常规_成功_段"
+						],
+						"ending": "harvest",
+						"displays": {
+							"结案": {
+								"显示内容": "警察对着那张报纸很快就想起了当时的事：事发后丹尼斯好好招待了各位警官，并以来往调查会搞得人心惶惶为由让警察尽快结案。只好让大海为受害人负责。",
+								"slots": {},
+								"check": null,
+								"effect": {
+									"money": -5,
+									"tags": [
+										"警察的证词"
+									]
+								}
+							}
+						}
+					}
+				]
+			},
+			"t_失败": {
+				"role": "fail",
+				"phases": [
+					{
+						"phase": "受挫",
+						"require": [
+							"失败"
+						],
+						"ending": "fail_harvest",
+						"displays": {
+							"说明": {
+								"显示内容": "我们投入的准备不够，不过至少吸取了经验。",
+								"slots": {},
+								"check": null,
+								"effect": {
+									"money": -5,
+									"tags": [
+										"贿赂的门道"
+									]
+								}
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	},
+	"调查丹尼斯": {
+		"id": "调查丹尼斯",
+		"badge": "探问",
+		"title": "调查·丹尼斯",
+		"type": "normal",
+		"repeatable": false,
+		"duration": 2,
+		"show_when": {
+			"tags": [
+				"一个名字的印象",
+				"丹尼斯的仆人的嫌疑",
+				"警察的证词"
+			],
+			"method": 0,
+			"unless_tags": [
+				"调查丹尼斯_收束"
+			]
+		},
+		"turns": {
+			"t1_初始": {
+				"phases": [
+					{
+						"phase": "筹备",
+						"require": null,
+						"displays": {
+							"力有未逮": {
+								"conditions": {
+									"sum": true,
+									"attrs": {
+										"int": {
+											"max": 14
+										},
+										"bod": {
+											"max": 14
+										}
+									}
+								},
+								"显示内容": "这样的能力恐怕还不足以胜任该任务。面对未知，最好再谨慎些。",
+								"slots": {
+									"智谋": {
+										"accept": "character",
+										"required": true
+									},
+									"行动": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"effect": {
+									"money": -10,
+									"tags": [
+										"失败"
+									]
+								}
+							},
+							"仅智": {
+								"conditions": {
+									"sum": true,
+									"attrs": {
+										"int": {
+											"min": 15
+										},
+										"bod": {
+											"max": 14
+										}
+									}
+								},
+								"显示内容": "聪明有余，灵巧不足，这可不是只靠脑子可以完成的。",
+								"slots": {
+									"智谋": {
+										"accept": "character",
+										"required": true
+									},
+									"行动": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"effect": {
+									"money": -10,
+									"tags": [
+										"调查丹尼斯_已备"
+									]
+								}
+							},
+							"仅勇": {
+								"conditions": {
+									"sum": true,
+									"attrs": {
+										"bod": {
+											"min": 15
+										},
+										"int": {
+											"max": 14
+										}
+									}
+								},
+								"显示内容": "如果表亲真的有问题，警察又没有调查出什么，想必必须要足够聪明的人才能发现真相。",
+								"slots": {
+									"智谋": {
+										"accept": "character",
+										"required": true
+									},
+									"行动": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"effect": {
+									"money": -10,
+									"tags": [
+										"调查丹尼斯_已备"
+									]
+								}
+							},
+							"充足": {
+								"conditions": {
+									"sum": true,
+									"attrs": {
+										"int": {
+											"min": 15
+										},
+										"bod": {
+											"min": 15
+										}
+									}
+								},
+								"显示内容": "尽人事听天命。他们的能力值得信任，可是结果可以如愿吗？",
+								"slots": {
+									"智谋": {
+										"accept": "character",
+										"required": true
+									},
+									"行动": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"effect": {
+									"money": -10,
+									"tags": [
+										"调查丹尼斯_已备"
+									]
+								}
+							},
+							"完全充足": {
+								"conditions": {
+									"sum": true,
+									"attrs": {
+										"int": {
+											"min": 19
+										},
+										"bod": {
+											"min": 19
+										}
+									}
+								},
+								"显示内容": "丹尼斯在你心里的怀疑值得这份准备，接下来只需静候佳音。",
+								"slots": {
+									"智谋": {
+										"accept": "character",
+										"required": true
+									},
+									"行动": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"effect": {
+									"money": -10,
+									"tags": [
+										"调查丹尼斯_已备"
+									]
+								}
+							}
+						}
+					}
+				]
+			},
+			"t2_结算": {
+				"phases": [
+					{
+						"phase": "夜探",
+						"require": [
+							"调查丹尼斯_已备"
+						],
+						"displays": {
+							"潜入": {
+								"显示内容": "所有的线索都指向了这位神秘的表亲。想知道真相就只有一条路。",
+								"slots": {
+									"智谋": {
+										"accept": "character",
+										"required": true
+									},
+									"行动": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": {
+									"type": "dice",
+									"mode": "multi",
+									"combine": "dual",
+									"sides_mode": "sum",
+									"thief_tag": "神偷",
+									"performer": "行动",
+									"attrs": {
+										"int": 1,
+										"bod": 1
+									},
+									"multi_needs": {
+										"int": [
+											5,
+											8
+										],
+										"bod": [
+											5,
+											8
+										]
+									},
+									"branches": {
+										"suc0": {
+											"text": "谋算与身手皆不足，调查彻底失败，线索随夜色一同沉入雾霭。",
+											"effect": {
+												"tags": [
+													"失败"
+												]
+											}
+										},
+										"suc1": {
+											"text": "{int}已经发现了疑点，就要深入调查时却一个不小心露出马脚，无奈之下只好提前撤离了。经过这次失败，丹尼斯恐怕会更加谨慎。",
+											"effect": {
+												"slot_tags": {
+													"行动": [
+														"受伤"
+													]
+												}
+											}
+										},
+										"suc2": {
+											"text": "{bod}已经潜入到丹尼斯的家中，可惜一无所获。虽然{bod}没有被发现，但是很可能会留下什么痕迹，也许丹尼斯会因此提高警惕。",
+											"effect": {}
+										},
+										"suc3": {
+											"text": "功夫不负有心人。",
+											"effect": {
+												"tags": [
+													"调查丹尼斯_收束"
+												]
+											},
+											"plot": {
+												"path": "res://resoures/plot/misson/调查丹尼斯之夜.json",
+												"name": "调查丹尼斯之夜"
+											}
+										},
+										"suc4": {
+											"text": "{int}通过直觉，感知精准地找到了隐藏的秘密。以{bod}的身手潜行易如反掌，完美的行动带来了能力的成长。",
+											"effect": {
+												"tags": [
+													"调查丹尼斯_收束"
+												],
+												"slot_attrs": {
+													"智谋": {
+														"int": 1
+													},
+													"行动": {
+														"bod": 1
+													}
+												}
+											},
+											"plot": {
+												"path": "res://resoures/plot/misson/调查丹尼斯之夜.json",
+												"name": "调查丹尼斯之夜"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				]
+			},
+			"t_成功": {
+				"phases": [
+					{
+						"phase": "收网",
+						"require": [
+							"调查丹尼斯_收束"
+						],
+						"ending": "harvest",
+						"displays": {
+							"完成": {
+								"显示内容": "夜探归来，真相的轮廓已渐渐清晰。",
+								"slots": {},
+								"check": null
+							}
+						}
+					}
+				]
+			},
+			"t_失败": {
+				"role": "fail",
+				"phases": [
+					{
+						"phase": "失手",
+						"require": [
+							"失败"
+						],
+						"ending": "fail_harvest",
+						"displays": {
+							"说明": {
+								"显示内容": "行动受挫，丹尼斯似乎察觉到了什么。",
+								"slots": {},
+								"check": null
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	},
+	"处置丹尼斯（家）": {
+		"id": "处置丹尼斯（家）",
+		"badge": "裁决",
+		"title": "处置·丹尼斯（家）",
+		"type": "normal",
+		"repeatable": false,
+		"show_when": {
+			"tags": [
+				"处理丹尼斯的方法",
+				"红鼹鼠的证词"
+			],
+			"unless_tags": [
+				"丹尼斯被私刑判决",
+				"丹尼斯死于审讯"
+			]
+		},
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "处置",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"捆缚": {
+								"显示内容": "红鼹鼠的帮助下，丹尼斯悄无声息地被捆在了地窖里。你不相信任何人，这件事你必须亲自动手。\n\n这是否是补全真相的最后一块拼图你已经没有办法分辨，事已至此，早没有回头路了。",
+							"slots": {
+								"丹尼斯": {
+									"accept": "character",
+									"required": true,
+									"accept_name": [
+										"丹尼斯"
+									],
+									"auto_fill": "Dennis"
+								}
+							},
+							"check": null,
+							"effect": {
+								"delayed_event": {
+									"days": 1,
+									"plot": "审判丹尼斯"
+								},
+								"news": {
+									"id": "news_dennis_missing",
+									"headline": "贵族丹尼斯离奇失踪",
+									"body": "西区贵族丹尼斯于宅中失踪，家人报官。警方多方搜寻未果，坊间传闻四起，无人知晓他的下落。\n\n本报记者 述"
+								}
+							}
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	},
+	"处置丹尼斯（绳之以法）": {
+		"id": "处置丹尼斯（绳之以法）",
+		"badge": "裁决",
+		"title": "处置·丹尼斯（绳之以法）",
+		"type": "normal",
+		"repeatable": false,
+		"show_when": {
+			"tags": [
+				"处理丹尼斯的方法",
+				"红鼹鼠的证词"
+			],
+			"unless_tags": [
+				"丹尼斯被私刑判决",
+				"丹尼斯死于审讯"
+			]
+		},
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "处置",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"门槛起": {
+								"显示内容": "（你的贵族等级不足——需要大于 2 级，才能动用家族影响力将丹尼斯移交警方绳之以法。）",
+								"slots": {},
+								"check": null,
+								"lock_execute": true
+							},
+							"绳之以法": {
+								"显示内容": "红鼹鼠的帮助下，丹尼斯悄无声息地被捆在了地窖里。把他交给警察，给你的家族，给你最后的亲人，最后的体面。\n\n凭借你的影响力，警察会毫无顾忌地施展大记忆恢复术，一切都会真相大白吧。",
+							"slots": {
+								"丹尼斯": {
+									"accept": "character",
+									"required": true,
+									"accept_name": [
+										"丹尼斯"
+									],
+									"auto_fill": "Dennis"
+								}
+							},
+							"check": null,
+							"conditions": {
+								"nobility": {
+									">": 2
+								}
+							},
+								"effect": {
+									"delayed_event": {
+										"days": 1,
+										"plot": "丹尼斯死于审讯"
+									}
+								}
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	},
+	"越狱": {
+		"id": "越狱",
+		"badge": "越狱",
+		"title": "越狱",
+		"type": "normal",
+		"repeatable": true,
+		"resolver": "prison_break",
+		"duration": 1,
+		"show_when": {
+			"tags": [
+				"知晓越狱所需工具"
+			]
+		},
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "越狱",
+						"require": null,
+						"displays": {
+							"谋划": {
+								"显示内容": "万事俱备，只欠东风。差一个日落放风时替你送暗号的人。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true,
+										"auto_attract": "准备好了越狱"
+									},
+									"道具": {
+										"accept": "item",
+										"required": false,
+										"auto_attract": "越狱工具"
+									},
+									"可选": {
+										"accept": "item",
+										"required": false
+									}
+								}
+							},
+							"万事俱备": {
+								"显示内容": "万事俱备，只欠东风。{执行者}已经摸清楚了监狱人员动向，他会在日落放风时等待你的暗号。工具到手这就将会是他在这里的最后一夜。",
+								"conditions": {
+									"requires_placed": true
+								},
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true,
+										"auto_attract": "准备好了越狱"
+									},
+									"道具": {
+										"accept": "item",
+										"required": false,
+										"auto_attract": "越狱工具"
+									},
+									"可选": {
+										"accept": "item",
+										"required": false
+									}
+								}
+							}
+						}
+					}
+				]
+			}
+		}
+	},
+	"商业街打听": {
+		"id": "商业街打听",
+		"badge": "探问",
+		"title": "商业街·打听",
+		"type": "normal",
+		"repeatable": true,
+		"resolver": "inquiry",
+		"duration": 1,
+		"_note": "D-DOC14（2026-08-26）：打听 = resolver inquiry + duration 1 异步。App 门槛(生效值)/主骰 1d app/二次骰 1d10/打听大成功 tag 分流/副骰 bod 疲惫/打听池抽取 全部由 InquiryTriggerPopup 子类结算。JSON 仅声明卡槽与初始文本。打听池事件见 resoures/inquiry_pool.json。",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "打听",
+						"require": null,
+						"displays": {
+							"默认": {
+								"显示内容": "你站在桥上看风景，看风景人在楼上看你。明月装饰了你的窗子，你装饰了别人的梦。——卞之琳《断章》",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"可选": {
+										"accept": "item",
+										"required": false
+									}
+								}
+							}
+						}
+					}
+				]
+			}
+		}
+	},
+	"郊外挖宝": {
+		"id": "郊外挖宝",
+		"badge": "掘取",
+		"title": "郊外·挖宝",
+		"type": "normal",
+		"repeatable": false,
+		"duration": 1,
+		"show_when": {
+			"tags": [
+				"舞春神的钥匙"
+			],
+			"unless_tags": [
+				"奇怪的箱子"
+			]
+		},
+		"_show_when_note": "2026-10-23 显隐收口到 tags：点位的出现与否只认 tag——有「舞春神的钥匙」才出、箱子上手（tag「奇怪的箱子」与物品同时落）立刻收掉。原来靠 display 层的 player_stuff 判据，点位从第一天就挂在地图上、点开只有一句「没头绪」——不是缺前置，是前置根本没管到点位本身。",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "挖掘",
+						"require": null,
+						"displays": {
+							"没头绪": {
+								"显示内容": "这一片荒草长得齐腰高。没有确切的落点，挖下去只会挖到石头。",
+								"slots": {},
+								"lock_execute": true,
+								"check": null
+							},
+							"力有未逮": {
+								"conditions": {
+									"attrs": {
+										"str": {
+											"max": 3
+										}
+									},
+									"player_stuff": [
+										"舞春神的钥匙"
+									]
+								},
+								"lock_execute": true,
+								"显示内容": "这样的力量恐怕不能胜任该任务。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								}
+							},
+							"挖掘": {
+								"conditions": {
+									"attrs": {
+										"str": {
+											"min": 4
+										}
+									},
+									"player_stuff": [
+										"舞春神的钥匙"
+									]
+								},
+								"显示内容": "土并不是很紧，下面可能真的藏了东西。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"effect": {
+									"stuff": [
+										"奇怪的箱子"
+									],
+									"tags": [
+										"奇怪的箱子"
+									]
+								},
+								"plot": {
+									"path": "res://resoures/characters/falayee.json",
+									"name": "挖宝结算"
+								}
+							}
+						}
+					}
+				]
+			}
+		}
+	},
+	"箱子与画": {
+		"id": "箱子与画",
+		"badge": "裁决",
+		"title": "家·箱子与画",
+		"type": "normal",
+		"repeatable": true,
+		"consume_when_tags": [
+			"名画已处置"
+		],
+		"show_when": {
+			"tags": [
+				"奇怪的箱子",
+				"《舞春神》"
+			],
+			"method": 0,
+			"unless_tags": [
+				"名画已处置"
+			]
+		},
+		"_show_when_note": "2026-10-23 显隐收口到 tags：有箱子（挖宝落下）或有画（开箱落下）才出这一点，处置完（名画已处置）立刻消失。原来恒显，没挖过宝的玩家在书桌边上也能看到一块「什么都没有」的牌子，反而比不显示更像 bug。",
+		"_note": "2026-10-22：把「挖宝得箱 → 开箱 → 处置」并成一个家的触点。开箱点名要法拉叶（any_slot.names，他是神偷），放别人只出一句话。2026-10-24：删掉原来的「已经处置」兜底档，改用 consume_when_tags —— 三选一办完，这个触点整块变灰消失，不留一块「事已了结」的牌子在桌上。repeatable:true 只是为了「开完箱还能回来处置」。",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "开箱与处置",
+						"require": null,
+						"displays": {
+							"什么都没有": {
+								"显示内容": "书桌边上空着。钉子还在墙上，画不在。",
+								"slots": {},
+								"lock_execute": true,
+								"check": null
+							},
+							"箱子·不会开": {
+								"conditions": {
+									"player_stuff": [
+										"奇怪的箱子"
+									]
+								},
+								"显示内容": "箱子上没有锁孔，只在侧边留了道细缝。你拿刀背撬，木头没动，刀背先卷了。\n（得找个手上有准的。）",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"lock_execute": true,
+								"check": null
+							},
+							"箱子·开箱": {
+								"conditions": {
+									"player_stuff": [
+										"奇怪的箱子"
+									],
+									"any_slot": {
+										"names": [
+											"法拉叶"
+										]
+									}
+								},
+								"显示内容": "法拉叶把箱子转到背光那一面，指腹顺着锁孔摸了一圈，才把铁丝掏出来。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/characters/falayee.json",
+									"name": "舞春神的箱子"
+								}
+							},
+							"处置": {
+								"conditions": {
+									"player_stuff": [
+										"《舞春神》"
+									],
+									"unless_tags": [
+										"名画已处置"
+									]
+								},
+								"显示内容": "画靠在桌边。灯挪一寸，画上的人影跟着动一下。\n（占地方。）",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/characters/falayee.json",
+									"name": "处理失窃名画_舞春神"
+								}
+							}
+						}
+					}
+				]
+			}
+		}
+	},
+	"后续处理": {
+		"id": "后续处理",
+		"badge": "营生",
+		"title": "家·画的后续",
+		"type": "normal",
+		"repeatable": false,
+		"show_when": {
+			"tags": [
+				"画作的疑点"
+			]
+		},
+		"_note": "2026-10-22：门控 tag「画作的疑点」由「调查大学图书馆」七路各落一条。四路对策的正文与属性门槛都在 falayee.json「后续处理_家中思考」；门槛是确定性判定（app/int 阈值），不是掷骰——要真掷骰得单开触发器。2026-10-24：删掉「还早」兜底档，改由 show_when 直接隐藏触点——没疑点时这块牌子本来就不该出现，留一块锁着的碑没道理。",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "打算",
+						"require": null,
+						"displays": {
+							"想对策": {
+								"conditions": {
+									"tags": [
+										"画作的疑点"
+									]
+								},
+								"显示内容": "画还靠在桌边。想看它一眼，又觉得该先想清楚拿它做什么。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/characters/falayee.json",
+									"name": "后续处理_家中思考"
+								}
+							}
+						}
+					}
+				]
+			}
+		}
+	},
+	"表白": {
+		"id": "表白",
+		"badge": "交游",
+		"title": "家·告白",
+		"type": "normal",
+		"repeatable": true,
+		"show_when": {
+			"tags": [
+				"法拉叶入队"
+			],
+			"unless_tags": [
+				"表白成功"
+			]
+		},
+		"_show_when_note": "2026-10-23 显隐收口到 tags：人在队里才有「告白」这个念头。原来恒显，家里第一天就摆着一个点，点开三档全是「不是他」——法拉叶还没越狱出来。tag 由越狱成功结算同时落下（与 npc 条目上的「追随」同一处）。repeatable 同日改 true：love 不够时他直接把人支去妓院，被拒了得等 love 练上来再来一次，一次就封死反而错；真答应了（love≥6 那档落「表白成功」）才用 unless 收掉这个点。",
+		"_note": "2026-10-22：三档靠 performer_num_tags.love 分流（love 存在 npc 条目 num_tags）。三档都带 any_slot.names:法拉叶 —— 否则放个路人（love=0）会命中最松的那档、替法拉叶说话。",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "开口",
+						"require": null,
+						"displays": {
+							"欲言": {
+								"显示内容": "话到嘴边，先得有人在面前。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								}
+							},
+							"不是他": {
+								"显示内容": "你把话咽回去了。现在不是跟{执行者}说这个的时候。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"conditions": {
+									"requires_placed": true
+								},
+								"lock_execute": true,
+								"check": null
+							},
+							"生分": {
+								"conditions": {
+									"any_slot": {
+										"names": [
+											"法拉叶"
+										]
+									},
+									"performer_num_tags": {
+										"love": {
+											"max": 3
+										}
+									}
+								},
+								"显示内容": "法拉叶正给短刀上油，眼皮都没抬。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/characters/falayee.json",
+									"name": "法拉叶_恋爱进线_love1-3"
+								}
+							},
+							"熟了些": {
+								"conditions": {
+									"any_slot": {
+										"names": [
+											"法拉叶"
+										]
+									},
+									"performer_num_tags": {
+										"love": {
+											"min": 4,
+											"max": 5
+										}
+									}
+								},
+								"显示内容": "法拉叶把刀放下，在裤子上擦了擦手，转过身来。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/characters/falayee.json",
+									"name": "法拉叶_恋爱进线_love4-5"
+								}
+							},
+							"动摇": {
+								"conditions": {
+									"any_slot": {
+										"names": [
+											"法拉叶"
+										]
+									},
+									"performer_num_tags": {
+										"love": {
+											"min": 6
+										}
+									}
+								},
+								"显示内容": "法拉叶先把脸转开，才把手里的东西搁下。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/characters/falayee.json",
+									"name": "法拉叶_恋爱进线_love6"
+								}
+							}
+						}
+					}
+				]
+			}
+		}
+	},
+	"公园": {
+		"id": "公园",
+		"badge": "交游",
+		"title": "主城·公园",
+		"type": "normal",
+		"repeatable": true,
+		"priority": 40,
+		"show_when": {
+			"tags": [
+				"法拉叶的邀约"
+			]
+		},
+		"_note": "2026-10-24 实装（法拉叶情感线·公园）。挂在主城医院右侧空地（first_city.tscn 的 park）。同日改版：邀约不占地图点击——「公园的邀约」由法拉叶越狱入队时排进他的待聊队列（家里「与同伴交流」听），末句落 tag「法拉叶的邀约」；本触发点 show_when 只认这条 tag，听过邀约才在地图上出现，点击走常规弹窗（当前兜底散步档，正式约会内容待后续阶段）。",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "散步",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"兜底": {
+								"显示内容": "（湖边的长椅还空着。他约过你一趟，往后随时可以再陪他走走。）",
+								"check": null
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	},
+	"郊外小屋": {
+		"id": "郊外小屋",
+		"badge": "探问",
+		"title": "城郊·小屋",
+		"type": "normal",
+		"repeatable": true,
+		"show_when": {
+			"tags": [
+				"法拉叶藏身处的钥匙"
+			]
+		},
+		"_show_when_note": "2026-10-23 显隐收口到 tags：手里有钥匙才看得见这间小屋。原来恒显，没做过坦白剧情的玩家点开只有一句「门锁着」，等于把「此处有内容」当诱饵挂着。钥匙不消耗，tag 也不消耗。",
+		"_note": "2026-10-22 实装：法拉叶支线 C2 藏身处探索。挂在主城（first_city.tscn 的 cottage_shed）。两档口径照工程惯例——持有「法拉叶藏身处的钥匙」（坦白剧情 falayee.json「法拉叶闲聊_love2」末句给）走「推门」，否则只出「门锁着」且 lock_execute。钥匙不消耗：小屋是他的地方，留着合理。2026-10-24：repeatable 改 true——原来是一次性，拿完纸条这一格就没了，「他在里头」那个约会档永远进不去。",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "查看",
+						"require": null,
+						"displays": {
+							"门锁着": {
+								"显示内容": "门从这个方向锁着。窗上糊的旧报纸黄透了，边角被人撕开又按回去。",
+								"slots": {},
+								"lock_execute": true,
+								"check": null
+							},
+							"他在里头": {
+								"conditions": {
+									"tags": [
+										"被玩家的心意动摇"
+									],
+									"unless_tags": [
+										"恋爱"
+									]
+								},
+								"显示内容": "门没锁，虚掩着。屋里点了灯，草席换成了褥子，桌上两只杯子。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/characters/falayee.json",
+									"name": "动摇时与法拉叶第一次约会"
+								}
+							},
+							"推门": {
+								"conditions": {
+									"player_stuff": [
+										"法拉叶藏身处的钥匙"
+									]
+								},
+								"显示内容": "钥匙在锁眼里转了两下才咬住。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/characters/falayee.json",
+									"name": "法拉叶藏身处探索"
+								}
+							}
+						}
+					}
+				]
+			}
+		}
+	},
+	"纸条解疑": {
+		"id": "纸条解疑",
+		"badge": "探问",
+		"title": "白桦书肆·解疑",
+		"type": "normal",
+		"repeatable": false,
+		"show_when": {
+			"tags": [
+				"神秘纸条"
+			]
+		},
+		"_show_when_note": "2026-10-23 显隐收口到 tags：纸条到手，这一格才出现在书店下面。原来恒显，老板柜台前常驻一块「你手里没东西」的牌子。",
+		"_note": "2026-10-22 实装：法拉叶支线 C3 书店解码。挂在商业街（shopping_area.tscn 的 paper_riddle），位置在书店下方一格——老板就在店里，另开一个点比塞进「书店购书」的 display 层安全（那个触发器是 bookshop resolver，槽名硬编码）。剧情播「书店剧情舞春神」，末句给「舞春神的钥匙」并收走纸条（remove_stuff 在剧情 effect 里）。",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "问询",
+						"require": null,
+						"displays": {
+							"空着手": {
+								"显示内容": "老板埋着头记账，算盘珠子响得很匀。你手里没东西，他也没抬头。",
+								"slots": {},
+								"lock_execute": true,
+								"check": null
+							},
+							"递纸条": {
+								"conditions": {
+									"player_stuff": [
+										"神秘纸条"
+									]
+								},
+								"显示内容": "你把纸条按在柜台上。算盘声停了，老板的手停在半颗珠子上。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/plot/rite/书店.json",
+									"name": "书店剧情舞春神"
+								}
+							}
+						}
+					}
+				]
+			}
+		}
+	},
+	"窃取舞春神": {
+		"id": "窃取舞春神",
+		"badge": "窃取",
+		"title": "窃取《舞春神》",
+		"type": "normal",
+		"repeatable": false,
+		"show_when": {
+			"tags": [
+				"画作的疑点"
+			]
+		},
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "窃取",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"踩点": {
+								"显示内容": "画还挂在那儿，先定下动手的人。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								}
+							},
+							"神偷出手": {
+								"卡牌情况": [
+									[
+										[
+											"神偷"
+										]
+									]
+								],
+								"显示内容": "神偷出手，从不失手。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"effect": {
+									"stuff": [
+										"《舞春神》"
+									]
+								},
+								"plot": {
+									"path": "res://resoures/characters/falayee.json",
+									"name": "窃取_成功"
+								}
+							},
+							"普通行窃": {
+								"显示内容": "借着夜色，{执行者}悄然靠近那幅展出的画作。",
+								"conditions": {
+									"requires_placed": true
+								},
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": {
+									"type": "dice",
+									"performer": "执行者",
+									"dice_attrs": [
+										"bod"
+									],
+									"needs": [
+										5
+									],
+									"branches": {
+										"suc0": {
+											"text": "窃取失手，{执行者}被当场发现。",
+											"effect": {
+												"npc": {
+													"法拉叶": {
+														"tags": [
+															"再次入狱"
+														]
+													}
+												}
+											}
+										},
+										"suc1": {
+											"text": "窃取成功，画作到手。",
+											"effect": {
+												"stuff": [
+													"《舞春神》"
+												]
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				]
+			}
+		}
+	},
+	"调查大学图书馆": {
+		"id": "调查大学图书馆",
+		"badge": "研读",
+		"title": "调查·大学图书馆",
+		"type": "normal",
+		"repeatable": false,
+		"show_when": {
+			"tags": [
+				"大学画作的消息"
+			],
+			"unless_tags": [
+				"画作的疑点"
+			]
+		},
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "调查",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"法拉叶调查": {
+								"卡牌情况": [
+									[
+										[
+											"神偷"
+										]
+									]
+								],
+								"显示内容": "法拉叶绕着画作转了几圈，什么也没发现。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/characters/falayee.json",
+									"name": "调查_图书馆_法拉叶"
+								}
+							},
+							"灵感调查": {
+								"卡牌情况": [
+									[
+										[
+											"灵感"
+										]
+									]
+								],
+								"显示内容": "那幅画在{执行者}眼中，透着一股令人不安的气息。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/characters/falayee.json",
+									"name": "调查_图书馆_灵感"
+								}
+							},
+							"孩子_天才": {
+								"卡牌情况": [
+									[
+										[
+											"child"
+										]
+									]
+								],
+								"conditions": {
+									"attrs": {
+										"int": {
+											"min": 9
+										}
+									}
+								},
+								"显示内容": "孩子凑近画作，眼神突然变得锐利。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/characters/falayee.json",
+									"name": "调查_图书馆_孩子天才"
+								}
+							},
+							"孩子_凡人": {
+								"卡牌情况": [
+									[
+										[
+											"child"
+										]
+									]
+								],
+								"conditions": {
+									"attrs": {
+										"int": {
+											"max": 3
+										}
+									}
+								},
+								"显示内容": "孩子睁大眼睛，好奇地东张西望。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/characters/falayee.json",
+									"name": "调查_图书馆_孩子凡人"
+								}
+							},
+							"魅力智力流": {
+								"conditions": {
+									"attrs": {
+										"app": {
+											"min": 9
+										},
+										"int": {
+											"min": 6
+										}
+									}
+								},
+								"显示内容": "{执行者}不动声色地和周围的人攀谈起来。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/characters/falayee.json",
+									"name": "调查_图书馆_魅力智力流"
+								}
+							},
+							"魅力流": {
+								"conditions": {
+									"attrs": {
+										"app": {
+											"min": 9
+										},
+										"int": {
+											"max": 5
+										}
+									}
+								},
+								"显示内容": "{执行者}只是随口一提，就引来了不少热心人搭话。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/characters/falayee.json",
+									"name": "调查_图书馆_魅力流"
+								}
+							},
+							"主角调查": {
+								"卡牌情况": [
+									[
+										[
+											"player"
+										]
+									]
+								],
+								"显示内容": "你亲自上前端详这幅画作。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/characters/falayee.json",
+									"name": "调查_大学图书馆"
+								}
+							}
+						}
+					}
+				]
+			}
+		}
+	},
+	"图书馆": {
+		"id": "图书馆",
+		"badge": "研读",
+		"title": "大学·图书馆",
+		"type": "normal",
+		"repeatable": true,
+		"resolver": "read_book",
+		"duration": 1,
+		"_note": "图书馆（2026-10-17 用户设计）。① 槽名固定「执行者」「书」——resolver read_book 的弹窗子类硬编码这两个槽名（用户口径「人物/物品」落成这两键）。② 档位优先级靠 specificity：无形之术(ka20+any_slot.tags20=40) > 非书(ka10+any_slot.lack_tags20=30) > 读书(ka20) > 静心(ka10) > 非学生(0)。③ 判「书」用 tag「书」（books.json 四本书全带；class book 不进卡 tags）。④「学生」tag 来源=「学校学习」结算（各结算档 effect.slot_tags 落学者槽；第1次档另 npc 落阿尔温/Hero）。Hero 卡 tags=player_tags 全量（get_hero_card），npc 条目卡走 from_character，均会带上。⑤ 档「无形之术」纯占位：当前无书带该 tag，秘氛阶段未实装，lock_execute 只显示文案。⑥ 放书后的动态行（能读→before_read / 读不了→condition_text）由 ReadBookTriggerPopup._derive_dynamic_text 提供，只对触发器「图书馆」生效（书房读书行为不变）。",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "阅览",
+						"require": null,
+						"displays": {
+							"无形之术": {
+								"卡牌情况": [
+									[
+										[
+											"学生"
+										]
+									],
+									[
+										[
+											"书",
+											"无形之术"
+										]
+									]
+								],
+								"conditions": {
+									"any_slot": {
+										"slots": ["书"],
+										"tags": ["无形之术"]
+									}
+								},
+								"显示内容": "无上智慧如何解答，博学能为{执行者}打开通往真实的大门吗？",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"书": {
+										"accept": "item",
+										"required": true
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							},
+							"读书": {
+								"卡牌情况": [
+									[
+										[
+											"学生"
+										]
+									],
+									[
+										[
+											"书"
+										]
+									]
+								],
+								"显示内容": "把书摊开，这里安静得能听见纸页的声音。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"书": {
+										"accept": "item",
+										"required": true
+									}
+								},
+								"check": null
+							},
+							"非书": {
+								"卡牌情况": [
+									[
+										[
+											"学生"
+										]
+									],
+									[]
+								],
+								"conditions": {
+									"any_slot": {
+										"slots": ["书"],
+										"lack_tags": ["书"]
+									}
+								},
+								"显示内容": "如果来这里不是学习可是会被赶出去的。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"书": {
+										"accept": "item",
+										"required": true
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							},
+							"静心": {
+								"卡牌情况": [
+									[
+										[
+											"学生"
+										]
+									],
+									[]
+								],
+								"显示内容": "虽然在哪里都可以学习，但是图书馆的氛围总是更能让人静下心的。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"书": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							},
+							"非学生": {
+								"卡牌情况": [
+									[],
+									[]
+								],
+								"显示内容": "这里只对学生开放。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"书": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							}
+						}
+					}
+				]
+			}
+		}
+	},
+	"读书": {
+		"id": "读书",
+		"badge": "研读",
+		"title": "书房·研读",
+		"type": "normal",
+		"repeatable": true,
+		"resolver": "read_book",
+		"duration": 1,
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "研读",
+						"require": null,
+						"displays": {
+							"研读": {
+								"显示内容": "挑一个人，再放一本要研读的书。研读需占一回合。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"书": {
+										"accept": "item",
+										"required": true,
+										"accept_class": [
+											"book"
+										]
+									}
+								}
+							}
+						}
+					}
+				]
+			}
+		}
+	},
+	"剧院看剧": {
+		"id": "剧院看剧",
+		"badge": "观演",
+		"title": "剧院·看剧",
+		"type": "normal",
+		"repeatable": true,
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "看剧",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"引导_初始": {
+								"显示内容": "唱悲欢，风云变化，逢儿女情长，万般因果奈何，惟春秋知我罪我。\n演离合，几度兴衰，恰年少轻狂，王侯将相有种？有青史评功定过。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"effect": {}
+							},
+							"学乐理": {
+								"卡牌情况": [
+									[
+										[
+											"乐感"
+										],
+										[
+											"学习"
+										]
+									]
+								],
+								"显示内容": "旋律的变式，舞蹈与音乐调动。又能学到许多东西了。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"effect": {
+									"slot_remove_tags": {
+										"执行者": [
+											"疲惫"
+										]
+									},
+									"money": -1,
+									"slot_num_tags": {
+										"执行者": {
+											"乐理": {
+												"add": 1
+											}
+										}
+									}
+								}
+							},
+							"安睡": {
+								"conditions": {
+									"effective": true,
+									"attrs": {
+										"app": {
+											"max": 4
+										}
+									}
+								},
+								"显示内容": "如此动听的旋律，今晚一定可以睡个好觉。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"effect": {
+									"slot_remove_tags": {
+										"执行者": [
+											"疲惫"
+										]
+									},
+									"money": -1
+								}
+							},
+							"谈资": {
+								"conditions": {
+									"effective": true,
+									"attrs": {
+										"app": {
+											"min": 5
+										}
+									}
+								},
+								"显示内容": "优美的旋律，奢侈的爱好。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"effect": {
+									"slot_remove_tags": {
+										"执行者": [
+											"疲惫"
+										]
+									},
+									"money": -1,
+									"slot_tags": {
+										"执行者": [
+											"戏剧的谈资"
+										]
+									}
+								}
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"gate_tag": "第一次看戏",
+		"entry_plot": {
+			"path": "res://resoures/plot/rite/theater.json",
+			"name": "第一次进剧院"
+		},
+		"note": "2026-09-10 doc对齐（第三轮迭代，改回带卡槽正式版）：① 首次点击看剧（无 tags:第一次看戏）→ gate_tag+entry_plot 直接播 theater.json「第一次进剧院」剧情（末节点 effect 追加授予 tags:第一次看戏），看完即持有；② 已有 tags:第一次看戏 → 点开正式触发器（左 1 卡槽 执行者必填 + 右文本）：无卡=引导_初始(唱词)；放卡后按执行者分层——卡带 乐感||学习(卡牌情况 [乐感]/[学习] OR 组，权重×10 优先) → 学乐理(消疲惫 钱-1 乐理+1)；否则生效 App≤4 → 安睡(消疲惫 钱-1)；App≥5 → 谈资(消疲惫 钱-1 + 戏剧的谈资)。结算 effect 全按 doc 作用执行者（slot_remove_tags/slot_num_tags/slot_tags，Hero→Player 通道）；③ duration:1（异步过天：执行后占用执行者 1 回合，下回合 ActionQueue 结算落地；repeatable 下再点重新进入阶段1）；④ 文本契约：初始（无卡）=唱词兜底，放卡后正文=仅档位文本（唱词不重复）。",
+		"duration": 1
+	},
+	"与经理交涉": {
+		"id": "与经理交涉",
+		"badge": "交游",
+		"title": "剧院·与经理交涉",
+		"type": "normal",
+		"repeatable": true,
+		"duration": 1,
+		"note": "2026-10-16 流程补链：show_when 由单条『报纸推出』收紧为『报纸推出 + 发现账本_收购剧院线索』——对齐 剧院支线_兰心歌剧院_P0分支ABC.md 与 未实现与待定剧情.md §5（『触发条件预计与收购剧院线索挂钩』），避免玩家没做过夜间调查、剧情却写『向你展示了调查的结果』。线索来源链：day3 报纸授『报纸剧院传闻』→『在剧院打工』二次成功授『充分了解剧院』→『夜间调查剧院』成功授『发现账本_收购剧院线索』。",
+		"show_when": {
+			"tags": [
+				"报纸推出",
+				"发现账本_收购剧院线索"
+			]
+		},
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "交涉",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"交涉": {
+								"显示内容": "知己知彼，百战不殆。这或许是个壮大家业的机会。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true,
+										"auto_fill": "Hero",
+										"accept_name": [
+											"Hero"
+										]
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/plot/rite/theater_经理交涉.json",
+									"name": "与经理交涉"
+								}
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	},
+	"夜间调查剧院": {
+		"id": "夜间调查剧院",
+		"badge": "夜探",
+		"title": "剧院·夜间调查",
+		"type": "normal",
+		"repeatable": true,
+		"duration": 1,
+		"show_when": {
+			"tags": [
+				"报纸剧院传闻",
+				"充分了解剧院"
+			]
+		},
+		"consume_when_tags": [
+			"夜间调查成功"
+		],
+		"_note": "夜间调查（按 剧院.doc 2026-09-05 全链配置）。判定映射待 GameDesigner 复核：① 四关骰 = 1d(队伍该属性生效值之和)，需 ≥10（沿 调查丹尼斯 sides_mode:sum 先例；doc 数字 10/20 的两档语义存疑）；② 引路人门控：智谋槽 required+auto_attract『多次打工剧院』，无人持该 tag 则槽空无法执行（doc『不能点击确定』）；③ tag『报纸剧院传闻』授予点用户后续补充；④ 物品槽占位（doc 4人+1物品，效果未定义）；⑤ 失败金钱-5 可改日重试（repeatable），成功授予『夜间调查成功』并依 consume_when_tags 关闭触发点。",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "潜入",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"门槛_体力": {
+								"conditions": {
+									"sum": true,
+									"attrs": {
+										"bod": {
+											"min": -100,
+											"max": 19
+										},
+										"int": {
+											"min": 20
+										},
+										"str": {
+											"min": 20
+										},
+										"app": {
+											"min": 20
+										}
+									}
+								},
+								"显示内容": "剧院应当确实存在一些问题，如果有一个了解剧院的人指引，也许可以发现什么。\n这不是什么轻松的事，体力不够可不行。（队伍体魄合计需 ≥20）",
+								"slots": {
+									"智谋": {
+										"accept": "character",
+										"required": true,
+										"auto_attract": "多次打工剧院"
+									},
+									"行动": {
+										"accept": "character",
+										"required": true
+									},
+									"魅力": {
+										"accept": "character",
+										"required": true
+									},
+									"力量": {
+										"accept": "character",
+										"required": true
+									},
+									"物品": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							},
+							"门槛_头脑": {
+								"conditions": {
+									"sum": true,
+									"attrs": {
+										"bod": {
+											"min": 20
+										},
+										"int": {
+											"min": -100,
+											"max": 19
+										},
+										"str": {
+											"min": 20
+										},
+										"app": {
+											"min": 20
+										}
+									}
+								},
+								"显示内容": "剧院应当确实存在一些问题，如果有一个了解剧院的人指引，也许可以发现什么。\n我们需要更聪明的头脑。（队伍智力合计需 ≥20）",
+								"slots": {
+									"智谋": {
+										"accept": "character",
+										"required": true,
+										"auto_attract": "多次打工剧院"
+									},
+									"行动": {
+										"accept": "character",
+										"required": true
+									},
+									"魅力": {
+										"accept": "character",
+										"required": true
+									},
+									"力量": {
+										"accept": "character",
+										"required": true
+									},
+									"物品": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							},
+							"门槛_力量": {
+								"conditions": {
+									"sum": true,
+									"attrs": {
+										"bod": {
+											"min": 20
+										},
+										"int": {
+											"min": 20
+										},
+										"str": {
+											"min": -100,
+											"max": 19
+										},
+										"app": {
+											"min": 20
+										}
+									}
+								},
+								"显示内容": "剧院应当确实存在一些问题，如果有一个了解剧院的人指引，也许可以发现什么。\n以防万一，需要有一个有力气的预防突发情况。（队伍力量合计需 ≥20）",
+								"slots": {
+									"智谋": {
+										"accept": "character",
+										"required": true,
+										"auto_attract": "多次打工剧院"
+									},
+									"行动": {
+										"accept": "character",
+										"required": true
+									},
+									"魅力": {
+										"accept": "character",
+										"required": true
+									},
+									"力量": {
+										"accept": "character",
+										"required": true
+									},
+									"物品": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							},
+							"门槛_魅力": {
+								"conditions": {
+									"sum": true,
+									"attrs": {
+										"bod": {
+											"min": 20
+										},
+										"int": {
+											"min": 20
+										},
+										"str": {
+											"min": 20
+										},
+										"app": {
+											"min": -100,
+											"max": 19
+										}
+									}
+								},
+								"显示内容": "剧院应当确实存在一些问题，如果有一个了解剧院的人指引，也许可以发现什么。\n需要有擅长外交的拖住安保人员。（队伍魅力合计需 ≥20）",
+								"slots": {
+									"智谋": {
+										"accept": "character",
+										"required": true,
+										"auto_attract": "多次打工剧院"
+									},
+									"行动": {
+										"accept": "character",
+										"required": true
+									},
+									"魅力": {
+										"accept": "character",
+										"required": true
+									},
+									"力量": {
+										"accept": "character",
+										"required": true
+									},
+									"物品": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							},
+							"万事俱备": {
+								"conditions": {
+									"sum": true,
+									"attrs": {
+										"bod": {
+											"min": 20
+										},
+										"int": {
+											"min": 20
+										},
+										"str": {
+											"min": 20
+										},
+										"app": {
+											"min": 20
+										}
+									}
+								},
+								"显示内容": "剧院应当确实存在一些问题，如果有一个了解剧院的人指引，也许可以发现什么。\n万事俱备，且待凯旋。",
+								"slots": {
+									"智谋": {
+										"accept": "character",
+										"required": true,
+										"auto_attract": "多次打工剧院"
+									},
+									"行动": {
+										"accept": "character",
+										"required": true
+									},
+									"魅力": {
+										"accept": "character",
+										"required": true
+									},
+									"力量": {
+										"accept": "character",
+										"required": true
+									},
+									"物品": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"check": {
+									"type": "dice",
+									"mode": "multi",
+									"performer": "智谋",
+									"sides": 10,
+									"sides_mode": "sum",
+									"thief_tag": "神偷",
+									"thief_skip_attrs": [
+										"bod"
+									],
+									"attrs": {
+										"app": 1,
+										"bod": 1,
+										"int": 1,
+										"str": 1
+									},
+									"multi_needs": {
+										"app": [
+											10
+										],
+										"bod": [
+											10
+										],
+										"int": [
+											10
+										],
+										"str": [
+											10
+										]
+									},
+									"branches": {
+										"suc0": {
+											"text": "我们投入的准备不够，不过并没有引起注意。",
+											"effect": {
+												"money": -5
+											}
+										},
+										"suc1": {
+											"text": "功夫不负有心人。剧院的情况与报纸上的报道一致——也许这是个机会。",
+											"effect": {
+												"tags": [
+													"夜间调查成功"
+												]
+											},
+											"plot": {
+												"path": "res://resoures/plot/rite/theater.json",
+												"name": "夜间调查剧院_与阿尔温"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	},
+	"阿尔温的未来": {
+		"id": "阿尔温的未来",
+		"badge": "托付",
+		"title": "剧院·阿尔温的未来",
+		"type": "normal",
+		"repeatable": false,
+		"show_when": {
+			"tags": [
+				"剧院关闭"
+			],
+			"unless_tags": [
+				"获得了阿尔温"
+			]
+		},
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "安置",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"引导_初始": {
+								"显示内容": "没有了剧院，那个总在后台忙活的小家伙，该何去何从呢？",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"effect": {}
+							},
+							"约定": {
+								"显示内容": "{executor_name}与阿尔温之间有一首歌的约定，牠会安排好一切的。\n\n阿尔温：这......可以吗？我以后还想给{executor_name}唱歌。那个........谢谢你。唔......就只是想说谢谢你。我请你吃点好吃的吧。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"conditions": {
+									"tags": [
+										"一首歌的约定"
+									],
+									"unless_tags": [
+										"阿尔温的信赖"
+									],
+									"requires_placed": true
+								},
+								"effect": {
+									"npc": {
+										"阿尔温": {
+											"tags": [
+												"追随",
+												"占用中"
+											]
+										}
+									},
+									"slot_tags": {
+										"执行者": [
+											"占用中"
+										]
+									},
+									"tags": [
+										"获得了阿尔温"
+									]
+								}
+							},
+							"信赖": {
+								"显示内容": "小伙子很信赖{executor_name}，牠会安排好一切的。\n\n阿尔温：呜呜呜，{executor_name}你来接我了。我一个人都不知道怎么办，还好有你。\n都听你安排啦。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"conditions": {
+									"tags": [
+										"阿尔温的信赖"
+									],
+									"unless_tags": [
+										"一首歌的约定"
+									],
+									"requires_placed": true
+								},
+								"effect": {
+									"npc": {
+										"阿尔温": {
+											"tags": [
+												"追随"
+											]
+										}
+									},
+									"tags": [
+										"获得了阿尔温"
+									]
+								}
+							},
+							"收留_app高": {
+								"显示内容": "他会为你的府邸增添一些活力。\n\n阿尔温：新的工作，谢谢你给我机会，我一定会珍惜的。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"conditions": {
+									"unless_tags": [
+										"一首歌的约定",
+										"阿尔温的信赖"
+									],
+									"attrs": {
+										"app": {
+											"min": 7
+										}
+									},
+									"effective": true
+								},
+								"effect": {
+									"npc": {
+										"阿尔温": {
+											"tags": [
+												"追随"
+											]
+										}
+									},
+									"tags": [
+										"获得了阿尔温"
+									]
+								}
+							},
+							"吓跑_app低": {
+								"显示内容": "会把他吓跑吧。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"check": null,
+								"lock_execute": true,
+								"conditions": {
+									"unless_tags": [
+										"一首歌的约定",
+										"阿尔温的信赖"
+									],
+									"attrs": {
+										"app": {
+											"max": 6
+										}
+									},
+									"effective": true
+								},
+								"effect": {}
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	},
+	"这几天": {
+		"id": "这几天",
+		"badge": "托付",
+		"title": "孩子·反常",
+		"type": "normal",
+		"repeatable": false,
+		"priority": 10,
+		"gate_tag": "孩子的反常",
+		"entry_plot": {
+			"path": "res://resoures/plot/child/这几天.json",
+			"name": "这几天"
+		},
+		"show_when": {
+			"tags": [
+				"收养了孩子"
+			],
+			"unless_tags": [
+				"孩子的反常"
+			],
+			"num_tags": {
+				"学校学习": {
+					"min": 1
+				}
+			},
+			"group": "child_random"
+		},
+		"_note": "孩子线（2026-10-15 二轮实装）。① 显隐：获得孩子（tags 收养了孩子）且至少送过一次学（num_tags 学校学习 ≥ 1）即出现在「家」；2026-10-23 去掉 chance —— 显隐只由 tags 与计数门槛决定，一达标就冒头，不再赌概率（同组仍靠 priority 保证一次只出一个）。② 入口：走 gate_tag + entry_plot，首次点击**直接播剧情**（不开弹窗），剧情 0th 落地「孩子的反常」→ 触发点随即消失（unless_tags），全程只此一次。③ 剧情键「这几天」「这几天-去学校」登记于 dialogue_registry.json；去学校那段由剧情 4th 的 delayed_event(days:3) 挂起。",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "察觉",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"兜底": {
+								"显示内容": "（{child_name}的反常，你已经知道了。）",
+								"check": null
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	},
+	"课后作业": {
+		"id": "课后作业",
+		"badge": "托付",
+		"title": "孩子·家庭作业",
+		"type": "normal",
+		"repeatable": false,
+		"priority": 20,
+		"gate_tag": "课后作业",
+		"entry_plot": {
+			"path": "res://resoures/plot/child/一个特别的课后作业.json",
+			"name": "一个特别的课后作业"
+		},
+		"show_when": {
+			"tags": [
+				"收养了孩子"
+			],
+			"unless_tags": [
+				"课后作业"
+			],
+			"num_tags": {
+				"学校学习": {
+					"min": 2
+				}
+			},
+			"group": "child_random"
+		},
+		"_note": "孩子线三事件·其一（2026-10-15 实装）。① 显隐：获得孩子且**完成两次上学**（学校学习 ≥ 2）后即出现在「家」（2026-10-23 去掉 chance）；与「这几天」共用随机事件组 child_random（每回合只放行一个），priority 20 排在霸凌（10）之后。② 入口同「这几天」：gate_tag + entry_plot，首次点击**直接播剧情**；剧情 0th 落地 tag「课后作业」→ unless_tags 立刻收掉触发点，全程只此一次。③ 通用事件（不挑孩子天赋档），剧情全程用 {child_name}。",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "察觉",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"兜底": {
+								"显示内容": "（{child_name}的家庭作业，你已经知道了。）",
+								"check": null
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	},
+	"美丽的世界": {
+		"id": "美丽的世界",
+		"badge": "托付",
+		"title": "孩子·装饰画",
+		"type": "normal",
+		"repeatable": false,
+		"priority": 30,
+		"gate_tag": "美丽的世界",
+		"entry_plot": {
+			"path": "res://resoures/plot/child/美丽的世界-装饰画.json",
+			"name": "美丽的世界-装饰画"
+		},
+		"show_when": {
+			"tags": [
+				"收养了孩子"
+			],
+			"unless_tags": [
+				"美丽的世界"
+			],
+			"num_tags": {
+				"学校学习": {
+					"min": 3
+				}
+			},
+			"child_tags": [
+				"gifted"
+			],
+			"group": "child_random"
+		},
+		"_note": "孩子线三事件·其二（2026-10-15 实装）。① 显隐：获得孩子、**完成三次上学**（学校学习 ≥ 3）**且孩子带 gifted**（有天赋的孩子＝小七档）之后即出现在「家」（2026-10-23 去掉 chance）；与「这几天」「课后作业」共用随机事件组 child_random，priority 30。② 入口同「这几天」：gate_tag + entry_plot 首次点击直接播剧情，剧情 0th 落地 tag「美丽的世界」→ 收掉触发点。③ 用 child_tags 判天赋档而非名字：孩子会被取名窗改名，名字不可靠，gifted/common 才是稳定标识。",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "察觉",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"兜底": {
+								"显示内容": "（孩子想为你画的那幅画，你已经知道了。）",
+								"check": null
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	},
+	"真实的世界": {
+		"id": "真实的世界",
+		"badge": "托付",
+		"title": "孩子·晚餐",
+		"type": "normal",
+		"repeatable": false,
+		"priority": 30,
+		"gate_tag": "真实的世界",
+		"entry_plot": {
+			"path": "res://resoures/plot/child/真实的世界-晚餐.json",
+			"name": "真实的世界-晚餐"
+		},
+		"show_when": {
+			"tags": [
+				"收养了孩子"
+			],
+			"unless_tags": [
+				"真实的世界"
+			],
+			"num_tags": {
+				"学校学习": {
+					"min": 3
+				}
+			},
+			"child_tags": [
+				"common"
+			],
+			"group": "child_random"
+		},
+		"_note": "孩子线三事件·其三（2026-10-15 实装）。与「美丽的世界」同门槛、同优先级、同组，只是天赋档相反：孩子带 **common**（没有天赋的孩子＝伊莱克档）。二者互斥（孩子只可能是 gifted 或 common 之一），practice 上同一时刻只会有一个进入 child_random 候选。",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "察觉",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"兜底": {
+								"显示内容": "（孩子偷偷下厨的事，你已经知道了。）",
+								"check": null
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	},
+	"学校学习": {
+		"id": "学校学习",
+		"badge": "研读",
+		"title": "学校·学习方向",
+		"type": "normal",
+		"repeatable": true,
+		"duration": 2,
+		"_note": "学校.doc 实装（2026-09-25）。① 6 槽 = 上排 3 张方向牌（理性/感性/知觉，items/others.json，auto_fill 固定位、纯指示不消耗）+ 下排 3 个孩子槽；方向由孩子所在列决定（4/5/6 ↔ 理性/感性/知觉）。② 收益 3 档（第1/2/3 次送学）× 3 方向：slot_attrs 落孩子槽（NPC 通道已有 ATTR_MAX=10 封顶），num_tags 学校学习 +1 cap 3（玩家级，用于路由；全游戏只收养 1 个孩子 → 与 doc 的 Child.numtags 等价），slot_num_tags 同款镜像到孩子条目。③ 拒绝态 = lock_execute:true（doc「以上情况均不能点击确定」），路由靠新键 conditions.any_slot（具名/带 tag/缺 tag 的跨槽存在性）与 conditions.placed_count（跨槽数量）。④ 结算文本 9 条见各 display；文案源 = design/学校触发器设计.md §四。",
+		"turns": {
+			"t1_送学": {
+				"phases": [
+					{
+						"phase": "送学",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"引导": {
+								"显示内容": "学习是一件可怕的事，还好你早早投身于艺术，免于受到来自数学修辞各种知识的侵扰。不过这些并不妨碍你对{child_name}的教育指手画脚。",
+								"卡牌情况": [
+									[],
+									[],
+									[],
+									[],
+									[],
+									[]
+								],
+								"slots": {
+									"理性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"理性"
+										],
+										"auto_fill": "理性",
+										"required": false
+									},
+									"感性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"感性"
+										],
+										"auto_fill": "感性",
+										"required": false
+									},
+									"知觉": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"知觉"
+										],
+										"auto_fill": "知觉",
+										"required": false
+									},
+									"理性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"感性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"知觉学者": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3,
+									5,
+									6,
+									7
+								],
+								"check": null,
+								"lock_execute": true
+							},
+							"拒绝_多孩": {
+								"显示内容": "你真的有那么多的小朋友需要去学校学习吗？",
+								"卡牌情况": [
+									[],
+									[],
+									[],
+									[],
+									[],
+									[]
+								],
+								"slots": {
+									"理性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"理性"
+										],
+										"auto_fill": "理性",
+										"required": false
+									},
+									"感性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"感性"
+										],
+										"auto_fill": "感性",
+										"required": false
+									},
+									"知觉": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"知觉"
+										],
+										"auto_fill": "知觉",
+										"required": false
+									},
+									"理性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"感性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"知觉学者": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3,
+									5,
+									6,
+									7
+								],
+								"conditions": {
+									"placed_count": {
+										"slots": [
+											"理性学者",
+											"感性学者",
+											"知觉学者"
+										],
+										"tag": "child",
+										"min": 2
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							},
+							"拒绝_主角": {
+								"显示内容": "不要，不要。你学画画就够了。况且现在每天都要治理家业，虽然不是事事亲力亲为，虽然也没什么事要你亲力亲为，但是不去上学，就不去上学。",
+								"卡牌情况": [
+									[],
+									[],
+									[],
+									[],
+									[],
+									[]
+								],
+								"slots": {
+									"理性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"理性"
+										],
+										"auto_fill": "理性",
+										"required": false
+									},
+									"感性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"感性"
+										],
+										"auto_fill": "感性",
+										"required": false
+									},
+									"知觉": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"知觉"
+										],
+										"auto_fill": "知觉",
+										"required": false
+									},
+									"理性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"感性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"知觉学者": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3,
+									5,
+									6,
+									7
+								],
+								"conditions": {
+									"any_slot": {
+										"slots": [
+											"理性学者",
+											"感性学者",
+											"知觉学者"
+										],
+										"names": [
+											"Hero",
+											"主角"
+										]
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							},
+							"拒绝_法拉叶": {
+								"显示内容": "“开玩笑吧，要我去带坏小孩子我也还是会有罪恶感的。”",
+								"卡牌情况": [
+									[],
+									[],
+									[],
+									[],
+									[],
+									[]
+								],
+								"slots": {
+									"理性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"理性"
+										],
+										"auto_fill": "理性",
+										"required": false
+									},
+									"感性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"感性"
+										],
+										"auto_fill": "感性",
+										"required": false
+									},
+									"知觉": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"知觉"
+										],
+										"auto_fill": "知觉",
+										"required": false
+									},
+									"理性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"感性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"知觉学者": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3,
+									5,
+									6,
+									7
+								],
+								"conditions": {
+									"any_slot": {
+										"slots": [
+											"理性学者",
+											"感性学者",
+											"知觉学者"
+										],
+										"names": [
+											"Falayee",
+											"法拉叶"
+										]
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							},
+							"拒绝_露易丝": {
+								"显示内容": "“我也怀念和你上学的日子，小时候{player_name}就很喜欢画画了呢。”",
+								"卡牌情况": [
+									[],
+									[],
+									[],
+									[],
+									[],
+									[]
+								],
+								"slots": {
+									"理性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"理性"
+										],
+										"auto_fill": "理性",
+										"required": false
+									},
+									"感性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"感性"
+										],
+										"auto_fill": "感性",
+										"required": false
+									},
+									"知觉": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"知觉"
+										],
+										"auto_fill": "知觉",
+										"required": false
+									},
+									"理性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"感性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"知觉学者": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3,
+									5,
+									6,
+									7
+								],
+								"conditions": {
+									"any_slot": {
+										"slots": [
+											"理性学者",
+											"感性学者",
+											"知觉学者"
+										],
+										"names": [
+											"Louise",
+											"露易丝"
+										]
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							},
+							"拒绝_衫斯": {
+								"显示内容": "非常危险的举动，像他这样大肆宣扬异教思想你迟早要跟着完蛋。",
+								"卡牌情况": [
+									[],
+									[],
+									[],
+									[],
+									[],
+									[]
+								],
+								"slots": {
+									"理性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"理性"
+										],
+										"auto_fill": "理性",
+										"required": false
+									},
+									"感性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"感性"
+										],
+										"auto_fill": "感性",
+										"required": false
+									},
+									"知觉": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"知觉"
+										],
+										"auto_fill": "知觉",
+										"required": false
+									},
+									"理性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"感性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"知觉学者": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3,
+									5,
+									6,
+									7
+								],
+								"conditions": {
+									"any_slot": {
+										"slots": [
+											"理性学者",
+											"感性学者",
+											"知觉学者"
+										],
+										"names": [
+											"Sansi",
+											"衫斯"
+										]
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							},
+							"拒绝_管家": {
+								"显示内容": "“少主人还是那么喜欢开玩笑啊，还是说是我有什么地方需要改进吗？请你明确地指出来不然我不知道如何改正”",
+								"卡牌情况": [
+									[],
+									[],
+									[],
+									[],
+									[],
+									[]
+								],
+								"slots": {
+									"理性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"理性"
+										],
+										"auto_fill": "理性",
+										"required": false
+									},
+									"感性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"感性"
+										],
+										"auto_fill": "感性",
+										"required": false
+									},
+									"知觉": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"知觉"
+										],
+										"auto_fill": "知觉",
+										"required": false
+									},
+									"理性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"感性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"知觉学者": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3,
+									5,
+									6,
+									7
+								],
+								"conditions": {
+									"any_slot": {
+										"slots": [
+											"理性学者",
+											"感性学者",
+											"知觉学者"
+										],
+										"names": [
+											"Sicourge",
+											"司库奇"
+										]
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							},
+							"拒绝_阿尔温": {
+								"显示内容": "“要学习哪里不是课堂呢？重要的是我是真的没钱上学了。”",
+								"卡牌情况": [
+									[],
+									[],
+									[],
+									[],
+									[],
+									[]
+								],
+								"slots": {
+									"理性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"理性"
+										],
+										"auto_fill": "理性",
+										"required": false
+									},
+									"感性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"感性"
+										],
+										"auto_fill": "感性",
+										"required": false
+									},
+									"知觉": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"知觉"
+										],
+										"auto_fill": "知觉",
+										"required": false
+									},
+									"理性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"感性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"知觉学者": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3,
+									5,
+									6,
+									7
+								],
+								"conditions": {
+									"any_slot": {
+										"slots": [
+											"理性学者",
+											"感性学者",
+											"知觉学者"
+										],
+										"names": [
+											"Allwin",
+											"阿尔温"
+										]
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							},
+							"拒绝_其他人物": {
+								"显示内容": "逃学虽然可耻，但是让人顶替去上课就是浪费钱了啊。",
+								"卡牌情况": [
+									[],
+									[],
+									[],
+									[],
+									[],
+									[]
+								],
+								"slots": {
+									"理性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"理性"
+										],
+										"auto_fill": "理性",
+										"required": false
+									},
+									"感性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"感性"
+										],
+										"auto_fill": "感性",
+										"required": false
+									},
+									"知觉": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"知觉"
+										],
+										"auto_fill": "知觉",
+										"required": false
+									},
+									"理性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"感性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"知觉学者": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3,
+									5,
+									6,
+									7
+								],
+								"conditions": {
+									"any_slot": {
+										"slots": [
+											"理性学者",
+											"感性学者",
+											"知觉学者"
+										],
+										"lack_tags": [
+											"child"
+										]
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							},
+							"第1次_理性": {
+								"显示内容": "符号、公式、逻辑、几何，这些对于一个美术生确实超纲了，不过听说其他贵族有学数学的风尚，{child_name}当然也不能落后。",
+								"结算文本": "符号、公式、逻辑、几何——{child_name}回来时眼神发直，好歹把这一课从头听到了尾。",
+								"卡牌情况": [
+									[],
+									[],
+									[],
+									[
+										[
+											"child"
+										]
+									],
+									[],
+									[]
+								],
+								"slots": {
+									"理性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"理性"
+										],
+										"auto_fill": "理性",
+										"required": false
+									},
+									"感性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"感性"
+										],
+										"auto_fill": "感性",
+										"required": false
+									},
+									"知觉": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"知觉"
+										],
+										"auto_fill": "知觉",
+										"required": false
+									},
+									"理性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"感性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"知觉学者": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3,
+									5,
+									6,
+									7
+								],
+								"conditions": {
+									"num_tags": {
+										"学校学习": {
+											"min": 0,
+											"max": 0
+										}
+									}
+								},
+								"check": null,
+								"effect": {
+								"slot_tags": {
+									"理性学者": ["学生"],
+									"感性学者": ["学生"],
+									"知觉学者": ["学生"]
+								},
+								"npc": {
+									"阿尔温": {
+										"tags": ["学生"]
+									},
+									"Hero": {
+										"tags": ["学生"]
+									}
+								},
+									"slot_attrs": {
+										"理性学者": {
+											"int": 1
+										}
+									},
+									"num_tags": {
+										"学校学习": {
+											"add": 1,
+											"cap": 3
+										}
+									},
+									"slot_num_tags": {
+										"理性学者": {
+											"学校学习": {
+												"add": 1,
+												"cap": 3
+											}
+										}
+									}
+								}
+							},
+							"第1次_感性": {
+								"显示内容": "美是一门博大精深的学问，繁琐的礼节是贵族的必修课。",
+								"结算文本": "美与礼数先于一切。现在{child_name}行礼的姿势比你还标准。",
+								"卡牌情况": [
+									[],
+									[],
+									[],
+									[],
+									[
+										[
+											"child"
+										]
+									],
+									[]
+								],
+								"slots": {
+									"理性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"理性"
+										],
+										"auto_fill": "理性",
+										"required": false
+									},
+									"感性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"感性"
+										],
+										"auto_fill": "感性",
+										"required": false
+									},
+									"知觉": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"知觉"
+										],
+										"auto_fill": "知觉",
+										"required": false
+									},
+									"理性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"感性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"知觉学者": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3,
+									5,
+									6,
+									7
+								],
+								"conditions": {
+									"num_tags": {
+										"学校学习": {
+											"min": 0,
+											"max": 0
+										}
+									}
+								},
+								"check": null,
+								"effect": {
+								"slot_tags": {
+									"理性学者": ["学生"],
+									"感性学者": ["学生"],
+									"知觉学者": ["学生"]
+								},
+								"npc": {
+									"阿尔温": {
+										"tags": ["学生"]
+									},
+									"Hero": {
+										"tags": ["学生"]
+									}
+								},
+									"slot_attrs": {
+										"感性学者": {
+											"app": 1
+										}
+									},
+									"num_tags": {
+										"学校学习": {
+											"add": 1,
+											"cap": 3
+										}
+									},
+									"slot_num_tags": {
+										"感性学者": {
+											"学校学习": {
+												"add": 1,
+												"cap": 3
+											}
+										}
+									}
+								}
+							},
+							"第1次_知觉": {
+								"显示内容": "奔跑跳跃，身体锻炼。谦逊有礼的是贵族，上马驰骋的也是贵族。",
+								"结算文本": "奔跑、跳跃、上马。{child_name}回家时，鞋底比出门时薄了一层。",
+								"卡牌情况": [
+									[],
+									[],
+									[],
+									[],
+									[],
+									[
+										[
+											"child"
+										]
+									]
+								],
+								"slots": {
+									"理性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"理性"
+										],
+										"auto_fill": "理性",
+										"required": false
+									},
+									"感性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"感性"
+										],
+										"auto_fill": "感性",
+										"required": false
+									},
+									"知觉": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"知觉"
+										],
+										"auto_fill": "知觉",
+										"required": false
+									},
+									"理性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"感性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"知觉学者": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3,
+									5,
+									6,
+									7
+								],
+								"conditions": {
+									"num_tags": {
+										"学校学习": {
+											"min": 0,
+											"max": 0
+										}
+									}
+								},
+								"check": null,
+								"effect": {
+								"slot_tags": {
+									"理性学者": ["学生"],
+									"感性学者": ["学生"],
+									"知觉学者": ["学生"]
+								},
+								"npc": {
+									"阿尔温": {
+										"tags": ["学生"]
+									},
+									"Hero": {
+										"tags": ["学生"]
+									}
+								},
+									"slot_attrs": {
+										"知觉学者": {
+											"str": 1
+										}
+									},
+									"num_tags": {
+										"学校学习": {
+											"add": 1,
+											"cap": 3
+										}
+									},
+									"slot_num_tags": {
+										"知觉学者": {
+											"学校学习": {
+												"add": 1,
+												"cap": 3
+											}
+										}
+									}
+								}
+							},
+							"第2次_理性": {
+								"显示内容": "符号、公式、逻辑、几何，这些对于一个美术生确实超纲了，不过听说其他贵族有学数学的风尚，{child_name}当然也不能落后。",
+								"结算文本": "第二沓演算纸上不再只有涂改。{child_name}坐得住了，站得也稳了。",
+								"卡牌情况": [
+									[],
+									[],
+									[],
+									[
+										[
+											"child"
+										]
+									],
+									[],
+									[]
+								],
+								"slots": {
+									"理性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"理性"
+										],
+										"auto_fill": "理性",
+										"required": false
+									},
+									"感性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"感性"
+										],
+										"auto_fill": "感性",
+										"required": false
+									},
+									"知觉": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"知觉"
+										],
+										"auto_fill": "知觉",
+										"required": false
+									},
+									"理性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"感性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"知觉学者": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3,
+									5,
+									6,
+									7
+								],
+								"conditions": {
+									"num_tags": {
+										"学校学习": {
+											"min": 1,
+											"max": 1
+										}
+									}
+								},
+								"check": null,
+								"effect": {
+								"slot_tags": {
+									"理性学者": ["学生"],
+									"感性学者": ["学生"],
+									"知觉学者": ["学生"]
+								},
+									"slot_attrs": {
+										"理性学者": {
+											"int": 1,
+											"bod": 1
+										}
+									},
+									"num_tags": {
+										"学校学习": {
+											"add": 1,
+											"cap": 3
+										}
+									},
+									"slot_num_tags": {
+										"理性学者": {
+											"学校学习": {
+												"add": 1,
+												"cap": 3
+											}
+										}
+									}
+								}
+							},
+							"第2次_感性": {
+								"显示内容": "美是一门博大精深的学问，繁琐的礼节是贵族的必修课。",
+								"结算文本": "礼节背熟之后，总算有余力琢磨别的。{child_name}连算账都比从前快些。",
+								"卡牌情况": [
+									[],
+									[],
+									[],
+									[],
+									[
+										[
+											"child"
+										]
+									],
+									[]
+								],
+								"slots": {
+									"理性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"理性"
+										],
+										"auto_fill": "理性",
+										"required": false
+									},
+									"感性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"感性"
+										],
+										"auto_fill": "感性",
+										"required": false
+									},
+									"知觉": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"知觉"
+										],
+										"auto_fill": "知觉",
+										"required": false
+									},
+									"理性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"感性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"知觉学者": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3,
+									5,
+									6,
+									7
+								],
+								"conditions": {
+									"num_tags": {
+										"学校学习": {
+											"min": 1,
+											"max": 1
+										}
+									}
+								},
+								"check": null,
+								"effect": {
+								"slot_tags": {
+									"理性学者": ["学生"],
+									"感性学者": ["学生"],
+									"知觉学者": ["学生"]
+								},
+									"slot_attrs": {
+										"感性学者": {
+											"app": 1,
+											"int": 1
+										}
+									},
+									"num_tags": {
+										"学校学习": {
+											"add": 1,
+											"cap": 3
+										}
+									},
+									"slot_num_tags": {
+										"感性学者": {
+											"学校学习": {
+												"add": 1,
+												"cap": 3
+											}
+										}
+									}
+								}
+							},
+							"第2次_知觉": {
+								"显示内容": "奔跑跳跃，身体锻炼。谦逊有礼的是贵族，上马驰骋的也是贵族。",
+								"结算文本": "体魄上去了，摔打也就没那么疼。{child_name}回来时，连走路都带着力气。",
+								"卡牌情况": [
+									[],
+									[],
+									[],
+									[],
+									[],
+									[
+										[
+											"child"
+										]
+									]
+								],
+								"slots": {
+									"理性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"理性"
+										],
+										"auto_fill": "理性",
+										"required": false
+									},
+									"感性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"感性"
+										],
+										"auto_fill": "感性",
+										"required": false
+									},
+									"知觉": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"知觉"
+										],
+										"auto_fill": "知觉",
+										"required": false
+									},
+									"理性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"感性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"知觉学者": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3,
+									5,
+									6,
+									7
+								],
+								"conditions": {
+									"num_tags": {
+										"学校学习": {
+											"min": 1,
+											"max": 1
+										}
+									}
+								},
+								"check": null,
+								"effect": {
+								"slot_tags": {
+									"理性学者": ["学生"],
+									"感性学者": ["学生"],
+									"知觉学者": ["学生"]
+								},
+									"slot_attrs": {
+										"知觉学者": {
+											"str": 1,
+											"bod": 1
+										}
+									},
+									"num_tags": {
+										"学校学习": {
+											"add": 1,
+											"cap": 3
+										}
+									},
+									"slot_num_tags": {
+										"知觉学者": {
+											"学校学习": {
+												"add": 1,
+												"cap": 3
+											}
+										}
+									}
+								}
+							},
+							"第3次_理性": {
+								"显示内容": "符号、公式、逻辑、几何，这些对于一个美术生确实超纲了，不过听说其他贵族有学数学的风尚，{child_name}当然也不能落后。",
+								"结算文本": "{child_name}已经能替你把账本上的错处圈出来了——顺带把椅子坐出了一个坑。",
+								"卡牌情况": [
+									[],
+									[],
+									[],
+									[
+										[
+											"child"
+										]
+									],
+									[],
+									[]
+								],
+								"slots": {
+									"理性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"理性"
+										],
+										"auto_fill": "理性",
+										"required": false
+									},
+									"感性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"感性"
+										],
+										"auto_fill": "感性",
+										"required": false
+									},
+									"知觉": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"知觉"
+										],
+										"auto_fill": "知觉",
+										"required": false
+									},
+									"理性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"感性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"知觉学者": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3,
+									5,
+									6,
+									7
+								],
+								"conditions": {
+									"num_tags": {
+										"学校学习": {
+											"min": 2
+										}
+									}
+								},
+								"check": null,
+								"effect": {
+								"slot_tags": {
+									"理性学者": ["学生"],
+									"感性学者": ["学生"],
+									"知觉学者": ["学生"]
+								},
+									"slot_attrs": {
+										"理性学者": {
+											"int": 1,
+											"bod": 1
+										}
+									},
+									"num_tags": {
+										"学校学习": {
+											"add": 1,
+											"cap": 3
+										}
+									},
+									"slot_num_tags": {
+										"理性学者": {
+											"学校学习": {
+												"add": 1,
+												"cap": 3
+											}
+										}
+									}
+								}
+							},
+							"第3次_感性": {
+								"显示内容": "美是一门博大精深的学问，繁琐的礼节是贵族的必修课。",
+								"结算文本": "谈吐、姿态、察言观色。{child_name}学会了怎么说话，也学会了怎么不被人拿话堵住。",
+								"卡牌情况": [
+									[],
+									[],
+									[],
+									[],
+									[
+										[
+											"child"
+										]
+									],
+									[]
+								],
+								"slots": {
+									"理性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"理性"
+										],
+										"auto_fill": "理性",
+										"required": false
+									},
+									"感性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"感性"
+										],
+										"auto_fill": "感性",
+										"required": false
+									},
+									"知觉": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"知觉"
+										],
+										"auto_fill": "知觉",
+										"required": false
+									},
+									"理性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"感性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"知觉学者": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3,
+									5,
+									6,
+									7
+								],
+								"conditions": {
+									"num_tags": {
+										"学校学习": {
+											"min": 2
+										}
+									}
+								},
+								"check": null,
+								"effect": {
+								"slot_tags": {
+									"理性学者": ["学生"],
+									"感性学者": ["学生"],
+									"知觉学者": ["学生"]
+								},
+									"slot_attrs": {
+										"感性学者": {
+											"app": 1,
+											"str": 1
+										}
+									},
+									"num_tags": {
+										"学校学习": {
+											"add": 1,
+											"cap": 3
+										}
+									},
+									"slot_num_tags": {
+										"感性学者": {
+											"学校学习": {
+												"add": 1,
+												"cap": 3
+											}
+										}
+									}
+								}
+							},
+							"第3次_知觉": {
+								"显示内容": "奔跑跳跃，身体锻炼。谦逊有礼的是贵族，上马驰骋的也是贵族。",
+								"结算文本": "{child_name}现在能翻过花园的围墙再翻回来，脸不红，气不喘。",
+								"卡牌情况": [
+									[],
+									[],
+									[],
+									[],
+									[],
+									[
+										[
+											"child"
+										]
+									]
+								],
+								"slots": {
+									"理性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"理性"
+										],
+										"auto_fill": "理性",
+										"required": false
+									},
+									"感性": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"感性"
+										],
+										"auto_fill": "感性",
+										"required": false
+									},
+									"知觉": {
+										"accept": "item",
+										"accept_class": [
+											"clue"
+										],
+										"accept_name": [
+											"知觉"
+										],
+										"auto_fill": "知觉",
+										"required": false
+									},
+									"理性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"感性学者": {
+										"accept": "character",
+										"required": false
+									},
+									"知觉学者": {
+										"accept": "character",
+										"required": false
+									}
+								},
+								"slot_positions": [
+									1,
+									2,
+									3,
+									5,
+									6,
+									7
+								],
+								"conditions": {
+									"num_tags": {
+										"学校学习": {
+											"min": 2
+										}
+									}
+								},
+								"check": null,
+								"effect": {
+									"slot_tags": {
+										"理性学者": ["学生"],
+										"感性学者": ["学生"],
+										"知觉学者": ["学生"]
+									},
+									"slot_attrs": {
+										"知觉学者": {
+											"str": 1,
+											"app": 1
+										}
+									},
+									"num_tags": {
+										"学校学习": {
+											"add": 1,
+											"cap": 3
+										}
+									},
+									"slot_num_tags": {
+										"知觉学者": {
+											"学校学习": {
+												"add": 1,
+												"cap": 3
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	},
+	"治疗": {
+		"id": "治疗",
+		"badge": "医养",
+		"title": "医院·治疗",
+		"type": "normal",
+		"repeatable": true,
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "治疗",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"治疗": {
+								"显示内容": "（治疗尚未实装。）",
+								"check": null
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	},
+	"周游": {
+		"id": "周游",
+		"badge": "出航",
+		"title": "家·周游",
+		"type": "normal",
+		"repeatable": false,
+		"show_when": {
+			"tags": [
+				"事件周游"
+			]
+		},
+		"turns": {
+			"t1_启程": {
+				"phases": [
+					{
+						"phase": "启程",
+						"require": null,
+						"displays": {
+							"整装": {
+								"显示内容": "行装收好了，就差一个带路的人。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"同伴": {
+										"accept": "character",
+										"required": false
+									},
+									"行囊": {
+										"accept": "item",
+										"required": false
+									}
+								}
+							},
+							"等不到": {
+								"显示内容": "等{执行者}到了就出发。",
+								"conditions": {
+									"requires_placed": true
+								},
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"同伴": {
+										"accept": "character",
+										"required": false
+									},
+									"行囊": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"check": null,
+								"lock_execute": true
+							},
+							"困惑": {
+								"显示内容": "已经迫不及待想要出发了！\n\n这是为什么，那是为什么。天上天下处处是无知与困惑，不要相信直觉，不要理所当然，因何天空湛蓝，因何空气流动。保持未知，保持好奇，世界焕然一新。那是什么？",
+								"结算文本": "{执行者}看到了！",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"同伴": {
+										"accept": "character",
+										"required": false
+									},
+									"行囊": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"卡牌情况": [
+									[
+										[
+											"周游队长"
+										]
+									],
+									[],
+									[]
+								],
+								"conditions": {
+									"any_slot": {
+										"slots": [
+											"行囊"
+										],
+										"tags": [
+											"困惑"
+										]
+									}
+								},
+								"check": null,
+								"effect": {
+									"tags": [
+										"里世界"
+									],
+									"slot_tags": {
+										"执行者": [
+											"里世界"
+										]
+									}
+								}
+							},
+							"博学": {
+								"显示内容": "已经迫不及待想要出发了！\n\n所谓知道就是知道自己不知道。书是桌上山水，山是地上文章，越是前行越是知道，越是知道自己不知道。等等，那尽头是？",
+								"结算文本": "{执行者}看到了！",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"同伴": {
+										"accept": "character",
+										"required": false
+									},
+									"行囊": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"卡牌情况": [
+									[
+										[
+											"周游队长"
+										]
+									],
+									[],
+									[]
+								],
+								"conditions": {
+									"any_slot": {
+										"slots": [
+											"行囊"
+										],
+										"tags": [
+											"博学"
+										]
+									}
+								},
+								"check": null,
+								"effect": {
+									"tags": [
+										"里世界"
+									],
+									"slot_tags": {
+										"执行者": [
+											"里世界"
+										]
+									}
+								}
+							},
+							"秘氛": {
+								"显示内容": "已经迫不及待想要出发了！\n\n敬畏未知，跟随伟大未知的脚步，这是，这是........",
+								"结算文本": "{执行者}看到了！",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"同伴": {
+										"accept": "character",
+										"required": false
+									},
+									"行囊": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"卡牌情况": [
+									[
+										[
+											"周游队长"
+										]
+									],
+									[],
+									[]
+								],
+								"conditions": {
+									"any_slot": {
+										"slots": [
+											"行囊"
+										],
+										"tags": [
+											"秘氛"
+										]
+									}
+								},
+								"check": null,
+								"effect": {
+									"tags": [
+										"里世界"
+									],
+									"slot_tags": {
+										"执行者": [
+											"里世界"
+										]
+									}
+								}
+							},
+							"枯燥": {
+								"显示内容": "已经迫不及待想要出发了！\n\n书上是风花雪月，现实是柴米油盐。世界枯燥又乏味，哪里出了问题呢？也许{执行者}需要一点困惑，一点博学，或者一点更隐秘的东西。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"同伴": {
+										"accept": "character",
+										"required": false
+									},
+									"行囊": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"卡牌情况": [
+									[
+										[
+											"周游队长"
+										]
+									],
+									[],
+									[]
+								],
+								"check": null
+							}
+						}
+					}
+				]
+			},
+			"t2_里世界": {
+				"phases": [
+					{
+						"phase": "里世界",
+						"require": [
+							"里世界"
+						],
+						"displays": {
+							"衫斯": {
+								"显示内容": "月光下，在裂缝中得以窥见巨大深蓝之鲸游于星空。\n\n\"欢迎你来到真正的世界。\"",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"同伴": {
+										"accept": "character",
+										"required": false
+									},
+									"行囊": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"conditions": {
+									"any_slot": {
+										"slots": [
+											"执行者"
+										],
+										"names": [
+											"Sansi",
+											"衫斯"
+										]
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/plot/misson/周游.json",
+									"name": "幻界初见·衫斯"
+								},
+								"effect": {
+									"tags": [
+										"幻界"
+									],
+									"slot_tags": {
+										"执行者": [
+											"灵感"
+										]
+									},
+									"slot_attrs": {
+										"执行者": {
+											"int": 1
+										}
+									}
+								}
+							},
+							"里世界": {
+								"显示内容": "月光下，在裂缝中得以窥见巨大深蓝之鲸游于星空。\n\n\"欢迎你来到真正的世界。\"",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"同伴": {
+										"accept": "character",
+										"required": false
+									},
+									"行囊": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"check": null,
+								"plot": {
+									"path": "res://resoures/plot/misson/周游.json",
+									"name": "幻界初见"
+								},
+								"effect": {
+									"tags": [
+										"幻界"
+									],
+									"slot_tags": {
+										"执行者": [
+											"灵感"
+										]
+									},
+									"slot_attrs": {
+										"执行者": {
+											"bod": 1
+										}
+									}
+								}
+							}
+						}
+					}
+				]
+			},
+			"t3_归途": {
+				"phases": [
+					{
+						"phase": "归途",
+						"require": [
+							"幻界"
+						],
+						"ending": "harvest",
+						"displays": {
+							"归人": {
+								"显示内容": "船票攥在手里，就等人上船。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"同伴": {
+										"accept": "character",
+										"required": false
+									},
+									"行囊": {
+										"accept": "item",
+										"required": false
+									}
+								}
+							},
+							"归途": {
+								"显示内容": "不可思议，虽然未能看清那一抹动人心弦的蓝色的全貌，可{执行者}相信那只会比书上描述更加震撼。",
+								"conditions": {
+									"requires_placed": true
+								},
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"同伴": {
+										"accept": "character",
+										"required": false
+									},
+									"行囊": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"check": null
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	},
+	"调查书店": {
+		"id": "调查书店",
+		"badge": "探问",
+		"title": "调查·白桦书肆",
+		"type": "normal",
+		"repeatable": true,
+		"duration": 1,
+		"_note": "犹格索托斯之所（2026-10-16）。链条：books.json 每本书的 after_read.player_tags 都到手（书肆读尽，read_book 落地）→ 书店购书转「书店关闭」display → 到店看老板收摊、落 tag『书店关闭』→ 本触发器现身。判定 = 执行者 int 的 1d，成功拿银之钥（others.json）+ 解锁成就「通往犹格索托斯」。repeatable=true 是**特意**的：repeatable=false 时失败会把触发器一次性消耗掉，roll 砸了永久错过钥匙；成功后由 show_when.unless_tags『银之匙』把它藏起来，不会重复刷奖励。",
+		"show_when": {
+			"tags": [
+				"书店关闭"
+			],
+			"unless_tags": [
+				"银之匙"
+			]
+		},
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "勘查",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"勘查": {
+								"显示内容": "锁着的门，摘下的招牌。木箱堆在墙角，柜台上的灯没点。",
+								"slots": {
+									"执行者": {
+										"accept": "character",
+										"required": true
+									},
+									"物件": {
+										"accept": "item",
+										"required": false
+									}
+								},
+								"check": {
+									"type": "dice",
+									"performer": "执行者",
+									"dice_attrs": [
+										"int"
+									],
+									"needs": [
+										6
+									],
+									"branches": {
+										"suc0": {
+											"text": "书架都拆下来看过了，墙板一块一块敲过去，声音都一样。{执行者}在灰里站了很久，什么也没有找到。",
+											"effect": {}
+										},
+										"suc1": {
+											"text": "第七块墙板是空的。{执行者}把它撬下来的时候，一股冷风从墙后头涌出来。",
+											"effect": {
+												"stuff": [
+													"银之钥"
+												],
+												"add_to_hand": [
+													"银之钥"
+												],
+												"tags": [
+													"银之匙"
+												],
+												"achievement": "通往犹格索托斯"
+											},
+											"plot": {
+												"path": "res://resoures/plot/rite/书店.json",
+												"name": "银之匙"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	}
+,
+	"有人来访": {
+		"id": "有人来访",
+		"badge": "重逢",
+		"title": "有人来访",
+		"type": "normal",
+		"repeatable": false,
+		"show_when": {
+			"tags": [
+				"死生契阔"
+			],
+			"unless_tags": [
+				"重逢"
+			]
+		},
+		"_note": "露易丝线·阶段1（2026-10-23 实装）。① 显隐：开局天赋「死生契阔」（gifts_begin 已给玩家落下同名 tag）之后出现在「家」，播完落地 tag「重逢」即收掉。② 槽位只吃主角，放别的人物是司库奇的提醒（lock_execute，不推进）。③ 剧情里 ?? 那几拍用节点级 portrait 露易丝，报名字那一拍起换成「露易丝」。④ 露易丝不随天赋直接进手牌：天赋「死生契阔」只落玩家 tag；本剧情 8th 落 npc.Louise.tags[追随]，由 D-FOLLOW1 自动进手牌。",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "迎接",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"放入主角": {
+								"显示内容": "竟然是她！",
+								"conditions": {
+									"any_slot": {
+										"names": [
+											"Hero"
+										],
+										"slots": [
+											"来客"
+										]
+									}
+								},
+								"slots": {
+									"来客": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"slot_positions": [
+									1
+								],
+								"check": null,
+								"plot": {
+									"path": "res://resoures/plot/louise/与露易丝的重逢.json",
+									"name": "与露易丝的重逢"
+								}
+							},
+							"引导": {
+								"显示内容": "司库奇提醒你要注意不能忘记身为贵族的体面，还是亲自去迎接吧。",
+								"slots": {
+									"来客": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"slot_positions": [
+									1
+								],
+								"check": null,
+								"lock_execute": true
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	},
+	"涂鸦": {
+		"id": "涂鸦",
+		"badge": "涂鸦",
+		"title": "涂鸦",
+		"type": "normal",
+		"repeatable": true,
+		"show_when": {
+			"tags": [
+				"露易丝的打算"
+			],
+			"unless_tags": [
+				"涂鸦约战",
+				"涂鸦了断"
+			]
+		},
+		"_note": "露易丝线·阶段2（2026-10-23 实装）。① 第一槽 auto_fill 固定吸附露易丝；第二槽放人物。② 放孩子按天赋档分叉：gifted（小七）→「涂鸦比拼_甲」，common（伊莱克）→「涂鸦比拼_乙」；两条末尾都落 tag「涂鸦约战」→ 第二天出「涂鸦大作战」。③ 放主角 = 撞见后一起回去，播「露易丝有话说2」（末尾给司库奇排一条待聊）。④ 放其他人物只出一句、lock_execute 不推进。",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "撞见",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"带小七": {
+								"显示内容": "露易丝姐姐在做什么啊？",
+								"conditions": {
+									"any_slot": {
+										"tags": [
+											"gifted"
+										],
+										"slots": [
+											"同行"
+										]
+									}
+								},
+								"slots": {
+									"露易丝": {
+										"accept": "character",
+										"required": true,
+										"auto_fill": "Louise"
+									},
+									"同行": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"slot_positions": [
+									1,
+									2
+								],
+								"check": null,
+								"plot": {
+									"path": "res://resoures/plot/louise/涂鸦比拼.json",
+									"name": "涂鸦比拼_甲"
+								}
+							},
+							"带伊莱克": {
+								"显示内容": "露易丝姐姐在做什么啊？",
+								"conditions": {
+									"any_slot": {
+										"tags": [
+											"common"
+										],
+										"slots": [
+											"同行"
+										]
+									}
+								},
+								"slots": {
+									"露易丝": {
+										"accept": "character",
+										"required": true,
+										"auto_fill": "Louise"
+									},
+									"同行": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"slot_positions": [
+									1,
+									2
+								],
+								"check": null,
+								"plot": {
+									"path": "res://resoures/plot/louise/涂鸦比拼.json",
+									"name": "涂鸦比拼_乙"
+								}
+							},
+						"自己去": {
+							"显示内容": "你怎么在这里……啊正好，我今天逛完了，我们回去吧。",
+							"conditions": {
+								"any_slot": {
+									"names": [
+										"Hero"
+									],
+									"slots": [
+										"同行"
+									]
+								}
+							},
+								"slots": {
+									"露易丝": {
+										"accept": "character",
+										"required": true,
+										"auto_fill": "Louise"
+									},
+									"同行": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"slot_positions": [
+									1,
+									2
+								],
+								"check": null,
+								"plot": {
+									"path": "res://resoures/plot/louise/露易丝的打算.json",
+									"name": "露易丝有话说2"
+								}
+							},
+							"带别人": {
+								"显示内容": "露易丝小姐下午好啊。……下午好啊，{executor_name}，对了别告诉{player_name}我在这里。我就想一个人出来转转。",
+								"slots": {
+									"露易丝": {
+										"accept": "character",
+										"required": true,
+										"auto_fill": "Louise"
+									},
+									"同行": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"slot_positions": [
+									1,
+									2
+								],
+								"check": null,
+								"lock_execute": true
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	},
+	"涂鸦大作战": {
+		"id": "涂鸦大作战",
+		"badge": "涂鸦",
+		"title": "涂鸦大作战",
+		"type": "normal",
+		"repeatable": false,
+		"show_when": {
+			"tags": [
+				"涂鸦约战"
+			],
+			"unless_tags": [
+				"涂鸦了断"
+			]
+		},
+		"_note": "露易丝线·阶段2 收尾（2026-10-23 实装）。① 隔天出现在商业街，墙前只有萨格；放露易丝才推进，放别人只出一句（lock_execute）。② 数值比拼 1d(app)+1d(str) 对 6，multi 模式各掷一骰（与草案「比较1dapp+1dstr 与6」同判法）。③ 胜负两条都播剧情并落 tag「涂鸦了断」，末尾 enqueue_talk 给露易丝排「有关恋爱的对话」= 阶段3 入口。",
+		"turns": {
+			"t1": {
+				"phases": [
+					{
+						"phase": "再战",
+						"require": null,
+						"ending": "harvest",
+						"displays": {
+							"放露易丝": {
+								"显示内容": "要战便战，宿命般的决斗不需要理由。",
+								"conditions": {
+									"any_slot": {
+										"names": [
+											"露易丝"
+										],
+										"slots": [
+											"挑战者"
+										]
+									}
+								},
+								"slots": {
+									"挑战者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"slot_positions": [
+									1
+								],
+								"check": {
+									"type": "dice",
+									"mode": "multi",
+									"performer": "挑战者",
+									"sides": 10,
+									"attrs": {
+										"app": 1,
+										"str": 1
+									},
+									"multi_needs": {
+										"app": [
+											6
+										],
+										"str": [
+											6
+										]
+									},
+									"branches": {
+										"suc0": {
+											"text": "萨格的字母压住了她那半边。",
+											"plot": {
+												"path": "res://resoures/plot/louise/涂鸦比拼.json",
+												"name": "涂鸦失败"
+											}
+										},
+										"suc1": {
+											"text": "露易丝把罐子举起来，颜色泼了半个墙。",
+											"plot": {
+												"path": "res://resoures/plot/louise/涂鸦比拼.json",
+												"name": "涂鸦胜利"
+											}
+										}
+									}
+								}
+							},
+							"兜底": {
+								"显示内容": "墙还空着一半。萨格靠在墙上谁也不看，就在等人。",
+								"slots": {
+									"挑战者": {
+										"accept": "character",
+										"required": true
+									}
+								},
+								"slot_positions": [
+									1
+								],
+								"check": null,
+								"lock_execute": true
+							}
+						}
+					}
+				]
+			}
+		},
+		"harvest": {
+			"dialogue": "",
+			"effect": {}
+		},
+		"fail_harvest": {
+			"dialogue": "",
+			"effect": {}
+		}
+	}
+
+}

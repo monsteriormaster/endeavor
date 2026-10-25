@@ -7,7 +7,7 @@
 		"app": 0,
 		"str": 0,
 		"bod": 0,
-		"tags": ["player"],
+		"tags": ["player","主角","hero"],
 		"equipment": {},
 		"description": "曾热爱艺术，家庭发生变故后，不得已继承家业放弃梦想。不过野心依旧。"
 	},
@@ -19,11 +19,19 @@
 		"app": 6,
 		"str": 7,
 		"bod": 4,
-		"tags": ["侠义","神偷"],
-		"equipment": {
-			"weapon": "多功能军刀"
-		},
-		"description": "一个沉默寡言的男人，手上把玩着多功能军刀"
+		"tags": ["侠义","神偷","法拉叶"],
+		"description": "管不住手的家伙总会有机会一辈子吃国家饭。"
+	},
+	"Louise": {
+		"name": "露易丝",
+		"image": "res://art/louise.png",
+		"gender": "女",
+		"int": 5,
+		"app": 7,
+		"str": 4,
+		"bod": 4,
+		"tags": ["忠诚","露易丝"],
+		"description": "执子之手，与子偕老。幼时打闹时的玩笑，她还记得。"
 	},
 	"Sansi": {
 		"name": "衫斯",
@@ -33,11 +41,119 @@
 		"app": 5,
 		"str": 3,
 		"bod": 4,
-		"tags": ["学习"],
+		"tags": ["学习","衫斯"],
 		"equipment": {
 			"jewelry": "章鱼尾人身塑像"
 		},
-		"description": "海在呼唤他的孩子，可是他必须继续往前。"
+		"description": "海在呼唤他的孩子，可是他必须继续前进。"
+	},
+	"Sicourge": {
+		"name": "司库奇",
+		"image": "res://art/sicourge.png",
+		"gender": "男",
+		"int": 6,
+		"app": 4,
+		"str": 4,
+		"bod": 6,
+		"tags": ["司库奇"],
+		"equipment": {},
+		"description": "你忠诚的管家，无论发生什么永远值得信任。"
+	},
+	"July": {
+		"name": "小七",
+		"image": "res://art/July.png",
+		"gender": "男",
+		"int": 5,
+		"app": 3,
+		"str": 3,
+		"bod": 3,
+		"tags": ["gifted","child","小七"],
+		"equipment": {},
+		"description": "一个被你寄予厚望的少年，他能攀上艺术的高峰吗？"
+	},
+	"Electra": {
+		"name": "伊莱克",
+		"image": "res://art/electra.png",
+		"gender": "男",
+		"int": 4,
+		"app": 4,
+		"str": 4,
+		"bod": 4,
+		"tags": ["common","child","伊莱克"],
+		"equipment": {},
+		"description": "他也许没有天赋，没什么是特别的。可你选择了他，因此他独一无二。"
+	},
+	"Redmole": {
+		"name": "红鼹鼠",
+		"image": "res://art/redmole.png",
+		"gender": "女",
+		"int": 7,
+		"app": 3,
+		"str": 8,
+		"bod": 4,
+		"tags": ["侠义","红鼹鼠"],
+		"equipment": {},
+		"description": "刑法上的都是生意。利益让人敢于践踏一切法律。"
+	},
+	"Allwin": {
+		"name": "阿尔温",
+		"image": "res://art/allwin.png",
+		"gender": "男",
+		"int": 6,
+		"app": 8,
+		"str": 3,
+		"bod": 3,
+		"tags": ["音感","阿尔温"],
+		"equipment": {},
+		"description": "荆棘与坎坷都是梦想的注脚，那梦想又是一首怎样的乐曲呢？"
+	},
+	"Sofia": {
+		"name": "图书管理员 索菲亚",
+		"image": "res://art/characters_extras/librarian_alt.png",
+		"gender": "女",
+		"int": 6,
+		"app": 7,
+		"str": 3,
+		"bod": 4,
+		"tags": ["索菲亚"],
+		"equipment": {},
+		"description": "岁月尽管为她带来了衰弱与皱纹，真正的大美却因此沉淀。"
+	},
+	"Dennis": {
+		"name": "丹尼斯",
+		"image": "res://art/dennis.png",
+		"gender": "男",
+		"int": 4,
+		"app": 4,
+		"str": 4,
+		"bod": 6,
+		"tags": ["丹尼斯"],
+		"equipment": {},
+		"description": "你在人间仅存的有血缘关系的人，或者说是同样有继承权的人。"
+	},
+	"Alice": {
+		"name": "爱丽丝",
+		"image": "res://art/alice.png",
+		"gender": "女",
+		"int": 4,
+		"app": 6,
+		"str": 3,
+		"bod": 6,
+		"tags": ["音感","爱丽丝"],
+		"equipment": {},
+		"description": "歌声，掌声。香水，玫瑰。这些陪伴了她近十年的东西都正在离她远去。"
+	},
+	"Astrologer": {
+		"name": "占星师",
+		"image": "res://art/astro.png",
+		"gender": "女",
+		"int": 4,
+		"app": 4,
+		"str": 4,
+		"bod": 4,
+		"tags": ["占星师"],
+		"equipment": {},
+		"description": "占星小屋的主人，替人看过去与未来。你记不得她的样子——只记得她那句关于画作的断言。"
 	},
 	"Jailer": {
 		"name": "狱卒",
@@ -47,44 +163,190 @@
 		"app": 4,
 		"str": 4,
 		"bod": 6,
-		"tags": [],
+		"tags": ["狱卒"],
 		"equipment": {},
-		"description": "狱卒，如果你看到这个说明我的程序出现了问题。"
+		"description": "狱卒，如果你看到了这个说明我的程序出现了问题。"
 	},
-	"Sicourge": {
-		"name": "斯库奇",
-		"image": "res://art/sicourge.png",
-		"gender": "男",
-		"int": 6,
-		"app": 4,
-		"str": 4,
-		"bod": 6,
-		"tags": [],
-		"equipment": {},
-		"description": "你忠诚的管家，无论发生什么永远值得信任。"
-	},
-	"July": {
-		"name": "小七",
-		"image": "",
-		"gender": "男",
-		"int": 5,
-		"app": 3,
-		"str": 3,
-		"bod": 3,
-		"tags": ["gifted","child"],
-		"equipment": {},
-		"description": "一个被你寄予厚望的少年，他能攀上艺术的高峰吗？"
-	},
-	"Electra": {
-		"name": "伊莱克",
-		"image": "",
+	"Principal": {
+		"name": "校长",
+		"image": "res://art/principal.png",
 		"gender": "男",
 		"int": 4,
 		"app": 4,
 		"str": 4,
 		"bod": 4,
-		"tags": ["common","child"],
+		"tags": ["校长"],
 		"equipment": {},
-		"description": "他也许没有天赋，没什么是特别的。可你选择了他，因此他独一无二。"
+		"description": "校长，如果你看到了这个说明我的程序出现了问题。"
+	},
+	"Teacher1": {
+		"name": "教师",
+		"image": "res://art/teacher1.png",
+		"gender": "女",
+		"int": 4,
+		"app": 4,
+		"str": 4,
+		"bod": 4,
+		"tags": ["教师"],
+		"equipment": {},
+		"description": "教师，如果你看到了这个说明我的程序出现了问题。"
+	},
+	"PasserbyA": {
+		"name": "路人A",
+		"image": "res://art/passerbyA.png",
+		"gender": "男",
+		"int": 4,
+		"app": 4,
+		"str": 4,
+		"bod": 4,
+		"tags": ["路人A"],
+		"equipment": {},
+		"description": "一个路人，如果你看到了这个说明我的程序出现了问题。"
+	},
+	"Superman": {
+		"name": "超人",
+		"image": "res://art/man.png",
+		"gender": "男",
+		"int": 10,
+		"app": 10,
+		"str": 10,
+		"bod": 10,
+		"tags": ["追随","超人"],
+		"equipment": {},
+		"description": "一个超人，仅用于测试。"
+	},
+	"Thug": {
+		"name": "萨格",
+		"image": "res://art/characters_extras/thug.png",
+		"gender": "男",
+		"int": 4,
+		"app": 3,
+		"str": 6,
+		"bod": 5,
+		"tags": ["混混","涂鸦","萨格"],
+		"description": "从这条街到码头，所有的墙都认得他。手背和指甲缝里的漆洗不掉。"
+	},
+	"Patrolman": {
+		"name": "巡警",
+		"image": "res://art/man.png",
+		"gender": "男",
+		"int": 4,
+		"app": 4,
+		"str": 5,
+		"bod": 5,
+		"tags": ["巡警"],
+		"description": "胳膊上套着反光条，走路带风。该管的不该管的，他都懒得管。"
+	},
+
+	"Bully": {
+		"name": "校霸",
+		"image": "res://art/characters_extras/bully.png",
+		"gender": "男",
+		"tags": ["校霸"],
+		"description": "学校里横行霸道的坏孩子头头。"
+	},
+
+	"PasserbyB": {
+		"name": "路人B",
+		"image": "res://art/passerbyB.png",
+		"gender": "男",
+		"int": 4,
+		"app": 4,
+		"str": 4,
+		"bod": 4,
+		"tags": ["路人B"],
+		"equipment": {},
+		"description": "一个路人，如果你看到了这个说明我的程序出现了问题。"
+	},
+
+	"Guard": {
+		"name": "护卫",
+		"gender": "男",
+		"int": 3,
+		"app": 3,
+		"str": 4,
+		"bod": 4,
+		"tags": ["护卫"],
+		"equipment": {},
+		"description": "对家族忠心耿耿未曾离开的护卫。"
+	},
+
+	"TempWorkerA": {
+		"name": "散工甲",
+		"image": "res://art/passerbyA.png",
+		"gender": "男",
+		"int": 3,
+		"app": 3,
+		"str": 3,
+		"bod": 3,
+		"tags": ["临时工候选","散工甲"],
+		"equipment": {},
+		"description": "码头边等活的散工。肩膀结实，账算不清。"
+	},
+
+	"TempWorkerB": {
+		"name": "散工乙",
+		"image": "res://art/passerbyB.png",
+		"gender": "男",
+		"int": 2,
+		"app": 2,
+		"str": 4,
+		"bod": 3,
+		"tags": ["临时工候选","散工乙"],
+		"equipment": {},
+		"description": "瘦高个。搬东西是一把好手，说话含糊。"
+	},
+
+	"TempWorkerC": {
+		"name": "散工丙",
+		"image": "res://art/characters_extras/thug.png",
+		"gender": "男",
+		"int": 4,
+		"app": 2,
+		"str": 2,
+		"bod": 3,
+		"tags": ["临时工候选","散工丙"],
+		"equipment": {},
+		"description": "眼睛转得快，干活总在磨洋工。价钱倒谈得利索。"
+	},
+
+	"TempChildA": {
+		"name": "童工甲",
+		"image": "res://art/characters_extras/child_worker.png",
+		"gender": "男",
+		"int": 4,
+		"app": 3,
+		"str": 1,
+		"bod": 2,
+		"tags": ["童工候选","童工甲"],
+		"equipment": {},
+		"description": "街面上混熟的小鬼。个子矮，脑子快。"
+	},
+
+	"TempChildB": {
+		"name": "童工乙",
+		"image": "res://art/characters_extras/child_worker.png",
+		"gender": "男",
+		"int": 3,
+		"app": 3,
+		"str": 2,
+		"bod": 2,
+		"tags": ["童工候选","童工乙"],
+		"equipment": {},
+		"description": "瘦得只剩两只眼睛亮，递东西比大人还稳。"
+	},
+
+	"TempChildC": {
+		"name": "童工丙",
+		"image": "res://art/characters_extras/child_worker.png",
+		"gender": "男",
+		"int": 5,
+		"app": 2,
+		"str": 1,
+		"bod": 2,
+		"tags": ["童工候选","童工丙"],
+		"equipment": {},
+		"description": "话不多，眼睛到处看。看得出他在记什么。"
 	}
+
 }

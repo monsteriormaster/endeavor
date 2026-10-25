@@ -4,25 +4,25 @@
 			"name":"{player_name}",
 			"text":"我出生于钟鸣鼎食的大家族，是嫡系里最受关爱的最小的男孩。",
 			"is_option":false,
-			"next": 1,
+			"next": 1
 		},
 		"1th":{
 			"name":"{player_name}",
 			"text":"治理家业的负担不会压在我的肩上。我自幼热爱艺术，于是家里人把我送到学校让我专心学习艺术。",
 			"is_option":false,
-			"next": 2,
+			"next": 2
 		},
 		"2th":{
 			"name":"{player_name}",
 			"text":"这次艺术比赛的名次，我不是第一，评委老师的评语是匠气太重，失了自然。",
 			"is_option":false,
-			"next": 3,
+			"next": 3
 		},
 		"3th":{
 			"name":"{player_name}",
 			"text":"看了排名更靠前的人的画，不得不承认他们的更好啊。感觉色彩没有被拘束在画纸上而是借笔刷在作品中徜徉。",
 			"is_option":false,
-			"next": 4,
+			"next": 4
 		},
 		"4th":{
 			"name":"{player_name}",
@@ -33,125 +33,215 @@
 			}
 		}
 	},
-	
+
 	"第二天剧情":{
-		"layout":"newspaper",
 		"0th":{
-			"name":"{player_name}",
-			"text":"这是订的最后一期报纸，还要订的话要去商业街报亭一趟。",
-			"is_option":false,
-			"next": 1,
-		},
-		"1th":{
-			"name":"",
-			"text":"《名画失窃：三月二日 乌鲁鲁大学收藏的名画舞春神失窃》",
-			"is_option":false,
-			"next": 2,
-		},
-		"2th":{
-			"name":"",
-			"text":"《远洋贸易快讯：三月二日 “蔷薇号” 船队失联，同行三艘货船暂未传回信号》",
-			"is_option":false,
-			"next": 3,
-		},
-		"3th":{
 			"name":"{player_name}",
 			"text":"蔷薇号是家里的商船，这次的贸易很重要，家里去了很多大人。",
 			"is_option":false,
-			"next": 4,
-		},
-		"4th":{
-			"name":"",
-			"text":"你不禁忧心忡忡，马不停蹄地赶回来家。",
-			"is_option":false,
-			"next": -1,
-			"effect":{
-				"tags":["第二天剧情"]
-			}
-		},
-	},
-	
-	"斯库奇引导1":{
-		"0th":{
-		"name":"{管家 寺库奇}",
-			"text":"我正打算找少主人。家里发生变故......恐怕只能由你来主持了。",
-			"is_option":false,
-			"next": 1,
+			"next": 1
 		},
 		"1th":{
 			"name":"",
-			"text":"管家寺库奇可以说是看着你长大的，你对待他和对待长辈一样。在你的印象里他是值得你信任的长辈。",
+			"text":"你不禁忧心忡忡，马不停蹄地赶回来家。",
 			"is_option":false,
-			"next": 2,
+			"next": 2
 		},
 		"2th":{
 			"name":"{player_name}",
-			"text":"寺库奇，你应该也知道我只会画画吧。",
-			"is_option":false,
-			"next": 3,
-		},
-		"3th":{
-			"name":"{管家 寺库奇}",
-			"text":"我会在一旁辅佐您的，别担心。",
-			"is_option":false,
-			"next": 4,
-		},
-		"4th":{
-			"name":"管家 寺库奇",
-			"text":"治理家业是门复杂的学问，但是少主只需要把合适的人派遣的合适的位置就好。",
-			"is_option":false,
-			"next": 5,
-		},
-		"5th":{
-			"name":"管家 寺库奇",
-			"text":"家族现在的主要收入是远洋贸易。有多个职位需要您派遣，我会提示您什么样的人适合在这个职位。其中只有主管是必须的，现在把我放置在主管的位置吧。",
+			"text":"这是订的最后一期报纸，还要订的话要去商业街报亭一趟。",
 			"is_option":false,
 			"next": -1,
 			"effect":{
-				"tags":["斯库奇引导1"]
+				"newspaper": { "day": 1 },
+				"tags":["第二天剧情"],
+				"add_to_hand": ["Hero"]
 			}
-		},
+		}
 	},
-	
+
+	"我还不想那么早休息":{
+		"0th":{
+			"name":"{player_name}",
+			"text":"我还不想那么早休息。",
+			"is_option":false
+		}
+	},
+
+	"先去和管家说说话":{
+		"0th":{
+			"name":"{player_name}",
+			"text":"管家还等着我。先去问问他。",
+			"is_option":false
+		}
+	},
+
+	"该把家里的事理一理了":{
+		"0th":{
+			"name":"{player_name}",
+			"text":"人齐了，家里的事也该有人管。去家业那边看看。",
+			"is_option":false
+		}
+	},
+
+	"希望一切安好":{
+		"0th":{
+			"name":"{player_name}",
+			"text":"希望一切安好。",
+			"is_option":false
+		}
+	},
+
+	"我迫不及待回家看看了":{
+		"0th":{
+			"name":"{player_name}",
+			"text":"我迫不及待回家看看了。",
+			"is_option":false
+		}
+	},
+
+	"发生了那么大的事":{
+		"0th":{
+			"name":"{player_name}",
+			"text":"发生了那么大的事，先问问管家吧。",
+			"is_option":false
+		}
+	},
+
+	"斯库奇引导1":{
+		"0th":{
+			"name":"管家 司库奇",
+			"text":"我正打算找少主人。家里发生变故......恐怕只能由你来主持了。",
+			"is_option":false,
+			"next": 1
+		},
+		"1th":{
+			"name":"",
+			"text":"管家司库奇可以说是看着你长大的，你对待他和对待长辈一样。在你的印象里他是值得你信任的长辈。",
+			"is_option":false,
+			"next": 2
+		},
+		"2th":{
+			"name":"{player_name}",
+			"text":"司库奇，你应该也知道我只会画画吧。",
+			"is_option":false,
+			"next": 3
+		},
+		"3th":{
+			"name":"管家 司库奇",
+			"text":"我会在一旁辅佐您的，别担心。",
+			"is_option":false,
+			"next": 4
+		},
+		"4th":{
+			"name":"管家 司库奇",
+			"text":"治理家业是门复杂的学问，但是少主只需要把合适的人派遣的合适的位置就好。",
+			"is_option":false,
+			"next": -1,
+			"effect":{
+				"tags":["斯库奇引导1"],
+				"remove_tags":["出现管家"],
+				"npc": {"Sicourge": {}},
+				"add_to_hand": ["Sicourge"],
+				"enqueue_talk": {
+					"Sicourge": {
+						"path": "res://resoures/plot/misson/beginning.json",
+						"name": "斯库奇引导2"
+					}
+				},
+				"talk_hint": {
+					"Sicourge": {
+						"path": "res://resoures/plot/misson/beginning.json",
+						"name": "管家似乎还想嘱托什么"
+					}
+				}
+			}
+		}
+	},
+
+	"第一天最后的教导":{
+		"0th":{
+			"name":"管家 司库奇",
+			"text":"家族现在的主要收入是远洋贸易。有多个职位需要您派遣，我会提示您什么样的人适合在这个职位。眼下主管和护卫都缺不得，先把我放到主管的位置上；护卫那边您不必费心，一直守着宅子没离开过的老护卫，这就来听您差遣。",
+			"is_option":false,
+			"next": -1,
+			"effect":{
+				"tags":["家业教导完成","教程完成"],
+				"npc": {"Guard": {}},
+				"add_to_hand": ["Guard"]
+			}
+		}
+	},
+
+	"管家似乎还想嘱托什么":{
+		"0th":{
+			"name":"{player_name}",
+			"text":"管家似乎还想嘱托什么，与他交流一下吧。",
+			"is_option":false,
+			"next": -1,
+			"effect":{
+				"tags":["管家嘱托已说"],
+				"enqueue_talk": {
+					"Hero": {
+						"path": "res://resoures/plot/misson/beginning.json",
+						"name": "我的思考"
+					}
+				}
+			}
+		}
+	},
+
+	"斯库奇引导2":{
+		"0th":{
+			"name":"管家 司库奇",
+			"text":"少主，发生了那么大的意外，我花了很多钱把主子们安葬了，现在只有这些钱，您一定要规划好，但切不可忘了身为贵族的体面。",
+			"is_option":false,
+			"next": 1
+		},
+		"1th":{
+			"name":"",
+			"text":"每个季度会自动扣除一笔钱作为维持贵族体面的基础花费。",
+			"is_option":false,
+			"next": -1,
+			"effect":{
+				"tags":["斯库奇引导2"]
+			}
+		}
+	},
+
+	"我的思考":{
+		"0th":{
+			"name":"{player_name}",
+			"text":"司库奇说要找合适的人去合适的位置，也许我可以去各个地方打听招揽贤才。",
+			"is_option":false,
+			"next": 1
+		},
+		"1th":{
+			"name":"{player_name}",
+			"text":"我仍然惦记着艺术的梦想，虽然自己不能达到那个顶峰……有时间去孤儿院看看吧，我想找一个有天赋的孩子 让他替我完成梦想。",
+			"is_option":false,
+			"next": 2
+		},
+		"2th":{
+			"name":"",
+			"text":"当{player_name}被使用时，这一天将无法再进行其他行为。",
+			"is_option":false,
+			"next": -1,
+			"effect":{
+				"tags":["教程完成"],
+				"enqueue_talk": {
+					"Sicourge": {
+						"path": "res://resoures/plot/misson/与管家交流群死前.json",
+						"name": "与管家交流群死前"
+					}
+				}
+			}
+		}
+	},
+
 	"引导2":{
 		"0":{
 			"text":"记得在右下角确定，如果想要修改选择可以重新打开界面，点击原来确定的位置。"
 		}
-	},
-	
-	"斯库奇引导2":{
-		"0th":{
-		"name":"{管家 寺库奇}",
-			"text":"少主，发生了那么大的意外，我花了很多钱把主子们安葬了，现在只有这些钱，您一定要规划好，但切不可忘了身为贵族的体面。",
-			"is_option":false,
-			"next": 1,
-		},
-		"1th":{
-			"name":"",
-			"text":"每个季度会自动扣除x元最为维持贵族体面的基础花费。",
-			"is_option":false,
-			"next": 2,
-		},
-		"2th":{
-			"name":"{player_name}",
-			"text":"寺库奇说要找合适的人去合适的位置，也许我可以去各个地方打听招揽贤才。",
-			"is_option":false,
-			"next": 3,
-		},
-		"3th":{
-			"name":"{player_name}",
-			"text":"我仍然惦记着艺术的梦想，虽然自己不能达到那个顶峰……有时间去孤儿院看看吧，我想找一个有天赋的孩子 让他替我完成梦想。",
-			"is_option":false,
-			"next": 4,
-		},
-		"4th":{
-			"name":"",
-			"text":"当player_name被使用时，这一天将无法再进行其他行为。",
-			"is_option":false,
-			"effect":{
-				"tags":["斯库奇引导2"]
-			}
-		},
-		
-	},
+	}
 }

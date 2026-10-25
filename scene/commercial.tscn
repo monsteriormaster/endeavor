@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://1twl4t84t63t"]
+
+[ext_resource type="PackedScene" uid="uid://ca2iw4ov6jw4d" path="res://components/main_ui.tscn" id="1_mainui"]
+[ext_resource type="PackedScene" path="res://map/shopping_area.tscn" id="2_map"]
+[ext_resource type="Texture2D" uid="uid://biykg664fg2oc" path="res://art/backgrounds_gentle/商业街.png" id="3_bg"]
+[ext_resource type="Script" path="res://components/map_sketch.gd" id="sk_sketch"]
+
+[node name="Commercial" type="Node2D"]
+
+[node name="background" type="TextureRect" parent="."]
+z_index = -100
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 4.0
+offset_right = 1914.0
+offset_bottom = 1081.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_bg")
+
+[node name="Sketch" type="Control" parent="background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+script = ExtResource("sk_sketch")
+
+[node name="Main_ui" parent="." instance=ExtResource("1_mainui")]
+
+[node name="ShoppingArea" parent="." instance=ExtResource("2_map")]

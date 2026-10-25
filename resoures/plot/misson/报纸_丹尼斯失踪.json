@@ -1,0 +1,17 @@
+{
+	"报纸_丹尼斯失踪": {
+		"layout": "newspaper",
+		"0th": {
+			"name": "",
+			"text": "《贵族丹尼斯离奇失踪》",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "",
+			"text": "警方多方搜寻未果，坊间传闻四起，无人知晓他的下落。",
+			"is_option": false,
+			"next": -1
+		}
+	}
+}

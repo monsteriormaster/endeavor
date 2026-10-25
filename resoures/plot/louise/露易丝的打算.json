@@ -1,0 +1,116 @@
+{
+	"露易丝有话说": {
+		"0th": {
+			"name": "露易丝",
+			"text": "我有些想做的事，大概每隔几天下午会出去一趟。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"露易丝的打算"
+				],
+				"pending_tags": [
+					"涂鸦解锁"
+				]
+			},
+			"next": 1
+		},
+		"1th": {
+			"name": "{player_name}",
+			"text": "如果安排冲突呢？",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "露易丝",
+			"text": "那可以多纵容一下我吗？",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "{player_name}",
+			"text": "（其实我根本管不了她吧。呃，这原来是通知不是征求意见啊）",
+			"is_option": false,
+			"next": -1
+		}
+	},
+
+	"露易丝有话说2": {
+		"0th": {
+			"name": "露易丝",
+			"text": "我就去商业街随便逛逛，怎么突然把我拉回来。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "{player_name}",
+			"text": "刚好有事需要你嘛。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "露易丝",
+			"text": "好吧，嗯，我偶尔出去逛逛，你不反对的对吧？",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "{player_name}",
+			"text": "好可疑啊、",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "露易丝",
+			"text": "！我只是不想被你唠叨啦！",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "{player_name}",
+			"text": "（这家伙到底是来这里干嘛的？）",
+			"is_option": false,
+			"effect": {
+				"enqueue_talk": {
+					"Sicourge": {
+						"path": "res://resoures/plot/louise/露易丝的打算.json",
+						"name": "司库奇有话说_露易丝的打算"
+					}
+				}
+			},
+			"next": -1
+		}
+	},
+
+	"司库奇有话说_露易丝的打算": {
+		"0th": {
+			"name": "管家 司库奇",
+			"text": "少主和露易丝小姐门当户对，又是青梅竹马.......对于您的私事，我本不应该多嘴，但是如果你恰好有一些成年人的东西不太方便交代别人也需要人帮助可以来找我。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "{player_name}",
+			"text": "我不明白，你好像知道了什么我根本不知道的东西。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "管家 司库奇",
+			"text": "进展并没有那么顺利吗？少主要不试试准备一些鲜花或者其他什么礼物呢？小姐们现在似乎更喜欢写时髦的东西，需要我帮您打听一下吗？",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "{player_name}",
+			"text": "我们不是你想的那样，我觉得她并不喜欢你说的那些。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "管家 司库奇",
+			"text": "我知道和我想到不一样，如果少主需要准备特别礼物和我说一声就行。",
+			"is_option": false,
+			"next": -1
+		}
+	}
+}

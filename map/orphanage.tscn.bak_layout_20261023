@@ -1,0 +1,38 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://cbxeto13xsdq1" path="res://components/scene_spot.tscn" id="1_spot"]
+[ext_resource type="PackedScene" path="res://components/trigger_spot.tscn" id="2_trig"]
+
+[node name="OrphanageMap" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 22.0
+offset_top = 110.0
+offset_right = 1898.0
+offset_bottom = 970.0
+mouse_filter = 2
+
+[node name="Node" type="Node" parent="Control"]
+
+[node name="adopt_child" parent="Control/Node" instance=ExtResource("2_trig")]
+offset_left = 700.0
+offset_top = 380.0
+offset_right = 820.0
+offset_bottom = 500.0
+trigger_id = "收养孩子"
+label_text = "收养"
+
+[node name="return_child" parent="Control/Node" instance=ExtResource("2_trig")]
+offset_left = 1100.0
+offset_top = 380.0
+offset_right = 1220.0
+offset_bottom = 500.0
+trigger_id = "归还孩子"
+label_text = "送回"
+
+[node name="Exit" parent="Control/Node" instance=ExtResource("1_spot")]
+spot_name = "返回_主城"
+max_size = Vector2(180, 180)
+ordinary = Vector2(1700, 610)

@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://b85vfl62yoop3"]
+
+[ext_resource type="Script" uid="uid://hx2oo7id658o" path="res://components/newspaper.gd" id="1_news"]
+[ext_resource type="Texture2D" uid="uid://cvd3s6mv8jmjb" path="res://art/ui/newspaper_paper.png" id="2_paper"]
+
+[node name="Newspaper" type="Control" unique_id=1004705247]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_news")
+
+[node name="Background" type="ColorRect" parent="." unique_id=472325178]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="PaperFrame" type="Control" parent="." unique_id=1485445381]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.0
+offset_top = -486.0
+offset_right = 540.0
+offset_bottom = 486.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PaperTexture" type="TextureRect" parent="PaperFrame" unique_id=171935446]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_paper")
+expand_mode = 1
+
+[node name="Overlay" type="Control" parent="PaperFrame" unique_id=1323766858]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="Masthead" type="Label" parent="PaperFrame/Overlay" unique_id=1934932462]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 62.0
+offset_right = 850.0
+offset_bottom = 101.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 38
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="DateLabel" type="Label" parent="PaperFrame/Overlay" unique_id=598870748]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 165.0
+offset_right = 1016.0
+offset_bottom = 182.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+
+[node name="News1Headline" type="Label" parent="PaperFrame/Overlay" unique_id=2138659416]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 254.0
+offset_right = 515.0
+offset_bottom = 294.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 3
+
+[node name="News1Body" type="RichTextLabel" parent="PaperFrame/Overlay" unique_id=1471466536]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 307.0
+offset_right = 515.0
+offset_bottom = 531.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 15
+
+[node name="News2Headline" type="Label" parent="PaperFrame/Overlay" unique_id=1948563243]
+layout_mode = 0
+offset_left = 565.0
+offset_top = 254.0
+offset_right = 1021.0
+offset_bottom = 294.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 3
+
+[node name="News2Body" type="RichTextLabel" parent="PaperFrame/Overlay" unique_id=975493767]
+layout_mode = 0
+offset_left = 565.0
+offset_top = 307.0
+offset_right = 1021.0
+offset_bottom = 531.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 15
+
+[node name="News3Headline" type="Label" parent="PaperFrame/Overlay" unique_id=1011311053]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 579.0
+offset_right = 515.0
+offset_bottom = 619.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 3
+
+[node name="News3Body" type="RichTextLabel" parent="PaperFrame/Overlay" unique_id=838611594]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 632.0
+offset_right = 515.0
+offset_bottom = 876.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 15
+
+[node name="News4Headline" type="Label" parent="PaperFrame/Overlay" unique_id=1918637544]
+layout_mode = 0
+offset_left = 565.0
+offset_top = 579.0
+offset_right = 1021.0
+offset_bottom = 619.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 3
+
+[node name="News4Body" type="RichTextLabel" parent="PaperFrame/Overlay" unique_id=1413223547]
+layout_mode = 0
+offset_left = 565.0
+offset_top = 632.0
+offset_right = 1021.0
+offset_bottom = 876.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 15
+
+[node name="CloseButton" type="Button" parent="PaperFrame/Overlay" unique_id=1371879740]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 905.0
+offset_right = 640.0
+offset_bottom = 945.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "关闭"
+
+[connection signal="gui_input" from="Background" to="." method="_on_background_input"]
+[connection signal="pressed" from="PaperFrame/Overlay/CloseButton" to="." method="_on_close_pressed"]

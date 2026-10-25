@@ -1,51 +1,122 @@
-[gd_scene load_steps=2 format=3 uid="uid://2udkh5fdg8an"]
+[gd_scene load_steps=3 format=3 uid="uid://2udkh5fdg8an"]
 
 [ext_resource type="PackedScene" uid="uid://cbxeto13xsdq1" path="res://components/scene_spot.tscn" id="1_xsxxt"]
+[ext_resource type="PackedScene" path="res://components/trigger_spot.tscn" id="2_trig"]
 
-[node name="FirstCity" type="Node2D"]
+[node name="FirstCity" type="Node2D" unique_id=47778736]
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=1106919138]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 22.0
 offset_top = 110.0
 offset_right = 1898.0
 offset_bottom = 970.0
+mouse_filter = 2
 
-[node name="Node" type="Node" parent="Control"]
+[node name="Node" type="Node" parent="Control" unique_id=399391239]
 
-[node name="prison" parent="Control/Node" instance=ExtResource("1_xsxxt")]
+[node name="prison" parent="Control/Node" unique_id=1174586305 instance=ExtResource("1_xsxxt")]
 spot_name = "监狱_初始"
-ordinary = Vector2(150, 380)
+max_size = Vector2(323, 196)
+ordinary = Vector2(703, 541)
+cast_shadow = false
 
-[node name="commercial" parent="Control/Node" instance=ExtResource("1_xsxxt")]
-spot_name = "商业区"
-ordinary = Vector2(520, 200)
+[node name="orphanage" parent="Control/Node" unique_id=1900000001 instance=ExtResource("1_xsxxt")]
+spot_name = "孤儿院"
+max_size = Vector2(327, 238)
+ordinary = Vector2(324, 527)
+cast_shadow = false
 
-[node name="school" parent="Control/Node" instance=ExtResource("1_xsxxt")]
-spot_name = "学校"
-ordinary = Vector2(520, 430)
-
-[node name="home" parent="Control/Node" instance=ExtResource("1_xsxxt")]
-spot_name = "家业"
-ordinary = Vector2(820, 430)
-
-[node name="theater" parent="Control/Node" instance=ExtResource("1_xsxxt")]
-spot_name = "剧院"
-ordinary = Vector2(820, 200)
-
-[node name="plaza" parent="Control/Node" instance=ExtResource("1_xsxxt")]
-spot_name = "市政广场"
-ordinary = Vector2(1120, 200)
-
-[node name="hospital" parent="Control/Node" instance=ExtResource("1_xsxxt")]
+[node name="hospital" parent="Control/Node" unique_id=670842480 instance=ExtResource("1_xsxxt")]
 spot_name = "医院"
-ordinary = Vector2(1120, 430)
+max_size = Vector2(223, 219)
+ordinary = Vector2(1304, 100)
+cast_shadow = false
 
-[node name="church" parent="Control/Node" instance=ExtResource("1_xsxxt")]
+[node name="commercial" parent="Control/Node" unique_id=1888845529 instance=ExtResource("1_xsxxt")]
+spot_name = "商业区"
+max_size = Vector2(286, 209)
+ordinary = Vector2(1032, 211)
+cast_shadow = false
+
+[node name="school" parent="Control/Node" unique_id=760331278 instance=ExtResource("1_xsxxt")]
+spot_name = "学校"
+max_size = Vector2(269, 296)
+ordinary = Vector2(250, 110)
+cast_shadow = false
+
+[node name="home" parent="Control/Node" unique_id=603304136 instance=ExtResource("1_xsxxt")]
+spot_name = "家"
+max_size = Vector2(356, 233)
+ordinary = Vector2(1307, 597)
+cast_shadow = false
+
+[node name="theater" parent="Control/Node" unique_id=1544244591 instance=ExtResource("1_xsxxt")]
+spot_name = "剧院"
+max_size = Vector2(253, 208)
+ordinary = Vector2(773, 162)
+cast_shadow = false
+
+[node name="plaza" parent="Control/Node" unique_id=717166961 instance=ExtResource("1_xsxxt")]
+spot_name = "市政广场"
+max_size = Vector2(225, 143)
+ordinary = Vector2(533, 187)
+cast_shadow = false
+
+[node name="church" parent="Control/Node" unique_id=1381500173 instance=ExtResource("1_xsxxt")]
 spot_name = "教会"
-ordinary = Vector2(700, 660)
+max_size = Vector2(272, 280)
+ordinary = Vector2(1020, 523)
+cast_shadow = false
 
-[node name="transport" parent="Control/Node" instance=ExtResource("1_xsxxt")]
+[node name="transport" parent="Control/Node" unique_id=522899291 instance=ExtResource("1_xsxxt")]
 spot_name = "交通运输站"
-ordinary = Vector2(1100, 660)
+max_size = Vector2(271, 161)
+ordinary = Vector2(1253, 358)
+cast_shadow = false
+
+[node name="police_line" parent="Control/Node" unique_id=610160201 instance=ExtResource("2_trig")]
+offset_left = 630.0
+offset_top = 130.0
+offset_right = 750.0
+offset_bottom = 250.0
+trigger_id = "群死常规的处理的调查"
+label_text = "警方线索"
+position = Vector2(630, 130)
+
+[node name="dennis_night" parent="Control/Node" unique_id=610160202 instance=ExtResource("2_trig")]
+offset_left = 940.0
+offset_top = 620.0
+offset_right = 1060.0
+offset_bottom = 740.0
+trigger_id = "调查丹尼斯"
+label_text = "调查丹尼斯"
+position = Vector2(940, 620)
+
+[node name="cottage_shed" parent="Control/Node" unique_id=610160203 instance=ExtResource("2_trig")]
+offset_left = 140.0
+offset_top = 700.0
+offset_right = 260.0
+offset_bottom = 820.0
+trigger_id = "郊外小屋"
+label_text = "城郊小屋"
+position = Vector2(140, 700)
+
+[node name="digging" parent="Control/Node" unique_id=610160204 instance=ExtResource("2_trig")]
+offset_left = 140.0
+offset_top = 540.0
+offset_right = 260.0
+offset_bottom = 660.0
+trigger_id = "郊外挖宝"
+label_text = "荒地挖掘"
+position = Vector2(140, 540)
+
+[node name="park" parent="Control/Node" unique_id=610160205 instance=ExtResource("2_trig")]
+offset_left = 1560.0
+offset_top = 130.0
+offset_right = 1680.0
+offset_bottom = 250.0
+trigger_id = "公园"
+label_text = "公园"
+position = Vector2(1560, 130)

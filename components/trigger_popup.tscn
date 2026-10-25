@@ -1,0 +1,158 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvedkkh6b5mm3"]
+
+[ext_resource type="Script" uid="uid://qbbkura4hxwa" path="res://components/trigger_popup.gd" id="1_tp"]
+[ext_resource type="Texture2D" path="res://art/ui/trig_panel.png" id="2_bg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bg"]
+
+[node name="TriggerPopup" type="Control" unique_id=2061060908]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_tp")
+
+[node name="Panel" type="Panel" parent="." unique_id=1155706166]
+custom_minimum_size = Vector2(1280, 740)
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 740.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bg")
+
+[node name="Background" type="TextureRect" parent="Panel" unique_id=1782123241]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+
+[node name="TitleBar" type="Control" parent="Panel" unique_id=985902166]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 44.0
+offset_right = 492.0
+offset_bottom = 78.0
+mouse_filter = 1
+
+[node name="Title" type="Label" parent="Panel/TitleBar" unique_id=816145293]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.219608, 0.168627, 0.117647, 1)
+theme_override_font_sizes/font_size = 20
+text = "触发器"
+
+[node name="PhaseLabel" type="Label" parent="Panel" unique_id=805647258]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 80.0
+offset_right = 492.0
+offset_bottom = 97.0
+theme_override_colors/font_color = Color(0.352941, 0.301961, 0.243137, 0.9)
+theme_override_font_sizes/font_size = 12
+text = "phase:"
+
+[node name="Content" type="Control" parent="Panel" unique_id=1768465501]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = -16.0
+offset_bottom = -8.0
+
+[node name="SlotsSection" type="Control" parent="Panel/Content" unique_id=2121882765]
+anchors_preset = 0
+anchor_bottom = 1.0
+offset_right = 392.0
+
+[node name="SlotsGrid" type="Control" parent="Panel/Content/SlotsSection" unique_id=1565933552]
+anchors_preset = 0
+offset_top = 26.0
+offset_right = 384.0
+offset_bottom = 318.0
+
+[node name="TextSection" type="Control" parent="Panel/Content" unique_id=1282037630]
+anchors_preset = 0
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -380.0
+
+[node name="TextLabel" type="Label" parent="Panel/Content/TextSection" unique_id=1677392285]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 420.0
+theme_override_colors/font_color = Color(0.219608, 0.168627, 0.117647, 1)
+theme_override_font_sizes/font_size = 18
+autowrap_mode = 3
+
+[node name="BottomBar" type="HBoxContainer" parent="Panel" unique_id=1697912190]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_top = -68.0
+offset_right = -40.0
+offset_bottom = -24.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 12
+
+[node name="Spacer" type="Control" parent="Panel/BottomBar" unique_id=482956778]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ExecuteButton" type="Button" parent="Panel/BottomBar" unique_id=338235014]
+custom_minimum_size = Vector2(88, 44)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "执行"
+
+[node name="CloseButton" type="Button" parent="Panel/BottomBar" unique_id=34200557]
+custom_minimum_size = Vector2(88, 44)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "关闭"
+
+[node name="CancelButton" type="Button" parent="Panel/BottomBar" unique_id=1629907943]
+visible = false
+custom_minimum_size = Vector2(88, 44)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "取消"
+
+[node name="触发器名" type="Control" parent="Panel" unique_id=998154872]
+anchors_preset = 0
+offset_left = 72.0
+offset_top = 44.0
+offset_right = 122.0
+offset_bottom = 54.0
+
+[node name="卡槽存放的位置" type="Control" parent="Panel" unique_id=328553213]
+anchors_preset = 0
+offset_left = 72.0
+offset_top = 140.0
+offset_right = 202.0
+offset_bottom = 209.0
+
+[node name="文字位置" type="Control" parent="Panel" unique_id=641886123]
+anchors_preset = 0
+offset_left = 520.0
+offset_top = 140.0
+offset_right = 564.0
+offset_bottom = 229.0

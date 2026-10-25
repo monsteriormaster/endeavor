@@ -3,20 +3,47 @@
 [ext_resource type="Script" uid="uid://c4lv5girtsf37" path="res://scene/main.gd" id="1_itxqv"]
 [ext_resource type="PackedScene" uid="uid://2udkh5fdg8an" path="res://map/first_city.tscn" id="2_wp4xf"]
 [ext_resource type="PackedScene" uid="uid://ca2iw4ov6jw4d" path="res://components/main_ui.tscn" id="3_brvut"]
+[ext_resource type="Texture2D" uid="uid://dvvkvicnc6xj6" path="res://art/backgrounds_gentle/城市地图_无建筑.png" id="bg_tex"]
+[ext_resource type="Script" uid="uid://hts62uaxuchr" path="res://components/map_sketch.gd" id="sk_sketch"]
+[ext_resource type="Script" path="res://components/day_tint.gd" id="tint_day"]
 
 [node name="Main" type="Node2D" unique_id=1878218908]
 script = ExtResource("1_itxqv")
-
-[node name="FirstCity" parent="." unique_id=505383923 instance=ExtResource("2_wp4xf")]
-visible = false
-
-[node name="Main_ui" parent="." unique_id=276205018 instance=ExtResource("3_brvut")]
 
 [node name="background" type="TextureRect" parent="." unique_id=656193142]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+texture = ExtResource("bg_tex")
+
+[node name="Sketch" type="Control" parent="background" unique_id=1823214729]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("sk_sketch")
+
+[node name="FirstCity" parent="." unique_id=505383923 instance=ExtResource("2_wp4xf")]
+
+[node name="DayTint" type="ColorRect" parent="."]
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0.97, 0.9, 0)
+script = ExtResource("tint_day")
+
+[node name="Main_ui" parent="." unique_id=276205018 instance=ExtResource("3_brvut")]
+z_index = 2

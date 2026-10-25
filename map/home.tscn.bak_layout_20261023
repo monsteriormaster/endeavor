@@ -1,0 +1,96 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" uid="uid://bydeed2mwdvwu" path="res://components/character.tscn" id="1_char"]
+[ext_resource type="PackedScene" uid="uid://cbxeto13xsdq1" path="res://components/scene_spot.tscn" id="2_spot"]
+[ext_resource type="PackedScene" path="res://components/trigger_spot.tscn" id="3_trig"]
+
+[node name="HomeMap" type="Node2D"]
+
+[node name="sicourge" parent="." instance=ExtResource("1_char")]
+offset_left = 560.0
+offset_top = 240.0
+offset_right = 760.0
+offset_bottom = 593.333
+charcter_name = "Sicourge"
+config_path = "res://resoures/configs/misson/sicourge_beginning.json"
+ordinary = Vector2(660, 400)
+
+[node name="estate" parent="." instance=ExtResource("3_trig")]
+trigger_id = "家业管理"
+label_text = "家业管理"
+position = Vector2(500, 360)
+
+[node name="study" parent="." instance=ExtResource("3_trig")]
+trigger_id = "读书"
+label_text = "书房"
+position = Vector2(850, 360)
+
+[node name="chat" parent="." instance=ExtResource("3_trig")]
+trigger_id = "与同伴交流"
+label_text = "与同伴交流"
+position = Vector2(1200, 360)
+
+[node name="dispose_home" parent="." instance=ExtResource("3_trig")]
+trigger_id = "处置丹尼斯（家）"
+label_text = "处置丹尼斯"
+position = Vector2(500, 560)
+
+[node name="dispose_law" parent="." instance=ExtResource("3_trig")]
+trigger_id = "处置丹尼斯（绳之以法）"
+label_text = "移交警方"
+position = Vector2(850, 560)
+
+[node name="travel" parent="." instance=ExtResource("3_trig")]
+trigger_id = "周游"
+label_text = "周游"
+position = Vector2(1200, 560)
+
+[node name="child_days" parent="." instance=ExtResource("3_trig")]
+trigger_id = "这几天"
+label_text = "孩子的反常"
+position = Vector2(850, 740)
+
+[node name="child_homework" parent="." instance=ExtResource("3_trig")]
+trigger_id = "课后作业"
+label_text = "课后作业"
+position = Vector2(850, 740)
+
+[node name="child_beautiful_world" parent="." instance=ExtResource("3_trig")]
+trigger_id = "美丽的世界"
+label_text = "美丽的世界"
+position = Vector2(850, 740)
+
+[node name="child_real_world" parent="." instance=ExtResource("3_trig")]
+trigger_id = "真实的世界"
+label_text = "真实的世界"
+position = Vector2(850, 740)
+
+[node name="box_and_painting" parent="." instance=ExtResource("3_trig")]
+trigger_id = "箱子与画"
+label_text = "箱子与画"
+position = Vector2(1500, 360)
+
+[node name="painting_followup" parent="." instance=ExtResource("3_trig")]
+trigger_id = "后续处理"
+label_text = "画的后续"
+position = Vector2(1500, 560)
+
+[node name="confession" parent="." instance=ExtResource("3_trig")]
+trigger_id = "表白"
+label_text = "告白"
+position = Vector2(1200, 740)
+
+[node name="visitor" parent="." instance=ExtResource("3_trig")]
+trigger_id = "有人来访"
+label_text = "有人来访"
+position = Vector2(500, 740)
+
+[node name="louise_plan" parent="." instance=ExtResource("3_trig")]
+trigger_id = "露易丝有话说"
+label_text = "露易丝的打算"
+position = Vector2(1500, 740)
+
+[node name="Exit" parent="." instance=ExtResource("2_spot")]
+spot_name = "返回_主城"
+max_size = Vector2(180, 180)
+ordinary = Vector2(1700, 610)

@@ -10,8 +10,8 @@
 			},
 		},	
 		
-		"50万后再次与狱卒交谈":{
-			"name":"50万后再次与狱卒交谈",
+		"10万后再次与狱卒交谈":{
+			"name":"10万后再次与狱卒交谈",
 			"path":"res://resoures/plot/rite/prison.json",
 			"conditions":{
 				"npc":{
@@ -24,8 +24,8 @@
 			
 		},
 		
-		"10万后再次与狱卒交谈":{
-			"name":"10万后再次与狱卒交谈",
+		"5万后再次与狱卒交谈":{
+			"name":"5万后再次与狱卒交谈",
 			"path":"res://resoures/plot/rite/prison.json",
 			"conditions":{
 				"tags":["进入监狱许可"]

@@ -1,0 +1,261 @@
+{
+	"占星小屋": {
+		"0th": {
+			"name": "",
+			"text": "虽然你有时也会想自己家大业大养个小孩让他平平安安快快乐乐地长大不是什么难事，可是对梦想的渴望最终致使你带他来到了这里。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "",
+			"text": "这里是远近闻名的占星小屋，你小时候也过一次。你已经记不得占星师的样子，却永远记得他说你恐怕很难画出举世闻名的画作。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "",
+			"text": "当时你家庭老师口中的绘画奇才，不同于周围没有学过画画的人只会画一点火柴人，你既会勾线又会上色。一下子怒不可遏，一怒之下就凶巴巴地鼓起了腮帮子。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "占星师",
+			"portrait": "res://art/astro_hooded.png",
+			"text": "这位客人，你想知道些什么，是问过去还是未来？",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "",
+			"text": "",
+			"is_option": true,
+			"options": [
+				{
+					"text": "我突然改变了主意，抱歉打扰了。",
+					"next": 5
+				},
+				{
+					"text": "我想让你帮忙看看这孩子的天赋。",
+					"condition": {
+						"description": "金钱大于5时解锁",
+						"money": {
+							"left": 5,
+							"right": 99999
+						}
+					},
+					"effect": {
+						"money": -5,
+						"num_tags": {
+							"相信命运": 1
+						}
+					},
+					"next": 8
+				}
+			]
+		},
+		"5th": {
+			"name": "{player_name}",
+			"text": "（心中已经有了答案又何必问呢？）",
+			"is_option": false,
+			"effect": {
+				"num_tags": {
+					"相信自我": 1
+				}
+			},
+			"next": 6
+		},
+		"6th": {
+			"name": "占星师",
+			"portrait": "res://art/astro_hooded.png",
+			"text": "知道未必是坏事，正是保留了那一丝可能性，所以万事无不可。",
+			"is_option": false,
+			"next": 7
+		},
+		"7th": {
+			"name": "{player_name}",
+			"text": "你拉着{child_name}的手离开了。",
+			"is_option": false,
+			"next": -1
+		},
+		"8th": {
+			"name": "{player_name}",
+			"text": "我想问问他有没有艺术上的天赋。",
+			"is_option": false,
+			"nexts": [
+				{
+					"condition": {
+						"child": {
+							"*": {
+								"tags": [
+                                    "gifted"
+								]
+							}
+						}
+					},
+					"next": 9
+				},
+				{
+					"next": 16
+				}
+			]
+		},
+		"9th": {
+			"name": "占星师",
+			"portrait": "res://art/astro_hooded.png",
+			"text": "他若拿起画笔，终有一日整个世界都会为他献上花束。",
+			"is_option": false,
+			"next": 10
+		},
+		"10th": {
+			"name": "占星师",
+			"portrait": "res://art/astro_hooded.png",
+			"text": "占星师平静地看着你，你很快明白了钱没到位。",
+			"is_option": false,
+			"next": 11
+		},
+		"11th": {
+			"name": "",
+			"text": "",
+			"is_option": true,
+			"options": [
+				{
+					"text": "谢谢你，那我们就不多打扰了。",
+					"next": 12
+				},
+				{
+					"text": "我没有花束但是能为您献上一点意思。",
+					"condition": {
+						"description": "金钱大于20时解锁",
+						"money": {
+							"left": 20,
+							"right": 99999
+						}
+					},
+					"effect": {
+						"money": -20
+					},
+					"next": 13
+				}
+			]
+		},
+		"12th": {
+			"name": "占星师",
+			"portrait": "res://art/astro_hooded.png",
+			"text": "慢走不送。",
+			"is_option": false,
+			"next": -1
+		},
+		"13th": {
+			"name": "占星师",
+			"portrait": "res://art/astro_hooded.png",
+			"text": "本来天机不可泄露，不过我也盛情难却，就再多说一些吧。",
+			"is_option": false,
+			"next": 14
+		},
+		"14th": {
+			"name": "占星师",
+			"portrait": "res://art/astro_hooded.png",
+			"text": "变化是世间唯一不变的真理。一场巨变即将发生，前进的道路需谨慎，想好如何安身立命。",
+			"is_option": false,
+			"next": 15
+		},
+		"15th": {
+			"name": "{player_name}",
+			"text": "我明白了。",
+			"is_option": false,
+			"effect": {
+				"num_tags": {
+					"相信命运": 1
+				}
+			},
+			"next": -1
+		},
+		"16th": {
+			"name": "占星师",
+			"text": "画纸只是在拘束他的天赋，他可以在更广阔的天空翱翔。",
+			"is_option": false,
+			"next": 17
+		},
+		"17th": {
+			"name": "{child_name}",
+			"text": "先生，这是什么意思？",
+			"is_option": false,
+			"next": 18
+		},
+		"18th": {
+			"name": "{player_name}",
+			"text": "（他和我一样。）",
+			"is_option": false,
+			"next": 19
+		},
+		"19th": {
+			"name": "{player_name}",
+			"text": "你长大就明白了。",
+			"is_option": false,
+			"next": 20
+		},
+		"20th": {
+			"name": "{child_name}",
+			"text": "长大......",
+			"is_option": false,
+			"next": 21
+		},
+		"21th": {
+			"name": "占星师",
+			"portrait": "res://art/astro_hooded.png",
+			"text": "占星师平静地看着你，你很快明白了钱没到位。",
+			"is_option": false,
+			"next": 22
+		},
+		"22th": {
+			"name": "",
+			"text": "",
+			"is_option": true,
+			"options": [
+				{
+					"text": "谢谢你，那我们就不多打扰了。",
+					"next": 12
+				},
+				{
+					"text": "请你再多说一些吧。",
+					"condition": {
+						"description": "金钱大于20时解锁",
+						"money": {
+							"left": 20,
+							"right": 99999
+						}
+					},
+					"effect": {
+						"money": -20
+					},
+					"next": 23
+				}
+			]
+		},
+		"23th": {
+			"name": "占星师",
+			"portrait": "res://art/astro_hooded.png",
+			"text": "本来天机不可泄露，不过我也盛情难却，就再多说一些吧。",
+			"is_option": false,
+			"next": 24
+		},
+		"24th": {
+			"name": "占星师",
+			"portrait": "res://art/astro_hooded.png",
+			"text": "变化是世间唯一不变的真理。一场巨变即将发生，退而明则保身，进而建功立业。是风险也是机遇。",
+			"is_option": false,
+			"next": 25
+		},
+		"25th": {
+			"name": "{player_name}",
+			"text": "我明白了。",
+			"is_option": false,
+			"effect": {
+				"num_tags": {
+					"相信命运": 1
+				}
+			},
+			"next": -1
+		}
+	}
+}

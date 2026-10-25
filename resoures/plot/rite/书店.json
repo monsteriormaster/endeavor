@@ -1,0 +1,164 @@
+{
+	"第一次到书店": {
+		"0th": {
+			"name": "书店老板",
+			"text": "第一次来吗？随便看看吧。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "{player_name}",
+			"text": "老板，你的书店装修的风格好特别啊。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "",
+			"text": "门一推开，纸味和墨味先压过了街上的煤烟。书架直顶到天花，书脊全是白纸青线，跟别家烫金皮的排场正相反。靠墙立着两扇漆木屏，屏上只画了水墨的山。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "书店老板",
+			"text": "哈哈，我来自一个古老的东方国家，在我们那里……",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "书店老板",
+			"text": "千金易得，知己难寻。相逢是缘，我喜欢像你这样有灵性的人，要买书的话给你优惠啊。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"第一次到书店"
+				]
+			},
+			"next": -1
+		}
+	},
+	"书店剧情舞春神": {
+		"0th": {
+			"name": "{executor_name1}",
+			"text": "老板，你知道整个字条是什么意思吗？",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "书店老板",
+			"text": "书似青山常乱叠，灯如红豆最相思。我明白了，只是为什么是你来呢？",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "",
+			"text": "书店老板将一把精巧的钥匙交给了{executor_name1}。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "书店老板",
+			"text": "我会遵守那个约定。",
+			"is_option": false,
+			"effect": {
+				"stuff": [
+					"舞春神的钥匙"
+				],
+				"remove_stuff": [
+					"神秘纸条"
+				],
+				"tags": [
+					"舞春神的钥匙"
+				],
+				"remove_tags": [
+					"神秘纸条"
+				]
+			},
+			"next": -1
+		}
+	},
+	"书店关闭": {
+		"0th": {
+			"text": "匾额摘了，门上落着锁。白桦书肆没有点灯。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"text": "老板正把书架上的书一本一本码进木箱，动作不快，也不像在赶时间。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "书店老板",
+			"text": "都读完了？",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "{player_name}",
+			"text": "读完了。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "书店老板",
+			"text": "那这店我也不开了。书卖到最后，手上反倒不剩几本。",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"text": "他合上木箱，把一盏没点着的灯放到柜台上。",
+			"is_option": false,
+			"next": 6
+		},
+		"6th": {
+			"name": "书店老板",
+			"text": "临走送你一句。书架空了别急着走，后头那扇门，本来就是留给把书读完的人。",
+			"is_option": false,
+			"next": -1
+		}
+	},
+	"银之匙": {
+		"0th": {
+			"text": "木箱都搬空了，墙角只剩一层灰。{执行者}把货架后的墙板一块一块敲过去。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"text": "第七块是空的。板后头没有砖，一条窄道往下走，风从里面吹出来，带着纸和铁锈的气味。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "{执行者}",
+			"text": "这里还有东西。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"text": "窄道尽头是一间很小的屋子。四面墙都是书架，架上没有书，只留下被一册册取走的痕迹。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"text": "屋子正中摆着一个空台座，上头躺着一把银色的钥匙。匙齿的走向古怪，不像能插进哪一扇普通的门。",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"text": "台座侧面刻着一行小字。{执行者}凑近去认，只认得最后一个词：犹格索托斯。",
+			"is_option": false,
+			"next": 6
+		},
+		"6th": {
+			"name": "{执行者}",
+			"text": "先生，这个也带回去吗？",
+			"is_option": false,
+			"next": 7
+		},
+		"7th": {
+			"text": "钥匙很轻，握在手里几乎不觉得。",
+			"is_option": false,
+			"next": -1
+		}
+	}
+}

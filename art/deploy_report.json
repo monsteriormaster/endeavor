@@ -1,0 +1,765 @@
+{
+  "summary": {
+    "total": 63,
+    "ok": 63,
+    "bad": 0
+  },
+  "items": [
+    {
+      "src": "确认图/hero/hero.png",
+      "dst": "hero.png",
+      "kind": "character",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        1088,
+        1920
+      ],
+      "note": "Hero 主角"
+    },
+    {
+      "src": "确认图/拉法叶/falayee.png",
+      "dst": "falayee.png",
+      "kind": "character",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        1088,
+        1984
+      ],
+      "note": "Falayee 法拉叶"
+    },
+    {
+      "src": "确认图/sansi/sansi.png",
+      "dst": "sansi.png",
+      "kind": "character",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        1088,
+        1920
+      ],
+      "note": "Sansi 衫斯"
+    },
+    {
+      "src": "确认图/管家/sicourge.png",
+      "dst": "sicourge.png",
+      "kind": "character",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        1088,
+        1920
+      ],
+      "note": "Sicourge 司库奇"
+    },
+    {
+      "src": "确认图/狱警/jailer.png",
+      "dst": "jailer.png",
+      "kind": "character",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        1088,
+        1920
+      ],
+      "note": "Jailer/Sofia/Alice 共用（狱警/图书管理员/歌手）"
+    },
+    {
+      "src": "确认图/小7/July.png",
+      "dst": "July.png",
+      "kind": "character",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        1088,
+        1920
+      ],
+      "note": "July 小七（注意首字母大写 J，原 art 无此文件）"
+    },
+    {
+      "src": "确认图/伊莱克/electra.png",
+      "dst": "electra.png",
+      "kind": "character",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        1088,
+        1920
+      ],
+      "note": "Electra 伊莱克"
+    },
+    {
+      "src": "确认图/孤儿合体.png",
+      "dst": "orphan.png",
+      "kind": "character",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        2176,
+        1920
+      ],
+      "note": "孤儿（原 art/orphan.png 存在但 characters.json 未引用，按替换原图处理）"
+    },
+    {
+      "src": "确认图/小7/00074-2326336110.png",
+      "dst": "characters_extras/july_alt1.png",
+      "kind": "character_extra",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        1088,
+        1920
+      ],
+      "note": "小七变体1"
+    },
+    {
+      "src": "确认图/小7/00087-842752600.png",
+      "dst": "characters_extras/july_alt2.png",
+      "kind": "character_extra",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        1088,
+        1920
+      ],
+      "note": "小七变体2"
+    },
+    {
+      "src": "确认图/伊莱克/伊莱克15.png",
+      "dst": "characters_extras/electra_15.png",
+      "kind": "character_extra",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        1080,
+        1920
+      ],
+      "note": "伊莱克变体15"
+    },
+    {
+      "src": "确认图/伊莱克/伊莱克21.png",
+      "dst": "characters_extras/electra_21.png",
+      "kind": "character_extra",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        1080,
+        1920
+      ],
+      "note": "伊莱克变体21"
+    },
+    {
+      "src": "确认图/图书管理员35+女/jailer.png",
+      "dst": "characters_extras/librarian_alt.png",
+      "kind": "character_extra",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        1088,
+        1920
+      ],
+      "note": "图书管理员变体(35+女)"
+    },
+    {
+      "src": "确认图/剧院杂工 17 男/00084-1808442728.png",
+      "dst": "characters_extras/theater_worker.png",
+      "kind": "character_extra",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        1088,
+        1920
+      ],
+      "note": "剧院杂工"
+    },
+    {
+      "src": "确认图/剧院歌唱家/00086-2052516094.png",
+      "dst": "characters_extras/theater_singer.png",
+      "kind": "character_extra",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        1088,
+        1920
+      ],
+      "note": "剧院歌唱家"
+    },
+    {
+      "src": "确认图/剧院经理/00083-887899537.png",
+      "dst": "characters_extras/theater_manager.png",
+      "kind": "character_extra",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        1088,
+        1920
+      ],
+      "note": "剧院经理"
+    },
+    {
+      "src": "确认图/孤儿院院长/00081-946902212.png",
+      "dst": "characters_extras/orphanage_director.png",
+      "kind": "character_extra",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        1088,
+        1920
+      ],
+      "note": "孤儿院院长"
+    },
+    {
+      "src": "确认图/书店老板中国人/00088-2737601025.png",
+      "dst": "characters_extras/bookstore_owner.png",
+      "kind": "character_extra",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        1088,
+        1920
+      ],
+      "note": "书店老板"
+    },
+    {
+      "src": "暂定/backgrounds/主城市.png",
+      "dst": "backgrounds/主城市.png",
+      "kind": "background",
+      "status": "OK",
+      "mode": "RGB",
+      "size": [
+        1976,
+        1016
+      ],
+      "note": "主城市背景"
+    },
+    {
+      "src": "暂定/backgrounds/主角的家（庄园）.png",
+      "dst": "backgrounds/主角的家（庄园）.png",
+      "kind": "background",
+      "status": "OK",
+      "mode": "RGB",
+      "size": [
+        2730,
+        1536
+      ],
+      "note": "主角家(庄园)背景"
+    },
+    {
+      "src": "暂定/backgrounds/事件 触发器 背景.png",
+      "dst": "backgrounds/事件 触发器 背景.png",
+      "kind": "background",
+      "status": "OK",
+      "mode": "RGB",
+      "size": [
+        2752,
+        1536
+      ],
+      "note": "事件触发器背景"
+    },
+    {
+      "src": "暂定/backgrounds/商业街背景.png",
+      "dst": "backgrounds/商业街背景.png",
+      "kind": "background",
+      "status": "OK",
+      "mode": "RGB",
+      "size": [
+        1536,
+        864
+      ],
+      "note": "商业街背景"
+    },
+    {
+      "src": "暂定/backgrounds/学校背景.png",
+      "dst": "backgrounds/学校背景.png",
+      "kind": "background",
+      "status": "OK",
+      "mode": "RGB",
+      "size": [
+        1536,
+        864
+      ],
+      "note": "学校背景"
+    },
+    {
+      "src": "暂定/icons/locations_bookstore_theater_library/loc_r0_c0.png",
+      "dst": "icons/locations_bookstore_theater_library/loc_r0_c0.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        823,
+        450
+      ],
+      "note": "地点图标:书店/剧院/图书馆"
+    },
+    {
+      "src": "暂定/icons/locations_bookstore_theater_library/loc_r0_c1.png",
+      "dst": "icons/locations_bookstore_theater_library/loc_r0_c1.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        804,
+        450
+      ],
+      "note": "地点图标:书店/剧院/图书馆"
+    },
+    {
+      "src": "暂定/icons/locations_bookstore_theater_library/loc_r0_c2.png",
+      "dst": "icons/locations_bookstore_theater_library/loc_r0_c2.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        822,
+        450
+      ],
+      "note": "地点图标:书店/剧院/图书馆"
+    },
+    {
+      "src": "暂定/icons/locations_bookstore_theater_library/loc_r1_c0.png",
+      "dst": "icons/locations_bookstore_theater_library/loc_r1_c0.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        823,
+        461
+      ],
+      "note": "地点图标:书店/剧院/图书馆"
+    },
+    {
+      "src": "暂定/icons/locations_bookstore_theater_library/loc_r1_c1.png",
+      "dst": "icons/locations_bookstore_theater_library/loc_r1_c1.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        823,
+        462
+      ],
+      "note": "地点图标:书店/剧院/图书馆"
+    },
+    {
+      "src": "暂定/icons/locations_bookstore_theater_library/loc_r1_c2.png",
+      "dst": "icons/locations_bookstore_theater_library/loc_r1_c2.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        823,
+        462
+      ],
+      "note": "地点图标:书店/剧院/图书馆"
+    },
+    {
+      "src": "暂定/icons/locations_bookstore_theater_library/loc_r2_c0.png",
+      "dst": "icons/locations_bookstore_theater_library/loc_r2_c0.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        823,
+        458
+      ],
+      "note": "地点图标:书店/剧院/图书馆"
+    },
+    {
+      "src": "暂定/icons/locations_bookstore_theater_library/loc_r2_c1.png",
+      "dst": "icons/locations_bookstore_theater_library/loc_r2_c1.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        823,
+        458
+      ],
+      "note": "地点图标:书店/剧院/图书馆"
+    },
+    {
+      "src": "暂定/icons/locations_bookstore_theater_library/loc_r2_c2.png",
+      "dst": "icons/locations_bookstore_theater_library/loc_r2_c2.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        823,
+        458
+      ],
+      "note": "地点图标:书店/剧院/图书馆"
+    },
+    {
+      "src": "暂定/icons/locations_street_school/loc_r0_c0.png",
+      "dst": "icons/locations_street_school/loc_r0_c0.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        791,
+        609
+      ],
+      "note": "地点图标:商业街/学校"
+    },
+    {
+      "src": "暂定/icons/locations_street_school/loc_r0_c1.png",
+      "dst": "icons/locations_street_school/loc_r0_c1.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        890,
+        587
+      ],
+      "note": "地点图标:商业街/学校"
+    },
+    {
+      "src": "暂定/icons/locations_street_school/loc_r0_c2.png",
+      "dst": "icons/locations_street_school/loc_r0_c2.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        813,
+        666
+      ],
+      "note": "地点图标:商业街/学校"
+    },
+    {
+      "src": "暂定/icons/locations_street_school/loc_r1_c0.png",
+      "dst": "icons/locations_street_school/loc_r1_c0.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        864,
+        633
+      ],
+      "note": "地点图标:商业街/学校"
+    },
+    {
+      "src": "暂定/icons/locations_street_school/loc_r1_c1.png",
+      "dst": "icons/locations_street_school/loc_r1_c1.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        866,
+        620
+      ],
+      "note": "地点图标:商业街/学校"
+    },
+    {
+      "src": "暂定/icons/locations_street_school/loc_r1_c2.png",
+      "dst": "icons/locations_street_school/loc_r1_c2.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        834,
+        710
+      ],
+      "note": "地点图标:商业街/学校"
+    },
+    {
+      "src": "暂定/icons/UI_attributes/attr_00.png",
+      "dst": "icons/UI_attributes/attr_00.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        279,
+        273
+      ],
+      "note": "UI 属性/技能图标"
+    },
+    {
+      "src": "暂定/icons/UI_attributes/attr_01.png",
+      "dst": "icons/UI_attributes/attr_01.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        279,
+        272
+      ],
+      "note": "UI 属性/技能图标"
+    },
+    {
+      "src": "暂定/icons/UI_attributes/attr_02.png",
+      "dst": "icons/UI_attributes/attr_02.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        280,
+        272
+      ],
+      "note": "UI 属性/技能图标"
+    },
+    {
+      "src": "暂定/icons/UI_attributes/attr_03.png",
+      "dst": "icons/UI_attributes/attr_03.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        280,
+        272
+      ],
+      "note": "UI 属性/技能图标"
+    },
+    {
+      "src": "暂定/icons/UI_attributes/attr_04.png",
+      "dst": "icons/UI_attributes/attr_04.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        280,
+        273
+      ],
+      "note": "UI 属性/技能图标"
+    },
+    {
+      "src": "暂定/icons/UI_attributes/attr_05.png",
+      "dst": "icons/UI_attributes/attr_05.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        279,
+        272
+      ],
+      "note": "UI 属性/技能图标"
+    },
+    {
+      "src": "暂定/icons/UI_attributes/attr_06.png",
+      "dst": "icons/UI_attributes/attr_06.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        280,
+        272
+      ],
+      "note": "UI 属性/技能图标"
+    },
+    {
+      "src": "暂定/icons/UI_attributes/attr_07.png",
+      "dst": "icons/UI_attributes/attr_07.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        280,
+        272
+      ],
+      "note": "UI 属性/技能图标"
+    },
+    {
+      "src": "暂定/icons/UI_attributes/attr_08.png",
+      "dst": "icons/UI_attributes/attr_08.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        285,
+        282
+      ],
+      "note": "UI 属性/技能图标"
+    },
+    {
+      "src": "暂定/icons/UI_attributes/attr_09.png",
+      "dst": "icons/UI_attributes/attr_09.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        284,
+        282
+      ],
+      "note": "UI 属性/技能图标"
+    },
+    {
+      "src": "暂定/icons/UI_attributes/attr_10.png",
+      "dst": "icons/UI_attributes/attr_10.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        284,
+        282
+      ],
+      "note": "UI 属性/技能图标"
+    },
+    {
+      "src": "暂定/icons/UI_attributes/attr_11.png",
+      "dst": "icons/UI_attributes/attr_11.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        285,
+        282
+      ],
+      "note": "UI 属性/技能图标"
+    },
+    {
+      "src": "暂定/icons/UI_attributes/attr_12.png",
+      "dst": "icons/UI_attributes/attr_12.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        285,
+        281
+      ],
+      "note": "UI 属性/技能图标"
+    },
+    {
+      "src": "暂定/icons/UI_attributes/attr_13.png",
+      "dst": "icons/UI_attributes/attr_13.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        285,
+        282
+      ],
+      "note": "UI 属性/技能图标"
+    },
+    {
+      "src": "暂定/icons/UI_attributes/attr_14.png",
+      "dst": "icons/UI_attributes/attr_14.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        284,
+        282
+      ],
+      "note": "UI 属性/技能图标"
+    },
+    {
+      "src": "暂定/icons/UI_attributes/attr_15.png",
+      "dst": "icons/UI_attributes/attr_15.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        284,
+        282
+      ],
+      "note": "UI 属性/技能图标"
+    },
+    {
+      "src": "暂定/icons/UI_attributes/attr_16.png",
+      "dst": "icons/UI_attributes/attr_16.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        284,
+        281
+      ],
+      "note": "UI 属性/技能图标"
+    },
+    {
+      "src": "暂定/icons/UI_attributes/attr_17.png",
+      "dst": "icons/UI_attributes/attr_17.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        284,
+        281
+      ],
+      "note": "UI 属性/技能图标"
+    },
+    {
+      "src": "暂定/icons/UI_attributes/attr_18.png",
+      "dst": "icons/UI_attributes/attr_18.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        285,
+        281
+      ],
+      "note": "UI 属性/技能图标"
+    },
+    {
+      "src": "暂定/icons/UI_attributes/attr_19.png",
+      "dst": "icons/UI_attributes/attr_19.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        285,
+        282
+      ],
+      "note": "UI 属性/技能图标"
+    },
+    {
+      "src": "暂定/icons/UI_attributes/attr_20.png",
+      "dst": "icons/UI_attributes/attr_20.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        285,
+        281
+      ],
+      "note": "UI 属性/技能图标"
+    },
+    {
+      "src": "暂定/icons/UI_attributes/attr_21.png",
+      "dst": "icons/UI_attributes/attr_21.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        285,
+        281
+      ],
+      "note": "UI 属性/技能图标"
+    },
+    {
+      "src": "暂定/icons/UI_attributes/attr_22.png",
+      "dst": "icons/UI_attributes/attr_22.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        285,
+        281
+      ],
+      "note": "UI 属性/技能图标"
+    },
+    {
+      "src": "暂定/icons/UI_attributes/attr_23.png",
+      "dst": "icons/UI_attributes/attr_23.png",
+      "kind": "icon",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        286,
+        282
+      ],
+      "note": "UI 属性/技能图标"
+    },
+    {
+      "src": "暂定/objects/书本.png",
+      "dst": "objects/书本.png",
+      "kind": "object",
+      "status": "OK",
+      "mode": "RGBA",
+      "size": [
+        1888,
+        2220
+      ],
+      "note": "物品:书本"
+    }
+  ]
+}

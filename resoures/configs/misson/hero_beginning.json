@@ -16,14 +16,6 @@
 			"name":"第二天剧情",
 			"path":"res://resoures/plot/misson/beginning.json",
 			"conditions":{
-				"others":{
-					"time":{
-						"name":"time",
-						"value":2,
-						"sentence":0,
-					},
-					
-				}
 			},
 			"limits":{
 				"method":0,

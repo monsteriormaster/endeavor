@@ -1,0 +1,27 @@
+[gd_resource type="FontVariation" load_steps=2 format=3]
+
+; 地图墨字（2026-10-25）
+;
+; 全局默认字体是 `font_cute.tres` = Resource Han Rounded **Light**。
+; Light 在 18px 中文上笔画只有 1px 出头，压在彩铅纸纹（本身就是噪点底）上，
+; 抗锯齿把笔画化成半透明的灰线 —— 实拍（`debug/_map_text_shot` + `debug/_map_text_ab`）
+; 放大 3x 看得非常清楚：「调查丹尼斯」的每一笔都是断的、发灰的，不是墨。
+;
+; 这里**不换字族**，只做一件极轻的事：`variation_embolden = 0.8`
+;   → FontVariation 在原轮廓上就地加粗 0.8px，不需要另装一个 Regular/Normal 字重的 ttf，
+;     字形结构（圆角、字面宽度、中文全角间距）一点不变，所以不会撑破任何既有布局。
+;   → 0.8 是实测定下来的：A/B 对比见 `debug/_map_text_ab_zoom_0/1.png`，
+;     0.5 已经把「灰线」变回「实墨」，0.8 在 22px 上读作「清楚的标注」，
+;     1.2 开始偏 Medium（与全局 UI 的字重脱节），所以停在 0.8。
+;
+; 只给**地图上的字**用（TriggerSpot 的名字/状态标签、SceneSpot 的悬浮说明），
+; 不动 `theme/default_theme.tres` —— 面板正文不需要这么厚，全局改会连带所有 UI。
+;
+; 用 load() 而不是 preload（同 trigger_spot.gd 里徽章贴图的理由）：
+; 这三个脚本不属于同一棵场景树，资源加载时机各不相同，preload 会把加载期错误放大。
+
+[ext_resource type="FontFile" path="res://theme/fonts/ResourceHanRoundedCN-Light.ttf" id="1_font"]
+
+[resource]
+base_font = ExtResource("1_font")
+variation_embolden = 0.8

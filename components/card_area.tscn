@@ -1,0 +1,253 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://components/card_area.gd" id="1_cardarea"]
+
+[sub_resource type="StyleBoxFlat" id="SB_hair"]
+bg_color = Color(0.45098, 0.333333, 0.145098, 0.325)
+
+[sub_resource type="StyleBoxFlat" id="SB_btn_normal"]
+content_margin_left = 6.0
+content_margin_top = 4.0
+content_margin_right = 6.0
+content_margin_bottom = 4.0
+bg_color = Color(0.909804, 0.862745, 0.780392, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.560784, 0.423529, 0.180392, 0.709804)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="SB_btn_hover"]
+content_margin_left = 6.0
+content_margin_top = 4.0
+content_margin_right = 6.0
+content_margin_bottom = 4.0
+bg_color = Color(0.956863, 0.917647, 0.85098, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.647059, 0.490196, 0.203922, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="SB_btn_pressed"]
+content_margin_left = 6.0
+content_margin_top = 4.0
+content_margin_right = 6.0
+content_margin_bottom = 4.0
+bg_color = Color(0.635294, 0.478431, 0.196078, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.376471, 0.278431, 0.0980392, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="SB_btn_disabled"]
+content_margin_left = 6.0
+content_margin_top = 4.0
+content_margin_right = 6.0
+content_margin_bottom = 4.0
+bg_color = Color(0.807843, 0.776471, 0.721569, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.545098, 0.509804, 0.462745, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="SB_hs_track"]
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.318, 0.235, 0.102, 0.302)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxFlat" id="SB_hs_grabber"]
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.745, 0.576, 0.259, 0.937)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxEmpty" id="SB_empty"]
+
+[sub_resource type="Theme" id="TH_scroll"]
+HScrollBar/styles/scroll = SubResource("SB_hs_track")
+HScrollBar/styles/scroll_focus = SubResource("SB_empty")
+HScrollBar/styles/grabber = SubResource("SB_hs_grabber")
+HScrollBar/styles/grabber_highlight = SubResource("SB_hs_grabber")
+HScrollBar/styles/grabber_pressed = SubResource("SB_hs_grabber")
+HScrollBar/styles/increment = SubResource("SB_empty")
+HScrollBar/styles/decrement = SubResource("SB_empty")
+
+[sub_resource type="Theme" id="TH_card"]
+Button/colors/font_color = Color(0.176471, 0.133333, 0.0823529, 1)
+Button/colors/font_disabled_color = Color(0.470588, 0.443137, 0.396078, 1)
+Button/colors/font_hover_color = Color(0.117647, 0.0862745, 0.0509804, 1)
+Button/colors/font_pressed_color = Color(0.976471, 0.945098, 0.878431, 1)
+Button/font_sizes/font_size = 14
+Button/styles/disabled = SubResource("SB_btn_disabled")
+Button/styles/focus = SubResource("SB_empty")
+Button/styles/hover = SubResource("SB_btn_hover")
+Button/styles/normal = SubResource("SB_btn_normal")
+Button/styles/pressed = SubResource("SB_btn_pressed")
+
+[node name="CardArea" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_minimum_size = Vector2(0, 238)
+theme = SubResource("TH_card")
+script = ExtResource("1_cardarea")
+
+[node name="RailRule" type="Panel" parent="."]
+layout_mode = 1
+anchor_bottom = 1.0
+offset_left = 102.0
+offset_top = 14.0
+offset_right = 104.0
+offset_bottom = -14.0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_hair")
+
+[node name="DockRule" type="Panel" parent="."]
+layout_mode = 1
+anchor_bottom = 1.0
+offset_left = 1638.0
+offset_top = 14.0
+offset_right = 1640.0
+offset_bottom = -14.0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_hair")
+
+[node name="Scroll" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 120.0
+offset_top = 3.0
+offset_right = -264.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 1
+vertical_scroll_mode = 0
+clip_contents = true
+mouse_filter = 1
+theme = SubResource("TH_scroll")
+
+[node name="HBox" type="HBoxContainer" parent="Scroll"]
+custom_minimum_size = Vector2(0, 195)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 0
+theme_override_constants/separation = 18
+mouse_filter = 1
+
+[node name="整理Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 10.0
+offset_top = 18.0
+offset_right = 94.0
+offset_bottom = 46.0
+text = "整理"
+
+[node name="FilterAll" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 10.0
+offset_top = 56.0
+offset_right = 94.0
+offset_bottom = 84.0
+text = "全部"
+toggle_mode = true
+button_pressed = true
+
+[node name="FilterChar" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 10.0
+offset_top = 90.0
+offset_right = 94.0
+offset_bottom = 118.0
+text = "人物"
+toggle_mode = true
+
+[node name="FilterEquip" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 10.0
+offset_top = 124.0
+offset_right = 94.0
+offset_bottom = 152.0
+text = "装备"
+toggle_mode = true
+
+[node name="FilterBook" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 10.0
+offset_top = 158.0
+offset_right = 94.0
+offset_bottom = 186.0
+text = "书"
+toggle_mode = true
+
+[node name="FilterOther" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 10.0
+offset_top = 192.0
+offset_right = 94.0
+offset_bottom = 220.0
+text = "其他"
+toggle_mode = true

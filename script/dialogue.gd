@@ -5,6 +5,11 @@ class_name Dialogue
 @export var character_name : String
 @export_multiline var content : String
 
+## 立绘指定（可选）。空串 = 按 character_name 自动反查（默认行为，绝大多数节点不用写）；
+## "-" = 强制不显示立绘；"res://..." = 直接指定路径；其他值 = 角色 key 或中文名。
+## 解析见 script/portrait_registry.gd。
+@export var portrait := ""
+
 @export var is_option := false
 @export var options = []
 @export var next := -1

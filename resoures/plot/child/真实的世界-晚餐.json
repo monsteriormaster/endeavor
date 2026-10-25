@@ -1,0 +1,510 @@
+{
+	"真实的世界-晚餐": {
+		"0th": {
+			"name": "",
+			"text": "你正翻看着最新一期的《生活美食图鉴》，看着上面繁复精致的菜品，让你回想起来了曾经。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"真实的世界"
+				]
+			},
+			"next": 1
+		},
+		"1th": {
+			"name": "{player_name}",
+			"text": "以前我也认为，这世界上最不可能奔走在厨房的，就是贵族了吧。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "",
+			"text": "你上学的时候，学校里有个怪老头，非要开设一门叫烹饪艺术课的选修课。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "",
+			"text": "什么样的美酒配什么样的美食，宴会的餐桌礼仪之类的，当然也教。食物能做什么？培养品味、社交礼仪与审美……而非单纯的填饱肚子。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "",
+			"text": "怪就怪在，隔三差五就把一帮子人拉去厨房，非要学生亲手实操不可。面对部分家长和学生的质疑，老先生从理念到作用，说得头头是道。",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "",
+			"text": "别不是就想看你们这群十指不沾阳春水的少爷小姐手忙脚乱的囧样吧。尽管如此，也是难得的乐趣。",
+			"is_option": false,
+			"next": 6
+		},
+		"6th": {
+			"name": "{player_name}",
+			"text": "要是那孩子听说了，会是什么反应呢。",
+			"is_option": false,
+			"next": 7
+		},
+		"7th": {
+			"name": "",
+			"text": "刚好，你翻到了这个，它本身就让你很有胃口，又随便想象了一下{child_name}如果下厨的样子。",
+			"is_option": false,
+			"next": 8
+		},
+		"8th": {
+			"name": "",
+			"text": "你的目光停在了哪一页？",
+			"is_option": true,
+			"options": [
+				{
+					"text": "惠灵顿牛排。",
+					"condition": {
+						"description": "孩子的力量大于5时解锁",
+						"child": {
+							"*": {
+								"attrs": {
+									"str": {
+										">": 5
+									}
+								}
+							}
+						}
+					},
+					"effect": {
+						"num_tags": {
+							"晚餐菜式": 1
+						}
+					},
+					"next": 9
+				},
+				{
+					"text": "琥珀清汤。",
+					"condition": {
+						"description": "孩子的智识大于5时解锁",
+						"child": {
+							"*": {
+								"attrs": {
+									"int": {
+										">": 5
+									}
+								}
+							}
+						}
+					},
+					"effect": {
+						"num_tags": {
+							"晚餐菜式": 2
+						}
+					},
+					"next": 12
+				},
+				{
+					"text": "宫廷花冠甜塔。",
+					"condition": {
+						"description": "孩子的容貌大于5时解锁",
+						"child": {
+							"*": {
+								"attrs": {
+									"app": {
+										">": 5
+									}
+								}
+							}
+						}
+					},
+					"effect": {
+						"num_tags": {
+							"晚餐菜式": 3
+						}
+					},
+					"next": 15
+				},
+				{
+					"text": "百合花瓣千层酥。",
+					"condition": {
+						"description": "孩子的体魄大于5时解锁",
+						"child": {
+							"*": {
+								"attrs": {
+									"bod": {
+										">": 5
+									}
+								}
+							}
+						}
+					},
+					"effect": {
+						"num_tags": {
+							"晚餐菜式": 4
+						}
+					},
+					"next": 18
+				}
+			]
+		},
+		"9th": {
+			"name": "{player_name}",
+			"text": "要用木锤捶打断筋，还要长时间揉面。",
+			"is_option": false,
+			"next": 10
+		},
+		"10th": {
+			"name": "{player_name}",
+			"text": "{child_name}最近力气见长，说不定还真行。",
+			"is_option": false,
+			"next": 11
+		},
+		"11th": {
+			"name": "",
+			"text": "一看时间，到了你有约的时间了。离开之前，你随手把它摊在桌上，书页就停在那里。",
+			"is_option": false,
+			"next": 21
+		},
+		"12th": {
+			"name": "{player_name}",
+			"text": "得精确计算温度，和精确到克的盐。",
+			"is_option": false,
+			"next": 13
+		},
+		"13th": {
+			"name": "{player_name}",
+			"text": "这种严谨的菜谱，可能对{child_name}胃口。",
+			"is_option": false,
+			"next": 14
+		},
+		"14th": {
+			"name": "",
+			"text": "一看时间，到了你有约的时间了。离开之前，你随手把它摊在桌上，书页就停在那里。",
+			"is_option": false,
+			"next": 21
+		},
+		"15th": {
+			"name": "{player_name}",
+			"text": "讲究摆盘和审美的，贵妇常用的下午茶点。",
+			"is_option": false,
+			"next": 16
+		},
+		"16th": {
+			"name": "{player_name}",
+			"text": "对漂亮优雅的事务敏感的{child_name}，应该也会喜欢这个。",
+			"is_option": false,
+			"next": 17
+		},
+		"17th": {
+			"name": "",
+			"text": "一看时间，到了你有约的时间了。离开之前，你随手把它摊在桌上，书页就停在那里。",
+			"is_option": false,
+			"next": 21
+		},
+		"18th": {
+			"name": "{player_name}",
+			"text": "这可真是，食材切得那么薄，还要精细的层层翻折。",
+			"is_option": false,
+			"next": 19
+		},
+		"19th": {
+			"name": "{player_name}",
+			"text": "{child_name}手指灵活得很，这样细致的手艺，也难不倒他吧。",
+			"is_option": false,
+			"next": 20
+		},
+		"20th": {
+			"name": "",
+			"text": "一看时间，到了你有约的时间了。离开之前，你随手把它摊在桌上，书页就停在那里。",
+			"is_option": false,
+			"next": 21
+		},
+		"21th": {
+			"name": "",
+			"text": "几天后的某日，你在走廊遇到个女仆，她瞧见你，捂着嘴偷笑，向你汇报最近的“异常”。",
+			"is_option": false,
+			"next": 22
+		},
+		"22th": {
+			"name": "女仆",
+			"text": "少主，最近小少爷经常往厨房跑，在里面捣鼓好久，偶尔还会把我们也赶出来。",
+			"is_option": false,
+			"next": 23
+		},
+		"23th": {
+			"name": "{player_name}",
+			"text": "……我知道了。",
+			"is_option": false,
+			"next": 24
+		},
+		"24th": {
+			"name": "",
+			"text": "女仆看你沉思的样子，觉得你好像知道了些什么，期待着你的发现。",
+			"is_option": false,
+			"next": 25
+		},
+		"25th": {
+			"name": "女仆",
+			"text": "您觉得小少爷是在做什么呢？",
+			"is_option": false,
+			"next": 26
+		},
+		"26th": {
+			"name": "{player_name}",
+			"text": "肯定是长身体了！每天饭吃不饱，又不好意思提，只能去厨房偷偷开小灶。",
+			"is_option": false,
+			"next": 27
+		},
+		"27th": {
+			"name": "{player_name}",
+			"text": "告诉厨师，以后给{child_name}的多加两块烤肉。",
+			"is_option": false,
+			"next": 28
+		},
+		"28th": {
+			"name": "女仆",
+			"text": "哎，您说是就是吧。",
+			"is_option": false,
+			"next": 29
+		},
+		"29th": {
+			"name": "",
+			"text": "看着女仆笑着离去的背影，你想一定是你的体贴入微让她深受感动吧。",
+			"is_option": false,
+			"next": 30
+		},
+		"30th": {
+			"name": "",
+			"text": "你刚结束了一天极其糟糕的应酬，带着一身疲倦和烦躁回到了庄园。",
+			"is_option": false,
+			"next": 31
+		},
+		"31th": {
+			"name": "",
+			"text": "司库奇为你端上了晚餐，某个银色的餐盘被揭开时，你愣了一愣。正是你之前翻看的那道菜。",
+			"is_option": false,
+			"next": 32
+		},
+		"32th": {
+			"name": "{player_name}",
+			"text": "司库奇，是你的安排吗，有心了。",
+			"is_option": false,
+			"next": 33
+		},
+		"33th": {
+			"name": "管家 司库奇",
+			"text": "不，少主，这并不是我的主意。",
+			"is_option": false,
+			"next": 34
+		},
+		"34th": {
+			"name": "",
+			"text": "只是巧合吗？你拿起刀叉先尝了一口。",
+			"is_option": false,
+			"nexts": [
+				{
+					"condition": {
+						"description": "菜式：惠灵顿牛排",
+						"num_tags": {
+							"晚餐菜式": {
+								"name": "晚餐菜式",
+								"left": 1,
+								"right": 1
+							}
+						}
+					},
+					"next": 35
+				},
+				{
+					"condition": {
+						"description": "菜式：琥珀清汤",
+						"num_tags": {
+							"晚餐菜式": {
+								"name": "晚餐菜式",
+								"left": 2,
+								"right": 2
+							}
+						}
+					},
+					"next": 37
+				},
+				{
+					"condition": {
+						"description": "菜式：宫廷花冠甜塔",
+						"num_tags": {
+							"晚餐菜式": {
+								"name": "晚餐菜式",
+								"left": 3,
+								"right": 3
+							}
+						}
+					},
+					"next": 39
+				},
+				{
+					"condition": {
+						"description": "菜式：百合花瓣千层酥",
+						"num_tags": {
+							"晚餐菜式": {
+								"name": "晚餐菜式",
+								"left": 4,
+								"right": 4
+							}
+						}
+					},
+					"next": 41
+				},
+				{
+					"next": 35
+				}
+			]
+		},
+		"35th": {
+			"name": "",
+			"text": "惠灵顿牛排。外层的酥皮擀得有些厚薄不均，里面的牛肉倒是够软烂。",
+			"is_option": false,
+			"next": 36
+		},
+		"36th": {
+			"name": "",
+			"text": "粗犷的火候透着踏实的认真，很巧妙地达成了口感的层次。",
+			"is_option": false,
+			"next": 43
+		},
+		"37th": {
+			"name": "",
+			"text": "琥珀清汤。食材和香料的比例拿捏的分毫不差，在舌尖化作严谨的鲜美。",
+			"is_option": false,
+			"next": 38
+		},
+		"38th": {
+			"name": "",
+			"text": "或许受限于经验，汤色没能做到图册那样的澄澈。",
+			"is_option": false,
+			"next": 43
+		},
+		"39th": {
+			"name": "",
+			"text": "宫廷花冠甜塔。糖霜有些凝固的不够均匀，和花瓣一起组成的如花园般的精致摆盘，弥补了这一点。",
+			"is_option": false,
+			"next": 40
+		},
+		"40th": {
+			"name": "",
+			"text": "入口不错呀，这直击人心的馥郁甜香。",
+			"is_option": false,
+			"next": 43
+		},
+		"41th": {
+			"name": "",
+			"text": "百合花瓣千层酥。起酥的形状有些歪扭，让人觉得这能堆叠起来真是辛苦。",
+			"is_option": false,
+			"next": 42
+		},
+		"42th": {
+			"name": "",
+			"text": "咬下去时的轻盈脆响，足以证明制作者的苦心。",
+			"is_option": false,
+			"next": 43
+		},
+		"43th": {
+			"name": "{player_name}",
+			"text": "有点……特别啊，厨师请假了吗？",
+			"is_option": false,
+			"next": 44
+		},
+		"44th": {
+			"name": "管家 司库奇",
+			"text": "少主，这确实不是厨师的手笔，我们的小主厨为了这道菜，可是折腾了三个下午。",
+			"is_option": false,
+			"next": 45
+		},
+		"45th": {
+			"name": "{child_name}",
+			"text": "噫！",
+			"is_option": false,
+			"next": 46
+		},
+		"46th": {
+			"name": "",
+			"text": "餐厅门后发出了个可爱的动静，藏不住的{child_name}只能探出身子，有点小幽怨的看了司库奇一眼。",
+			"is_option": false,
+			"next": 47
+		},
+		"47th": {
+			"name": "",
+			"text": "你把{child_name}唤到身前，问起他做这道菜的理由。",
+			"is_option": false,
+			"next": 48
+		},
+		"48th": {
+			"name": "{child_name}",
+			"text": "我刚好看到那本杂志，想着先生可能喜欢，就想做给先生尝尝。味道还，还可以吗？",
+			"is_option": false,
+			"next": 49
+		},
+		"49th": {
+			"name": "{player_name}",
+			"text": "（如果不是司库奇提一嘴，{child_name}应该不会说自己怎么怎么辛苦吧。）",
+			"is_option": false,
+			"next": 50
+		},
+		"50th": {
+			"name": "{player_name}",
+			"text": "老实说，单论厨艺的话，还早着呢。只是还行吧。",
+			"is_option": false,
+			"next": 51
+		},
+		"51th": {
+			"name": "",
+			"text": "{child_name}肉眼可见的变得失落，不过——",
+			"is_option": false,
+			"next": 52
+		},
+		"52th": {
+			"name": "{player_name}",
+			"text": "食物可不只是填饱肚子。",
+			"is_option": false,
+			"next": 53
+		},
+		"53th": {
+			"name": "{player_name}",
+			"text": "能带来疗愈，缓解疲劳的食物，就是极好的。",
+			"is_option": false,
+			"next": 54
+		},
+		"54th": {
+			"name": "{player_name}",
+			"text": "感谢款待。",
+			"is_option": false,
+			"next": 55
+		},
+		"55th": {
+			"name": "",
+			"text": "你当着{child_name}的面，把盘子里的食物吃的干干净净。",
+			"is_option": false,
+			"next": 56
+		},
+		"56th": {
+			"name": "",
+			"text": "{child_name}那点小失落一扫而空，激动和笑容也藏不住了，忍不住向你凑近了一步。",
+			"is_option": false,
+			"next": 57
+		},
+		"57th": {
+			"name": "{child_name}",
+			"text": "嗯！下次我一定会做得更好的。",
+			"is_option": false,
+			"next": 58
+		},
+		"58th": {
+			"name": "",
+			"text": "看着{child_name}的精神样，你后知后觉的记起来之前你和女仆说的话。",
+			"is_option": false,
+			"next": 59
+		},
+		"59th": {
+			"name": "{player_name}",
+			"text": "（啊，所以不是吃不饱啊，哈哈。）",
+			"is_option": false,
+			"next": -1
+		}
+	}
+}

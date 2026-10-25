@@ -1,0 +1,347 @@
+{
+	"有关恋爱的对话": {
+		"0th": {
+			"name": "",
+			"text": "天还没黑透，露易丝在门厅换鞋。听见脚步声，她先把裙摆理平了，才回过头。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "露易丝",
+			"text": "{player_name}。您今日回来得早。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "{player_name}",
+			"text": "路过。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "露易丝",
+			"text": "（路过的人，会在门口站半个钟头。）我正要出去一趟。您若是有事，我可以明日再去。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "{player_name}",
+			"text": "不用。",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "",
+			"text": "她说了一声是，却没有走，就蹲在那儿系鞋带，不知怎的，足足系了两遍。",
+			"is_option": false,
+			"next": 6
+		},
+		"6th": {
+			"name": "露易丝",
+			"text": "这几日，府上可是有什么事。",
+			"is_option": false,
+			"next": 7
+		},
+		"7th": {
+			"name": "{player_name}",
+			"text": "没有。",
+			"is_option": false,
+			"next": 8
+		},
+		"8th": {
+			"name": "露易丝",
+			"text": "那便是有的。",
+			"is_option": false,
+			"next": 9
+		},
+		"9th": {
+			"name": "{player_name}",
+			"text": "（这叫套话。）真没有。",
+			"is_option": false,
+			"next": 10
+		},
+		"10th": {
+			"name": "露易丝",
+			"text": "哦。那便是没有。",
+			"is_option": false,
+			"next": 11
+		},
+		"11th": {
+			"name": "",
+			"text": "她把鞋带解开，重新系了一遍。",
+			"is_option": false,
+			"next": 12
+		},
+		"12th": {
+			"name": "露易丝",
+			"text": "从前不这样的。从前不等我问，您自己就说了。",
+			"is_option": false,
+			"next": 13
+		},
+		"13th": {
+			"name": "{player_name}",
+			"text": "那时候都小。",
+			"is_option": false,
+			"next": 14
+		},
+		"14th": {
+			"name": "露易丝",
+			"text": "嗯，都小。那时候您说过那么多话，我一句没记住。就记住一句。",
+			"is_option": false,
+			"next": 15
+		},
+		"15th": {
+			"name": "{player_name}",
+			"text": "哪一句。",
+			"is_option": false,
+			"next": 16
+		},
+		"16th": {
+			"name": "露易丝",
+			"text": "爬树那回，我裙子撕了一道。",
+			"is_option": false,
+			"next": 17
+		},
+		"17th": {
+			"name": "{player_name}",
+			"text": "我记得那道。",
+			"is_option": false,
+			"next": 18
+		},
+		"18th": {
+			"name": "露易丝",
+			"text": "您说……？",
+			"is_option": false,
+			"next": 19
+		},
+		"19th": {
+			"name": "{player_name}",
+			"text": "我说撕得好。",
+			"is_option": false,
+			"next": 20
+		},
+		"20th": {
+			"name": "露易丝",
+			"text": "撕得好？",
+			"is_option": false,
+			"next": 21
+		},
+		"21th": {
+			"name": "{player_name}",
+			"text": "撕得很直。再斜一点的话，就会伤到你了。",
+			"is_option": false,
+			"next": 22
+		},
+		"22th": {
+			"name": "",
+			"text": "露易丝看了他一会儿，把脸别开了。",
+			"is_option": false,
+			"next": 23
+		},
+		"23th": {
+			"name": "露易丝",
+			"text": "……您这是在夸我？",
+			"is_option": false,
+			"next": 24
+		},
+		"24th": {
+			"name": "{player_name}",
+			"text": "在夸那道口子。",
+			"is_option": false,
+			"next": 25
+		},
+		"25th": {
+			"name": "露易丝",
+			"text": "哦。多谢。那我先出去了。您早些歇着。",
+			"is_option": false,
+			"next": 26
+		},
+		"26th": {
+			"name": "{player_name}",
+			"text": "（她一说您早些歇着，就是要跑。）",
+			"is_option": false,
+			"next": 27
+		},
+		"27th": {
+			"name": "",
+			"text": "她已经走出院子了。",
+			"is_option": true,
+			"options": [
+				{
+					"text": "跟上去。",
+					"next": 28
+				},
+				{
+					"text": "站着不动。",
+					"next": 50
+				}
+			]
+		},
+		"28th": {
+			"name": "",
+			"text": "她在巷口停下了，没回头。",
+			"is_option": false,
+			"next": 29
+		},
+		"29th": {
+			"name": "露易丝",
+			"text": "……您跟着做什么。",
+			"is_option": false,
+			"next": 30
+		},
+		"30th": {
+			"name": "{player_name}",
+			"text": "路黑。",
+			"is_option": false,
+			"next": 31
+		},
+		"31th": {
+			"name": "露易丝",
+			"text": "这条路我走了三个月。",
+			"is_option": false,
+			"next": 32
+		},
+		"32th": {
+			"name": "{player_name}",
+			"text": "那这三个月，路都黑。",
+			"is_option": false,
+			"next": 33
+		},
+		"33th": {
+			"name": "露易丝",
+			"text": "（好奇怪哦。这是在关心我吗？）您是在担心我？",
+			"is_option": false,
+			"next": 34
+		},
+		"34th": {
+			"name": "{player_name}",
+			"text": "嗯。",
+			"is_option": false,
+			"next": 35
+		},
+		"35th": {
+			"name": "",
+			"text": "她没答话，往前走了两步，走得比方才慢。",
+			"is_option": false,
+			"next": 36
+		},
+		"36th": {
+			"name": "露易丝",
+			"text": "那您以后，可以跟着。",
+			"is_option": false,
+			"next": 37
+		},
+		"37th": {
+			"name": "{player_name}",
+			"text": "跟到哪儿。",
+			"is_option": false,
+			"next": 38
+		},
+		"38th": {
+			"name": "露易丝",
+			"text": "跟到我不赶您为止。",
+			"is_option": false,
+			"next": 39
+		},
+		"39th": {
+			"name": "",
+			"text": "说完这句她自己先低了头，脚下又快起来。",
+			"is_option": false,
+			"next": 40
+		},
+		"40th": {
+			"name": "{player_name}",
+			"text": "你去哪儿。",
+			"is_option": false,
+			"next": 41
+		},
+		"41th": {
+			"name": "露易丝",
+			"text": "商业街。不买东西。",
+			"is_option": false,
+			"next": 42
+		},
+		"42th": {
+			"name": "{player_name}",
+			"text": "那去做什么。",
+			"is_option": false,
+			"next": 43
+		},
+		"43th": {
+			"name": "露易丝",
+			"text": "画画。",
+			"is_option": false,
+			"next": 44
+		},
+		"44th": {
+			"name": "{player_name}",
+			"text": "画在哪儿。",
+			"is_option": false,
+			"next": 45
+		},
+		"45th": {
+			"name": "露易丝",
+			"text": "墙上。谁家的墙，不告诉您。",
+			"is_option": false,
+			"next": 46
+		},
+		"46th": {
+			"name": "{player_name}",
+			"text": "明日我也去。",
+			"is_option": false,
+			"next": 47
+		},
+		"47th": {
+			"name": "露易丝",
+			"text": "您去了，我就画不出来。",
+			"is_option": false,
+			"next": 48
+		},
+		"48th": {
+			"name": "{player_name}",
+			"text": "为什么。",
+			"is_option": false,
+			"next": 49
+		},
+		"49th": {
+			"name": "露易丝",
+			"text": "……别问了。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"与露易丝暧昧的关系"
+				],
+				"npc_num_tag_add": {
+					"Louise": {
+						"love": 1
+					}
+				},
+				"enqueue_talk": {
+					"Louise": {
+						"path": "res://resoures/plot/louise/露易丝的练习.json",
+						"name": "露易丝的练习"
+					}
+				}
+			},
+			"next": -1
+		},
+		"50th": {
+			"name": "",
+			"text": "她的脚步出了院子，一点点听不见了。",
+			"is_option": false,
+			"next": 51
+		},
+		"51th": {
+			"name": "{player_name}",
+			"text": "（明日再说。）",
+			"is_option": false,
+			"next": 52
+		},
+		"52th": {
+			"name": "",
+			"text": "第二天她照旧出去，回来得比平常晚。那句您早些歇着，她没再说起。",
+			"is_option": false,
+			"next": -1
+		}
+	}
+}

@@ -1,0 +1,71 @@
+{
+	"与管家交流群死前": {
+		"0th": {
+			"name": "{player_name}",
+			"text": "关于家人的死真的是意外吗？",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "管家 司库奇",
+			"text": "少主，您是想到什么了吗？",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "{player_name}",
+			"text": "在我回来，在绘画比赛开始前，祖母给我写了信，让我回家一同出游。你知道的，祖母平日里就很关心我，她身体一天不如一天，按理说我是会回去的。可是那个时候我是那么想证明自己，想着比赛结束再回家陪祖母。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "{player_name}",
+			"text": "如果我接受了祖母的邀请恐怕我也已经死了。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "管家 司库奇",
+			"text": "少主，你是怀疑那不是意外吗？",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "{player_name}",
+			"text": "那必然是一个知道那封信的人。",
+			"is_option": false,
+			"next": 6
+		},
+		"6th": {
+			"name": "管家 司库奇",
+			"text": "少主，你忽略了一点。那次一同出游是很早就计划好了的，整个计划并没有避讳下人，太夫人当时也提到过会给你写信，让你回来。",
+			"is_option": false,
+			"next": 7
+		},
+		"7th": {
+			"name": "{player_name}",
+			"text": "这样啊，是我考虑不全，总之这应当是一场谋杀，我会找到真相的。",
+			"is_option": false,
+			"effect": {
+				"tags": [
+					"与管家交流群死前"
+				],
+				"enqueue_talk": {
+					"Falayee": {
+						"path": "res://resoures/plot/misson/与同伴交流群死.json",
+						"name": "与同伴交流群死（法拉叶）"
+					},
+					"Allwin": {
+						"path": "res://resoures/plot/misson/与同伴交流群死.json",
+						"name": "与同伴交流群死（阿尔温）"
+					},
+					"Sansi": {
+						"path": "res://resoures/plot/misson/与同伴交流群死.json",
+						"name": "与同伴交流群死（sans）"
+					}
+				}
+			},
+			"next": -1
+		}
+	}
+}

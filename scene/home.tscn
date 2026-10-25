@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dys10ie48o7b7"]
+
+[ext_resource type="Script" uid="uid://bohfhdjajo7lf" path="res://scene/home.gd" id="1_home"]
+[ext_resource type="PackedScene" uid="uid://ca2iw4ov6jw4d" path="res://components/main_ui.tscn" id="2_mainui"]
+[ext_resource type="PackedScene" path="res://map/home.tscn" id="3_map"]
+[ext_resource type="Texture2D" uid="uid://bwjrarh8gmn7b" path="res://art/backgrounds_gentle/家.png" id="bg_tex"]
+[ext_resource type="Script" path="res://components/map_sketch.gd" id="sk_sketch"]
+
+[node name="Home" type="Node2D" unique_id=1312298410]
+script = ExtResource("1_home")
+
+[node name="background" type="TextureRect" parent="." unique_id=2134213756]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 1918.0
+offset_bottom = 1082.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("bg_tex")
+
+[node name="Sketch" type="Control" parent="background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+script = ExtResource("sk_sketch")
+
+[node name="Main_ui" parent="." unique_id=349377268 instance=ExtResource("2_mainui")]
+
+[node name="HomeMap" parent="." unique_id=1439229102 instance=ExtResource("3_map")]

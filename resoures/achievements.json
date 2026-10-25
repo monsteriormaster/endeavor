@@ -1,0 +1,29 @@
+{
+	"感谢你的游玩": {
+		"name": "感谢你的游玩",
+		"description": "我们注定相逢，感谢你的游玩。",
+		"point": 10,
+		"how": "成功开始游戏"
+	},
+	"通往犹格索托斯": {
+		"name": "通往犹格索托斯",
+		"how": "发现一把银之匙。",
+		"description": "即使生命有限，始终可以行走于无限。",
+		"point": 15,
+		"hidden": true
+	},
+	"谢谢你体验完完整游戏": {
+		"name": "谢谢你体验完完整游戏",
+		"how": "完成第二十天，并看完当天的结局剧情。",
+		"description": "无论走得多远，庄园的大门永远为你敞开。",
+		"point": 30,
+		"path": "res://art/ui/achievement/final_thanks.png",
+	},
+	"恭喜你破产了": {
+		"name": "恭喜你破产了",
+		"how": "把手头的钱扣到负数。",
+		"description": "钱袋见底，人还站着。",
+		"point": 15,
+		"path": "res://art/ui/achievement/bankrupt.png",
+	}
+}

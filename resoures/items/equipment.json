@@ -1,0 +1,29 @@
+{
+	"章鱼尾人身塑像": {
+		"name": "章鱼尾人身塑像",
+		"level": "SR",
+		"class": ["jewelry"],
+		"bonus": { "app": 1 },
+		"tags": ["饰品", "故乡"],
+		"icon": "res://art/items/章鱼尾人身塑像.png",
+		"description": "潮汐终会落下，海洋的子民终会回到大海。"
+	},
+	"年少的欢喜": {
+		"name": "年少的欢喜",
+		"level": "SR",
+		"class": ["jewelry"],
+		"bonus": { "app": 1 ,"int": 1 ,"bod": 1 ,"str": 1 ,},
+		"tags": ["饰品"],
+		"description": "幼时的约定回应如今的你。会像孩童时幻想的一样，所向披靡，披荆斩棘吗？"
+	},
+	"精心磨制的小刀": {
+		"name": "精心磨制的小刀",
+		"level": "SR",
+		"class": ["weapon","jewelry","tool"],
+		"check_bonus": 1,
+		"tags": ["武器", "工具"],
+		"price":0,
+		"icon": "res://art/items/精心磨制的小刀.png",
+		"description": "法拉叶偷偷花了几个晚上磨制，不是很锋利，和他的心意一样笨拙。佩戴时，任意鉴定结果 +1。"
+	}
+}

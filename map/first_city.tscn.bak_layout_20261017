@@ -1,0 +1,85 @@
+[gd_scene load_steps=3 format=3 uid="uid://2udkh5fdg8an"]
+
+[ext_resource type="PackedScene" uid="uid://cbxeto13xsdq1" path="res://components/scene_spot.tscn" id="1_xsxxt"]
+[ext_resource type="PackedScene" path="res://components/trigger_spot.tscn" id="2_trig"]
+
+[node name="FirstCity" type="Node2D" unique_id=47778736]
+
+[node name="Control" type="Control" parent="." unique_id=1106919138]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 22.0
+offset_top = 110.0
+offset_right = 1898.0
+offset_bottom = 970.0
+mouse_filter = 2
+
+[node name="Node" type="Node" parent="Control" unique_id=399391239]
+
+[node name="prison" parent="Control/Node" unique_id=1174586305 instance=ExtResource("1_xsxxt")]
+spot_name = "监狱_初始"
+max_size = Vector2(180, 180)
+ordinary = Vector2(130, 630)
+
+[node name="orphanage" parent="Control/Node" unique_id=1900000001 instance=ExtResource("1_xsxxt")]
+spot_name = "孤儿院"
+max_size = Vector2(180, 180)
+ordinary = Vector2(130, 250)
+
+[node name="commercial" parent="Control/Node" unique_id=1888845529 instance=ExtResource("1_xsxxt")]
+spot_name = "商业区"
+max_size = Vector2(180, 180)
+ordinary = Vector2(1150, 440)
+
+[node name="school" parent="Control/Node" unique_id=760331278 instance=ExtResource("1_xsxxt")]
+spot_name = "学校"
+max_size = Vector2(180, 180)
+ordinary = Vector2(350, 250)
+
+[node name="home" parent="Control/Node" unique_id=603304136 instance=ExtResource("1_xsxxt")]
+spot_name = "家"
+max_size = Vector2(180, 180)
+ordinary = Vector2(710, 522)
+
+[node name="theater" parent="Control/Node" unique_id=1544244591 instance=ExtResource("1_xsxxt")]
+spot_name = "剧院"
+max_size = Vector2(180, 180)
+ordinary = Vector2(1340, 240)
+
+[node name="plaza" parent="Control/Node" unique_id=717166961 instance=ExtResource("1_xsxxt")]
+spot_name = "市政广场"
+max_size = Vector2(180, 180)
+ordinary = Vector2(660, 150)
+
+[node name="hospital" parent="Control/Node" unique_id=670842480 instance=ExtResource("1_xsxxt")]
+spot_name = "医院"
+max_size = Vector2(180, 180)
+ordinary = Vector2(1570, 460)
+
+[node name="church" parent="Control/Node" unique_id=1381500173 instance=ExtResource("1_xsxxt")]
+spot_name = "教会"
+max_size = Vector2(180, 180)
+ordinary = Vector2(960, 520)
+
+[node name="transport" parent="Control/Node" unique_id=522899291 instance=ExtResource("1_xsxxt")]
+spot_name = "交通运输站"
+max_size = Vector2(180, 180)
+ordinary = Vector2(1350, 595)
+
+[node name="police_line" parent="Control/Node" unique_id=610160201 instance=ExtResource("2_trig")]
+offset_left = 400.0
+offset_top = 630.0
+offset_right = 520.0
+offset_bottom = 750.0
+trigger_id = "群死常规的处理的调查"
+label_text = "警方线索"
+position = Vector2(400, 630)
+
+[node name="dennis_night" parent="Control/Node" unique_id=610160202 instance=ExtResource("2_trig")]
+offset_left = 1570.0
+offset_top = 240.0
+offset_right = 1690.0
+offset_bottom = 360.0
+trigger_id = "调查丹尼斯"
+label_text = "调查丹尼斯"
+position = Vector2(1570, 240)

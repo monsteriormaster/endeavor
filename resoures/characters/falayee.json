@@ -1,118 +1,47 @@
 {
   "法拉叶闲聊_love2": {
-	"0th": {
-	  "name": "{player_name}",
-	  "text": "在我这里还习惯吗?",
-	  "is_option": false,
-	  "next": 1
-	},
-	"1th": {
-	  "name": "法拉叶",
-	  "text": "吃的睡的都好，少爷对我也好，只是我心里有些难安。",
-	  "is_option": false,
-	  "next": 2
-	},
+	"0th": { "name": "{player_name}", "text": "在我这里还习惯吗?", "is_option": false, "next": 1 },
+	"1th": { "name": "法拉叶", "text": "吃的睡的都好，少爷对我也好，只是我心里有些难安。", "is_option": false, "next": 2 },
 	"2th": {
 	  "name": "法拉叶",
 	  "text": "我欺骗了你。我入狱的原因我大概能猜到，那日我经过酒吧时……里面乱哄哄的。酒和血到处飞。我于是随手捡走几个钱包。",
 	  "is_option": true,
 	  "options": [
-		{
-		  "text": "你本职原来是小偷啊。",
-		  "next": 10
-		},
-		{
-		  "text": "你人还怪好的，替人保管财务。",
-		  "effect": "法拉叶 属性 love +1",
-		  "next": 12
-		}
+		{ "text": "你本职原来是小偷啊。", "next": 3 },
+		{ "text": "你人还怪好的，替人保管财务。", "effect": { "npc_num_tag_add": { "法拉叶": { "love": 1 } } }, "next": 4 }
 	  ]
 	},
-	"10th": {
-	  "name": "法拉叶",
-	  "text": "这是劫富济贫。",
-	  "is_option": false,
-	  "next": 11
-	},
-	"11th": {
-	  "name": "{player_name}",
-	  "text": "很显然，他把自己划分到贫穷的行列。",
-	  "is_option": false,
-	  "next": 13
-	},
-	"12th": {
-	  "name": "法拉叶",
-	  "text": "举手之劳，不足挂齿。",
-	  "is_option": false,
-	  "next": 13
-	},
-	"13th": {
-	  "name": "法拉叶",
-	  "text": "我把钱都拿出来，过程中发现一张比较特别的纸条，上面写的不乍像人话，后来我就被抓了。",
-	  "is_option": false,
-	  "next": 14
-	},
-	"14th": {
-	  "name": "法拉叶",
-	  "text": "我寻思我被关出来，怎么也走不通关系。这不应该是拿了别人的钱的事……思来想去也只有纸条上的信息可疑。",
-	  "is_option": false,
-	  "next": 15
-	},
-	"15th": {
-	  "name": "{player_name}",
-	  "text": "你还记得上面写着什么吗?",
-	  "is_option": false,
-	  "next": 16
-	},
-	"16th": {
-	  "name": "法拉叶",
-	  "text": "忘完了，不过东西好像扔在我在郊外的一个藏身之处。你要是感兴趣可以去看看",
-	  "effect": "获得 物品 法拉叶藏身处的钥匙",
-	  "is_option": false,
-	  "next": -1
-	}
+	"3th": { "name": "法拉叶", "text": "这是劫富济贫。", "is_option": false, "next": 5 },
+	"4th": { "name": "法拉叶", "text": "举手之劳，不足挂齿。", "is_option": false, "next": 6 },
+	"5th": { "name": "{player_name}", "text": "很显然，他把自己划分到贫穷的行列。", "is_option": false, "next": 6 },
+	"6th": { "name": "法拉叶", "text": "我把钱都拿出来，过程中发现一张比较特别的纸条，上面写的不乍像人话，后来我就被抓了。", "is_option": false, "next": 7 },
+	"7th": { "name": "法拉叶", "text": "我寻思我被关出来，怎么也走不通关系。这不应该是拿了别人的钱的事……思来想去也只有纸条上的信息可疑。", "is_option": false, "next": 8 },
+	"8th": { "name": "{player_name}", "text": "你还记得上面写着什么吗?", "is_option": false, "next": 9 },
+	"9th": { "name": "法拉叶", "text": "忘完了，不过东西好像扔在我在郊外的一个藏身之处。你要是感兴趣可以去看看", "effect": { "stuff": ["法拉叶藏身处的钥匙"], "tags": ["法拉叶藏身处的钥匙"] }, "is_option": false, "next": -1 }
   },
 
   "法拉叶藏身处探索": {
-	"0th": {
-	  "name": "",
-	  "text": "你来到郊外的一座小屋，环境极其简陋，唯一算得上家具的是地上的破草席。",
-	  "is_option": false,
-	  "next": 1
-	},
-	"1th": {
-	  "name": "",
-	  "text": "在四处翻找后，你发现了一个神秘纸条。上面画着郊外某处地点，写着‘书似青山常乱叠，灯如红豆最相思。’",
-	  "effect": "获得 物品 神秘纸条",
-	  "is_option": false,
-	  "next": -1
-	}
+	"0th": { "name": "", "text": "你来到郊外的一座小屋，环境极其简陋，唯一算得上家具的是地上的破草席。", "is_option": false, "next": 1 },
+	"1th": { "name": "", "text": "在四处翻找后，你发现了一个神秘纸条。上面画着郊外某处地点，写着「书似青山常乱叠，灯如红豆最相思」。", "effect": { "stuff": ["神秘纸条"], "tags": ["神秘纸条"] }, "is_option": false, "next": -1 }
   },
 
-  "与书店老板交谈_神秘纸条": {
-	"0th": {
-	  "name": "{player_name}",
-	  "text": "老板，看看这张纸条。",
-	  "is_option": false,
-	  "next": 1
-	},
-	"1th": {
-	  "name": "书店老板",
-	  "text": "这诗句对应郊外的某个地点，挖到箱子后可以找我换钥匙。",
-	  "effect": "获得 物品 郊外藏宝地点提示",
-	  "is_option": false,
-	  "next": -1
-	}
+ 
+  "舞春神的箱子": {
+	"0th": { "name": "", "text": "箱子搁在桌上，两指厚的木板，接缝严得塞不进一张纸。你拿刀背沿着缝敲了一圈，木头没松，刀背先卷了。", "is_option": false, "next": 1 },
+	"1th": { "name": "法拉叶", "text": "给我。刀是给不会开的人用的。", "is_option": false, "next": 2 },
+	"2th": { "name": "", "text": "他从靴筒里抽出一根铁丝，弯了个钩，探进锁孔，耳朵贴在箱盖上。铁丝转了两下，停住，又倒回去半圈。", "is_option": false, "next": 3 },
+	"3th": { "name": "法拉叶", "text": "里头垫了绒。", "is_option": false, "next": 4 },
+	"4th": { "name": "", "text": "锁簧响了一声。他换了只手，才把盖子掀开。", "is_option": false, "next": 5 },
+	"5th": { "name": "法拉叶", "text": "是画。", "is_option": false, "next": 6 },
+	"6th": { "name": "", "text": "箱盖翻开。画卷在绒布里，边角压出了折痕。", "is_option": false, "next": 7 },
+	"7th": { "name": "{player_name}", "text": "值多少？", "is_option": false, "next": 8 },
+	"8th": { "name": "法拉叶", "text": "问我？", "is_option": false, "next": 9 },
+	"9th": { "name": "法拉叶", "text": "三顿酒。", "is_option": false, "next": 10 },
+	"10th": { "name": "{player_name}", "text": "（包得这么仔细，不像是偷来就卖的。）", "effect": { "stuff": ["《舞春神》"], "remove_stuff": ["奇怪的箱子"], "tags": ["《舞春神》"] }, "is_option": false, "next": -1 }
   },
 
-  "郊外挖宝_神秘纸条": {
-	"0th": {
-	  "name": "",
-	  "text": "你根据提示来到郊外地点，挖出一个箱子。",
-	  "effect": "获得 物品 《舞春神》",
-	  "is_option": false,
-	  "next": -1
-	}
+  "挖宝结算": {
+	"0th": { "name": "", "text": "狭小又封得很死的盒子，强行破坏恐怕会损坏里面的东西，只能这样交差了。", "is_option": false, "next": -1 }
   },
 
   "处理失窃名画_舞春神": {
@@ -121,151 +50,127 @@
 	  "text": "一件精美的艺术品，可以是财富，也可以是一场危机。",
 	  "is_option": true,
 	  "options": [
-		{
-		  "text": "售卖",
-		  "effect": "money + 50;失去 物品 《舞春神》",
-		  "next": -1
-		},
-		{
-		  "text": "上交政府",
-		  "effect": "获得 tag 政府的表扬;money + 1;新闻 义举报道",
-		  "next": -1
-		},
-		{
-		  "text": "收藏",
-		  "effect": "获得 tag 艺术鉴赏;单次交易金钱增加",
-		  "next": -1
-		}
+		{ "text": "出手", "effect": { "money": 50, "remove_stuff": ["《舞春神》"], "tags": ["名画已处置"] }, "next": 1 },
+		{ "text": "上交政府", "next": 2 },
+		{ "text": "收藏", "next": 6 }
 	  ]
-	}
+	},
+	"1th": { "name": "{player_name}", "text": "（画早就丢了，我手上这个还能是真的。仿的工艺能高到这个地步，倒是真值这个价。）", "is_option": false, "next": -1 },
+
+	"2th": { "name": "", "text": "你把画交上去。办事的人先对着窗户看了半天，又喊来一个更老的。两个人围着画角比划，说了一串你听不懂的行话。", "is_option": false, "next": 3 },
+	"3th": { "name": "", "text": "收条开出来，盖章的时候手很重。", "is_option": false, "next": 4 },
+	"4th": { "name": "", "text": "赏格一万。通缉令上悬了一个月，写的是五百。", "is_option": false, "next": 5 },
+	"5th": { "name": "{player_name}", "text": "（早知道我自己去揭榜。）", "effect": { "remove_stuff": ["《舞春神》"], "tags": ["政府的表扬", "名画已处置"], "money": 1, "news": [{ "id": "news_painting_found", "headline": "失窃古画寻回 警署旬日破案", "body": "前于乌鲁鲁大学失窃之古画，日前经警署缉获寻回。画件完好，已发还该校图书馆归藏。\n\n此案侦办未及旬日即破。馆长具函致谢，称警署办案之神速，为近年所仅见。\n\n本报记者 述" }] }, "is_option": false, "next": -1 },
+
+	"6th": { "name": "", "text": "你把画挂在自己房里，正对着床。睡前掀开帘子看了一会儿。笔触是真的，印泥也是真的。", "is_option": false, "next": 7 },
+	"7th": { "name": "法拉叶", "text": "挂这儿？", "is_option": false, "next": 8 },
+	"8th": { "name": "{player_name}", "text": "挂这儿。", "is_option": false, "next": 9 },
+	"9th": { "name": "法拉叶", "text": "招贼。", "is_option": false, "next": 10 },
+	"10th": { "name": "{player_name}", "text": "咱家不缺贼。", "is_option": false, "next": 11 },
+	"11th": { "name": "", "text": "他笑了一声，没再说什么。", "is_option": false, "next": 12 },
+	"12th": { "name": "", "text": "那图书馆里挂着的那幅，又是什么。", "effect": { "remove_stuff": ["《舞春神》"], "tags": ["艺术鉴赏", "大学画作的消息", "名画已处置"], "num_tags": { "交易加成": 1 }, "delayed_event": { "days": 2, "plot": "报纸_舞春神找回" } }, "is_option": false, "next": -1 }
+  },
+
+  "窃取_成功": {
+	"0th": { "name": "", "text": "你成功带走了图书馆里的那幅《舞春神》。次日，报纸上多了一则画作再度失窃的新闻。", "effect": { "news": [{ "id": "news_painting_stolen_again", "headline": "寻回之古画再度失窃", "body": "日前由警署发还乌鲁鲁大学之古画，昨日开箱时已不在。锁具完好，馆中诸人皆未闻声。\n\n该校藏画之富、看守之严，素为全城诸馆之最。警署称已重新立案，惟尚无头绪。\n\n本报记者 述" }] }, "is_option": false, "next": -1 }
+  },
+
+  "调查_图书馆_法拉叶": {
+	"0th": { "name": "法拉叶", "text": "没发现什么，这样回去报告会被责怪吧。", "effect": { "tags": ["画作的疑点"] }, "is_option": false, "next": -1 }
+  },
+
+  "调查_图书馆_灵感": {
+	"0th": { "name": "", "text": "一些惹人注意的痕迹——不知道是怎么回事，总之这幅画给你一种在墓地蹦迪的感觉。", "effect": { "tags": ["画作的疑点"] }, "is_option": false, "next": -1 }
+  },
+
+  "调查_图书馆_孩子天才": {
+	"0th": { "name": "", "text": "技法不同。如果说家里的画是画出来的，那么这幅画就像是印刷出来的。", "effect": { "tags": ["画作的疑点"] }, "is_option": false, "next": -1 }
+  },
+
+  "调查_图书馆_孩子凡人": {
+	"0th": { "name": "", "text": "我注意到看图书馆的阿姨很温柔，还教了我这幅画的历史。", "effect": { "tags": ["画作的疑点"] }, "is_option": false, "next": -1 }
+  },
+
+  "调查_图书馆_魅力流": {
+	"0th": { "name": "", "text": "我问了问周围的人，我先上随口说这幅画感觉和之前不一样啊，就有很多热心人叽里呱啦地说他那里有问题。我想这幅画总可以是假的。", "effect": { "tags": ["画作的疑点"] }, "is_option": false, "next": -1 }
+  },
+
+  "调查_图书馆_魅力智力流": {
+	"0th": { "name": "", "text": "我问了问周围的人，我先上随口说这幅画感觉和之前不一样啊，就有很多热心人从色彩、光影说他那里有问题。我想这幅画总可以是假的。", "effect": { "tags": ["画作的疑点"] }, "is_option": false, "next": -1 }
+  },
+
+  "调查_大学图书馆": {
+	"0th": { "name": "{player_name}", "text": "好像和家里的真没有什么区别。", "effect": { "tags": ["画作的疑点"] }, "is_option": false, "next": -1 }
+  },
+
+  "后续处理_家中思考": {
+	"0th": {
+	  "name": "{player_name}",
+	  "text": "画看过了，问题还在。拿它做什么，我自己得有个决定。",
+	  "is_option": true,
+	  "options": [
+		{ "text": "画纸的生意", "next": 1 },
+		{ "text": "招聘图书馆管理员", "next": 2, "condition": { "description": "魅力、智力都要够", "attrs": { "app": { ">": 5 }, "int": { ">": 5 } } } },
+		{ "text": "对画作的质疑（升爵）", "next": 3, "condition": { "description": "魅力、智力都要够高", "attrs": { "app": { ">": 6 }, "int": { ">": 5 } } } },
+		{ "text": "敲诈勒索", "next": 4, "condition": { "description": "得能说会道", "attrs": { "app": { ">": 5 } } } }
+	  ]
+	},
+	"1th": { "name": "", "text": "你托纸坊照着那幅画的路数裁了一批画纸，装成册子。第一批送到书店，三天卖空。", "effect": { "money": 3, "tags": ["画纸生意"] }, "is_option": false, "next": -1 },
+	"2th": { "name": "", "text": "你在报上登了半栏广告。第三天来了个瘦高的女人，翻了两页账本，报得出每一版书的年份。她开价不高，只要一间向阳的屋子放书。", "effect": { "npc": { "Sofia": { "tags": ["追随"] } }, "money": -5, "tags": ["图书馆管理员"] }, "is_option": false, "next": -1 },
+	"3th": { "name": "", "text": "你放出去一句话：报上那幅是假的，真的在我家。这话传到第几个人耳朵里就变了味——有人开始算你家祖上哪来的画。", "effect": { "tags": ["显赫的家底"], "news": [{ "id": "news_painting_doubt", "headline": "古画真伪起疑 藏家各执一词", "body": "日前寻回之古画，近日又有异说。城中数位藏家称，该画笔法与旧录不合，疑非原物。\n\n发还之馆未予回应。有言者谓真本另在某氏私邸，然无实据。\n\n本报记者 述" }] }, "is_option": false, "next": -1 },
+	"4th": { "name": "", "text": "你给馆长写了封信，没署真名，只写了一句话和画角那方小印。三天后回信到了，附一张汇票，数额够你把西边那条街的铺面盘下来。", "effect": { "money": 20, "tags": ["敲诈得手"] }, "is_option": false, "next": -1 }
   },
 
   "法拉叶_恋爱进线_love1-3": {
-	"0th": {
-	  "name": "{player_name}",
-	  "text": "和我谈恋爱吧。",
-	  "is_option": false,
-	  "next": 1
-	},
-	"1th": {
-	  "name": "法拉叶",
-	  "text": "先生，妓院在商业街杂货店的后面。",
-	  "is_option": false,
-	  "next": -1
-	}
+	"0th": { "name": "{player_name}", "text": "和我谈恋爱吧。", "is_option": false, "next": 1 },
+	"1th": { "name": "法拉叶", "text": "先生，妓院在商业街杂货店的后面。", "is_option": false, "next": -1 }
   },
-
 
   "法拉叶_恋爱进线_love4-5": {
-	"0th": {
-	  "name": "{player_name}",
-	  "text": "和我谈恋爱吧。",
-	  "is_option": false,
-	  "next": 1
-	},
-	"1th": {
-	  "name": "法拉叶",
-	  "text": "不要取笑我了，我承认过去我有些荤素不忌，但我真没有和男的搞过。",
-	  "is_option": false,
-	  "next": -1
-	}
+	"0th": { "name": "{player_name}", "text": "和我谈恋爱吧。", "is_option": false, "next": 1 },
+	"1th": { "name": "法拉叶", "text": "不要取笑我了，我承认过去我有些荤素不忌，但我真没有和男的搞过。", "is_option": false, "next": -1 }
   },
 
-	"法拉叶_恋爱进线_love≥6": {
-	"0th": {
-	  "name": "{player_name}",
-	  "text": "和我谈恋爱吧。",
-	  "is_option": false,
-	  "next": 1
-	},
-	"1th": {
-	  "name": "法拉叶",
-	  "text": "player_name，我不想进精神病院也不想被烧死，为庄园找个女主人吧。",
-	  "effect": "法拉叶 获得 tag 被玩家的心意动摇",
-	  "is_option": false,
-	  "next": -1
-	},
-	},
+  "法拉叶_恋爱进线_love6": {
+	"0th": { "name": "{player_name}", "text": "和我谈恋爱吧。", "is_option": false, "next": 1 },
+	"1th": { "name": "法拉叶", "text": "{player_name}，我不想进精神病院也不想被烧死，为庄园找个女主人吧。", "effect": { "npc": { "法拉叶": { "tags": ["被玩家的心意动摇"] } }, "tags": ["表白成功"] }, "is_option": false, "next": -1 }
+  },
 
-	"动摇时与法拉叶约会":{
-	  "0th": {
-	  "name": "{player_name}",
-	  "text": "一起去郊外吗，我想我们两个人一起，只是我们两个。",
-	  "effect": "money -5",
-	  "is_option": false,
-	  "next": 1
-	},
-	"1th": {
-	  "name": "",
-	  "text": "他这次没有说些拒绝的话，沉默了很久，红着脸点了头。",
-	  "is_option": false,
-	  "next": -1
-	},
-	},
+  "动摇时与法拉叶约会": {
+	"0th": { "name": "{player_name}", "text": "一起去郊外吗，我想我们两个人一起，只是我们两个。", "effect": { "money": -5 }, "is_option": false, "next": 1 },
+	"1th": { "name": "", "text": "他这次没有说些拒绝的话，沉默了很久，红着脸点了头。", "is_option": false, "next": -1 }
+  },
 
-	"动摇时与法拉叶第一次约会":{
-		"0th": {
-	  "name": "",
-	  "text": "他这次没有说些拒绝的话，沉默了很久，红着脸点了头。",
-	  "is_option": false,
-	  "next": 4
-	},
-	"4th": {
-	  "name": "",
-	  "text": "法拉叶的藏身处是个不错的地方，你花了一点小钱把这里捯饬了一番。",
-	  "is_option": false,
-	  "next": 5
-	},
-	"5th": {
-	  "name": "法拉叶",
-	  "text": "你做了这些。我其实很少来这里。你喜欢就好。",
-	  "is_option": false,
-	  "next": 6
-	},
-	"6th": {
-	  "name": "",
-	  "text": "法拉叶有些手足无措，虽然是在自己的地盘，但是很显然他非常紧张，坐在床边，离你远远的。",
-	  "is_option": false,
-	  "next": 7
-	},
-	"7th": {
-	  "name": "{player_name}",
-	  "text": "我先去洗澡了。",
-	  "is_option": true,
-	  "option":[
-		{
-			"condition":"bod > 6||tags: 敏锐",
-			"text":"奇怪的声音引起了你的注意",
-			"next":8,
-		},
-		{
-			"text":"满怀期待地等待",
-			"next":9,
-		}
-	],
-	  "next": 8
-	},
-	"8th": {
-	  "name": "",
-	  "text": "你看到了让人血脉贲张的一幕。你忘了你今天提前在这里洗澡，贴身衣物留在了浴室。你看到法拉叶.......（不敢写，h得没边了，一会儿删了吧）",
-	  "is_option": false,
-	  "next": 9
-	},
-	"9th": {
-	  "name": "",
-	  "text": "你与法拉叶在小窝里度过一个美好的下午。什么话也不说只是一点一点坐得更近了些。",
-	  "effect": "love +1",
-	  "is_option": false,
-	  "next": -1
-	},		
-	},
-	
-	"动摇时与法拉叶的日常约会1":{
-		
-	},
+  "动摇时与法拉叶第一次约会": {
+	"0th": { "name": "", "text": "他这次没有说些拒绝的话，沉默了很久，红着脸点了头。", "is_option": false, "next": 1 },
+	"1th": { "name": "", "text": "法拉叶的藏身处是个不错的地方，你花了一点小钱把这里捯饬了一番。", "is_option": false, "next": 2 },
+	"2th": { "name": "法拉叶", "text": "你做了这些。我其实很少来这里。你喜欢就好。", "is_option": false, "next": 3 },
+	"3th": { "name": "", "text": "法拉叶有些手足无措，虽然是在自己的地盘，但是很显然他非常紧张，坐在床边，离你远远的。", "is_option": false, "next": 4 },
+	"4th": { "name": "{player_name}", "text": "我先去洗澡了。", "is_option": false, "next": 5 },
+	"5th": { "name": "", "text": "你与法拉叶在小窝里度过一个美好的下午。什么话也不说，只是一点一点坐得更近了些。", "effect": { "npc_num_tag_add": { "法拉叶": { "love": 1 } } }, "is_option": false, "next": -1 }
+  },
 
-	"动摇且有伴侣时与法拉叶约会":{
-		
-	},
+  "恋爱_再次约会": {
+	"0th": { "name": "", "text": "法拉叶仍然很紧张，但是他这次贴着你坐在床上，把头撇到一边，又悄悄拉住你的手。", "is_option": false, "next": 1 },
+	"1th": { "name": "法拉叶", "text": "我没有和别人那么浪漫过……我是不是……啊……我可能把这一切搞砸了。", "is_option": false, "next": 2 },
+	"2th": { "name": "", "text": "你抱住法拉叶，把他按在床上。", "is_option": false, "next": 3 },
+	"3th": { "name": "{player_name}", "text": "很浪漫啊。我学艺术的知道，一会儿你浪点，我慢点就好。", "is_option": false, "next": 4 },
+	"4th": { "name": "", "text": "虽然法拉叶在恋爱上是白痴，但是做爱上是大师。你体验到了绵长的、悠久强烈的快感。", "effect": { "npc": { "法拉叶": { "tags": ["恋爱"] } } }, "is_option": false, "next": -1 }
+  },
 
+  "恋爱_公园邀约": {
+	"0th": { "name": "", "text": "法拉叶神神秘秘地凑到你面前。", "is_option": false, "next": 1 },
+	"1th": { "name": "法拉叶", "text": "今天有空吗？一起去公园吗？", "is_option": false, "next": 2 },
+	"2th": { "name": "{player_name}", "text": "虽然浪漫的体验很棒，但是在旁人的见证下太浪漫的话，我们可能会进局子。", "is_option": false, "next": 3 },
+	"3th": { "name": "法拉叶", "text": "在监狱里确实没那么快活，但是如果我们在同一个牢房……和我去一趟吧。", "is_option": false, "next": -1 }
+  },
+
+  "恋爱_公园约会": {
+	"0th": { "name": "法拉叶", "text": "在这里散步心情会变好。", "is_option": false, "next": 1 },
+	"1th": { "name": "", "text": "法拉叶牵起了你的手，把你带到了一个少有人经过的小亭子。", "is_option": false, "next": 2 },
+	"2th": { "name": "", "text": "法拉叶从亭子石桌下拿出了一个木盒子。", "is_option": false, "next": 3 },
+	"3th": { "name": "法拉叶", "text": "这是我自己做的。虽然也可以用来割东西，但是你还是把他当成饰品吧。", "effect": { "equipment": ["精心磨制的小刀"] }, "is_option": false, "next": 4 },
+	"4th": { "name": "{player_name}", "text": "好突然啊，我还没有为你准备什么礼物。", "is_option": false, "next": 5 },
+	"5th": { "name": "法拉叶", "text": "你就是我最想要的礼物。", "is_option": false, "next": -1 }
+  }
 }

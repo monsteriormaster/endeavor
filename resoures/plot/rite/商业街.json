@@ -1,0 +1,165 @@
+{
+	"打听家事A": {
+		"0th": {
+			"name": "路人A",
+			"text": "前阵子那场游轮事故其实另有隐情。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "路人B",
+			"text": "啊？官方不是已经通报了吗？",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "路人A",
+			"text": "那群尸位素餐的东西说的话哪里可信啊，又不是预防局。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "路人B",
+			"text": "说的也是。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "路人A",
+			"text": "我告诉你，这个秘密可不要和其他人说。一家子人全死了偏偏有人没死，你说说谁嫌疑最大。",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "路人B",
+			"text": "原来是这样，我听说他们家里就两个人活着。所以说这一切都是那个神秘的小少爷做的，小小年纪竟然如此心狠手辣。",
+			"is_option": false,
+			"effect": {
+				"tags": ["打听家业"]
+			},
+			"next": -1
+		}
+	},
+	"打听家事A_主角": {
+		"0th": {
+			"name": "路人A",
+			"text": "前阵子那场游轮事故其实另有隐情。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "路人B",
+			"text": "啊？官方不是已经通报了吗？",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "路人A",
+			"text": "那群尸位素餐的东西说的话哪里可信啊，又不是预防局。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "路人B",
+			"text": "说的也是。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "路人A",
+			"text": "我告诉你，这个秘密可不要和其他人说。一家子人全死了偏偏有人没死，你说说谁嫌疑最大。",
+			"is_option": false,
+			"next": 5
+		},
+		"5th": {
+			"name": "路人B",
+			"text": "原来是这样，我听说他们家里就两个人活着。所以说这一切都是那个神秘的小少爷做的，小小年纪竟然如此心狠手辣。",
+			"is_option": false,
+			"effect": {
+				"tags": ["打听家业"]
+			},
+			"next": 6
+		},
+		"6th": {
+			"name": "{player_name}",
+			"text": "（我怎么不知道我心狠手辣）",
+			"is_option": false,
+			"effect": {
+				"num_tags": { "对社会的思考": { "add": 1 } }
+			},
+			"next": -1
+		}
+	},
+
+	"打听法拉叶事迹": {
+		"0th": {
+			"name": "路人A",
+			"text": "近来街上多了个不懂规矩的。为别人的事，跟几条街的人都翻了脸。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "路人B",
+			"text": "身手还利索。听说名画那案子也有他一脚。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "路人A",
+			"text": "叫法拉叶。人现在在局子里蹲着。",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "路人B",
+			"text": "这种人也敢去惹那几位大人。这辈子怕是别想出来了。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "路人A",
+			"text": "你要真想去看看他，别说我们讲的。",
+			"is_option": false,
+			"effect": {
+				"tags": ["知道法拉叶的事迹"]
+			},
+			"next": -1
+		}
+	},
+
+	"打听法拉叶事迹_主角": {
+		"0th": {
+			"name": "路人A",
+			"text": "近来街上多了个不懂规矩的。为别人的事，跟几条街的人都翻了脸。",
+			"is_option": false,
+			"next": 1
+		},
+		"1th": {
+			"name": "路人B",
+			"text": "身手还利索。听说名画那案子也有他一脚。",
+			"is_option": false,
+			"next": 2
+		},
+		"2th": {
+			"name": "{player_name}",
+			"text": "他叫什么？",
+			"is_option": false,
+			"next": 3
+		},
+		"3th": {
+			"name": "路人A",
+			"text": "法拉叶。现在关在北边那座，登记在册的。",
+			"is_option": false,
+			"next": 4
+		},
+		"4th": {
+			"name": "{player_name}",
+			"text": "（名画。这两个字我记住了。）",
+			"is_option": false,
+			"effect": {
+				"tags": ["知道法拉叶的事迹"]
+			},
+			"next": -1
+		}
+	}
+}

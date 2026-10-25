@@ -1,0 +1,82 @@
+{
+	"盗窃判定": {
+		"title": "盗窃判定",
+		"description": "尝试从狱卒腰间偷取钥匙",
+		"attrs": {
+			"int": 1,
+			"app": 2,
+			"str": 3
+		},
+		"difficulty": 7,
+		"modifiers": [
+			{"source": "tag", "name": "灵感", "bonus": 2, "desc": "灵光一闪"},
+			{"source": "tag", "name": "神速", "bonus": 3, "desc": "疾如闪电"},
+			{"source": "stuff", "name": "小刀", "bonus": 1, "desc": "顺手牵羊"},
+			{"source": "npc_tag", "npc": "狱卒", "name": "贿赂", "bonus": 2, "desc": "狱卒放松了警惕"}
+		],
+		"crit_success_margin": 3,
+		"crit_failure_margin": -3,
+		"branches": {
+			"crit_success": {
+				"effect": {
+					"tags": ["获得钥匙", "盗窃大成功"],
+					"stuff": ["狱卒的钥匙"]
+				}
+			},
+			"success": {
+				"effect": {
+					"tags": ["获得钥匙"],
+					"stuff": ["狱卒的钥匙"]
+				}
+			},
+			"failure": {
+				"effect": {
+					"tags": ["盗窃失败"],
+					"npc": {
+						"法拉叶": {
+							"tags": ["再次入狱"]
+						}
+					}
+				}
+			},
+			"crit_failure": {
+				"effect": {
+					"tags": ["盗窃大失败", "引起注意"],
+					"npc": {
+						"法拉叶": {
+							"tags": ["再次入狱", "严加看管"]
+						}
+					}
+				}
+			}
+		}
+	},
+
+	"说服判定": {
+		"title": "说服判定",
+		"description": "用言辞打动图书管理员",
+		"attrs": {
+			"int": 2,
+			"app": 1
+		},
+		"difficulty": 6,
+		"modifiers": [
+			{"source": "tag", "name": "学习", "bonus": 2, "desc": "引经据典"},
+			{"source": "num_tag", "name": "学习", "left": 3, "right": 99, "bonus": 1, "desc": "博学多才"}
+		],
+		"crit_success_margin": 3,
+		"crit_failure_margin": -3,
+		"branches": {
+			"success": {
+				"effect": {
+					"tags": ["说服成功"]
+				}
+			},
+			"failure": {
+				"effect": {
+					"tags": ["说服失败"]
+				}
+			}
+		}
+	}
+}

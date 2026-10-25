@@ -1,0 +1,141 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://components/check_ui.gd" id="1_check"]
+[ext_resource type="Texture2D" path="res://art/ui/check_panel.png" id="2_panel"]
+
+[sub_resource type="StyleBoxTexture" id="SB_panel"]
+texture = ExtResource("2_panel")
+
+[node name="CheckUi" type="Control" node_paths=PackedStringArray("title_label", "desc_label", "formula_label", "x_label", "qualitative_label", "modifiers_container", "roll_label", "final_label", "difficulty_label", "result_label", "continue_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_check")
+title_label = NodePath("Panel/MarginContainer/VBoxContainer/title_label")
+desc_label = NodePath("Panel/MarginContainer/VBoxContainer/desc_label")
+formula_label = NodePath("Panel/MarginContainer/VBoxContainer/formula_label")
+x_label = NodePath("Panel/MarginContainer/VBoxContainer/x_label")
+qualitative_label = NodePath("Panel/MarginContainer/VBoxContainer/qualitative_label")
+modifiers_container = NodePath("Panel/MarginContainer/VBoxContainer/modifiers_container")
+roll_label = NodePath("Panel/MarginContainer/VBoxContainer/roll_label")
+final_label = NodePath("Panel/MarginContainer/VBoxContainer/final_label")
+difficulty_label = NodePath("Panel/MarginContainer/VBoxContainer/difficulty_label")
+result_label = NodePath("Panel/MarginContainer/VBoxContainer/result_label")
+continue_button = NodePath("Panel/MarginContainer/VBoxContainer/continue_button")
+
+[node name="VeilPaper" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.894118, 0.866667, 0.811765, 0.26)
+
+[node name="VeilShade" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.274510, 0.211765, 0.141176, 0.28)
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -280.0
+offset_right = 300.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("SB_panel")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 42
+theme_override_constants/margin_top = 42
+theme_override_constants/margin_right = 42
+theme_override_constants/margin_bottom = 42
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+theme_override_colors/font_color = Color(0.219608, 0.168627, 0.117647, 1)
+
+[node name="title_label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "鉴定"
+
+[node name="desc_label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.352941, 0.301961, 0.243137, 1)
+theme_override_font_sizes/font_size = 16
+text = "描述"
+
+[node name="formula_label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.352941, 0.301961, 0.243137, 1)
+theme_override_font_sizes/font_size = 16
+text = "公式"
+
+[node name="x_label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "骰面"
+
+[node name="qualitative_label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "胜算："
+
+
+[node name="modifiers_container" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="roll_label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "骰子：……"
+
+[node name="final_label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "最终"
+
+[node name="difficulty_label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.352941, 0.301961, 0.243137, 1)
+theme_override_font_sizes/font_size = 18
+text = "难度"
+
+[node name="result_label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "结果"
+
+[node name="continue_button" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(180, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "继续"
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/continue_button" to="." method="_on_continue_pressed"]

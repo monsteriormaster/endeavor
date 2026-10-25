@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://bog8qqjnjkj6a"]
+
+[ext_resource type="PackedScene" uid="uid://cbxeto13xsdq1" path="res://components/scene_spot.tscn" id="1_exit"]
+[ext_resource type="PackedScene" path="res://components/trigger_spot.tscn" id="2_trig"]
+
+[node name="ShoppingArea" type="Node2D" unique_id=214704200]
+
+[node name="Control" type="Control" parent="." unique_id=48273747]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 22.0
+offset_top = 110.0
+offset_right = 1898.0
+offset_bottom = 970.0
+mouse_filter = 2
+
+[node name="Node" type="Node" parent="Control" unique_id=1696303650]
+
+[node name="bookstore" parent="Control/Node" unique_id=2136124201 instance=ExtResource("2_trig")]
+offset_left = 400.0
+offset_top = 250.0
+offset_right = 520.0
+offset_bottom = 370.0
+trigger_id = "书店购书"
+label_text = "书店"
+
+[node name="newsstand" parent="Control/Node" unique_id=132085321 instance=ExtResource("2_trig")]
+offset_left = 1100.0
+offset_top = 250.0
+offset_right = 1220.0
+offset_bottom = 370.0
+trigger_id = "报亭"
+label_text = "报亭"
+
+[node name="inquire" parent="Control/Node" unique_id=501324417 instance=ExtResource("2_trig")]
+offset_left = 400.0
+offset_top = 550.0
+offset_right = 520.0
+offset_bottom = 670.0
+trigger_id = "商业街打听"
+label_text = "打听消息"
+
+[node name="buy" parent="Control/Node" unique_id=2056935644 instance=ExtResource("2_trig")]
+offset_left = 1100.0
+offset_top = 550.0
+offset_right = 1220.0
+offset_bottom = 670.0
+trigger_id = "神秘杂货店"
+label_text = "神秘杂货店"
+
+[node name="astrology" parent="Control/Node" unique_id=577597447 instance=ExtResource("2_trig")]
+offset_left = 750.0
+offset_top = 700.0
+offset_right = 870.0
+offset_bottom = 820.0
+trigger_id = "占星小屋"
+label_text = "占星小屋"
+
+[node name="murder_weapon" parent="Control/Node" unique_id=577597448 instance=ExtResource("2_trig")]
+offset_left = 750.0
+offset_top = 400.0
+offset_right = 870.0
+offset_bottom = 520.0
+trigger_id = "群死凶器的调查"
+label_text = "凶器调查"
+position = Vector2(750, 400)
+
+[node name="investigate_bookshop" parent="Control/Node" unique_id=577597449 instance=ExtResource("2_trig")]
+offset_left = 400.0
+offset_top = 400.0
+offset_right = 520.0
+offset_bottom = 520.0
+trigger_id = "调查书店"
+label_text = "调查书店"
+
+[node name="paper_riddle" parent="Control/Node" unique_id=577597450 instance=ExtResource("2_trig")]
+offset_left = 400.0
+offset_top = 700.0
+offset_right = 520.0
+offset_bottom = 820.0
+trigger_id = "纸条解疑"
+label_text = "纸条解疑"
+
+[node name="graffiti" parent="Control/Node" unique_id=577597451 instance=ExtResource("2_trig")]
+offset_left = 750.0
+offset_top = 550.0
+offset_right = 870.0
+offset_bottom = 670.0
+trigger_id = "涂鸦"
+label_text = "涂鸦"
+
+[node name="graffiti_battle" parent="Control/Node" unique_id=577597452 instance=ExtResource("2_trig")]
+offset_left = 1100.0
+offset_top = 700.0
+offset_right = 1220.0
+offset_bottom = 820.0
+trigger_id = "涂鸦大作战"
+label_text = "涂鸦大作战"
+
+[node name="Return" parent="Control/Node" unique_id=1832766645 instance=ExtResource("1_exit")]
+spot_name = "返回_主城"
+max_size = Vector2(180, 180)
+ordinary = Vector2(1700, 610)

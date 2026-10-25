@@ -17,6 +17,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="endeavor"
 run/main_scene="uid://uypryal8x7o6"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="res://icon_512.png"
 
 [autoload]
 
@@ -30,21 +31,29 @@ TriggerLoader="*res://script/trigger_loader.gd"
 TriggerManager="*res://script/trigger_manager.gd"
 TutorialManager="*res://script/tutorial_manager.gd"
 OverlayRoot="*res://script/overlay_root.gd"
+SceneTransition="*res://script/scene_transition.gd"
 ActionQueue="*res://script/action_queue.gd"
 AchievementManager="*res://script/achievement_manager.gd"
+Settings="*res://script/settings.gd"
+AudioManager="*res://script/audio_manager.gd"
+ButtonSkin="*res://script/button_skin.gd"
+SunClock="*res://script/sun_clock.gd"
+CheatManager="*res://script/cheat_manager.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=2
+window/stretch/mode="canvas_items"
 
 [editor]
 
 movie_writer/movie_file="C:/Users/26464/picture/test.avi"
 
-[editor_plugins]
+[gui]
 
-enabled=PackedStringArray("res://addons/imjp94.yafsm/plugin.cfg")
+theme/custom="res://theme/default_theme.tres"
 
 [rendering]
 

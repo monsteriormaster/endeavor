@@ -1,0 +1,217 @@
+{
+	"_说明": "对话立绘表。by_image = 每张立绘的 alpha 内容框 [x,y,w,h]（原图像素），离线算好，运行时零解码，用于把不同立绘的「视觉身高」归一。aliases = 剧情里出现、但 characters.json 里没有（或写法对不上）的说话人名到立绘的映射。运行时候选顺序：节点 portrait 字段 > aliases > characters.json 的 name→image > Player.npc 实时条目。⚠️ 本文件由 design/_gen_portraits.py 生成，别手改（改素材后重跑它）。",
+	"by_image": {
+		"res://art/July.png": [
+			103,
+			57,
+			882,
+			1805
+		],
+		"res://art/alice.png": [
+			55,
+			13,
+			1012,
+			1907
+		],
+		"res://art/allwin.png": [
+			266,
+			57,
+			556,
+			1805
+		],
+		"res://art/astro.png": [
+			55,
+			39,
+			723,
+			1450
+		],
+		"res://art/astro_hooded.png": [
+			56,
+			46,
+			711,
+			1443
+		],
+		"res://art/dennis.png": [
+			257,
+			57,
+			574,
+			1805
+		],
+		"res://art/electra.png": [
+			254,
+			62,
+			579,
+			1795
+		],
+		"res://art/falayee.png": [
+			244,
+			0,
+			621,
+			1984
+		],
+		"res://art/hero.png": [
+			86,
+			57,
+			915,
+			1806
+		],
+		"res://art/jailer.png": [
+			225,
+			9,
+			597,
+			1896
+		],
+		"res://art/louise.png": [
+			31,
+			189,
+			1025,
+			1541
+		],
+		"res://art/man.png": [
+			100,
+			43,
+			334,
+			958
+		],
+		"res://art/passerbyA.png": [
+			244,
+			57,
+			599,
+			1805
+		],
+		"res://art/passerbyB.png": [
+			255,
+			57,
+			577,
+			1805
+		],
+		"res://art/principal.png": [
+			149,
+			57,
+			790,
+			1805
+		],
+		"res://art/redmole.png": [
+			75,
+			58,
+			938,
+			1804
+		],
+		"res://art/sansi.png": [
+			194,
+			0,
+			650,
+			1886
+		],
+		"res://art/sicourge.png": [
+			302,
+			39,
+			503,
+			1879
+		],
+		"res://art/teacher1.png": [
+			257,
+			58,
+			574,
+			1804
+		],
+		"res://art/woman.png": [
+			140,
+			21,
+			281,
+			983
+		],
+		"res://art/characters_extras/bookstore_owner.png": [
+			200,
+			89,
+			684,
+			1750
+		],
+		"res://art/characters_extras/bully.png": [
+			181,
+			62,
+			725,
+			1795
+		],
+		"res://art/characters_extras/child_worker.png": [
+			234,
+			57,
+			620,
+			1805
+		],
+		"res://art/characters_extras/electra_15.png": [
+			288,
+			17,
+			524,
+			1868
+		],
+		"res://art/characters_extras/electra_21.png": [
+			155,
+			0,
+			828,
+			1920
+		],
+		"res://art/characters_extras/electra_grown.png": [
+			281,
+			62,
+			525,
+			1795
+		],
+		"res://art/characters_extras/july_grown.png": [
+			174,
+			57,
+			739,
+			1805
+		],
+		"res://art/characters_extras/librarian_alt.png": [
+			160,
+			45,
+			768,
+			1811
+		],
+		"res://art/characters_extras/orphanage_director.png": [
+			173,
+			243,
+			714,
+			1545
+		],
+		"res://art/characters_extras/theater_manager.png": [
+			71,
+			136,
+			937,
+			1699
+		],
+		"res://art/characters_extras/theater_singer.png": [
+			70,
+			64,
+			1018,
+			1760
+		],
+		"res://art/characters_extras/theater_worker.png": [
+			256,
+			91,
+			537,
+			1744
+		],
+		"res://art/characters_extras/thug.png": [
+			184,
+			57,
+			720,
+			1804
+		]
+	},
+	"aliases": {
+		"书店老板": "res://art/characters_extras/bookstore_owner.png",
+		"伊莱克长大": "res://art/characters_extras/electra_grown.png",
+		"剧院工人": "res://art/characters_extras/theater_worker.png",
+		"剧院歌手": "res://art/characters_extras/theater_singer.png",
+		"图书馆管理员": "res://art/characters_extras/librarian_alt.png",
+		"孤儿院 院长": "res://art/characters_extras/orphanage_director.png",
+		"孤儿院院长": "res://art/characters_extras/orphanage_director.png",
+		"寺库奇": "res://art/sicourge.png",
+		"小七长大": "res://art/characters_extras/july_grown.png",
+		"管家 司库奇": "res://art/sicourge.png",
+		"管家 寺库奇": "res://art/sicourge.png",
+		"经理 格朗奇": "res://art/characters_extras/theater_manager.png"
+	}
+}

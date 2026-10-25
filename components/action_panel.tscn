@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://csmr6f73qkopk"]
+
+[ext_resource type="Script" uid="uid://dxrmvxyv3ji4l" path="res://components/action_panel.gd" id="1_ap"]
+
+[sub_resource type="StyleBoxFlat" id="SB_paper"]
+bg_color = Color(0.898039, 0.847059, 0.756863, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.466667, 0.345098, 0.145098, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="ActionPanel" type="Control" unique_id=1981604020]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 252.0
+offset_right = -2.0
+offset_bottom = 252.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ap")
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=594027927]
+layout_mode = 1
+offset_right = 380.0
+offset_bottom = 360.0
+theme_override_styles/panel = SubResource("SB_paper")
+
+[node name="Margin" type="MarginContainer" parent="Panel" unique_id=1155831209]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="Panel/Margin" unique_id=349218807]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Panel/Margin/VBox" unique_id=222889052]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.219608, 0.168627, 0.117647, 1)
+theme_override_font_sizes/font_size = 18
+text = "进行中行动"
+
+[node name="Scroll" type="ScrollContainer" parent="Panel/Margin/VBox" unique_id=927826417]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="List" type="VBoxContainer" parent="Panel/Margin/VBox/Scroll" unique_id=1059754669]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="Empty" type="Label" parent="Panel/Margin/VBox/Scroll/List" unique_id=1155674561]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.33, 0.2, 0.7)
+theme_override_font_sizes/font_size = 14
+text = "暂无进行中行动"
